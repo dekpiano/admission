@@ -3,7 +3,7 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">ประชาสัมพันธ์</h1>
+            <h1 class="h3 mb-0 text-gray-800">ประชาสัมพันธ์ การรับสมัครนักเรียนโรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์</h1>
            
           </div>
 
@@ -43,10 +43,10 @@
                 </div>
               </div>
             </div>
+            
+          </div>
 
          
-
-          </div>
 
           <a href="https://skj.ac.th/news/newsDetail/news_009">
                     <div class="bs-callout bs-callout-warning bg-white">

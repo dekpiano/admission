@@ -67,7 +67,7 @@ $route['checkRegister'] = 'control_admission/checkdata_student';
 $route['RegStudent/(:any)'] = 'control_admission/reg_student/$1';
 $route['checkRegister/dataStudent'] = 'control_admission/data_user';
 $route['CloseStudent'] = 'control_recruitstudent/close_student';
-$route['Announce'] = 'control_recruitstudent/print_student';
+$route['Announce'] = 'control_admission/print_student';
 
 // ติดต่อ
 $route['Contact'] = 'control_contact/contact_main';

@@ -77,7 +77,7 @@
       </script>
       <script src="https://cdn.tiny.cloud/1/y6b2omlkddg6mbwjuwhrf96ufg0wjfhrf5xw1xes3o6oahi4/tinymce/5/tinymce.min.js"
           referrerpolicy="origin"></script>
-
+          <script src="<?=base_url()?>asset/js/js.js"></script>
       <?php  if(isset($alert_verify) && $alert_verify[0] == 1):?>
       <script>
 swal("แจ้งเตือน", "<?=$alert_verify[1];?>", "<?=$alert_verify[2];?>");
@@ -114,6 +114,36 @@ $(document).ready(function() {
         time: 1000
     });
 
+    $(document).on('click', '.stu_id', function() {
+        var stuid = $(this).attr('stuid');
+        $('#idstu').val(stuid);
+    });
+    $(document).on('click', '#report_stu', function() {
+        var stuid = $('#idstu').val();
+        var d = $('#recruit_birthdayD').val();
+        var m = $('#recruit_birthdayM').val();
+        var y = $('#recruit_birthdayY').val();
+        $(this).prop("disabled", true);
+        $(this).html(
+            '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> กำลังโหลด...'
+        );
+        $.post("<?=base_url('control_admission/check_print');?>", {
+            recruit_birthdayD: d,
+            recruit_birthdayM: m,
+            recruit_birthdayY: y,
+            id: stuid
+        }, function(data) {
+            //alert(data);
+            if (data == 0) {
+                alert('วันเกิดคุณไม่ถูกต้อง');
+                window.location.href = "<?=base_url('Announce');?>"
+            } else {
+                window.location.href = data;
+            }
+
+
+        });
+    });
 
 
     tinymce.init({

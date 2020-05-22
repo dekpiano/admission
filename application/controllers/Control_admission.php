@@ -11,9 +11,6 @@ class Control_admission extends CI_Controller {
 		//exit();
 	}
 
-	public static $title = "รับสมัครนักเรียนปีการศึกษา 2563";
-	public static $description = "รับสมัครนักเรียนวันนี้ จนถึง 12 พฤษภาคม 2563";
-
 	public function recaptcha_google($captcha)
 	{
 		$recaptchaResponse = $captcha;
@@ -200,14 +197,14 @@ setTimeout(function() {
 
 				if($this->model_admission->student_insert($data_insert) == 1){
 					$this->session->set_flashdata(array('msg'=> 'NO','messge' => 'สมัครเรียนสำเร็จ'));					
-						// define('LINE_API',"https://notify-api.line.me/api/notify"); 
-						// $token = "E9GFruPeXW6Mogn156Pllr1D8wWiY69BHfpKzLHBxcj"; 
-						// $str = "มีนักเรียนสมัครเรียนใหม่\n".'ตรวจสอบ : '.base_url('admin/recruitstudent');	
-						// $res = $this->notify_message($str,$token);
+						define('LINE_API',"https://notify-api.line.me/api/notify"); 
+						$token = "E9GFruPeXW6Mogn156Pllr1D8wWiY69BHfpKzLHBxcj"; 
+						$str = "มีนักเรียนสมัครเรียนใหม่\n".'ตรวจสอบ : '.base_url('admin/recruitstudent');	
+						$res = $this->notify_message($str,$token);
 						$data = $this->dataAll();
 						$this->load->view('layout/header.php',$data);
 						$this->load->view('layout/navber.php');
-						$this->load->view('page_main.php');
+						$this->load->view('stu_news.php');
 						$this->load->view('layout/footer.php');
 				}
 
@@ -245,7 +242,6 @@ setTimeout(function() {
 	
 	public function checkdata_student()
 	{	
-
 		$data = $this->dataAll();
 		$data['title'] = 'ตรวจสอบและแก้ไขการสมัคร';
 		$data['description'] = 'ตรวจสอบและแก้ไขการสมัคร';
@@ -253,10 +249,6 @@ setTimeout(function() {
 		$this->load->view('layout/navber.php');
 		$this->load->view('stu_checkdata.php');
 		$this->load->view('layout/footer.php');
-
-		
-						
-		
 	}
 
 	public function data_user()
@@ -387,10 +379,10 @@ setTimeout(function() {
 				}
 				
 			}
-				// define('LINE_API',"https://notify-api.line.me/api/notify"); 
-				// $token = "E9GFruPeXW6Mogn156Pllr1D8wWiY69BHfpKzLHBxcj"; 
-				// $str = "มีนักเรียนแก้ไขข้อมูล\n".'ตรวจสอบ : '.base_url('admin/recruitstudent');		
-				// $res = $this->notify_message($str,$token);
+				define('LINE_API',"https://notify-api.line.me/api/notify"); 
+				$token = "E9GFruPeXW6Mogn156Pllr1D8wWiY69BHfpKzLHBxcj"; 
+				$str = "มีนักเรียนแก้ไขข้อมูล\n".'ตรวจสอบ : '.base_url('admin/recruitstudent');		
+				$res = $this->notify_message($str,$token);
 			redirect('checkRegister?a=3');	
 		}else{
 			$data = $this->dataAll();
@@ -405,8 +397,6 @@ setTimeout(function() {
 		}
 			
 		// redirect('checkRegister/dataStudent?a=3&search_stu='.$this->input->post('recruit_idCard').'&Succeed=1');
-			
-		
 	}
 
 
@@ -477,21 +467,31 @@ setTimeout(function() {
 
 	public function print_student()
 	{
+		if($this->input->get('around') == 1 ){
+			$around = array('recruit_date <= ' => '2020-05-12');
+			$i = '1';
+		}else{
+			$around = array('recruit_date > ' => '2020-05-12');
+			$i = '2';
+		}
 		$data = $this->dataAll();
-		$data['title'] = 'ประกาศรายชื่อผู้สมัครสอบ';
-		$data['description'] = 'ประกาศรายชื่อผู้สมัครสอบ';
+		$data['title'] = 'ประกาศรายชื่อผู้สมัครสอบ รอบ '.$i;
+		$data['description'] = 'ประกาศรายชื่อผู้สมัครสอบ  รอบ '.$i;
 
+		$data['around'] = $i;
 		$data['m1'] = $this->db->select('recruit_id,recruit_regLevel,recruit_status,recruit_tpyeRoom,recruit_prefix,recruit_firstName,recruit_lastName')
 		->where('recruit_regLevel','1')
-		->where('recruit_date <=','2020-05-12')
+		->where($around)
 		->get('tb_recruitstudent')->result();
 		$data['m4'] = $this->db->select('recruit_id,recruit_regLevel,recruit_status,recruit_tpyeRoom,recruit_prefix,recruit_firstName,recruit_lastName')
 		->where('recruit_regLevel','4')
-		->where('recruit_date <=','2020-05-12')
+		->where($around)
 		->get('tb_recruitstudent')->result();
-			$this->load->view('user/layout/header.php',$data);
-			$this->load->view('user/recruitstudent/report_student.php');
-			$this->load->view('user/layout/footer.php');		
+
+		$this->load->view('layout/header.php',$data);
+		$this->load->view('layout/navber.php');
+		$this->load->view('stu_announce.php');
+		$this->load->view('layout/footer.php');	
 	}
 	
 
@@ -520,7 +520,7 @@ setTimeout(function() {
 		$html .= '<div style="position:absolute;top:297px;left:280px; width:100%">'.($sch[0] == '' ? $sch[1] : $sch[0]).'</div>'; //โรงเรียนเดิม
 		$html .= '<div style="position:absolute;top:324px;left:170px; width:100%">'.$datapdf[0]->recruit_district.'</div>'; //อำเภอโรงเรียน
 		$html .= '<div style="position:absolute;top:324px;left:510px; width:100%">'.$datapdf[0]->recruit_province.'</div>'; //จังหวัดโรงเรียน
-		$html .= '<div style="position:absolute;top:353px;left:160px; width:100%">'.$date_D.'</div>'; //วันเกิด
+		$html .= '<div style="position:absolute;top:353px;left:160px; width:100%">'.sprintf('%d',$date_D).'</div>'; //วันเกิด
 		$html .= '<div style="position:absolute;top:353px;left:245px; width:100%">'.$TH_Month[$date_M-1].'</div>'; //เดือนเกิด
 		$html .= '<div style="position:absolute;top:353px;left:375px; width:100%">'.$date_Y.'</div>'; //ปีเกิด
 		$html .= '<div style="position:absolute;top:353px;left:470px; width:100%">'.$this->timeago->getAge($datapdf[0]->recruit_birthday).'</div>'; //อายุ
@@ -581,7 +581,7 @@ setTimeout(function() {
 		$check = $this->db->select('recruit_birthday,recruit_id')->where($where_d)->get('tb_recruitstudent')->num_rows();
 		if($check > 0){
 			$data = $this->db->select('recruit_birthday,recruit_id')->where($where_d)->get('tb_recruitstudent')->result();
-			echo base_url('control_recruitstudent/pdf/'.$data[0]->recruit_id);
+			echo base_url('control_admission/pdf/'.$data[0]->recruit_id);
 		}else{
 			echo $check;
 		}

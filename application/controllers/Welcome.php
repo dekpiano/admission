@@ -13,13 +13,14 @@ class Welcome extends CI_Controller {
 	
 	public function index()
 	{
+		$data['title'] = "รับสมัครนักเรียนปีการศึกษา 2563";
+		$data['description'] = "รับสมัครนักเรียนวันนี้ จนถึง 25 พฤษภาคม 2563";
 		$data['m1'] = $this->db->select('recruit_id,recruit_regLevel,recruit_status,recruit_tpyeRoom,recruit_prefix,recruit_firstName,recruit_lastName')
 		->where('recruit_regLevel','1')
 		->get('tb_recruitstudent')->num_rows();
 		$data['m4'] = $this->db->select('recruit_id,recruit_regLevel,recruit_status,recruit_tpyeRoom,recruit_prefix,recruit_firstName,recruit_lastName')
 		->where('recruit_regLevel','4')
 		->get('tb_recruitstudent')->num_rows();
-		$data['menu'] =	$this->db->get('tb_adminmenu')->result();
 		//$data['title'] = $this->title;
 		$this->load->view('layout/header.php',$data);
 		$this->load->view('layout/navber.php');

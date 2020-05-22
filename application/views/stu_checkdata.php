@@ -3,15 +3,15 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800"><?=$title?></h1>
+            <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-edit"></i> <?=$title?></h1>
            
           </div>
-
+          <hr>
           <!-- Content Row -->
-          <div class="row">
+          <div class="row ">
           
             <div class="col-md-12 order-md-1">
-                <div class="container m-auto">
+                <div class="container m-auto ">
                     <div class="justify-content-center pt-5">
                         <form class="card card-sm needs-validation" novalidate="" method="post"
                             action="<?=base_url('checkRegister/dataStudent?a=3')?>">
@@ -42,7 +42,7 @@
                         <INPUT type="hidden" id="captcha" name="captcha" value="">
                         <!--end of col-->
                         <div class="col-auto mt-3">
-                            <button class="btn btn-lg btn-success" type="submit">ค้นหา</button>
+                            <button class="btn btn-lg btn-success" type="submit"> <i class="fas fa-search"></i> ค้นหา</button>
                         </div>
                     </center>
                     <!--end of col-->
