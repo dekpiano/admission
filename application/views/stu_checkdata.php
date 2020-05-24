@@ -1,5 +1,5 @@
         <!-- Begin Page Content -->
-        <div class="container-fluid mt-5">
+        <div class="container-fluid mt-6">
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -11,7 +11,7 @@
           <div class="row ">
           
             <div class="col-md-12 order-md-1">
-                <div class="container m-auto ">
+                
                     <div class="justify-content-center pt-5">
                         <form class="card card-sm needs-validation" novalidate="" method="post"
                             action="<?=base_url('checkRegister/dataStudent?a=3')?>">
@@ -47,7 +47,7 @@
                     </center>
                     <!--end of col-->
                     </form>
-                </div>
+                
             </div>
         </div>
       

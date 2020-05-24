@@ -49,6 +49,7 @@ class Control_admission extends CI_Controller {
 		->where('recruit_regLevel','4')
 		->get('tb_recruitstudent')->num_rows();
 
+		
 		$this->load->view('layout/header.php',$data);
 		$this->load->view('layout/navber.php');
 		$this->load->view('page_main.php');

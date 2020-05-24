@@ -16,6 +16,7 @@
 
   <!-- Custom styles for this template-->
   <link href="<?=base_url();?>asset/css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="<?=base_url();?>asset/css/css.css" rel="stylesheet">
 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
@@ -28,5 +29,30 @@
     body,html{
       font-family: 'Sarabun';
     }
+
+
+  @media (max-width: 575.98px) {
+      .news-titel{
+        font-size : 22px;
+        margin-top: 80px;
+      }
+      .mt-6{
+        margin-top: 6rem!important; 
+        font-size : 16px;
+      }
+  }
+  @media (min-width: 768px) {
+      .news-titel{
+        font-size : 26px;
+        margin-top: 1rem!important;
+      }
+      .mt-6{
+        margin-top: 1rem!important; 
+        font-size : 16px;
+      }
+  }
+
+
+ 
   </style>
 </head>

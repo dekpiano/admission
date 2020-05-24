@@ -36,7 +36,7 @@
 
                 <div class="card-body"> 
                     
-                    <form enctype="multipart/form-data" action="<?=base_url('admin/control_admin_recruitstudent/').$action.'/'.$recruit[0]->recruit_id.'/'.($recruit[0]->recruit_img=='' ? '0' : $recruit[0]->recruit_img);?>" method="post">
+                    <form enctype="multipart/form-data" action="<?=base_url('admin/Control_admin_admission/').$action.'/'.$recruit[0]->recruit_id.'/'.($recruit[0]->recruit_img=='' ? '0' : $recruit[0]->recruit_img);?>" method="post">
 
                       
 
@@ -304,7 +304,7 @@
                     </form>
                     <hr>
 <h3>Admin ยืนยันข้อมูล เพื่อพิมพ์ใบสมัครสอบ</h3>
-<form method="post" action="<?=base_url('admin/Control_admin_recruitstudent/confrim_report/').$recruit[0]->recruit_id;?>">
+<form method="post" action="<?=base_url('admin/Control_admin_admission/confrim_report/').$recruit[0]->recruit_id;?>">
   <div class="form-group">
     <?php 
     $confrim = array('ผ่านการตรวจสอบ','ไม่มีรูปภาพ หรือรูปภาพไม่ผ่านการตรวจสอบ','กรอกข้อมูลไม่ครบถ้วน');

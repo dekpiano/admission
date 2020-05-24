@@ -1,11 +1,11 @@
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+      <!-- <footer class="sticky-footer bg-white">
           <div class="container my-auto">
               <div class="copyright text-center my-auto">
-                  <span>Copyright &copy; Your Website 2019</span>
+                  <span>Copyright &copy; โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์ 2020</span>
               </div>
           </div>
-      </footer>
+      </footer> -->
       <!-- End of Footer -->
 
       </div>
@@ -18,6 +18,39 @@
       <a class="scroll-to-top rounded" href="#page-top">
           <i class="fas fa-angle-up"></i>
       </a>
+
+      <!-- Modal Login -->
+<div id="myLogin" class="modal fade">
+	<div class="modal-dialog modal-login">
+		<div class="modal-content">
+			<div class="modal-header">				
+				<h4 class="modal-title">เข้าสู่ระบบ</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<form action="<?=base_url('Control_login/validlogin');?>" method="post">
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input type="text" class="form-control" name="username" placeholder="Username" required="required">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+							<input type="password" class="form-control" name="password" placeholder="Password" required="required">
+						</div>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary btn-block btn-lg">Sign In</button>
+					</div>
+					
+				</form>
+			</div>
+			
+		</div>
+	</div>
+</div> 
 
       <!-- Logout Modal-->
       <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -53,10 +86,17 @@
 
       <!-- Page level plugins -->
       <script src="<?=base_url();?>asset/vendor/chart.js/Chart.min.js"></script>
-
-      <!-- Page level custom scripts -->
-      <script src="<?=base_url();?>asset/js/demo/chart-area-demo.js"></script>
-      <script src="<?=base_url();?>asset/js/demo/chart-pie-demo.js"></script>
+      <script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5ebe330f8ee2956d73a14f22/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
 
       <!-- Page level plugins -->
       <script src="<?=base_url();?>asset/vendor/datatables/jquery.dataTables.min.js"></script>
@@ -91,7 +131,7 @@ swal("แจ้งเตือน", "<?=$this->session->flashdata('messge');?>",
       <?php endif; ?>
 
       </body>
-
+      <?php $this->load->view('admin/chart/report_bar.php'); ?>
       <script type="text/javascript">
 function onHuman(response) {
     document.getElementById('captcha').value = response;
@@ -101,6 +141,7 @@ var onloadCallback = function() {
         'sitekey': '6LdZePgUAAAAAA5sewT1jFoUrRv7E7TGBg6fN6Zs'
     });
 };
+
 
 
 $(document).ready(function() {

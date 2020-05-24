@@ -1,5 +1,5 @@
 <?php
-class Admin_model_recruitstudent extends CI_Model
+class Admin_model_admission extends CI_Model
 {
 	public function __construct()
 	{

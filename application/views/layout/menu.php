@@ -1,10 +1,10 @@
-
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion d-none d-md-block" id="accordionSidebar"
+    style="font-weight: 800;">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?=base_url()?>">
         <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-user-graduate"></i>
+            <i class="fas fa-user-graduate"></i>
         </div>
         <div class="sidebar-brand-text mx-3">ระบบรับสมัครนักเรียน ส.ก.จ. </div>
     </a>
@@ -15,40 +15,114 @@
     <!-- Nav Item - Dashboard -->
     <li class="nav-item ">
         <a class="nav-link" href="<?=base_url()?>">
-        <i class="far fa-newspaper"></i>
+            <i class="far fa-newspaper"></i>
             <span>ประชาสัมพันธ์</span></a>
     </li>
     <hr class="sidebar-divider">
     <li class="nav-item ">
         <a class="nav-link" href="<?=base_url('Announce?around=1')?>">
-        <i class="fas fa-bullhorn"></i>
+            <i class="fas fa-bullhorn"></i>
             <span>ประกาศรายชื่อผู้สมัคร รอบ 1 <br> <i class="fas fa-print"></i> พิมพ์ใบสมัครสอบ ( รอบ 1 ) </span></a>
     </li>
     <li class="nav-item ">
         <a class="nav-link" href="<?=base_url('Announce?around=2')?>">
-        <i class="fas fa-bullhorn"></i>
-            <span>ประกาศรายชื่อผู้สมัคร <br> <i class="fas fa-print"></i> พิมพ์ใบสมัครสอบ ( รอบ 2 )  </span></a>
+            <i class="fas fa-bullhorn"></i>
+            <span>ประกาศรายชื่อผู้สมัคร <br> <i class="fas fa-print"></i> พิมพ์ใบสมัครสอบ ( รอบ 2 ) </span></a>
     </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">
     <li class="nav-item ">
         <a class="nav-link" href="<?=base_url('selectlevel')?>">
-        <i class="fas fa-user-plus"></i>
+            <i class="fas fa-user-plus"></i>
             <span>สมัครเรียน</span></a>
     </li>
     <li class="nav-item ">
         <a class="nav-link" href="<?=base_url('checkRegister')?>">
-        <i class="fas fa-edit"></i>
+            <i class="fas fa-edit"></i>
             <span>ตรวจสอบและแก้ไขข้อมูล</span></a>
     </li>
-    
 
 
+    <hr class="sidebar-divider">
 
     <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
+    <div class="text-center">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
+    <li class="nav-item ">
+      
+        <?php  if(!empty($this->session->userdata('fullname'))) : ?>
+            <div class="text-white text-center"> ยินดีต้อนรับ <Br></Br> <?php  echo $this->session->userdata('fullname');?>
+        </div>
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>LogOut</span></a>
+        <?php else :  ?>
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#myLogin">
+            <i class="fas fa-sign-in-alt"></i>
+            <span>Login</span></a>
+        <?php endif; ?>
+    </li>
+    <hr class="sidebar-divider">
+    <?php  if(!empty($this->session->userdata('fullname'))) : ?>
+    <li class="nav-item ">
+        <a class="nav-link" href="<?=base_url('admin/admission')?>">
+            <i class="fas fa-edit"></i>
+            <span>จัดการข้อมูลสมัครเรียน</span></a>
+    </li>
+    <?php endif; ?>
 
 </ul>
+
+
+
+<div class="fixed-top d-block d-md-none ">
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-gradient-success p-4 text-white">
+            <h5 class="">เมนู</h5>
+            <Ul style="list-style-type: none;">
+                <!-- Nav Item - Dashboard -->
+                <li class="nav-item ">
+                    <a class="nav-link text-white" href="<?=base_url()?>">
+                        <i class="far fa-newspaper"></i>
+                        <span>ประชาสัมพันธ์</span></a>
+                </li>
+                <hr class="sidebar-divider">
+                <li class="nav-item ">
+                    <a class="nav-link text-white" href="<?=base_url('Announce?around=1')?>">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>ประกาศรายชื่อผู้สมัคร รอบ 1 <br> <i class="fas fa-print"></i> พิมพ์ใบสมัครสอบ ( รอบ 1 )
+                        </span></a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link text-white" href="<?=base_url('Announce?around=2')?>">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>ประกาศรายชื่อผู้สมัคร <br> <i class="fas fa-print"></i> พิมพ์ใบสมัครสอบ ( รอบ 2 )
+                        </span></a>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+                <li class="nav-item ">
+                    <a class="nav-link text-white" href="<?=base_url('selectlevel')?>">
+                        <i class="fas fa-user-plus"></i>
+                        <span>สมัครเรียน</span></a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link text-white" href="<?=base_url('checkRegister')?>">
+                        <i class="fas fa-edit"></i>
+                        <span>ตรวจสอบและแก้ไขข้อมูล</span></a>
+                </li>
+            </Ul>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-gradient-success">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+            aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <span class="text-white"><i class="fas fa-user-graduate"></i> ระบบรับสมัครนักเรียน ส.ก.จ.</span>
+
+    </nav>
+</div>

@@ -11,21 +11,6 @@ class Control_login extends CI_Controller {
 		$this->load->model('Model_login');
 	}
 
-	public static $title = "เข้าสู่ระบบ";
-	public static $description = "ระบบ Login โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
- 	
- 	public function dataAll(){
-		$data['full_url'] = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
- 		$data['title'] = self::$title;
-		$data['description'] = self::$description;
- 		$data['lear'] =	$this->db->get('tb_learning')->result(); //กลุ่มสาระ
-		$data['about'] = $this->db->get('tb_aboutschool')->result(); //เกี่ย่วกับโรงเรียน
-		$data['Allabout'] = $this->db->get('tb_aboutschool')->result(); //เกี่ย่วกับโรงเรียน
-		$data['banner'] =	$this->db->get('tb_banner')->result(); //ประชาสัมพันธ์
-
-		return $data;
- 	}
-
 	public function Login_main()
 	{
 		if(!empty(get_cookie('username')) && !empty(get_cookie('password')) ){
@@ -82,8 +67,7 @@ class Control_login extends CI_Controller {
 			$username = $this->input->post('username');
 			$password = md5(md5($this->input->post('password')));
 
-			if($this->input->server('REQUEST_METHOD') == TRUE){
-				if($this->Model_login->record_count($username, $password) == 1)
+			if($this->Model_login->record_count($username, $password) == 1)
 				{
 					$result = $this->Model_login->fetch_user_login($username, $password);
 					$this->session->set_userdata(array('login_id' => $result->pers_id,'fullname'=> $result->pers_prefix.$result->pers_firstname.' '.$result->pers_lastname,'status'=> 'user','permission_menu' => $result->pers_workother_id ,'user_img' => $result->pers_img));
@@ -93,17 +77,15 @@ class Control_login extends CI_Controller {
 
 					$this->session->set_userdata(array('login_id' => $result->pers_id,'fullname'=> $result->pers_prefix.$result->pers_firstname.' '.$result->pers_lastname,'status'=> 'user','permission_menu' => $result->pers_workother_id,'user_img' => $result->pers_img));
 
-					 redirect('admin');
+					redirect('welcome');
 				}
 				else
 				{
-					$this->session->set_flashdata(array('msgerr'=> '<p class="login-box-msg text-center mt-3" style="color:red;" >ชื่อผู้ใช้ หรือ รหัส ไม่ถูกต้อง!</p>'));
-					$data = $this->dataAll();
-					$this->load->view('user/layout/header.php',$data);
-					$this->load->view('login/login_main.php');
-					$this->load->view('user/layout/footer.php');
+					redirect('welcome');
+					// $this->session->set_flashdata(array('msgerr'=> '<p class="login-box-msg text-center mt-3" style="color:red;" >ชื่อผู้ใช้ หรือ รหัส ไม่ถูกต้อง!</p>'));
+					
 				}
-			}
+			
 		}
 		
 	}
@@ -115,7 +97,7 @@ class Control_login extends CI_Controller {
 		delete_cookie('username'); 
 		delete_cookie('password'); 
 		$this->session->sess_destroy();
-		redirect('login', 'refresh');
+		redirect(base_url());
 	}
 
 }

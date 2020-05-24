@@ -5,7 +5,8 @@ class Welcome extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->library('timeago');	
+		$this->load->library('timeago');
+		
 
 	}
 	public static $title = "โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
@@ -22,6 +23,12 @@ class Welcome extends CI_Controller {
 		->where('recruit_regLevel','4')
 		->get('tb_recruitstudent')->num_rows();
 		//$data['title'] = $this->title;
+
+		$db2 = $this->load->database('skjmain', TRUE);	
+		$data['person'] = $db2->get("tb_personnel")->result();
+		//print_r($db2->result());
+		
+
 		$this->load->view('layout/header.php',$data);
 		$this->load->view('layout/navber.php');
 		$this->load->view('stu_news.php');
