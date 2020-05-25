@@ -23,11 +23,13 @@ class Welcome extends CI_Controller {
 		->where('recruit_regLevel','4')
 		->get('tb_recruitstudent')->num_rows();
 		//$data['title'] = $this->title;
+		$data['switch'] = $this->db->get("tb_onoffsys")->result();
 
 		$db2 = $this->load->database('skjmain', TRUE);	
 		$data['person'] = $db2->get("tb_personnel")->result();
 		//print_r($db2->result());
 		
+
 
 		$this->load->view('layout/header.php',$data);
 		$this->load->view('layout/navber.php');

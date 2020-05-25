@@ -37,25 +37,22 @@
                 <div class="card-body"> 
                     
                     <form enctype="multipart/form-data" action="<?=base_url('admin/Control_admin_admission/').$action.'/'.$recruit[0]->recruit_id.'/'.($recruit[0]->recruit_img=='' ? '0' : $recruit[0]->recruit_img);?>" method="post">
-
-                      
-
                      <div class="row">
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-6 col-lg-3 mb-3">
                         <label for="recruit_idCard">เลขประจำตัวประชาชน 13 หลัก</label>
                         <input type="text" class="form-control" id="recruit_idCard" name="recruit_idCard" required  value="<?=$recruit[0]->recruit_idCard;?>" data-inputmask="'mask': '9-9999-99999-99-9'">
                         <div class="invalid-feedback">
                           ระบุเลขประจำตัวประชาชน 13 หลัก
                         </div>
                       </div>
-                      <div class="col-md-1 mb-3">
+                      <div class="col-md-6 col-lg-2 mb-3">
                         <label for="recruit_idCard">ระดับชั้นที่สมัคร</label>
                         <input class="form-control"  type="text" name="recruit_regLevel" id="recruit_regLevel" value="<?=$recruit[0]->recruit_regLevel;?>">
                       </div>
                     </div>
 
                     <div class="row">
-                      <div class="col-md-2 mb-3">
+                      <div class="col-md-4 mb-3">
                         <label for="recruit_prefix">คำนำหน้า</label>
                         <select class="form-control" id="recruit_prefix" name="recruit_prefix" required>
                           <option value="">เลือก...</option>
@@ -69,14 +66,14 @@
                           เลือกคำนำหน้า
                         </div>
                       </div>
-                      <div class="col-md-5 mb-3">
+                      <div class="col-md-4 mb-3">
                         <label for="recruit_firstName">ชื่อผู้สมัคร</label>
                         <input type="text" class="form-control" id="recruit_firstName" name="recruit_firstName" value="<?=$recruit[0]->recruit_firstName?>" required>
                         <div class="invalid-feedback">
                           ระบุชื่อจริง
                         </div>
                       </div>
-                      <div class="col-md-5 mb-3">
+                      <div class="col-md-4 mb-3">
                         <label for="recruit_lastName">นามสกุล</label>
                         <input type="text" class="form-control" id="recruit_lastName" name="recruit_lastName" value="<?=$recruit[0]->recruit_lastName?>" required>
                         <div class="invalid-feedback">
@@ -86,14 +83,14 @@
                     </div>
 
                     <div class="row">
-                      <div class="col-md-6 mb-3">
+                      <div class="col-md-5 mb-3">
                         <label for="recruit_oldSchool">ศึกษาอยู่โรงเรียน</label>
                         <input type="text" class="form-control" id="recruit_oldSchool" name="recruit_oldSchool" value="<?=$recruit[0]->recruit_oldSchool?>" required>
                         <div class="invalid-feedback">
                           ระบุโรงเรียนที่ศึกษาอยู่
                         </div>
                       </div>
-                      <div class="col-md-3 mb-3">
+                      <div class="col-md-4 mb-3">
                         <label for="recruit_district">อำเภอ</label>
                         <input type="text" class="form-control" id="recruit_district" name="recruit_district" value="<?=$recruit[0]->recruit_district?>" required>
                         <div class="invalid-feedback">
@@ -116,7 +113,7 @@
             ?>
 
             <div class="row">
-              <div class="col-md-1 mb-3">
+              <div class="col-md-4 mb-3">
                 <label for="recruit_birthdayD">วันเกิด</label>
                 <select class="form-control" id="recruit_birthdayD" name="recruit_birthdayD">
                   <?php for ($i=1; $i <=31 ; $i++) : ?>
@@ -128,7 +125,7 @@
                 </div>
               </div>
 
-               <div class="col-md-2 mb-3">
+               <div class="col-md-4 mb-3">
                 <label for="recruit_birthdayM">เดือนเกิด</label>
                 <select class="form-control" id="recruit_birthdayM" name="recruit_birthdayM">
                   <?php $thaimonth=array("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"); 
@@ -140,7 +137,7 @@
                   เลือกวันเกิด
                 </div>
               </div>
-               <div class="col-md-2 mb-3">
+               <div class="col-md-4 mb-3">
                 <label for="recruit_birthdayY">ปีเกิด พ.ศ.</label>
                 <select class="form-control" id="recruit_birthdayY" name="recruit_birthdayY">
                   <?php $year=Date("Y")+543; echo "$year"; 
@@ -152,21 +149,21 @@
                   เลือกวันเกิด
                 </div>
               </div>
-              <div class="col-md-2 mb-3">
+              <div class="col-md-4 mb-3">
                 <label for="recruit_race">เชื้อชาติ</label>
                 <input type="text" class="form-control" id="recruit_race" name="recruit_race" value="<?=$recruit[0]->recruit_race?>" required>
                 <div class="invalid-feedback">
                   ระบุเชื้อชาติ
                 </div>
               </div>
-              <div class="col-md-2 mb-3">
+              <div class="col-md-4 mb-3">
                 <label for="recruit_nationality">สัญชาติ</label>
                 <input type="text" class="form-control" id="recruit_nationality" name="recruit_nationality" value="<?=$recruit[0]->recruit_nationality?>" required>
                 <div class="invalid-feedback">
                   ระบุสัญชาติ
                 </div>
               </div>
-              <div class="col-md-2 mb-3">
+              <div class="col-md-4 mb-3">
                 <label for="recruit_religion">ศาสนา</label>
                 <input type="text" class="form-control" id="recruit_religion" name="recruit_religion" value="<?=$recruit[0]->recruit_religion?>" required>
                 <div class="invalid-feedback">
@@ -178,49 +175,49 @@
                <hr>
               ที่อยู่ตามทะเบียนบ้าน      
                 <div class="row">   
-                   <div class="col-md-2 mb-3">
+                   <div class="col-md-3 mb-3">
                     <label for="  recruit_homeNumber">เลขที่</label>
                     <input type="text" class="form-control" id="  recruit_homeNumber" name=" recruit_homeNumber" value="<?=$recruit[0]->recruit_homeNumber?>" required>
                      <div class="invalid-feedback">
                        ระบุเลขที่บ้าน
                       </div>
                   </div>
-                  <div class="col-md-1 mb-3">
+                  <div class="col-md-2 mb-3">
                     <label for="recruit_homeGroup">หมู่ที่ </label>
                     <input type="text" class="form-control" id="recruit_homeGroup" name="recruit_homeGroup" value="<?=$recruit[0]->recruit_homeGroup;?>" required>
                      <div class="invalid-feedback">
                        ระบุหมู่ที่
                       </div>
                   </div>
-                  <div class="col-md-2 mb-3">
+                  <div class="col-md-3 mb-3">
                     <label for="recruit_homeRoad">ถนน</label>
                     <input type="text" class="form-control" id="recruit_homeRoad" name="recruit_homeRoad" value="<?=$recruit[0]->recruit_homeRoad?>" >
                      <div class="invalid-feedback">
                        ระบุถนน
                       </div>
                   </div>
-                  <div class="col-md-2 mb-3">
+                  <div class="col-md-4 mb-3">
                     <label for="recruit_homeSubdistrict">ตำบล/แขวง</label>
                     <input type="text" class="form-control" id="recruit_homeSubdistrict" name="recruit_homeSubdistrict" value="<?=$recruit[0]->recruit_homeSubdistrict;?>" required>
                      <div class="invalid-feedback">
                        ระบุตำบล/แขวง
                       </div>
                   </div>
-                  <div class="col-md-2 mb-3">
+                  <div class="col-md-4 mb-3">
                     <label for="recruit_homedistrict">อำเภอ/เขต</label>
                     <input type="text" class="form-control" id="recruit_homedistrict" name="recruit_homedistrict" value="<?=$recruit[0]->recruit_homedistrict?>" required>
                      <div class="invalid-feedback">
                        ระบุอำเภอ/เขต
                       </div>
                   </div>
-                  <div class="col-md-2 mb-3">
+                  <div class="col-md-4 mb-3">
                     <label for="recruit_homeProvince">จังหวัด</label>
                     <input type="text" class="form-control" id="recruit_homeProvince" name="recruit_homeProvince" value="<?=$recruit[0]->recruit_homeProvince?>" required>
                      <div class="invalid-feedback">
                        ระบุจังหวัด
                       </div>
                   </div>
-                  <div class="col-md-2 mb-3">
+                  <div class="col-md-3 mb-3">
                     <label for="recruit_homePostcode">รหัสไปรษณีย์</label>
                     <input type="text" class="form-control" id="recruit_homePostcode" name="recruit_homePostcode" value="<?=$recruit[0]->recruit_homePostcode?>" required>
                      <div class="invalid-feedback">
@@ -230,7 +227,7 @@
                 </div>
 
                 <div class="row">
-                 <div class="col-md-3 mb-3">
+                 <div class="col-md-5 mb-3">
                      <label for="recruit_phone">หมายเลขโทรศัพท์ที่สามาติดต่อได้</label>
                     <input type="text" class="form-control" id="recruit_phone" name="recruit_phone" value="<?=$recruit[0]->recruit_phone?>" required data-inputmask="'mask': '99-9999-9999'">
                     <div class="invalid-feedback">

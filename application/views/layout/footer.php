@@ -20,37 +20,39 @@
       </a>
 
       <!-- Modal Login -->
-<div id="myLogin" class="modal fade">
-	<div class="modal-dialog modal-login">
-		<div class="modal-content">
-			<div class="modal-header">				
-				<h4 class="modal-title">เข้าสู่ระบบ</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			</div>
-			<div class="modal-body">
-				<form action="<?=base_url('Control_login/validlogin');?>" method="post">
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-user"></i></span>
-							<input type="text" class="form-control" name="username" placeholder="Username" required="required">
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-							<input type="password" class="form-control" name="password" placeholder="Password" required="required">
-						</div>
-					</div>
-					<div class="form-group">
-						<button type="submit" class="btn btn-primary btn-block btn-lg">Sign In</button>
-					</div>
-					
-				</form>
-			</div>
-			
-		</div>
-	</div>
-</div> 
+      <div id="myLogin" class="modal fade">
+          <div class="modal-dialog modal-login">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h4 class="modal-title">เข้าสู่ระบบ</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                      <form action="<?=base_url('Control_login/validlogin');?>" method="post">
+                          <div class="form-group">
+                              <div class="input-group">
+                                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                  <input type="text" class="form-control" name="username" placeholder="Username"
+                                      required="required">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <div class="input-group">
+                                  <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                  <input type="password" class="form-control" name="password" placeholder="Password"
+                                      required="required">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <button type="submit" class="btn btn-primary btn-block btn-lg">Sign In</button>
+                          </div>
+
+                      </form>
+                  </div>
+
+              </div>
+          </div>
+      </div>
 
       <!-- Logout Modal-->
       <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -87,16 +89,19 @@
       <!-- Page level plugins -->
       <script src="<?=base_url();?>asset/vendor/chart.js/Chart.min.js"></script>
       <script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/5ebe330f8ee2956d73a14f22/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
+var Tawk_API = Tawk_API || {},
+    Tawk_LoadStart = new Date();
+(function() {
+    var s1 = document.createElement("script"),
+        s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/5ebe330f8ee2956d73a14f22/default';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
 })();
-</script>
+$('[data-toggle="tooltip"]').tooltip();
+      </script>
 
       <!-- Page level plugins -->
       <script src="<?=base_url();?>asset/vendor/datatables/jquery.dataTables.min.js"></script>
@@ -117,7 +122,7 @@ s0.parentNode.insertBefore(s1,s0);
       </script>
       <script src="https://cdn.tiny.cloud/1/y6b2omlkddg6mbwjuwhrf96ufg0wjfhrf5xw1xes3o6oahi4/tinymce/5/tinymce.min.js"
           referrerpolicy="origin"></script>
-          <script src="<?=base_url()?>asset/js/js.js"></script>
+      <script src="<?=base_url()?>asset/js/js.js?v=1002"></script>
       <?php  if(isset($alert_verify) && $alert_verify[0] == 1):?>
       <script>
 swal("แจ้งเตือน", "<?=$alert_verify[1];?>", "<?=$alert_verify[2];?>");
@@ -142,14 +147,12 @@ var onloadCallback = function() {
     });
 };
 
-
-
 $(document).ready(function() {
-    $('[data-toggle="tooltip"]').tooltip();
+   
     $(":input").inputmask();
     $(".sidebar").sortable();
     $(".sidebar").disableSelection();
-    
+
     $('.counter').counterUp({
         delay: 10,
         time: 1000

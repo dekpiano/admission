@@ -12,6 +12,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
+
     <!-- Nav Item - Dashboard -->
     <li class="nav-item ">
         <a class="nav-link" href="<?=base_url()?>">
@@ -19,6 +20,8 @@
             <span>ประชาสัมพันธ์</span></a>
     </li>
     <hr class="sidebar-divider">
+
+    
     <li class="nav-item ">
         <a class="nav-link" href="<?=base_url('Announce?around=1')?>">
             <i class="fas fa-bullhorn"></i>
@@ -33,9 +36,15 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
     <li class="nav-item ">
+        <?php if($switch[0]->onoff_regis == 'on'): ?>
         <a class="nav-link" href="<?=base_url('selectlevel')?>">
             <i class="fas fa-user-plus"></i>
-            <span>สมัครเรียน</span></a>
+            <span>สมัครเรียน</span>
+        </a>
+        <?php else : ?>
+        <span class="nav-link"><i class="fas fa-times-circle"></i> สมัครเรียน (ปิดรับสมัคร)</span>
+
+        <?php endif; ?>
     </li>
     <li class="nav-item ">
         <a class="nav-link" href="<?=base_url('checkRegister')?>">
@@ -51,9 +60,9 @@
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
     <li class="nav-item ">
-      
+
         <?php  if(!empty($this->session->userdata('fullname'))) : ?>
-            <div class="text-white text-center"> ยินดีต้อนรับ <Br></Br> <?php  echo $this->session->userdata('fullname');?>
+        <div class="text-white text-center"> ยินดีต้อนรับ <Br></Br> <?php  echo $this->session->userdata('fullname');?>
         </div>
         <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
             <i class="fas fa-sign-out-alt"></i>
@@ -71,9 +80,35 @@
             <i class="fas fa-edit"></i>
             <span>จัดการข้อมูลสมัครเรียน</span></a>
     </li>
+    <li class="nav-item ">
+        <a class="nav-link" href="#">
+            <i class="fas fa-window-close"></i>
+            <span style="float: none;">เปิดปิดรับสมัคร
+                <div class="switchToggle float-right">
+                    <input type="checkbox" id="switch" valun="<?=$switch[0]->onoff_regis?>"
+                        <?=$switch[0]->onoff_regis == "on" ? 'checked' : '' ?>>
+                    <label for="switch">Toggle</label>
+                </div>
+            </span>
+        </a>
+    </li>
+    <li class="nav-item ">
+        <a class="nav-link" href="#">
+            <i class="fas fa-window-close"></i>
+            <span style="float: none;">เปิดปิดระบบ
+                <div class="switchToggle float-right">
+                    <input type="checkbox" id="switch_sys" valun="<?=$switch[0]->onoff_system?>"
+                        <?=$switch[0]->onoff_system == "on" ? 'checked' : '' ?>>
+                    <label for="switch_sys">Toggle</label>
+                </div>
+            </span>
+        </a>
+    </li>
     <?php endif; ?>
 
 </ul>
+
+
 
 
 
@@ -114,6 +149,56 @@
                         <i class="fas fa-edit"></i>
                         <span>ตรวจสอบและแก้ไขข้อมูล</span></a>
                 </li>
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+                <li class="nav-item ">
+
+                    <?php  if(!empty($this->session->userdata('fullname'))) : ?>
+                    <div class="text-white text-center"> ยินดีต้อนรับ <Br></Br>
+                        <?php  echo $this->session->userdata('fullname');?>
+                    </div>
+                    <a class="nav-link text-white" href="#" data-toggle="modal" data-target="#logoutModal">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>LogOut</span></a>
+                    <?php else :  ?>
+                    <a class="nav-link text-white" href="#" data-toggle="modal" data-target="#myLogin">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Login</span></a>
+                    <?php endif; ?>
+                </li>
+                <hr class="sidebar-divider">
+                <?php  if(!empty($this->session->userdata('fullname'))) : ?>
+                <li class="nav-item ">
+                    <a class="nav-link text-white" href="<?=base_url('admin/admission')?>">
+                        <i class="fas fa-edit"></i>
+                        <span>จัดการข้อมูลสมัครเรียน</span></a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link text-white" href="#">
+                        <i class="fas fa-window-close"></i>
+                        <span style="float: none;">เปิดปิดรับสมัคร
+                            <div class="switchToggle float-right">
+                                <input type="checkbox" id="switch" valun="<?=$switch[0]->onoff_regis?>"
+                                    <?=$switch[0]->onoff_regis == "on" ? 'checked' : '' ?>>
+                                <label for="switch">Toggle</label>
+                            </div>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link text-white" href="#">
+                        <i class="fas fa-window-close"></i>
+                        <span style="float: none;">เปิดปิดระบบ
+                            <div class="switchToggle float-right">
+                                <input type="checkbox" id="switch_sys" valun="<?=$switch[0]->onoff_system?>"
+                                    <?=$switch[0]->onoff_system == "on" ? 'checked' : '' ?>>
+                                <label for="switch_sys">Toggle</label>
+                            </div>
+                        </span>
+                    </a>
+                </li>
+
+                <?php endif; ?>
             </Ul>
         </div>
     </div>
@@ -126,3 +211,5 @@
 
     </nav>
 </div>
+
+            

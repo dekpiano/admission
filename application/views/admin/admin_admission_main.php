@@ -8,7 +8,7 @@
     </div>
 
     <div class="row">
-        <div class="col-4 ">
+        <div class="col-12 col-md-12 col-lg-4">
             <div class="card shadow mb-4">
                 <div class="card-header">
                     <h6 class="m-0 font-weight-bold text-primary ">นักเรียนชั้น ม.1</h6>
@@ -20,7 +20,7 @@
             </div>
 
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-12 col-lg-4">
             <div class="card shadow mb-4">
                 <div class="card-header">
                     <h6 class="m-0 font-weight-bold text-primary ">นักเรียนชั้น ม.4</h6>
@@ -31,7 +31,7 @@
                 <div class="card-footer small text-muted"></div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-12 col-lg-4">
             <div class="card shadow mb-4">
                 <div class="card-header">
                     <h6 class="m-0 font-weight-bold text-primary ">นักเรียนทั้งหมด</h6>

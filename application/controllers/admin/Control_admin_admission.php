@@ -14,9 +14,9 @@ class Control_admin_admission extends CI_Controller {
 		}
 	}
 
-
 	public function report_student()
 	{		
+		$data['switch'] = $this->db->get("tb_onoffsys")->result();
 		$chart_re1 = $this->db->select('COUNT(recruit_regLevel) AS C_count,
 		tb_recruitstudent.recruit_regLevel, 
 		tb_recruitstudent.recruit_tpyeRoom')
@@ -51,10 +51,9 @@ class Control_admin_admission extends CI_Controller {
 
 	public function index()
 	{	
+		$data['switch'] = $this->db->get("tb_onoffsys")->result();
 		$data = $this->report_student();
-
-		$data['title'] = $this->title;
-		
+		$data['title'] = $this->title;		
 		$this->db->select('*');
 		$this->db->from('tb_recruitstudent');
 		$this->db->order_by('recruit_id','DESC');
@@ -71,10 +70,32 @@ class Control_admin_admission extends CI_Controller {
 			$this->load->view('layout/footer.php');
 	}
 
+	public function switch_regis()
+	{
+		if($this->input->post('mode') == 'true'){
+			$data = array('onoff_regis' => 'on', 'onoff_datetime_regis' => date('Y-m-d H:i:s'),'onoff_user_regis' => $this->session->userdata('login_id'));
+			$this->db->update('tb_onoffsys',$data,"onoff_id='1'");
+		}else{
+			$data = array('onoff_regis' => 'off','onoff_datetime_regis' => date('Y-m-d H:i:s'),'onoff_user_regis' => $this->session->userdata('login_id'));
+			$this->db->update('tb_onoffsys',$data,"onoff_id='1'");
+		}
+	}
+
+	public function switch_system()
+	{
+		if($this->input->post('mode') == 'true'){
+			$data = array('onoff_system' => 'on', 'onoff_datetime_system' => date('Y-m-d H:i:s'),'onoff_user_system' => $this->session->userdata('login_id'));
+			$this->db->update('tb_onoffsys',$data,"onoff_id='1'");
+		}else{
+			$data = array('onoff_system' => 'off','onoff_datetime_system' => date('Y-m-d H:i:s'),'onoff_user_system' => $this->session->userdata('login_id'));
+			$this->db->update('tb_onoffsys',$data,"onoff_id='1'");
+		}
+	}
 	
 
 	public function edit_recruitstudent($id)
 	{
+		$data['switch'] = $this->db->get("tb_onoffsys")->result();
 		$data = $this->report_student(); 
 		$data['chart_1'];
 		$data['chart_4'];
@@ -97,16 +118,6 @@ class Control_admin_admission extends CI_Controller {
 			$this->load->view('layout/footer.php');	
 	}
 
-	public function update_recruitstudent1()
-	{
-		$data = array(	
-						'posi_name' => $this->input->post('posi_name')
-					);
-		if($this->admin_model_admission->recruitstudent_update($data) == 1){
-			$this->session->set_flashdata(array('msg'=> 'ok','messge' => 'แก้ไขข้อมูลสำเร็จ'));
-			redirect('admin/recruitstudent', 'refresh');
-		}
-	}
 
 	public function delete_recruitstudent($id)
 	{
@@ -146,7 +157,13 @@ class Control_admin_admission extends CI_Controller {
 			'recruit_religion' => $this->input->post('recruit_religion'),
 			'recruit_idCard' => $this->input->post('recruit_idCard'),
 			'recruit_phone' => $this->input->post('recruit_phone'),
-			'recruit_address' => $this->input->post('recruit_address'),
+			'recruit_homeNumber' => $this->input->post('recruit_homeNumber'),
+			'recruit_homeGroup' => $this->input->post('recruit_homeGroup'),
+			'recruit_homeRoad' => $this->input->post('recruit_homeRoad'),
+			'recruit_homeSubdistrict' => $this->input->post('recruit_homeSubdistrict'),
+			'recruit_homedistrict' => $this->input->post('recruit_homedistrict'),
+			'recruit_homeProvince' => $this->input->post('recruit_homeProvince'),
+			'recruit_homePostcode' => $this->input->post('recruit_homePostcode'),
 			'recruit_tpyeRoom' => $this->input->post('recruit_tpyeRoom'),
 			'recruit_year' => (date('Y')+543)
 		);
@@ -321,9 +338,9 @@ class Control_admin_admission extends CI_Controller {
     		$html .= '<div style="position:absolute;top:670px;left:455px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
     	}
 		$mpdf->SetDocTemplate('uploads/recruitstudent/pdf_registudent.pdf',true);
-
+		$filename = sprintf("%04d",$datapdf[0]->recruit_id).'-'.$datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.' '.$datapdf[0]->recruit_lastName;
         $mpdf->WriteHTML($html);
-        $mpdf->Output('Reg_'.$datapdf[0]->recruit_idCard.'.pdf','I'); // opens in browser
+        $mpdf->Output('Reg_'.$filename.'.pdf','I'); // opens in browser
         //$mpdf->Output('arjun.pdf','D'); // it downloads the file into the user system, with give name
     }
 	
