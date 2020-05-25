@@ -12,7 +12,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-
+<?php if($switch[0]->onoff_system == 'on'): ?>
     <!-- Nav Item - Dashboard -->
     <li class="nav-item ">
         <a class="nav-link" href="<?=base_url()?>">
@@ -21,7 +21,7 @@
     </li>
     <hr class="sidebar-divider">
 
-    
+
     <li class="nav-item ">
         <a class="nav-link" href="<?=base_url('Announce?around=1')?>">
             <i class="fas fa-bullhorn"></i>
@@ -32,7 +32,7 @@
             <i class="fas fa-bullhorn"></i>
             <span>ประกาศรายชื่อผู้สมัคร <br> <i class="fas fa-print"></i> พิมพ์ใบสมัครสอบ ( รอบ 2 ) </span></a>
     </li>
-
+    
     <!-- Divider -->
     <hr class="sidebar-divider">
     <li class="nav-item ">
@@ -43,7 +43,6 @@
         </a>
         <?php else : ?>
         <span class="nav-link"><i class="fas fa-times-circle"></i> สมัครเรียน (ปิดรับสมัคร)</span>
-
         <?php endif; ?>
     </li>
     <li class="nav-item ">
@@ -51,7 +50,7 @@
             <i class="fas fa-edit"></i>
             <span>ตรวจสอบและแก้ไขข้อมูล</span></a>
     </li>
-
+    <?php endif; ?>
 
     <hr class="sidebar-divider">
 
@@ -59,8 +58,8 @@
     <div class="text-center">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
-    <li class="nav-item ">
 
+    <li class="nav-item ">
         <?php  if(!empty($this->session->userdata('fullname'))) : ?>
         <div class="text-white text-center"> ยินดีต้อนรับ <Br></Br> <?php  echo $this->session->userdata('fullname');?>
         </div>
@@ -140,9 +139,14 @@
                 <!-- Divider -->
                 <hr class="sidebar-divider">
                 <li class="nav-item ">
-                    <a class="nav-link text-white" href="<?=base_url('selectlevel')?>">
+                    <?php if($switch[0]->onoff_regis == 'on'): ?>
+                    <a class="nav-link" href="<?=base_url('selectlevel')?>">
                         <i class="fas fa-user-plus"></i>
-                        <span>สมัครเรียน</span></a>
+                        <span>สมัครเรียน</span>
+                    </a>
+                    <?php else : ?>
+                    <span class="nav-link"><i class="fas fa-times-circle"></i> สมัครเรียน (ปิดรับสมัคร)</span>
+                    <?php endif; ?>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link text-white" href="<?=base_url('checkRegister')?>">
@@ -211,5 +215,3 @@
 
     </nav>
 </div>
-
-            

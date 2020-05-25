@@ -6,9 +6,13 @@ class Welcome extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->library('timeago');
-		
+		$switch = $this->db->get("tb_onoffsys")->result();
+		if($switch[0]->onoff_system == 'off'){
+			redirect('CloseSystem');
+		}
 
 	}
+
 	public static $title = "โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
 	public static $description = "เป็นผู้นำ รักเพื่อน นับถือพี่ เคารพครู กตัญญูพ่อแม่ ดูแลน้อง สนองคุณแผ่นดิน โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
 	

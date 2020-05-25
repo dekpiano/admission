@@ -70,4 +70,4 @@ $route['CloseStudent'] = 'control_recruitstudent/close_student';
 $route['Announce'] = 'control_admission/print_student';
 
 // ติดต่อ
-$route['Contact'] = 'control_contact/contact_main';
+$route['CloseSystem'] = 'control_login/close_system';

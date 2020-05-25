@@ -7,9 +7,14 @@ class Control_admission extends CI_Controller {
 		parent::__construct();
 		$this->load->library('timeago');
 		$this->load->model('model_admission');
+		$switch = $this->db->get("tb_onoffsys")->result();
+		if($switch[0]->onoff_system == 'off'){
+			redirect('CloseSystem');
+		}
 		
-		//exit();
 	}
+	
+	
 
 	public function recaptcha_google($captcha)
 	{

@@ -90,7 +90,17 @@ class Control_login extends CI_Controller {
 		
 	}
 
-
+	public function close_system(){
+		$data['full_url'] = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+		$data['title'] = 'ปิดรับสมัครเรียน';
+		$data['description'] = 'ปิดรับสมัครเรียน';
+		$data['switch'] = $this->db->get("tb_onoffsys")->result();
+		$this->load->view('layout/header.php',$data);
+		$this->load->view('layout/navber.php');
+		$this->load->view('stu_close.php');
+		$this->load->view('layout/footer.php');
+		
+	}
 
 	public function logout()
 	{
