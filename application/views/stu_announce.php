@@ -10,14 +10,12 @@
         <!-- Content Row -->
         <div class="row">            
             <div class="col-md-12 order-md-1">
-
-               
                     <div id="accordion" class="accordion">
                         <div class="card mb-0 ">
                             <div class="card-header bg-primary">
                                 <button class="text-white btn btn-link cool" data-toggle="collapse"
                                     data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    <i class="fas fa-bullhorn"></i> ประกาศผลการสมัครสอบ <b>ชั้นมัธยมศึกษาปีที่ 1  (รอบที่ <?=$around;?>)</b>
+                                    <i class="fas fa-bullhorn"></i> ประกาศผลการสมัครสอบ <b>ชั้นมัธยมศึกษาปีที่ 1 </b>
                                 </button>
                             </div>
                             <div id="collapseOne" class="collapse show" data-parent="#accordion">
@@ -25,7 +23,7 @@
                                     <section >
                                         <div class="">
                                             <div class="">                                             
-                                                <div class="text-center h3">รายชื่อผู้สมัครสอบ ม.1 (รอบที่ <?=$around;?>)</div>
+                                                <div class="text-center h3">รายชื่อผู้สมัครสอบ ม.1 </div>
                                                 <div class="table-responsive">
                                                     <table class="table table-hover show_announce">
                                                         <thead>
@@ -83,7 +81,7 @@
                             <div class="card-header bg-primary">
                                 <button class="text-white btn btn-link cool" data-toggle="collapse"
                                     data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                                    <i class="fas fa-bullhorn"></i> ประกาศผลการสมัครสอบ <b>ชั้นมัธยมศึกษาปีที่ 4 (รอบที่  <?=$around;?>)</b>
+                                    <i class="fas fa-bullhorn"></i> ประกาศผลการสมัครสอบ <b>ชั้นมัธยมศึกษาปีที่ 4 </b>
                                 </button>
                             </div>
                             <div id="collapseTwo" class="collapse show" data-parent="#accordion">
@@ -92,7 +90,7 @@
                                         <div class="">
                                             <div class="">                                              
 
-                                                <div class="text-center h3">รายชื่อผู้สมัครสอบ ม.4 (รอบที่  <?=$around;?>)</div>
+                                                <div class="text-center h3">รายชื่อผู้สมัครสอบ ม.4 </div>
                                                 <div class="table-responsive">
                                                     <table class="table table-hover show_announce">
                                                         <thead>

@@ -23,15 +23,11 @@
 
 
     <li class="nav-item ">
-        <a class="nav-link" href="<?=base_url('Announce?around=1')?>">
+        <a class="nav-link" href="<?=base_url('Announce')?>">
             <i class="fas fa-bullhorn"></i>
-            <span>ประกาศรายชื่อผู้สมัคร รอบ 1 <br> <i class="fas fa-print"></i> พิมพ์ใบสมัครสอบ ( รอบ 1 ) </span></a>
+            <span>ประกาศรายชื่อผู้สมัคร<br> <i class="fas fa-print"></i> พิมพ์ใบสมัครสอบ </span></a>
     </li>
-    <li class="nav-item ">
-        <a class="nav-link" href="<?=base_url('Announce?around=2')?>">
-            <i class="fas fa-bullhorn"></i>
-            <span>ประกาศรายชื่อผู้สมัคร <br> <i class="fas fa-print"></i> พิมพ์ใบสมัครสอบ ( รอบ 2 ) </span></a>
-    </li>
+ 
     
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -111,9 +107,9 @@
 
 
 
-<div class="fixed-top d-block d-md-none ">
+<div class="fixed-top d-block d-md-none " style="height: 100vh;overflow: scroll;">
     <div class="collapse" id="navbarToggleExternalContent">
-        <div class="bg-gradient-success p-4 text-white">
+        <div class="bg-gradient-success p-4 text-white " >
             <h5 class="">เมนู</h5>
             <Ul style="list-style-type: none;">
                 <!-- Nav Item - Dashboard -->
@@ -124,18 +120,11 @@
                 </li>
                 <hr class="sidebar-divider">
                 <li class="nav-item ">
-                    <a class="nav-link text-white" href="<?=base_url('Announce?around=1')?>">
+                    <a class="nav-link text-white" href="<?=base_url('Announce')?>">
                         <i class="fas fa-bullhorn"></i>
-                        <span>ประกาศรายชื่อผู้สมัคร รอบ 1 <br> <i class="fas fa-print"></i> พิมพ์ใบสมัครสอบ ( รอบ 1 )
+                        <span>ประกาศรายชื่อผู้สมัคร <br> <i class="fas fa-print"></i> พิมพ์ใบสมัครสอบ 
                         </span></a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link text-white" href="<?=base_url('Announce?around=2')?>">
-                        <i class="fas fa-bullhorn"></i>
-                        <span>ประกาศรายชื่อผู้สมัคร <br> <i class="fas fa-print"></i> พิมพ์ใบสมัครสอบ ( รอบ 2 )
-                        </span></a>
-                </li>
-
                 <!-- Divider -->
                 <hr class="sidebar-divider">
                 <li class="nav-item ">

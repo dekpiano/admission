@@ -474,25 +474,16 @@ setTimeout(function() {
 
 	public function print_student()
 	{
-		if($this->input->get('around') == 1 ){
-			$around = array('recruit_date <= ' => '2020-05-12');
-			$i = '1';
-		}else{
-			$around = array('recruit_date > ' => '2020-05-12');
-			$i = '2';
-		}
+		
 		$data = $this->dataAll();
-		$data['title'] = 'ประกาศรายชื่อผู้สมัครสอบ รอบ '.$i;
-		$data['description'] = 'ประกาศรายชื่อผู้สมัครสอบ  รอบ '.$i;
-
-		$data['around'] = $i;
+		$data['title'] = 'ประกาศรายชื่อผู้สมัครสอบ';
+		$data['description'] = 'ประกาศรายชื่อผู้สมัครสอบ';
+		
 		$data['m1'] = $this->db->select('recruit_id,recruit_regLevel,recruit_status,recruit_tpyeRoom,recruit_prefix,recruit_firstName,recruit_lastName')
 		->where('recruit_regLevel','1')
-		->where($around)
 		->get('tb_recruitstudent')->result();
 		$data['m4'] = $this->db->select('recruit_id,recruit_regLevel,recruit_status,recruit_tpyeRoom,recruit_prefix,recruit_firstName,recruit_lastName')
 		->where('recruit_regLevel','4')
-		->where($around)
 		->get('tb_recruitstudent')->result();
 
 		$this->load->view('layout/header.php',$data);
