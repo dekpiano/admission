@@ -20,11 +20,17 @@ class Welcome extends CI_Controller {
 	{
 		$data['title'] = "รับสมัครนักเรียนปีการศึกษา 2563";
 		$data['description'] = "รับสมัครนักเรียนวันนี้ จนถึง 25 พฤษภาคม 2563";
-		$data['m1'] = $this->db->select('recruit_id,recruit_regLevel,recruit_status,recruit_tpyeRoom,recruit_prefix,recruit_firstName,recruit_lastName')
+
+		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
+		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
+
+		$data['m1'] = $this->db->select('recruit_id,recruit_regLevel,recruit_status,recruit_tpyeRoom,recruit_prefix,recruit_firstName,recruit_lastName,recruit_year')
 		->where('recruit_regLevel','1')
+		->where('recruit_year',$data['checkYear'][0]->openyear_year)
 		->get('tb_recruitstudent')->num_rows();
-		$data['m4'] = $this->db->select('recruit_id,recruit_regLevel,recruit_status,recruit_tpyeRoom,recruit_prefix,recruit_firstName,recruit_lastName')
+		$data['m4'] = $this->db->select('recruit_id,recruit_regLevel,recruit_status,recruit_tpyeRoom,recruit_prefix,recruit_firstName,recruit_lastName,recruit_year')
 		->where('recruit_regLevel','4')
+		->where('recruit_year',$data['checkYear'][0]->openyear_year)
 		->get('tb_recruitstudent')->num_rows();
 		//$data['title'] = $this->title;
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();
@@ -33,7 +39,7 @@ class Welcome extends CI_Controller {
 		$data['person'] = $db2->get("tb_personnel")->result();
 		//print_r($db2->result());
 		
-
+		
 
 		$this->load->view('layout/header.php',$data);
 		$this->load->view('layout/navber.php');

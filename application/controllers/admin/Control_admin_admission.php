@@ -14,30 +14,33 @@ class Control_admin_admission extends CI_Controller {
 		}
 	}
 
-	public function report_student()
+	public function report_student($year)
 	{		
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();
 		$chart_re1 = $this->db->select('COUNT(recruit_regLevel) AS C_count,
-		tb_recruitstudent.recruit_regLevel, 
+		tb_recruitstudent.recruit_regLevel,tb_recruitstudent.recruit_year, 
 		tb_recruitstudent.recruit_tpyeRoom')
 				->from('tb_recruitstudent')
+				->where('recruit_year',$year)
 				->where('recruit_regLevel',1)
 				->group_by('recruit_tpyeRoom')
 				->order_by('recruit_tpyeRoom','DESC')
 				->get()->result();
 			$chart_re4 = $this->db->select('COUNT(recruit_regLevel) AS C_count,
-					tb_recruitstudent.recruit_regLevel, 
+					tb_recruitstudent.recruit_regLevel,tb_recruitstudent.recruit_year, 
 					tb_recruitstudent.recruit_tpyeRoom')
 				->from('tb_recruitstudent')
+				->where('recruit_year',$year)
 				->where('recruit_regLevel',4)
 				->group_by('recruit_tpyeRoom')
 
 				->order_by('recruit_tpyeRoom','DESC')
 				->get()->result();
 			$chart_All = $this->db->select('COUNT(recruit_regLevel) AS C_count,
-					tb_recruitstudent.recruit_regLevel, 
+					tb_recruitstudent.recruit_regLevel,tb_recruitstudent.recruit_year ,
 					tb_recruitstudent.recruit_tpyeRoom')
 				->from('tb_recruitstudent')
+				->where('recruit_year',$year)
 				->group_by('recruit_tpyeRoom')					
 				->order_by('recruit_tpyeRoom','DESC')
 				->get()->result();
@@ -49,16 +52,20 @@ class Control_admin_admission extends CI_Controller {
 	}
 	
 
-	public function index()
+	public function index($year)
 	{	
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();
-		$data = $this->report_student();
+		$data = $this->report_student($year);
 		$data['title'] = $this->title;		
 		$this->db->select('*');
 		$this->db->from('tb_recruitstudent');
+		$this->db->where('recruit_year',$year);
 		$this->db->order_by('recruit_id','DESC');
 		$data['recruit'] =	$this->db->get()->result();
-		
+
+		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
+		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
+		//print_r($data['year']); exit();
 		$data['chart_1'];
 		$data['chart_4'];
 		$data['chart_All'];
@@ -90,6 +97,14 @@ class Control_admin_admission extends CI_Controller {
 			$data = array('onoff_system' => 'off','onoff_datetime_system' => date('Y-m-d H:i:s'),'onoff_user_system' => $this->session->userdata('login_id'));
 			$this->db->update('tb_onoffsys',$data,"onoff_id='1'");
 		}
+	}
+
+	public function switch_year()
+	{
+	
+			$data = array('openyear_year' => $this->input->post('mode'),'openyear_userid' => $this->session->userdata('login_id'));
+			$this->db->update('tb_openyear',$data,"openyear_id='1'");
+		
 	}
 	
 

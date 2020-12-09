@@ -33,9 +33,15 @@ label {
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
+                            <div class="row ">
+                                    <div class="col-md-8 mb-3 col-lg-2 ">
+                                        <label for="recruit_idCard">ประจำปีการศึกษา</label>
+                                        <input type="text" class="form-control" id="recruit_idCard" value="<?=$checkYear[0]->openyear_year;?>" readonly>
+                                      
+                                    </div>
+                                </div>
                                 <div class="row ">
                                     <div class="col-md-8 mb-3 col-lg-4 ">
-
                                         <label for="recruit_idCard">เลขประจำตัวประชาชน 13 หลัก</label>
                                         <input type="text" class="form-control" id="recruit_idCard"
                                             name="recruit_idCard" required data-inputmask="'mask': '9-9999-99999-99-9'"
@@ -232,7 +238,7 @@ label {
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-6 mb-3">
+                                    <div class="col-md-4 mb-3">
                                         <label for="recruit_phone">หมายเลขโทรศัพท์ที่สามาติดต่อได้</label>
                                         <input type="tel" class="form-control" id="recruit_phone" name="recruit_phone"
                                             placeholder required data-inputmask="'mask': '99-9999-9999'">

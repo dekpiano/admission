@@ -12,7 +12,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-<?php if($switch[0]->onoff_system == 'on'): ?>
+    <?php if($switch[0]->onoff_system == 'on'): ?>
     <!-- Nav Item - Dashboard -->
     <li class="nav-item ">
         <a class="nav-link" href="<?=base_url()?>">
@@ -27,15 +27,15 @@
             <i class="fas fa-bullhorn"></i>
             <span>ประกาศรายชื่อผู้สมัคร<br> <i class="fas fa-print"></i> พิมพ์ใบสมัครสอบ </span></a>
     </li>
- 
-    
+
+
     <!-- Divider -->
     <hr class="sidebar-divider">
     <li class="nav-item ">
         <?php if($switch[0]->onoff_regis == 'on'): ?>
         <a class="nav-link" href="<?=base_url('selectlevel')?>">
             <i class="fas fa-user-plus"></i>
-            <span>สมัครเรียน</span>
+            <span>สมัครเรียน <?=$checkYear[0]->openyear_year;?></span>
         </a>
         <?php else : ?>
         <span class="nav-link"><i class="fas fa-times-circle"></i> สมัครเรียน (ปิดรับสมัคร)</span>
@@ -71,7 +71,19 @@
     <hr class="sidebar-divider">
     <?php  if(!empty($this->session->userdata('fullname'))) : ?>
     <li class="nav-item ">
-        <a class="nav-link" href="<?=base_url('admin/admission')?>">
+        <a class="nav-link" href="#">
+            <i class="fas fa-edit"></i>
+            <span>เลือกปีรับสมัคร </span>
+            <select id="switch_year" name="switch_year" class="custom-select custom-select-sm float-right" style="width: 75px;">
+                 <option <?=$checkYear[0]->openyear_year == ($year[0]->recruit_year)+1 ? 'selected' : '' ;?> value="<?=($year[0]->recruit_year)+1?>"><?=($year[0]->recruit_year)+1?></option>
+                <?php foreach ($year as $key => $v_year) : ?>
+                <option <?=$checkYear[0]->openyear_year == $v_year->recruit_year ? 'selected' : '' ;?> value="<?=$v_year->recruit_year?>"><?=$v_year->recruit_year?></option>
+                <?php endforeach; ?>
+            </select>
+        </a>
+    </li>
+    <li class="nav-item ">
+        <a class="nav-link" href="<?=base_url('admin/admission/').$checkYear[0]->openyear_year?>">
             <i class="fas fa-edit"></i>
             <span>จัดการข้อมูลสมัครเรียน</span></a>
     </li>
@@ -109,7 +121,7 @@
 
 <div class="fixed-top d-block d-md-none " style="height: 100vh;overflow: scroll;">
     <div class="collapse" id="navbarToggleExternalContent">
-        <div class="bg-gradient-success p-4 text-white " >
+        <div class="bg-gradient-success p-4 text-white ">
             <h5 class="">เมนู</h5>
             <Ul style="list-style-type: none;">
                 <!-- Nav Item - Dashboard -->
@@ -122,7 +134,7 @@
                 <li class="nav-item ">
                     <a class="nav-link text-white" href="<?=base_url('Announce')?>">
                         <i class="fas fa-bullhorn"></i>
-                        <span>ประกาศรายชื่อผู้สมัคร <br> <i class="fas fa-print"></i> พิมพ์ใบสมัครสอบ 
+                        <span>ประกาศรายชื่อผู้สมัคร <br> <i class="fas fa-print"></i> พิมพ์ใบสมัครสอบ
                         </span></a>
                 </li>
                 <!-- Divider -->

@@ -56,13 +56,13 @@ $route['translate_uri_dashes'] = FALSE;
 $route['login'] = 'control_login/login_main';
 
 
-$route['admin/admission'] = 'admin/control_admin_admission';
+$route['admin/admission/(:num)'] = 'admin/control_admin_admission/index/$1';
 $route['admin/admission/add'] = 'admin/control_admin_admission/add';
 
 // [[รับสมัครนักเรียน]]
 $route['RegStudent'] = 'control_recruitstudent';
 $route['selectlevel'] = 'control_admission/select_level';
-$route['RegStudent/welcome/(:any)'] = 'control_recruitstudent/welcome_student/$1';
+$route['RegStudent/welcome/(:any)'] = 'control_admission/welcome_student/$1';
 $route['checkRegister'] = 'control_admission/checkdata_student';
 $route['RegStudent/(:any)'] = 'control_admission/reg_student/$1';
 $route['checkRegister/dataStudent'] = 'control_admission/data_user';

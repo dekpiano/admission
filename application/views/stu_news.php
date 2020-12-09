@@ -50,7 +50,7 @@
             </div>
 
 
-            <div class="bs-callout bs-callout-danger bg-white">
+            <!-- <div class="bs-callout bs-callout-danger bg-white">
                 <h4><i class="icofont-notepad"></i>ข่าวล่าสุดด... ปิดรับสมัครนักเรียนออนไลน์ ระดับชั้นมัธยมศึกษาปีที่ 1
                     และ 4
                 </h4>
@@ -75,7 +75,7 @@
                     <h4><i class="icofont-notepad"></i> ขณะนี้ทางเว็บไซต์เปิดให้ตรวจสอบและแก้ไขข้อมูล </h4>
                     กำลังตรวจสอบข้อมูลเพื่อ แก้ไข และ เปิดให้พิมพ์ใบสมัคร ลงวันที่ 14 พ.ค.2563
                 </div>
-            </a>
+            </a> -->
 
 
 

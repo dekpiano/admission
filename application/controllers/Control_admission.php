@@ -13,9 +13,6 @@ class Control_admission extends CI_Controller {
 		}
 		
 	}
-	
-	
-
 	public function recaptcha_google($captcha)
 	{
 		$recaptchaResponse = $captcha;
@@ -38,6 +35,8 @@ class Control_admission extends CI_Controller {
 	{
 		$data['full_url'] = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();
+		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
+		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
 		return $data;
 	}
 
@@ -66,6 +65,7 @@ class Control_admission extends CI_Controller {
 	{
 		//redirect('CloseStudent'); 
 		$data = $this->dataAll();
+		//echo '<pre>'; print_r( ); exit();
 		$data['title'] = 'สมัครเรียน ม.1 และ ม.4 รอบ 2 ';
 		$data['description'] = 'สมัครเรียน ม.1 และ ม.4 รอบ 2';
 		//$this->session->sess_destroy();
@@ -84,19 +84,15 @@ class Control_admission extends CI_Controller {
 		$data['description'] = 'ลงทะเบียนสำเร็จแล้ว';
 		//print_r($id);
 		if ($id == 'Succeed') {
-			$this->load->view('user/layout/header.php',$data);
-			$this->load->view('user/recruitstudent/welcome_student.php');
-			$this->load->view('user/layout/footer.php');
+			$this->session->set_flashdata(array('msg'=> 'NO','messge' => 'ลงทะเบียนสำเร็จแล้ว'));
+			redirect('welcome');
 		}elseif($id == 'Error'){
 			$this->session->set_flashdata(array('msg'=> 'NO','messge' => 'คุณได้ลงทะเบียนแล้ว กรุณาตรวจสอบการสมัคร'));
-			//redirect('RegStudent');
-			$this->load->view('user/layout/header.php',$data);
-			$this->load->view('user/layout/footer.php'); 
-			;?>
+	?>
 <script type="text/javascript">
 setTimeout(function() {
     window.history.back();
-}, 5000);
+}, 1000);
 </script>
 <?php }else{
 					redirect('RegStudent');
@@ -123,6 +119,7 @@ setTimeout(function() {
 
 	public function reg_insert()
 	{	
+		$data = $this->dataAll();
 		$status = $this->recaptcha_google($this->input->post('captcha')); 
 		//print_r($status); exit();
         if ($status['success']) {
@@ -158,7 +155,7 @@ setTimeout(function() {
 			'recruit_homePostcode' => $this->input->post('recruit_homePostcode'),
 			'recruit_tpyeRoom' => $this->input->post('recruit_tpyeRoom'),
 			'recruit_date'	=> date('Y-m-d'), 						
-			'recruit_year' => (date('Y')+543)
+			'recruit_year' => $data['checkYear'][0]->openyear_year
 			);
 
 
@@ -209,10 +206,12 @@ setTimeout(function() {
 						$str = "มีนักเรียนสมัครเรียนใหม่\n".'ตรวจสอบ : '.base_url('admin/recruitstudent');	
 						$res = $this->notify_message($str,$token);
 						$data = $this->dataAll();
-						$this->load->view('layout/header.php',$data);
-						$this->load->view('layout/navber.php');
-						$this->load->view('stu_news.php');
-						$this->load->view('layout/footer.php');
+						// $this->load->view('layout/header.php',$data);
+						// $this->load->view('layout/navber.php');
+						// $this->load->view('stu_news.php');
+						// $this->load->view('layout/footer.php');
+
+						redirect('welcome');
 				}
 
 			}
