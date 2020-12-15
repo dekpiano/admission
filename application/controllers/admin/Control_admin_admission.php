@@ -294,63 +294,74 @@ class Control_admin_admission extends CI_Controller {
     	$date_D = date('d',strtotime($datapdf[0]->recruit_birthday));
     	$date_M = date('n',strtotime($datapdf[0]->recruit_birthday));
 
+		$date_Y_regis = date('Y',strtotime($datapdf[0]->recruit_date))+543;
+    	$date_D_regis = date('d',strtotime($datapdf[0]->recruit_date));
+    	$date_M_regis = date('n',strtotime($datapdf[0]->recruit_date));
+
     	$sch = explode("โรงเรียน", $datapdf[0]->recruit_oldSchool); //แยกคำว่าโรงเรียน
     	
-
         $mpdf = new \Mpdf\Mpdf([
 					'default_font_size' => 16,
 					'default_font' => 'sarabun'
 				]);
         $mpdf->SetTitle($datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.' '.$datapdf[0]->recruit_lastName);
-        $html = '<div style="position:absolute;top:60px;left:648px; width:100%"><img style="width: 120px;hight:auto;" src='.base_url('uploads/recruitstudent/m'.$datapdf[0]->recruit_regLevel.'/img/'.$datapdf[0]->recruit_img).'></div>'; 
-        $html .= '<div style="position:absolute;top:15px;left:710px; width:100%">'.sprintf("%04d",$datapdf[0]->recruit_id).'</div>'; //
-         $html .= '<div style="position:absolute;top:159px;left:565px; width:100%"><b>'.$datapdf[0]->recruit_regLevel.'</b></div>'; //	
-		$html .= '<div style="position:absolute;top:270px;left:180px; width:100%">'.$datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.'</div>'; //ชื่อผู้สมัคร
-		$html .= '<div style="position:absolute;top:270px;left:470px; width:100%">'.$datapdf[0]->recruit_lastName.'</div>'; //นามสกุลผู้สมัคร
-		$html .= '<div style="position:absolute;top:297px;left:280px; width:100%">'.($sch[0] == '' ? $sch[1] : $sch[0]).'</div>'; //โรงเรียนเดิม
-		$html .= '<div style="position:absolute;top:324px;left:170px; width:100%">'.$datapdf[0]->recruit_district.'</div>'; //อำเภอโรงเรียน
-		$html .= '<div style="position:absolute;top:324px;left:510px; width:100%">'.$datapdf[0]->recruit_province.'</div>'; //จังหวัดโรงเรียน
-		$html .= '<div style="position:absolute;top:353px;left:160px; width:100%">'.$date_D.'</div>'; //วันเกิด
-		$html .= '<div style="position:absolute;top:353px;left:245px; width:100%">'.$TH_Month[$date_M-1].'</div>'; //เดือนเกิด
-		$html .= '<div style="position:absolute;top:353px;left:375px; width:100%">'.$date_Y.'</div>'; //ปีเกิด
-		$html .= '<div style="position:absolute;top:353px;left:470px; width:100%">'.$this->timeago->getAge($datapdf[0]->recruit_birthday).'</div>'; //อายุ
-		$html .= '<div style="position:absolute;top:353px;left:600px; width:100%">'.$datapdf[0]->recruit_race.'</div>'; //เชื้อชาติ
-		$html .= '<div style="position:absolute;top:382px;left:170px; width:100%">'.$datapdf[0]->recruit_nationality.'</div>'; //สัญชาติ
-		$html .= '<div style="position:absolute;top:382px;left:320px; width:100%">'.$datapdf[0]->recruit_religion.'</div>'; //ศาสนา
-		$html .= '<div style="position:absolute;top:382px;left:550px; width:100%">'.$datapdf[0]->recruit_idCard.'</div>'; //เลขบัตรประจำตัวประชาชน
-		$html .= '<div style="position:absolute;top:410px;left:350px; width:100%">'.$datapdf[0]->recruit_phone.'</div>'; //เบอร์โทรติดต่อ
-		$html .= '<div style="position:absolute;top:438px;left:270px; width:100%">'.$datapdf[0]->recruit_homeNumber.'</div>'; //บ้านเลขที่ //แก้*****
-		$html .= '<div style="position:absolute;top:438px;left:390px; width:100%">'.$datapdf[0]->recruit_homeGroup.'</div>'; //หมู่
-		$html .= '<div style="position:absolute;top:438px;left:465px; width:100%">'.$datapdf[0]->recruit_homeRoad.'</div>'; //ถนน
-		$html .= '<div style="position:absolute;top:438px;left:620px; width:100%">'.$datapdf[0]->recruit_homeSubdistrict.'</div>'; //ตำบล
-		$html .= '<div style="position:absolute;top:465px;left:185px; width:100%">'.$datapdf[0]->recruit_homedistrict.'</div>'; //อำเภอ
-		$html .= '<div style="position:absolute;top:465px;left:400px; width:100%">'.$datapdf[0]->recruit_homeProvince.'</div>'; //จังหวัด
-		$html .= '<div style="position:absolute;top:465px;left:620px; width:100%">'.$datapdf[0]->recruit_homePostcode.'</div>'; //รหัสไปรษณีย์
-		$html .= '<div style="position:absolute;top:866px;left:50px; width:100%"><img style="width:120px;hight:100px;" src='.base_url('uploads/recruitstudent/m'.$datapdf[0]->recruit_regLevel.'/img/'.$datapdf[0]->recruit_img).'></div>'; 
-		$html .= '<div style="position:absolute;top:840px;left:180px; width:100%">'.sprintf("%04d",$datapdf[0]->recruit_id).'</div>'; 
-		$html .= '<div style="position:absolute;top:880px;left:230px; width:100%">'.$datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.'</div>'; //ชื่อผู้สมัคร
-		$html .= '<div style="position:absolute;top:880px;left:470px; width:100%">'.$datapdf[0]->recruit_lastName.'</div>'; //นามสกุลผู้สมัคร
-		$html .= '<div style="position:absolute;top:908;left:400px; width:100%">'.$datapdf[0]->recruit_idCard.'</div>';	
-		$html .= '<div style="position:absolute;top:936;left:250px; width:100%">'.$datapdf[0]->recruit_tpyeRoom.'</div>';	
+        $html = '<div style="position:absolute;top:60px;left:635px; width:100%"><img style="width: 120px;hight:auto;" src='.base_url('uploads/recruitstudent/m'.$datapdf[0]->recruit_regLevel.'/img/'.$datapdf[0]->recruit_img).'></div>'; 
+        $html .= '<div style="position:absolute;top:15px;left:700px; width:100%">'.sprintf("%04d",$datapdf[0]->recruit_id).'</div>'; //เลขที่สมัคร
+		$html .= '<div style="position:absolute;top:257px;left:180px; width:100%">'.$datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.'</div>'; //ชื่อผู้สมัคร
+		$html .= '<div style="position:absolute;top:257px;left:470px; width:100%">'.$datapdf[0]->recruit_lastName.'</div>'; //นามสกุลผู้สมัคร
+		$html .= '<div style="position:absolute;top:287px;left:320px; width:100%">'.($sch[0] == '' ? $sch[1] : $sch[0]).'</div>'; //โรงเรียนเดิม
+		$html .= '<div style="position:absolute;top:315px;left:170px; width:100%">'.$datapdf[0]->recruit_district.'</div>'; //อำเภอโรงเรียน
+		$html .= '<div style="position:absolute;top:315px;left:510px; width:100%">'.$datapdf[0]->recruit_province.'</div>'; //จังหวัดโรงเรียน
+		$html .= '<div style="position:absolute;top:343px;left:140px; width:100%">'.$date_D.'</div>'; //วันเกิด
+		$html .= '<div style="position:absolute;top:343px;left:235px; width:100%">'.$TH_Month[$date_M-1].'</div>'; //เดือนเกิด
+		$html .= '<div style="position:absolute;top:343px;left:360px; width:100%">'.$date_Y.'</div>'; //ปีเกิด
+		$html .= '<div style="position:absolute;top:343px;left:455px; width:100%">'.$this->timeago->getAge($datapdf[0]->recruit_birthday).'</div>'; //อายุ
+		$html .= '<div style="position:absolute;top:343px;left:600px; width:100%">'.$datapdf[0]->recruit_race.'</div>'; //เชื้อชาติ
+		$html .= '<div style="position:absolute;top:372px;left:162px; width:100%">'.$datapdf[0]->recruit_nationality.'</div>'; //สัญชาติ
+		$html .= '<div style="position:absolute;top:372px;left:300px; width:100%">'.$datapdf[0]->recruit_religion.'</div>'; //ศาสนา
+		$html .= '<div style="position:absolute;top:372px;left:540px; width:100%">'.$datapdf[0]->recruit_idCard.'</div>'; //เลขบัตรประจำตัวประชาชน
+		$html .= '<div style="position:absolute;top:400px;left:350px; width:100%">'.$datapdf[0]->recruit_phone.'</div>'; //เบอร์โทรติดต่อ
+		$html .= '<div style="position:absolute;top:428px;left:255px; width:100%">'.$datapdf[0]->recruit_homeNumber.'</div>'; //บ้านเลขที่ //แก้*****
+		$html .= '<div style="position:absolute;top:428px;left:340px; width:100%">'.$datapdf[0]->recruit_homeGroup.'</div>'; //หมู่
+		$html .= '<div style="position:absolute;top:428px;left:420px; width:100%">'.$datapdf[0]->recruit_homeRoad.'</div>'; //ถนน
+		$html .= '<div style="position:absolute;top:428px;left:600px; width:100%">'.$datapdf[0]->recruit_homeSubdistrict.'</div>'; //ตำบล
+		$html .= '<div style="position:absolute;top:455px;left:175px; width:100%">'.$datapdf[0]->recruit_homedistrict.'</div>'; //อำเภอ
+		$html .= '<div style="position:absolute;top:455px;left:390px; width:100%">'.$datapdf[0]->recruit_homeProvince.'</div>'; //จังหวัด
+		$html .= '<div style="position:absolute;top:455px;left:620px; width:100%">'.$datapdf[0]->recruit_homePostcode.'</div>'; //รหัสไปรษณีย์
+		// ส่วนที่ 2recruit_date
+		$html .= '<div style="position:absolute;top:900px;left:50px; width:100%"><img style="width:120px;hight:100px;" src='.base_url('uploads/recruitstudent/m'.$datapdf[0]->recruit_regLevel.'/img/'.$datapdf[0]->recruit_img).'></div>'; 
+		$html .= '<div style="position:absolute;top:870px;left:160px; width:100%">'.sprintf("%04d",$datapdf[0]->recruit_id).'</div>'; 
+		$html .= '<div style="position:absolute;top:910px;left:240px; width:100%">'.$datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.'</div>'; //ชื่อผู้สมัคร
+		$html .= '<div style="position:absolute;top:910px;left:480px; width:100%">'.$datapdf[0]->recruit_lastName.'</div>'; //นามสกุลผู้สมัคร
+		$html .= '<div style="position:absolute;top:940;left:400px; width:100%">'.$datapdf[0]->recruit_idCard.'</div>';	
+		$html .= '<div style="position:absolute;top:967;left:270px; width:100%">'.$datapdf[0]->recruit_tpyeRoom.'</div>';	
+		$html .= '<div style="position:absolute;top:808px;left:360px; width:100%">'.$date_M_regis.' '.$TH_Month[$date_D_regis-1].' '.$date_Y_regis.'</div>'; // วันที่สมัครตอนที่ 1
 
-		 $AtpyeRoom = array('ห้องเรียนความเป็นเลิศทางด้านวิชาการ (Science Match and Technology Program)','ห้องเรียนความเป็นเลิศทางด้านภาษา (Chinese English Program)','ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ การแสดง (Preforming Art Program)','ห้องเรียนความเป็นเลิศด้านการงานอาชีพ (Career Program)' ); 
+		$html .= '<div style="position:absolute;top:1067px;left:360px; width:100%">'.$date_M_regis.' '.$TH_Month[$date_D_regis-1].' '.$date_Y_regis.'</div>'; // วันที่สมัครตอนที่ 2
+
+
+		 $AtpyeRoom = array('ห้องเรียนความเป็นเลิศทางด้านวิชาการ (Science Match and Technology Program)','ห้องเรียนความเป็นเลิศทางด้านภาษา (Chinese English Program)','ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ การแสดง (Preforming Art Program)','ห้องเรียนความเป็นเลิศด้านการงานอาชีพ (Career Program)','ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program)' ); 
     	if($datapdf[0]->recruit_tpyeRoom == $AtpyeRoom[0]){
-    		$html .= '<div style="position:absolute;top:525px;left:165px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
+    		$html .= '<div style="position:absolute;top:570px;left:100px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
     	}elseif($datapdf[0]->recruit_tpyeRoom == $AtpyeRoom[1]){
-    		$html .= '<div style="position:absolute;top:558px;left:165px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
+    		$html .= '<div style="position:absolute;top:600px;left:100px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
     	}elseif($datapdf[0]->recruit_tpyeRoom == $AtpyeRoom[2]){
-    		$html .= '<div style="position:absolute;top:584px;left:165px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
+    		$html .= '<div style="position:absolute;top:623px;left:100px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
     	}elseif($datapdf[0]->recruit_tpyeRoom == $AtpyeRoom[3]){
-    		$html .= '<div style="position:absolute;top:615px;left:165px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
-    	}
+    		$html .= '<div style="position:absolute;top:645px;left:100px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
+		}elseif($datapdf[0]->recruit_tpyeRoom == $AtpyeRoom[4]){
+    		$html .= '<div style="position:absolute;top:545px;left:100px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
+		}
+
+		
     	if($datapdf[0]->recruit_certificateEdu != ''){
-    		$html .= '<div style="position:absolute;top:670px;left:120px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
+    		$html .= '<div style="position:absolute;top:720px;left:100px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
     	}
     	if($datapdf[0]->recruit_copyidCard != ''){
-    		$html .= '<div style="position:absolute;top:670px;left:265px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
+    		$html .= '<div style="position:absolute;top:720px;left:245px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
     	}
     	if($datapdf[0]->recruit_copyAddress != ''){
-    		$html .= '<div style="position:absolute;top:670px;left:455px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
+    		$html .= '<div style="position:absolute;top:720px;left:435px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
     	}
 		$mpdf->SetDocTemplate('uploads/recruitstudent/pdf_registudent.pdf',true);
 		$filename = sprintf("%04d",$datapdf[0]->recruit_id).'-'.$datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.' '.$datapdf[0]->recruit_lastName;
