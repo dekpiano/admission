@@ -33,11 +33,12 @@ label {
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
-                            <div class="row ">
+                                <div class="row ">
                                     <div class="col-md-8 mb-3 col-lg-2 ">
                                         <label for="recruit_idCard">ประจำปีการศึกษา</label>
-                                        <input type="text" class="form-control" id="recruit_idCard" value="<?=$checkYear[0]->openyear_year;?>" readonly>
-                                      
+                                        <input type="text" class="form-control" id="recruit_idCard"
+                                            value="<?=$checkYear[0]->openyear_year;?>" readonly>
+
                                     </div>
                                 </div>
                                 <div class="row ">
@@ -160,7 +161,7 @@ label {
                                             data-toggle="tooltip" data-placement="top" data-html="true"
                                             title="<img class='img-fluid' src=&quot;<?=base_url('uploads/recruitstudent/Eximg.jpg')?>&quot;>">ตัวอย่างรูปที่ถูกต้อง</a></label>
                                     <input type="file" class="form-control" id="recruit_img" name="recruit_img">
-                                    <img id="blah" class="img-fluid" src="# " alt="" >
+                                    <img id="blah" class="img-fluid" src="# " alt="">
                                     <div class="invalid-feedback">
                                         อัพโหลดรูปภาพ
                                     </div>
@@ -203,33 +204,38 @@ label {
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4 mb-3">
-                                        <label for="recruit_homeSubdistrict">ตำบล/แขวง</label>
-                                        <input type="text" class="form-control" id="recruit_homeSubdistrict"
-                                            name="recruit_homeSubdistrict" required>
-                                        <div class="invalid-feedback">
-                                            ระบุตำบล/แขวง
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="recruit_homedistrict">อำเภอ/เขต</label>
-                                        <input type="text" class="form-control" id="recruit_homedistrict"
-                                            name="recruit_homedistrict" required>
-                                        <div class="invalid-feedback">
-                                            ระบุอำเภอ/เขต
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
+                                <div class="col-md-4 mb-3">
                                         <label for="recruit_homeProvince">จังหวัด</label>
-                                        <input type="text" class="form-control" id="recruit_homeProvince"
-                                            name="recruit_homeProvince" required>
+                                        <select id="province" class="custom-select" name="recruit_homeProvince" required>
+                                            <option value="">- กรุณาเลือกจังหวัด -</option>
+                                        </select>                                     
                                         <div class="invalid-feedback">
                                             ระบุจังหวัด
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
+                                        <label for="recruit_homedistrict">อำเภอ/เขต</label>
+                                        <select id="amphur" class="custom-select" name="recruit_homedistrict" required>
+                                            <option value="">- กรุณาเลือกอำเภอ -</option>
+                                        </select>                                     
+                                        <div class="invalid-feedback">
+                                            ระบุอำเภอ/เขต
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="recruit_homeSubdistrict">ตำบล/แขวง</label>
+                                        <select id="district" class="custom-select " name="recruit_homeSubdistrict" required>
+                                            <option value="">- กรุณาเลือกตำบล -</option>
+                                        </select>                                      
+                                        <div class="invalid-feedback">
+                                            ระบุตำบล/แขวง
+                                        </div>
+                                    </div>
+                                    
+                                 
+                                    <div class="col-md-4 mb-3">
                                         <label for="recruit_homePostcode">รหัสไปรษณีย์</label>
-                                        <input type="text" class="form-control" id="recruit_homePostcode"
+                                        <input type="text" class="form-control" id="postcode"
                                             name="recruit_homePostcode" required>
                                         <div class="invalid-feedback">
                                             ระบุรหัสไปรษณีย์
@@ -336,6 +342,13 @@ label {
                                             for="paypal1">ห้องเรียนความเป็นเลิศด้านการงานอาชีพ
                                             (Career Program)</label>
                                     </div>
+                                    <div class="custom-control custom-radio">
+                                        <input id="sport" name="recruit_tpyeRoom" type="radio"
+                                            class="custom-control-input"
+                                            value="ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program)" required>
+                                        <label class="custom-control-label"
+                                            for="sport">ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program)</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -346,7 +359,8 @@ label {
                                 <h5 class="m-0 font-weight-bold text-primary"><u>หลักฐานการสมัคร</u>
                                     <small>(กรณียังไม่มีเอกสารตามที่ระบุ
                                         ยังไม่ต้องใส่
-                                        สามารถใส่ในภายหลังในการตรวจสอบได้)</small></h5>
+                                        สามารถใส่ในภายหลังในการตรวจสอบได้)</small>
+                                </h5>
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">

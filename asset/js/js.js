@@ -23,7 +23,7 @@ $(document).on('change', '#switch', function() {
             mode: mode1
         },
         success: function(data) {
-            alert(data);
+            swal("แจ้งเตือน", "คุณได้ทำการ" + data + "การรับสมัครนักเรียนแล้ว!", "warning")
         }
     });
 });
@@ -39,6 +39,7 @@ $(document).on('change', '#switch_sys', function() {
         },
         success: function(data) {
             //alert(data);
+            swal("แจ้งเตือน", "คุณได้ทำการ" + data + "ระบบ!", "warning")
         }
     });
 });

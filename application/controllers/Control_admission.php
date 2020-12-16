@@ -84,10 +84,10 @@ class Control_admission extends CI_Controller {
 		$data['description'] = 'ลงทะเบียนสำเร็จแล้ว';
 		//print_r($id);
 		if ($id == 'Succeed') {
-			$this->session->set_flashdata(array('msg'=> 'NO','messge' => 'ลงทะเบียนสำเร็จแล้ว'));
+			$this->session->set_flashdata(array('msg'=> 'ํYES','messge' => 'ลงทะเบียนสำเร็จแล้ว'));
 			redirect('welcome');
 		}elseif($id == 'Error'){
-			$this->session->set_flashdata(array('msg'=> 'NO','messge' => 'คุณได้ลงทะเบียนแล้ว กรุณาตรวจสอบการสมัคร'));
+			$this->session->set_flashdata(array('msg'=> 'NO','messge' => 'เลขประจำตัวประชาชน คุณได้ลงทะเบียนแล้ว กรุณาตรวจสอบการสมัคร'));
 	?>
 <script type="text/javascript">
 setTimeout(function() {
@@ -200,7 +200,7 @@ setTimeout(function() {
 			//print_r($data_insert);
 
 				if($this->model_admission->student_insert($data_insert) == 1){
-					$this->session->set_flashdata(array('msg'=> 'NO','messge' => 'สมัครเรียนสำเร็จ'));					
+					$this->session->set_flashdata(array('msg'=> 'Yes','messge' => 'สมัครเรียนสำเร็จ'));					
 						define('LINE_API',"https://notify-api.line.me/api/notify"); 
 						$token = "E9GFruPeXW6Mogn156Pllr1D8wWiY69BHfpKzLHBxcj"; 
 						$str = "มีนักเรียนสมัครเรียนใหม่\n".'ตรวจสอบ : '.base_url('admin/recruitstudent');	

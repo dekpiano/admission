@@ -1,12 +1,3 @@
-      <!-- Footer -->
-      <!-- <footer class="sticky-footer bg-white">
-          <div class="container my-auto">
-              <div class="copyright text-center my-auto">
-                  <span>Copyright &copy; โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์ 2020</span>
-              </div>
-          </div>
-      </footer> -->
-      <!-- End of Footer -->
 
       </div>
       <!-- End of Content Wrapper -->
@@ -24,11 +15,13 @@
           <div class="modal-dialog modal-login">
               <div class="modal-content">
                   <div class="modal-header">
-                      <h4 class="modal-title">เข้าสู่ระบบ</h4>
+                      <h4 class="modal-title">เข้าสู่ระบบ <?php print_r($checkYear[0]->openyear_year); ?></h4>
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                   </div>
                   <div class="modal-body">
                       <form action="<?=base_url('Control_login/validlogin');?>" method="post">
+                      <input type="text" class="form-control d-none" name="openyear_year" placeholder="Username"
+                                      required="required" value="<?=$checkYear[0]->openyear_year?>" >
                           <div class="form-group">
                               <div class="input-group">
                                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -122,7 +115,8 @@ $('[data-toggle="tooltip"]').tooltip();
       </script>
       <script src="https://cdn.tiny.cloud/1/y6b2omlkddg6mbwjuwhrf96ufg0wjfhrf5xw1xes3o6oahi4/tinymce/5/tinymce.min.js"
           referrerpolicy="origin"></script>
-      <script src="<?=base_url()?>asset/js/js.js?v=1002"></script>
+          <script src="<?=base_url()?>asset/js/AutoProvince.js"></script>
+      <script src="<?=base_url()?>asset/js/js.js?v=1000"></script>
       <?php  if(isset($alert_verify) && $alert_verify[0] == 1):?>
       <script>
 swal("แจ้งเตือน", "<?=$alert_verify[1];?>", "<?=$alert_verify[2];?>");
@@ -130,13 +124,19 @@ swal("แจ้งเตือน", "<?=$alert_verify[1];?>", "<?=$alert_verify[
       <?php endif; ?>
       <?php  if($this->session->flashdata('msg') == 'NO' ):?>
       <script>
+swal("แจ้งเตือน", "<?=$this->session->flashdata('messge');?>", "error");
+      </script>
+      <?php elseif($this->session->flashdata('msg') == 'Yes'):?>
+        <script>
 swal("แจ้งเตือน", "<?=$this->session->flashdata('messge');?>", "success");
-// $('#myModal').modal('show');
       </script>
       <?php endif; ?>
 
       </body>
-      <?php $this->load->view('admin/chart/report_bar.php'); ?>
+      <?php if($this->uri->segment(1) != 'welcome' || $this->uri->segment(1) != 'RegStudent') {
+            $this->load->view('admin/chart/report_bar.php'); 
+      }
+       ?>
       <script type="text/javascript">
 function onHuman(response) {
     document.getElementById('captcha').value = response;
@@ -148,7 +148,7 @@ var onloadCallback = function() {
 };
 
 $(document).ready(function() {
-   
+
     $(":input").inputmask();
     $(".sidebar").sortable();
     $(".sidebar").disableSelection();
@@ -299,4 +299,15 @@ swal("ผิดพลาด!", "<?=$this->session->flashdata('messge')?>", "erro
         });
     }, false);
 })();
+
+$('body').AutoProvince({
+            PROVINCE: '#province', // select div สำหรับรายชื่อจังหวัด
+            AMPHUR: '#amphur', // select div สำหรับรายชื่ออำเภอ
+            DISTRICT: '#district', // select div สำหรับรายชื่อตำบล
+            POSTCODE: '#postcode', // input field สำหรับรายชื่อรหัสไปรษณีย์
+            CURRENT_PROVINCE:1, //  แสดงค่าเริ่มต้น ใส่ไอดีจังหวัดที่เคยเลือกไว้
+            CURRENT_AMPHUR:1, // แสดงค่าเริ่มต้น  ใส่ไอดีอำเภอที่เคยเลือกไว้
+            CURRENT_DISTRICT:1, // แสดงค่าเริ่มต้น  ใส่ไอดีตำบลที่เคยเลือกไว้
+		    arrangeByName:		false // กำหนดให้เรียงตามตัวอักษร
+	});
       </script>

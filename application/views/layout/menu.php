@@ -46,9 +46,13 @@
 
 
         <li class="nav-item ">
-            <a class="nav-link" href="<?=base_url('Announce')?>">
+            <a class="nav-link" href="<?=base_url('checkRegister')?>">
                 <i class="fas fa-bullhorn"></i>
-                <span>ประกาศรายชื่อผู้สมัคร<br> <i class="fas fa-print"></i> พิมพ์ใบสมัครสอบ </span></a>
+                <span>ประกาศรายชื่อผู้สมัคร<br> 
+                <i class="fas fa-print"></i> พิมพ์ใบสมัครสอบ <br>
+                <i class="fas fa-edit"></i> ตรวจสอบและแก้ไขข้อมูล
+                </span>
+                </a>
         </li>
 
 
@@ -64,11 +68,7 @@
             <span class="nav-link"><i class="fas fa-times-circle"></i> สมัครเรียน (ปิดรับสมัคร)</span>
             <?php endif; ?>
         </li>
-        <li class="nav-item ">
-            <a class="nav-link" href="<?=base_url('checkRegister')?>">
-                <i class="fas fa-edit"></i>
-                <span>ตรวจสอบและแก้ไขข้อมูล</span></a>
-        </li>
+    
         <?php endif; ?>
     </div>
     <hr class="sidebar-divider">

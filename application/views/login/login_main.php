@@ -8,7 +8,7 @@
             </div>
             <!-- Registeration Form -->
             <div class="col-md-5 col-lg-6 ml-auto">
-                <h1>ระบบล็อคอิน</h1>
+                <h1>ระบบล็อคอิน  </h1>
                 <form method="post" action="<?=base_url('Control_login/validlogin');?>" class="my-login-validation"
                     novalidate="">
                     <div class="row">

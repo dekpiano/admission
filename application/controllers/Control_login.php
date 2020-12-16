@@ -77,7 +77,7 @@ class Control_login extends CI_Controller {
 
 					$this->session->set_userdata(array('login_id' => $result->pers_id,'fullname'=> $result->pers_prefix.$result->pers_firstname.' '.$result->pers_lastname,'status'=> 'user','permission_menu' => $result->pers_workother_id,'user_img' => $result->pers_img));
 
-					redirect('welcome');
+					redirect('admin/admission/'.$this->input->post('openyear_year')); 
 				}
 				else
 				{

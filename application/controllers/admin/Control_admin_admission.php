@@ -82,9 +82,11 @@ class Control_admin_admission extends CI_Controller {
 		if($this->input->post('mode') == 'true'){
 			$data = array('onoff_regis' => 'on', 'onoff_datetime_regis' => date('Y-m-d H:i:s'),'onoff_user_regis' => $this->session->userdata('login_id'));
 			$this->db->update('tb_onoffsys',$data,"onoff_id='1'");
+			echo "เปิด";
 		}else{
 			$data = array('onoff_regis' => 'off','onoff_datetime_regis' => date('Y-m-d H:i:s'),'onoff_user_regis' => $this->session->userdata('login_id'));
 			$this->db->update('tb_onoffsys',$data,"onoff_id='1'");
+			echo "ปิด";
 		}
 	}
 
@@ -93,9 +95,11 @@ class Control_admin_admission extends CI_Controller {
 		if($this->input->post('mode') == 'true'){
 			$data = array('onoff_system' => 'on', 'onoff_datetime_system' => date('Y-m-d H:i:s'),'onoff_user_system' => $this->session->userdata('login_id'));
 			$this->db->update('tb_onoffsys',$data,"onoff_id='1'");
+			echo "เปิด";
 		}else{
 			$data = array('onoff_system' => 'off','onoff_datetime_system' => date('Y-m-d H:i:s'),'onoff_user_system' => $this->session->userdata('login_id'));
 			$this->db->update('tb_onoffsys',$data,"onoff_id='1'");
+			echo "ปิด";
 		}
 	}
 
