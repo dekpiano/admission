@@ -59,6 +59,9 @@ $route['login'] = 'control_login/login_main';
 $route['admin/admission/(:num)'] = 'admin/control_admin_admission/index/$1';
 $route['admin/admission/add'] = 'admin/control_admin_admission/add';
 
+$route['admin/news'] = 'admin/control_admin_news';
+$route['admin/news/add'] = 'admin/control_admin_news/add';
+
 // [[รับสมัครนักเรียน]]
 $route['RegStudent'] = 'control_recruitstudent';
 $route['selectlevel'] = 'control_admission/select_level';

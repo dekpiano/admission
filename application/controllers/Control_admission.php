@@ -104,8 +104,8 @@ setTimeout(function() {
 	{
 		//redirect('CloseStudent'); 
 		$data = $this->dataAll();
-		$data['title'] = 'สมัครเรียน ม.1 รอบ 2 ';
-		$data['description'] = 'สมัครเรียน ม.1 รอบ 2';
+		$data['title'] = 'สมัครเรียนใหม่';
+		$data['description'] = 'สมัครเรียนใหม่';
 
 		if ($id > 0) {
 			$this->load->view('layout/header.php',$data);
@@ -437,7 +437,7 @@ setTimeout(function() {
 		else{
 
 			if($this->model_admission->student_update($data_update,$id) == 1){
-					$this->session->set_flashdata(array('msg'=> 'NO','messge' => 'แก้ไขข้อมูลสำเร็จ รอตรวจสอบข้อมูล... 4 - 6 ชั่วโมง'));
+					$this->session->set_flashdata(array('msg'=> 'Yes','messge' => 'แก้ไขข้อมูลสำเร็จ รอตรวจสอบข้อมูล... 4 - 6 ชั่วโมง'));
 					//redirect('RegStudent/checkRegister?search_stu='.$this->input->post('recruit_idCard'), 'refresh');
 			
 			}

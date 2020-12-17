@@ -71,7 +71,7 @@ class Control_admin_admission extends CI_Controller {
 		$data['chart_All'];
 			
 
-		$this->load->view('layout/header.php',$data);
+			$this->load->view('layout/header.php',$data);
 			$this->load->view('layout/navber.php');
 			$this->load->view('admin/admin_admission_main.php');
 			$this->load->view('layout/footer.php');

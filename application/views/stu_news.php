@@ -1,13 +1,9 @@
         <!-- Begin Page Content -->
         <div class="container-fluid mt-6">
+      
+            <h3 class="bs-callout bs-callout-primary">รับสมัครนักเรียนเฉพาะชั้นมัธยมศึกษาปีที่ 3 ที่จะศึกษาต่อชั้นมัธยมศึกษาปีที่ 4</h3>
+            <iframe style="width: 100%;height: 100vh;" src="<?=base_url('uploads/recruitstudent/กำหนดการรับนักเรียน2564ม.4.pdf');?>"></iframe>
 
-            <!-- Page Heading -->
-            <div class="d-sm-flex align-items-center justify-content-center mb-4">
-                <h1 class="news-titel mb-0 text-gray-800 text-center">
-                รับสมัครนักเรียนโรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์ 
-                    </h1>
-            </div>
-            <hr>
             
             <style>
             .bs-callout {

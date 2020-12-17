@@ -28,11 +28,11 @@
                                             <div class="invalid-feedback">
                                                 ระบุเลขประจำตัวประชาชน 13 หลัก
                                             </div>
-                                            <input type="text" class="form-control mb-2" placeholder="วันเดือนปีเกิด (05-07-2534)" data-inputmask="'mask': '99-99-9999'"
+                                            <!-- <input type="text" class="form-control mb-2" placeholder="วันเดือนปีเกิด (05-07-2534)" data-inputmask="'mask': '99-99-9999'"
                                                 required>
                                                 <div class="invalid-feedback">
                                                 ระบุวันเดือนปีเกิด
-                                            </div>
+                                            </div> -->
                                             <!--end of col-->
                                             <div id="html_element" data-callback="onHuman"></div>
                                             <INPUT type="hidden" id="captcha" name="captcha" value="">

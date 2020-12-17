@@ -114,6 +114,11 @@
             <span>จัดการข้อมูลสมัครเรียน</span></a>
     </li>
     <li class="nav-item ">
+        <a class="nav-link" href="<?=base_url('admin/news')?>">
+            <i class="fas fa-edit"></i>
+            <span>จัดการประชาสัมพันธ์</span></a>
+    </li>
+    <li class="nav-item ">
         <a class="nav-link" href="#">
             <i class="fas fa-window-close"></i>
             <span style="float: none;">เปิดปิดรับสมัคร

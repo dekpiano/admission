@@ -1,87 +1,86 @@
+</div>
+<!-- End of Content Wrapper -->
 
-      </div>
-      <!-- End of Content Wrapper -->
+</div>
+<!-- End of Page Wrapper -->
 
-      </div>
-      <!-- End of Page Wrapper -->
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
 
-      <!-- Scroll to Top Button-->
-      <a class="scroll-to-top rounded" href="#page-top">
-          <i class="fas fa-angle-up"></i>
-      </a>
+<!-- Modal Login -->
+<div id="myLogin" class="modal fade">
+    <div class="modal-dialog modal-login">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">เข้าสู่ระบบ <?php print_r($checkYear[0]->openyear_year); ?></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="<?=base_url('Control_login/validlogin');?>" method="post">
+                    <input type="text" class="form-control d-none" name="openyear_year" placeholder="Username"
+                        required="required" value="<?=$checkYear[0]->openyear_year?>">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" name="username" placeholder="Username"
+                                required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                            <input type="password" class="form-control" name="password" placeholder="Password"
+                                required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">Sign In</button>
+                    </div>
 
-      <!-- Modal Login -->
-      <div id="myLogin" class="modal fade">
-          <div class="modal-dialog modal-login">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <h4 class="modal-title">เข้าสู่ระบบ <?php print_r($checkYear[0]->openyear_year); ?></h4>
-                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  </div>
-                  <div class="modal-body">
-                      <form action="<?=base_url('Control_login/validlogin');?>" method="post">
-                      <input type="text" class="form-control d-none" name="openyear_year" placeholder="Username"
-                                      required="required" value="<?=$checkYear[0]->openyear_year?>" >
-                          <div class="form-group">
-                              <div class="input-group">
-                                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                  <input type="text" class="form-control" name="username" placeholder="Username"
-                                      required="required">
-                              </div>
-                          </div>
-                          <div class="form-group">
-                              <div class="input-group">
-                                  <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                  <input type="password" class="form-control" name="password" placeholder="Password"
-                                      required="required">
-                              </div>
-                          </div>
-                          <div class="form-group">
-                              <button type="submit" class="btn btn-primary btn-block btn-lg">Sign In</button>
-                          </div>
+                </form>
+            </div>
 
-                      </form>
-                  </div>
+        </div>
+    </div>
+</div>
 
-              </div>
-          </div>
-      </div>
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">ออกจากระบบ?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">ต้องการออกจากระบบหรือไม่ !</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="<?=base_url('control_login/logout');?>">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
 
-      <!-- Logout Modal-->
-      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-          aria-hidden="true">
-          <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">ออกจากระบบ?</h5>
-                      <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">×</span>
-                      </button>
-                  </div>
-                  <div class="modal-body">ต้องการออกจากระบบหรือไม่ !</div>
-                  <div class="modal-footer">
-                      <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                      <a class="btn btn-primary" href="<?=base_url('control_login/logout');?>">Logout</a>
-                  </div>
-              </div>
-          </div>
-      </div>
+<!-- Bootstrap core JavaScript-->
+<script src="<?=base_url();?>asset/vendor/jquery/jquery.min.js"></script>
+<script src="<?=base_url();?>asset/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-      <!-- Bootstrap core JavaScript-->
-      <script src="<?=base_url();?>asset/vendor/jquery/jquery.min.js"></script>
-      <script src="<?=base_url();?>asset/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="<?=base_url();?>asset/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-      <!-- Core plugin JavaScript-->
-      <script src="<?=base_url();?>asset/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="<?=base_url();?>asset/js/sb-admin-2.min.js"></script>
 
-      <!-- Custom scripts for all pages-->
-      <script src="<?=base_url();?>asset/js/sb-admin-2.min.js"></script>
+<script src="<?=base_url();?>asset/js/jquery-ui.js?v=1000"></script>
 
-      <script src="<?=base_url();?>asset/js/jquery-ui.js?v=1000"></script>
-
-      <!-- Page level plugins -->
-      <script src="<?=base_url();?>asset/vendor/chart.js/Chart.min.js"></script>
-      <script type="text/javascript">
+<!-- Page level plugins -->
+<script src="<?=base_url();?>asset/vendor/chart.js/Chart.min.js"></script>
+<script type="text/javascript">
 var Tawk_API = Tawk_API || {},
     Tawk_LoadStart = new Date();
 (function() {
@@ -94,50 +93,52 @@ var Tawk_API = Tawk_API || {},
     s0.parentNode.insertBefore(s1, s0);
 })();
 $('[data-toggle="tooltip"]').tooltip();
-      </script>
+</script>
 
-      <!-- Page level plugins -->
-      <script src="<?=base_url();?>asset/vendor/datatables/jquery.dataTables.min.js"></script>
-      <script src="<?=base_url();?>asset/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-      <script src="<?=base_url();?>asset/vendor/datatables/dataTables.buttons.min.js"></script>
-      <script src="<?=base_url();?>asset/vendor/datatables/jszip.min.js"></script>
-      <script src="<?=base_url();?>asset/vendor/datatables/pdfmake.min.js"></script>
-      <script src="<?=base_url();?>asset/vendor/datatables/vfs_fonts.js"></script>
-      <script src="<?=base_url();?>asset/vendor/datatables/buttons.html5.min.js"></script>
-      <script src="<?=base_url();?>asset/vendor/counterup/counterup.min.js"></script>
-      <!-- Page level custom scripts -->
-      <script src="<?=base_url();?>asset/js/demo/datatables-demo.js?v=1001"></script>
-      <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
-      <script src="<?=base_url();?>asset/vendor/sweetalert.min.js"></script>
-      <script src="<?=base_url()?>asset/js/passtrength.js"></script>
-      <script src="<?=base_url()?>asset/js/confirmPassword.js"></script>
-      <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
-      </script>
-      <script src="https://cdn.tiny.cloud/1/y6b2omlkddg6mbwjuwhrf96ufg0wjfhrf5xw1xes3o6oahi4/tinymce/5/tinymce.min.js"
-          referrerpolicy="origin"></script>
-          <script src="<?=base_url()?>asset/js/AutoProvince.js"></script>
-      <script src="<?=base_url()?>asset/js/js.js?v=1000"></script>
-      <?php  if(isset($alert_verify) && $alert_verify[0] == 1):?>
-      <script>
+<!-- Page level plugins -->
+<script src="<?=base_url();?>asset/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="<?=base_url();?>asset/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="<?=base_url();?>asset/vendor/datatables/dataTables.buttons.min.js"></script>
+<script src="<?=base_url();?>asset/vendor/datatables/jszip.min.js"></script>
+<script src="<?=base_url();?>asset/vendor/datatables/pdfmake.min.js"></script>
+<script src="<?=base_url();?>asset/vendor/datatables/vfs_fonts.js"></script>
+<script src="<?=base_url();?>asset/vendor/datatables/buttons.html5.min.js"></script>
+<script src="<?=base_url();?>asset/vendor/counterup/counterup.min.js"></script>
+<!-- Page level custom scripts -->
+<script src="//cdn.ckeditor.com/4.15.1/full/ckeditor.js"></script>
+
+<script src="<?=base_url();?>asset/js/demo/datatables-demo.js?v=1001"></script>
+<script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
+<script src="<?=base_url();?>asset/vendor/sweetalert.min.js"></script>
+<script src="<?=base_url()?>asset/js/passtrength.js"></script>
+<script src="<?=base_url()?>asset/js/confirmPassword.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
+</script>
+<script src="https://cdn.tiny.cloud/1/y6b2omlkddg6mbwjuwhrf96ufg0wjfhrf5xw1xes3o6oahi4/tinymce/5/tinymce.min.js"
+    referrerpolicy="origin"></script>
+<script src="<?=base_url()?>asset/js/AutoProvince.js"></script>
+<script src="<?=base_url()?>asset/js/js.js?v=1000"></script>
+<?php  if(isset($alert_verify) && $alert_verify[0] == 1):?>
+<script>
 swal("แจ้งเตือน", "<?=$alert_verify[1];?>", "<?=$alert_verify[2];?>");
-      </script>
-      <?php endif; ?>
-      <?php  if($this->session->flashdata('msg') == 'NO' ):?>
-      <script>
+</script>
+<?php endif; ?>
+<?php  if($this->session->flashdata('msg') == 'NO' ):?>
+<script>
 swal("แจ้งเตือน", "<?=$this->session->flashdata('messge');?>", "error");
-      </script>
-      <?php elseif($this->session->flashdata('msg') == 'Yes'):?>
-        <script>
+</script>
+<?php elseif($this->session->flashdata('msg') == 'Yes'):?>
+<script>
 swal("แจ้งเตือน", "<?=$this->session->flashdata('messge');?>", "success");
-      </script>
-      <?php endif; ?>
+</script>
+<?php endif; ?>
 
-      </body>
-      <?php if($this->uri->segment(1) != 'welcome' || $this->uri->segment(1) != 'RegStudent') {
+</body>
+<?php if($this->uri->segment(1) != 'welcome' || $this->uri->segment(1) != 'RegStudent') {
             $this->load->view('admin/chart/report_bar.php'); 
       }
        ?>
-      <script type="text/javascript">
+<script type="text/javascript">
 function onHuman(response) {
     document.getElementById('captcha').value = response;
 }
@@ -244,8 +245,8 @@ $(document).ready(function() {
         }
     });
 });
-      </script>
-      <script type="text/javascript">
+</script>
+<script type="text/javascript">
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -261,23 +262,23 @@ function readURL(input) {
 $("#banner_img").change(function() {
     readURL(this);
 });
-      </script>
+</script>
 
 
-      <?php if($this->session->flashdata('msg') == 'ok'): ?>
-      <script type="text/javascript">
+<?php if($this->session->flashdata('msg') == 'ok'): ?>
+<script type="text/javascript">
 swal("สำเร็จ!", "<?=$this->session->flashdata('messge')?>", "success");
-      </script>
-      <?php endif; ?>
-      <?php if($this->session->flashdata('msg_uploadfile') == 'on'): ?>
-      <script type="text/javascript">
+</script>
+<?php endif; ?>
+<?php if($this->session->flashdata('msg_uploadfile') == 'on'): ?>
+<script type="text/javascript">
 swal("ผิดพลาด!", "<?=$this->session->flashdata('messge')?>", "error");
-      </script>
-      <?php endif; ?>
+</script>
+<?php endif; ?>
 
-      </html>
+</html>
 
-      <script>
+<script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
     'use strict';
@@ -301,13 +302,14 @@ swal("ผิดพลาด!", "<?=$this->session->flashdata('messge')?>", "erro
 })();
 
 $('body').AutoProvince({
-            PROVINCE: '#province', // select div สำหรับรายชื่อจังหวัด
-            AMPHUR: '#amphur', // select div สำหรับรายชื่ออำเภอ
-            DISTRICT: '#district', // select div สำหรับรายชื่อตำบล
-            POSTCODE: '#postcode', // input field สำหรับรายชื่อรหัสไปรษณีย์
-            CURRENT_PROVINCE:1, //  แสดงค่าเริ่มต้น ใส่ไอดีจังหวัดที่เคยเลือกไว้
-            CURRENT_AMPHUR:1, // แสดงค่าเริ่มต้น  ใส่ไอดีอำเภอที่เคยเลือกไว้
-            CURRENT_DISTRICT:1, // แสดงค่าเริ่มต้น  ใส่ไอดีตำบลที่เคยเลือกไว้
-		    arrangeByName:		false // กำหนดให้เรียงตามตัวอักษร
-	});
-      </script>
+    PROVINCE: '#province', // select div สำหรับรายชื่อจังหวัด
+    AMPHUR: '#amphur', // select div สำหรับรายชื่ออำเภอ
+    DISTRICT: '#district', // select div สำหรับรายชื่อตำบล
+    POSTCODE: '#postcode', // input field สำหรับรายชื่อรหัสไปรษณีย์
+    CURRENT_PROVINCE: 1, //  แสดงค่าเริ่มต้น ใส่ไอดีจังหวัดที่เคยเลือกไว้
+    CURRENT_AMPHUR: 1, // แสดงค่าเริ่มต้น  ใส่ไอดีอำเภอที่เคยเลือกไว้
+    CURRENT_DISTRICT: 1, // แสดงค่าเริ่มต้น  ใส่ไอดีตำบลที่เคยเลือกไว้
+    arrangeByName: false // กำหนดให้เรียงตามตัวอักษร
+});
+
+</script>
