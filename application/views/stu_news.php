@@ -1,7 +1,7 @@
         <!-- Begin Page Content -->
         <div class="container-fluid mt-6">
       
-            <h3 class="bs-callout bs-callout-primary">รับสมัครนักเรียนเฉพาะชั้นมัธยมศึกษาปีที่ 3 ที่จะศึกษาต่อชั้นมัธยมศึกษาปีที่ 4</h3>
+            <h3 class="bs-callout bs-callout-primary">รับสมัครนักเรียนเฉพาะชั้นมัธยมศึกษาปีที่ 3 จากโรงเรียนเดิม ที่จะศึกษาต่อชั้นมัธยมศึกษาปีที่ 4</h3>
             <iframe style="width: 100%;height: 100vh;" src="<?=base_url('uploads/recruitstudent/กำหนดการรับนักเรียน2564ม.4.pdf');?>"></iframe>
 
             

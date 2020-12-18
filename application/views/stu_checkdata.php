@@ -21,7 +21,7 @@
                                        
                                     </div>
                                     <div class="col-md-8 col-12">
-                                        <form class="form-signin needs-validation" novalidate="" method="post" action="<?=base_url('checkRegister/dataStudent?a=3')?>" >
+                                        <form class="form-signin needs-validation" novalidate="" method="post" action="<?=base_url('checkRegister/dataStudent')?>" >
                                             <input type="text" class="form-control mb-2"
                                                 placeholder="เลขประจำตัวประชาชน" required
                                                 data-inputmask="'mask': '9-9999-99999-99-9'" name="search_stu">

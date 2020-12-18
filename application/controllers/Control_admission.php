@@ -267,26 +267,18 @@ setTimeout(function() {
 		$status = $this->recaptcha_google($this->input->post('captcha')); 
         if ($status['success']) {
 			
+			
 			$data['chk_stu'] = $this->db->where('recruit_idCard',$this->input->post('search_stu'))->get('tb_recruitstudent')->result();
 				if (count($data['chk_stu']) <= 0 ) {
-					$data['alert_verify'] = array('1','ไม่มีข้อมูลในระบบ หรือ ยังไม่ได้ลงทะเบียนเรียน','warning');
-					$this->load->view('layout/header.php',$data);
-					$this->load->view('layout/navber.php');
-					$this->load->view('stu_checkdata.php');
-					$this->load->view('layout/footer.php');
-					}else{						
-						$this->load->view('layout/header.php',$data);
-						$this->load->view('layout/navber.php');
-						$this->load->view('stu_dataStudent.php');
-						$this->load->view('layout/footer.php');
+					$this->session->set_flashdata(array('alert1' => 'success','msg'=> 'NO','messge' => 'ไม่มีข้อมูลในระบบ หรือ ยังไม่ได้ลงทะเบียนเรียน'));	
+					redirect('StudentLogin');
+					}else{			
+						$this->session->set_userdata(array('IDstudent'=>$data['chk_stu'][0]->recruit_id));			
+						redirect('StudentData');
 					}	
         }else{
-			$data['alert_verify'] = array('1','ยืนยันฉันไม่ใช่โปรแกรมอัตโนมัติ','warning');
-			$data['search_stu'] = $this->input->post('search_stu');
-			$this->load->view('layout/header.php',$data);
-			$this->load->view('layout/navber.php');
-			$this->load->view('stu_checkdata.php');
-			$this->load->view('layout/footer.php');
+			// $this->session->set_flashdata(array('alert1' => 'warning','msg'=> 'NO','messge' => 'ยืนยันฉันไม่ใช่โปรแกรมอัตโนมัติ'));	
+			redirect('StudentLogin');
         }
 	}
 
@@ -389,7 +381,7 @@ setTimeout(function() {
 				$token = "E9GFruPeXW6Mogn156Pllr1D8wWiY69BHfpKzLHBxcj"; 
 				$str = "มีนักเรียนแก้ไขข้อมูล\n".'ตรวจสอบ : '.base_url('admin/recruitstudent');		
 				$res = $this->notify_message($str,$token);
-			redirect('checkRegister?a=3');	
+			redirect('checkRegister');	
 		}else{
 			$data = $this->dataAll();
 			$data['title'] = 'ตรวจสอบและแก้ไขข้อมูล';

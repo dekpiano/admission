@@ -39,4 +39,13 @@ class Model_login extends CI_Model
 		return $query->row();
 	}
 
+
+	public function Student_Login($username,$password)
+	{
+		$this->db->where('recruit_idCard',$username);
+		$this->db->where('recruit_birthday',$password);
+		$query = $this->db->get('tb_recruitstudent');
+		return $query->row();
+	}
+
 }

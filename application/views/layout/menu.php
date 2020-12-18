@@ -46,7 +46,7 @@
 
 
         <li class="nav-item ">
-            <a class="nav-link" href="<?=base_url('checkRegister')?>">
+            <a class="nav-link" href="<?=base_url('StudentLogin')?>">
                 <i class="fas fa-bullhorn"></i>
                 <span>ประกาศรายชื่อผู้สมัคร<br> 
                 <i class="fas fa-print"></i> พิมพ์ใบสมัครสอบ <br>

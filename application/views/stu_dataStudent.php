@@ -36,6 +36,14 @@ label {
                             action="<?=base_url('control_admission/reg_update/').$stu->recruit_id.'/'.($stu->recruit_img=='' ? '0' : $stu->recruit_img);?>">
                             <input hidden type="text" name="recruit_regLevel" id="recruit_regLevel"
                                 value="<?=(isset($stu)) ? $stu->recruit_regLevel : $this->uri->segment(2);?>">
+                                <div class="col-md-5 mb-3">
+                                    <label for="recruit_firstName">ชื่อผู้สมัคร</label>
+                                    <input type="text" class="form-control" id="recruit_firstName"
+                                        name="recruit_firstName" value="" required>
+                                    <div class="invalid-feedback">
+                                        ระบุชื่อจริง
+                                    </div>
+                                </div>
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="recruit_idCard">เลขประจำตัวประชาชน 13 หลัก</label>

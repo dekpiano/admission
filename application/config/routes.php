@@ -74,3 +74,10 @@ $route['Announce'] = 'control_admission/print_student';
 
 // ติดต่อ
 $route['CloseSystem'] = 'control_login/close_system';
+
+
+//นักเรียน
+$route['StudentLogin'] = 'Control_students/StudentLogin';
+$route['StudentCheckLogin'] = 'Control_students/CheckLogin';
+$route['StudentHome'] = 'Control_students/StudentsHome';
+$route['StudentData'] = 'Control_students/StudentsData';
