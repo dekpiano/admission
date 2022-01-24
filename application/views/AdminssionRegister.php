@@ -393,6 +393,7 @@ label {
                                             for="paypal1">ห้องเรียนความเป็นเลิศด้านการงานอาชีพ
                                             (Career Program) </label>
                                     </div>
+                                    <?php if($TypeQuota[0]->quota_key == "quotasport"):?>
                                     <div class="custom-control custom-radio">
                                         <input id="sport" name="recruit_tpyeRoom" type="radio"
                                             class="custom-control-input"
@@ -400,6 +401,7 @@ label {
                                         <label class="custom-control-label" for="sport">ห้องเรียนความเป็นเลิศด้านกีฬา
                                             (Sport Program)</label>
                                     </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
