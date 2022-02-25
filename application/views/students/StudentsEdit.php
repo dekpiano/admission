@@ -28,7 +28,7 @@ label {
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                             <h6 class="m-0 font-weight-bold text-primary"><?=$title?></h6>
                         </div>
-
+                        
                         <div class="card-body ">
                             <?php $stu = @$chk_stu[0]; ?>
                             <div class="col-md-12 order-md-1">
@@ -327,7 +327,7 @@ label {
                                         <h4>หลักสูตรที่ต้องการศึกษาต่อ </h4>
 
                                         <div class="d-block my-3">
-                                            <?php $AtpyeRoom = array('ห้องเรียนความเป็นเลิศทางด้านวิชาการ (Science Match and Technology Program)','ห้องเรียนความเป็นเลิศทางด้านภาษา (Chinese English Program)','ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ การแสดง (Preforming Art Program)','ห้องเรียนความเป็นเลิศด้านการงานอาชีพ (Career Program)','ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program)' ); 
+                                            <?php $AtpyeRoom = array('ห้องเรียนความเป็นเลิศทางด้านวิชาการ (Science Match and Technology Program)','ห้องเรียนความเป็นเลิศทางด้านภาษา (Chinese English Program)','ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ การแสดง (Preforming Art Program)','ห้องเรียนความเป็นเลิศด้านการงานอาชีพ (Career Program)'); //,'ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program)' 
                                             foreach ($AtpyeRoom as $key => $v_AtpyeRoom) : ?>
                                             <div class="custom-control custom-radio">
                                                 <input <?=$v_AtpyeRoom == $stu->recruit_tpyeRoom ? 'checked' : ''?>

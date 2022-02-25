@@ -1,9 +1,25 @@
 <div class="page-content align-items-stretch">
     <!-- Side Navbar -->
     <div class="container-fluid">
-    <img src="<?=base_url('uploads/banner65-1.png')?>" class="img-fluid" alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน">
+        <a href="https://drive.google.com/file/d/1zeBOmrYsIl7j9YVyRiuKBODbX1Bi3-WX/view" target="_blank" rel="noopener noreferrer">
+            <img src="<?=base_url('uploads/admis65.png')?>" class="img-fluid mb-3"
+                alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน">
+        </a>
+
+        <div class="row mb-3">
+            <div class="col-6">
+                <img src="<?=base_url('uploads/bannersport1.jpg')?>" class="img-fluid"
+                    alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน">
+            </div>
+            <div class="col-6">
+                <img src="<?=base_url('uploads/bannersport2.jpg')?>" class="img-fluid"
+                    alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน">
+            </div>
+        </div>
+
+        <img src="<?=base_url('uploads/banner65-1.png')?>" class="img-fluid" alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน">
         <img src="<?=base_url('uploads/banner65.png')?>" class="img-fluid" alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน">
-        
+
     </div>
 
     <div class="w-100">
@@ -118,7 +134,7 @@
 
                         <div class="row">
                             <?php foreach ($quota as $key => $v_quota) :?>
-                                <?php if($v_quota->quota_status == "on"): ?>
+                            <?php if($v_quota->quota_status == "on"): ?>
                             <div class="col-md-6">
                                 <div class="card" style="border: 2px solid #2b90d9;">
                                     <div class="card-body">

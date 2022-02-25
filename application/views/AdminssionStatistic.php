@@ -3,15 +3,7 @@
 
 
     <div class="w-100">
-        <!-- Page Header-->
-        <!-- <header class="page-header">
-            <div class="container-fluid">
-                <h2 class="no-margin-bottom">
-                    ประชาสัมพันธ์
-                </h2>
-            </div>
-        </header> -->
-        <!-- Dashboard Counts Section-->
+
         <div class="pricing-header px-3 py-3 pt-md-5  mx-auto text-center">
             <h3 class="display-4">สถิติการรับสมัครนักเรียน </h3>
             <p class="lead">ประจำปีการศึกษา <?=$checkYear[0]->openyear_year;?></p>
@@ -71,41 +63,51 @@
         <section class="">
 
             <div class="container-fluid">
-                <div class="card">
-                    <div class="card-header">
-                        ประเภท ทั่วไป
-                    </div>
-                    <div class="card-body">
 
-                        <div class="row ">
-                            <div class="col-lg-6 col-md-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h2>สถิติรายวัน ม.1</h2>
-                                        <div class="table-responsive">
-                                            <table id="" class="table table-bordered T_m1">
-                                                <thead class="bg-primary text-white">
-                                                    <tr>
-                                                        <th>วันที่</th>
-                                                        <th>ด้านวิชาการ</th>
-                                                        <th>ด้านภาษา</th>
-                                                        <th>ด้านดนตรี ศิลปะ การแสดง</th>
-                                                        <th>ด้านกีฬา</th>
-                                                        <th>ด้านการงานอาชีพ</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php 
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse"
+                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    ประเภทโควตา ม.1 และ ม.4
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+
+                                <div class="row ">
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h2>สถิติรายวัน ม.1</h2>
+                                                <div class="table-responsive">
+                                                    <table id="" class="table table-bordered T_m1">
+                                                        <thead class="bg-primary text-white">
+                                                            <tr>
+                                                                <th>วันที่</th>
+                                                                <th>ด้านวิชาการ</th>
+                                                                <th>ด้านภาษา</th>
+                                                                <th>ด้านดนตรี ศิลปะ การแสดง</th>
+                                                                <th>ด้านกีฬา</th>
+                                                                <th>ด้านการงานอาชีพ</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php 
                                 $datat = array('2021-04-24','2021-04-25','2021-04-26','2021-04-27','2021-04-28'); 
                                 
                                 foreach($sel_date as $v_datat) :
                                 ?>
-                                                    <tr>
-                                                        <td style="width:150px">
-                                                            <?=$this->datethai->thai_date_fullmonth(strtotime($v_datat->recruit_date))?>
-                                                        </td>
+                                                            <tr>
+                                                                <td style="width:150px">
+                                                                    <?=$this->datethai->thai_date_fullmonth(strtotime($v_datat->recruit_date))?>
+                                                                </td>
 
-                                                        <?php  $sub11 = 0; $sub12 = 0; $sub13 = 0; $sub14 = 0; $sub15 = 0;
+                                                                <?php  $sub11 = 0; $sub12 = 0; $sub13 = 0; $sub14 = 0; $sub15 = 0;
                                        
                                         foreach($sum_date as $m1) {
                                             
@@ -132,60 +134,60 @@
                                         } 
 
                                         ?>
-                                                        <td><?=$sub11;?></td>
-                                                        <td><?=$sub12;?></td>
-                                                        <td><?=$sub13;?></td>
-                                                        <td><?=$sub14;?></td>
-                                                        <td><?=$sub15;?></td>
+                                                                <td><?=$sub11;?></td>
+                                                                <td><?=$sub12;?></td>
+                                                                <td><?=$sub13;?></td>
+                                                                <td><?=$sub14;?></td>
+                                                                <td><?=$sub15;?></td>
 
-                                                    </tr>
-                                                    <?php endforeach; ?>
+                                                            </tr>
+                                                            <?php endforeach; ?>
 
-                                                </tbody>
-                                                <tfoot class="bg-light">
-                                                    <tr class="font-weight-bold">
-                                                        <td>รวม</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                </tfoot>
-                                            </table>
+                                                        </tbody>
+                                                        <tfoot class="bg-light">
+                                                            <tr class="font-weight-bold">
+                                                                <td>รวม</td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <div class="col-lg-6 col-md-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h2>สถิติรายวัน ม.4</h2>
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered T_m4">
-                                                <thead class="bg-primary text-white">
-                                                    <tr>
-                                                        <th>วันที่</th>
-                                                        <th>ด้านวิชาการ</th>
-                                                        <th>ด้านภาษา</th>
-                                                        <th>ด้านดนตรี ศิลปะ การแสดง</th>
-                                                        <th>ด้านกีฬา</th>
-                                                        <th>ด้านการงานอาชีพ</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php 
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h2>สถิติรายวัน ม.4</h2>
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered T_m4">
+                                                        <thead class="bg-primary text-white">
+                                                            <tr>
+                                                                <th>วันที่</th>
+                                                                <th>ด้านวิชาการ</th>
+                                                                <th>ด้านภาษา</th>
+                                                                <th>ด้านดนตรี ศิลปะ การแสดง</th>
+                                                                <th>ด้านกีฬา</th>
+                                                                <th>ด้านการงานอาชีพ</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php 
                                 $datat = array('2021-04-24','2021-04-25','2021-04-26','2021-04-27','2021-04-28'); 
 
                                 foreach($sel_date as $v_datat) :
                                 ?>
-                                                    <tr>
-                                                        <td style="width:150px">
-                                                            <?=$this->datethai->thai_date_fullmonth(strtotime($v_datat->recruit_date))?>
-                                                        </td>
+                                                            <tr>
+                                                                <td style="width:150px">
+                                                                    <?=$this->datethai->thai_date_fullmonth(strtotime($v_datat->recruit_date))?>
+                                                                </td>
 
-                                                        <?php  $sub11 = 0; $sub12 = 0; $sub13 = 0; $sub14 = 0; $sub15 = 0;
+                                                                <?php  $sub11 = 0; $sub12 = 0; $sub13 = 0; $sub14 = 0; $sub15 = 0;
                                        
                                         foreach($sum_date as $m1) {
                                             
@@ -211,35 +213,69 @@
                                                 }
                                         } 
                                         ?>
-                                                        <td><?=$sub11;?></td>
-                                                        <td><?=$sub12;?></td>
-                                                        <td><?=$sub13;?></td>
-                                                        <td><?=$sub14;?></td>
-                                                        <td><?=$sub15;?></td>
+                                                                <td><?=$sub11;?></td>
+                                                                <td><?=$sub12;?></td>
+                                                                <td><?=$sub13;?></td>
+                                                                <td><?=$sub14;?></td>
+                                                                <td><?=$sub15;?></td>
 
-                                                    </tr>
-                                                    <?php endforeach; ?>
+                                                            </tr>
+                                                            <?php endforeach; ?>
 
-                                                </tbody>
-                                                <tfoot class="bg-light">
-                                                    <tr class="font-weight-bold">
-                                                        <td>รวม</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                </tfoot>
-                                            </table>
+                                                        </tbody>
+                                                        <tfoot class="bg-light">
+                                                            <tr class="font-weight-bold">
+                                                                <td>รวม</td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                    data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    ประเภทโควตา นักกีฬา
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+                               รอรับสมัคร
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                    data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    ประเภทปกติ
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+                            รอรับสมัคร
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
