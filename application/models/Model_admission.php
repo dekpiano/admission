@@ -24,6 +24,32 @@ class Model_admission extends CI_Model
 		return 	$this->db->delete('tb_recruitstudent');
 	}
 
+	public function getSchool($postData){
+		$db_schollall = $this->load->database('schoolall', TRUE);
+
+		$response = array();
+   
+		if(isset($postData['search']) ){
+		  // Select record
+		 $db_schollall->select('schoola_province,schoola_amphur,schoola_name,schoola_id');
+		 $db_schollall->where("schoola_name like '%".$postData['search']."%' ");
+   
+		  $records = $db_schollall->get('schoolall')->result();
+   
+		  foreach($records as $row ){
+			 $response[] = array(
+				 "value"=>$row->schoola_id,
+				 "label"=>$row->schoola_name,
+				 "amphur"=>$row->schoola_amphur,
+				 "province"=>$row->schoola_province,
+				);
+		  }
+   
+		}
+   
+		return $response;
+	 }
+
 	
 
 }

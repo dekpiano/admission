@@ -56,28 +56,35 @@ $route['translate_uri_dashes'] = FALSE;
 $route['login'] = 'control_login/login_main';
 
 
+// Main
+$route['Statistic/(:any)'] = 'welcome/AllStatistic/$1';
+
+$route['RegStudent/(:num)/(:any)'] = 'control_admission/reg_student/$1/$2';
+
+//นักเรียน
+$route['StudentLogin'] = 'Control_students/StudentLogin';
+$route['StudentCheckLogin'] = 'Control_login/CheckLogin';
+$route['StudentHome'] = 'Control_students/StudentsHome';
+$route['StudentsEdit'] = 'Control_students/StudentsEdit';
+$route['StudentsStatus'] = 'Control_students/StudentsStatus';
+
+$route['Students/Logout'] = 'Control_students/logoutStudent';
+$route['Students/Print'] = 'Control_students/PDFForStudent';
+
+
+//admin
+$route['AdminHome'] = 'admin/Control_admin_admission';
+$route['admin/system/(:any)'] = 'admin/Control_admin_admission/AdminSystem';
+$route['admin/checkData/(:any)'] = 'admin/Control_admin_admission/edit_recruitstudent/$1';
+$route['admin/Print/(:any)'] = 'admin/Control_admin_admission/PagePrint';
+$route['admin/Print/(:any)/(:any)/(:num)'] = 'admin/Control_admin_admission/pdf_type_all/$1/$2/$3';
+
 $route['admin/admission/(:num)'] = 'admin/control_admin_admission/index/$1';
 $route['admin/admission/add'] = 'admin/control_admin_admission/add';
+
+$route['admin/Statistic/(:any)'] = 'admin/control_admin_admission/statistic_student/$1';
 
 $route['admin/news'] = 'admin/control_admin_news';
 $route['admin/news/add'] = 'admin/control_admin_news/add';
 
-// [[รับสมัครนักเรียน]]
-$route['RegStudent'] = 'control_recruitstudent';
-$route['selectlevel'] = 'control_admission/select_level';
-$route['RegStudent/welcome/(:any)'] = 'control_admission/welcome_student/$1';
-$route['checkRegister'] = 'control_admission/checkdata_student';
-$route['RegStudent/(:any)'] = 'control_admission/reg_student/$1';
-$route['checkRegister/dataStudent'] = 'control_admission/data_user';
-$route['CloseStudent'] = 'control_recruitstudent/close_student';
-$route['Announce'] = 'control_admission/print_student';
-
-// ติดต่อ
-$route['CloseSystem'] = 'control_login/close_system';
-
-
-//นักเรียน
-$route['StudentLogin'] = 'Control_students/StudentLogin';
-$route['StudentCheckLogin'] = 'Control_students/CheckLogin';
-$route['StudentHome'] = 'Control_students/StudentsHome';
-$route['StudentData'] = 'Control_students/StudentsData';
+$route['admin/logout'] = 'admin/Control_admin_admission/logout';

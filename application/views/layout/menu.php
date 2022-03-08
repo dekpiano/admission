@@ -1,4 +1,4 @@
-<ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion d-none d-md-block" id="accordionSidebar"
+<ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion d-none d-md-block " id="accordionSidebar"
     style="font-weight: 800;">
 
     <!-- Sidebar - Brand -->
@@ -215,7 +215,7 @@
                         <span style="float: none;">เปิดปิดรับสมัคร
                             <div class="switchToggle float-right">
                                 <input type="checkbox" id="switch" valun="<?=$switch[0]->onoff_regis?>"
-                                    <?=$switch[0]->onoff_regis == "on" ? 'checked' : '' ?>>
+                                    <?=$switch[0]->onoff_regis == "on" ? 'checked' : '' ?> >
                                 <label for="switch">Toggle</label>
                             </div>
                         </span>

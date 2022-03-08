@@ -15,7 +15,7 @@
     - Structure schemas
     -->
     <pma:structure_schemas>
-        <pma:database name="thailand" collation="utf8_general_ci" charset="utf8">
+        <pma:database name="skjacth_thailandpa" collation="utf8_general_ci" charset="utf8">
             <pma:table name="amphur">
                 CREATE TABLE `amphur` (
                   `AMPHUR_ID` int(5) NOT NULL AUTO_INCREMENT,
@@ -58,9 +58,9 @@
     </pma:structure_schemas>
 
     <!--
-    - Database: 'thailand'
+    - Database: 'skjacth_thailandpa'
     -->
-    <database name="thailand">
+    <database name="skjacth_thailandpa">
         <!-- Table amphur -->
         <table name="amphur">
             <column name="AMPHUR_ID">1</column>
