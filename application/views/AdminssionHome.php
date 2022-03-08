@@ -1,12 +1,70 @@
+<style>
+#timer div {
+    background-color: #000000;
+    color: #ffffff;
+    width: 100px;
+    height: 105px;
+    border-radius: 5px;
+    font-size: 35px;
+    font-weight: 700;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#timer div span {
+    display: block;
+    margin-top: -2px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.timer-header {
+    font-size: 2.6rem;
+}
+
+@media only screen and (max-width: 767px) {
+    #timer {
+        margin-top: -20px;
+    }
+
+    #timer div {
+        width: 95px;
+        height: 100px;
+        font-size: 32px;
+        margin-top: 20px;
+    }
+
+    #timer div span {
+        font-size: 14px;
+    }
+}
+</style>
 <div class="page-content align-items-stretch">
     <!-- Side Navbar -->
     <div class="container-fluid">
-        <a href="https://drive.google.com/file/d/1zeBOmrYsIl7j9YVyRiuKBODbX1Bi3-WX/view" target="_blank" rel="noopener noreferrer">
+        <div class="text-center mt-3 mb-3">
+            <span class="border border-primary p-3">
+                <h2 class="timer-header">ระบบรับสมัครนักเรียนภาคปกติ ม.1 และ ม.4 ปีการศึกษา 2565 <br> จะเปิดในอีก...</h2>
+
+                <div id="timer" class="flex-wrap d-flex justify-content-center">
+                    <div id="days" class="align-items-center flex-column d-flex justify-content-center"></div>
+                    <div id="hours" class="align-items-center flex-column d-flex justify-content-center"></div>
+                    <div id="minutes" class="align-items-center flex-column d-flex justify-content-center"></div>
+                    <div id="seconds" class="align-items-center flex-column d-flex justify-content-center"></div>
+                </div>
+            </span>
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+        <a href="https://drive.google.com/file/d/1zeBOmrYsIl7j9YVyRiuKBODbX1Bi3-WX/view" target="_blank"
+            rel="noopener noreferrer">
             <img src="<?=base_url('uploads/admis65.png')?>" class="img-fluid mb-3"
                 alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน">
         </a>
 
-        <div class="row mb-3">
+        <!-- <div class="row mb-3">
             <div class="col-6">
                 <img src="<?=base_url('uploads/bannersport1.jpg')?>" class="img-fluid"
                     alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน">
@@ -18,7 +76,7 @@
         </div>
 
         <img src="<?=base_url('uploads/banner65-1.png')?>" class="img-fluid" alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน">
-        <img src="<?=base_url('uploads/banner65.png')?>" class="img-fluid" alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน">
+        <img src="<?=base_url('uploads/banner65.png')?>" class="img-fluid" alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน"> -->
 
     </div>
 
@@ -139,10 +197,13 @@
                                 <div class="card" style="border: 2px solid #2b90d9;">
                                     <div class="card-body">
                                         <h5 class="card-title"><?=$v_quota->quota_explain?></h5>
+                                        <?php if($v_quota->quota_key == "quotasport"):?>
+                                            <h6 class="card-title text-danger">(เฉพาะนักเรียนที่ผ่านการคัดตัวเท่านั้น)</h6>
+                                            <?php endif; ?>
                                         <?php  $q = explode("|",$v_quota->quota_level);
                                         foreach ($q as $key => $v_q) : ?>
                                         <a href="<?=base_url('RegStudent/'.$v_q.'/'.$v_quota->quota_key);?>"
-                                            class="btn btn-primary">สมัครเรียน ม.<?=$v_q;?></a>
+                                            class="btn btn-primary mb-1">สมัครเรียน ม.<?=$v_q;?></a>
                                         <?php endforeach; ?>
                                     </div>
                                 </div>

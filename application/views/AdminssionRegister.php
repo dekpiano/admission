@@ -3,6 +3,26 @@ label {
     font-weight: 800;
     color: #000;
 }
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    background: red;
+    cursor: inherit;
+    display: block;
+}
 </style>
 
 <!-- Page Header-->
@@ -45,6 +65,36 @@ label {
 
                             <!-- Card Body -->
                             <div class="card-body">
+                                <div class="row justify-content-center">
+                                    <div class="mb-3 col-md-4" style="text-align: -webkit-center;">                                        
+                                        <div class="fileinput-new img-thumbnail" style="width: 180px; height: 200px;overflow: hidden;">
+
+                                            <img id="blah" class="img-fluid"  src="https://us.123rf.com/450wm/happyvector071/happyvector0711904/happyvector071190415714/121105442-creative-illustration-of-default-avatar-profile-placeholder-isolated-on-background-art-design-grey-p.jpg?ver=6" alt="">
+                                           
+                                        </div>
+                                        <span class="file-input btn btn-primary btn-file mt-2"> เลือกรูปภาพ
+                                            <input type="file" id="recruit_img" name="recruit_img" required>
+                                        </span>
+                                        <div class="invalid-feedback">
+                                                อัพโหลดรูปภาพ
+                                            </div>
+                                    </div>
+                                    <div class="mb-3 col-md-4">
+                                        <h2>ลักษณะของรูปถ่ายที่จะนำมาใช้งาน :</h2>
+                                        <ul>
+                                            <li>สวมเครื่องแบบนักเรียน</li>
+                                            <li>ยืนตัวตรงหน้าตรงไม่มีท่าทาง ครึ่งตัว (แนวตั้ง)</li>
+                                            <li>ไม่สวมหมวก ไม่ใส่แว่นตาดำ ถ่ายไว้ไม่เกิน 6 เดือน</li>
+                                            <li>นักเรียนหญิงมัดผมให้เรียบร้อยผมไม่ปิดหน้าผาก นักเรียนชายผมสั้น</li>
+                                            <li>นามสกุลภาพที่ใช้งานได้ .JPEG .PNG เท่านั้น (ใช้โทรศัพท์ถ่ายได้)</li>
+                                        </ul>
+                                        <label for="recruit_img">อัพโหลดรูปถ่าย (รูปถ่ายหน้าตรงชุดนักเรียน) <a href="#"
+                                                data-toggle="tooltip" data-placement="top" data-html="true"
+                                                title="<img class='img-fluid' src=&quot;<?=base_url('uploads/recruitstudent/Eximg.jpg')?>&quot;>">ตัวอย่างรูปที่ถูกต้อง</a>
+                                            <span class="text-red">*</span> </label>
+                                    </div>
+                                </div>
+                                <hr>
                                 <div class="row ">
                                     <div class="col-md-8 mb-3 col-lg-2 ">
                                         <label for="recruit_idCard">ประจำปีการศึกษา <span class="text-red">*</span>
@@ -53,7 +103,7 @@ label {
                                             value="<?=$checkYear[0]->openyear_year;?>" readonly>
 
                                     </div>
-                                    <div class="col-md-4 mb-3 col-lg-6">
+                                    <div class="col-md-4 mb-3 col-lg-2">
                                         <label for="">ประเภทสมัครเรียน <span class="text-red">*</span> </label>
                                         <input type="text" class="form-control"
                                             value="<?=$TypeQuota[0]->quota_explain;?>" readonly>
@@ -184,18 +234,7 @@ label {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-4">
-                                    <label for="recruit_img">อัพโหลดรูปถ่าย (รูปถ่ายหน้าตรงชุดนักเรียน) <a href="#"
-                                            data-toggle="tooltip" data-placement="top" data-html="true"
-                                            title="<img class='img-fluid' src=&quot;<?=base_url('uploads/recruitstudent/Eximg.jpg')?>&quot;>">ตัวอย่างรูปที่ถูกต้อง</a>
-                                        <span class="text-red">*</span> </label>
-                                    <input type="file" class="form-control" id="recruit_img" name="recruit_img"
-                                        required>
-                                    <img id="blah" class="img-fluid" src="# " alt="">
-                                    <div class="invalid-feedback">
-                                        อัพโหลดรูปภาพ
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
 
@@ -203,7 +242,7 @@ label {
                         <div class="card shadow mb-4">
                             <!-- Card Header - Dropdown -->
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">ที่อยู่ตามทะเบียนบ้าน</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">ข้อมูลที่อยู่ตามทะเบียนบ้าน</h6>
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
@@ -300,7 +339,7 @@ label {
                         <div class="card shadow mb-4">
                             <!-- Card Header - Dropdown -->
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">จบจากโรงเรียน</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">ข้อมูลการจบจากโรงเรียน</h6>
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
@@ -339,9 +378,9 @@ label {
                                 <div class="row">
                                     <div class="col-md-3 mb-3">
                                         <label for="recruit_grade">เกรดเฉลี่ย <span class="text-red">*</span> </label>
-                                        <input type="text" class="form-control" id="recruit_grade"
-                                            name="recruit_grade" placeholder required data-toggle="tooltip"
-                                            data-placement="top" title="ระบุเกรดเฉลี่ย ในใบ ปพ.1">
+                                        <input type="text" class="form-control" id="recruit_grade" name="recruit_grade"
+                                            placeholder required data-toggle="tooltip" data-placement="top"
+                                            title="ระบุเกรดเฉลี่ย ในใบ ปพ.1">
                                         <div class="invalid-feedback">
                                             ระบุเกรดเฉลี่ย ในใบ ปพ.1
                                         </div>
@@ -359,6 +398,8 @@ label {
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="d-block my-3">
+                                    <?php if($TypeQuota[0]->quota_key == "normal"):?>
+
                                     <div class="custom-control custom-radio">
                                         <input id="credit" name="recruit_tpyeRoom" type="radio"
                                             class="custom-control-input"
@@ -393,6 +434,7 @@ label {
                                             for="paypal1">ห้องเรียนความเป็นเลิศด้านการงานอาชีพ
                                             (Career Program) </label>
                                     </div>
+                                    <?php endif; ?>
                                     <?php if($TypeQuota[0]->quota_key == "quotasport"):?>
                                     <div class="custom-control custom-radio">
                                         <input id="sport" name="recruit_tpyeRoom" type="radio"
@@ -402,6 +444,7 @@ label {
                                             (Sport Program)</label>
                                     </div>
                                     <?php endif; ?>
+
                                 </div>
                             </div>
                         </div>
