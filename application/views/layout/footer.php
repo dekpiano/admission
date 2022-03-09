@@ -73,8 +73,11 @@
          <script src="<?=base_url();?>asset/js/front.js"></script>
          <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
          </script>
+        <!-- DataTable-->
+        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
 
-         <script src="<?=base_url()?>asset/js/AutoProvince.js?v=3"></script>
+        <script src="<?=base_url()?>asset/js/AutoProvince.js?v=3"></script>
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.5/dist/sweetalert2.all.min.js"></script>
          <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=2"></script>
@@ -162,23 +165,52 @@ $('body').AutoProvince({
 
 $('.T_m1 thead th').each(function(i) {
     var total = 0;
-            $('.T_m1 tr').each(function() {
-                var value = parseInt($('td', this).eq(i+1).text());
-                if (!isNaN(value)) {
-                    total += value;
-                }
-            });
-            $('.T_m1 tfoot td').eq(i+1).text(total);
+    $('.T_m1 tr').each(function() {
+        var value = parseInt($('td', this).eq(i + 1).text());
+        if (!isNaN(value)) {
+            total += value;
+        }
+    });
+    $('.T_m1 tfoot td').eq(i + 1).text(total);
 });
 
 $('.T_m4 thead th').each(function(i) {
     var total = 0;
-            $('.T_m4 tr').each(function() {
-                var value = parseInt($('td', this).eq(i+1).text());
-                if (!isNaN(value)) {
-                    total += value;
-                }
-            });
-            $('.T_m4 tfoot td').eq(i+1).text(total);
+    $('.T_m4 tr').each(function() {
+        var value = parseInt($('td', this).eq(i + 1).text());
+        if (!isNaN(value)) {
+            total += value;
+        }
+    });
+    $('.T_m4 tfoot td').eq(i + 1).text(total);
 });
+
+$('.T_m1_N thead th').each(function(i) {
+    var total = 0;
+    $('.T_m1_N tr').each(function() {
+        var value = parseInt($('td', this).eq(i + 1).text());
+        if (!isNaN(value)) {
+            total += value;
+        }
+    });
+    $('.T_m1_N tfoot td').eq(i + 1).text(total);
+});
+
+$('.T_m4_N thead th').each(function(i) {
+    var total = 0;
+    $('.T_m4_N tr').each(function() {
+        var value = parseInt($('td', this).eq(i + 1).text());
+        if (!isNaN(value)) {
+            total += value;
+        }
+    });
+    $('.T_m4_N tfoot td').eq(i + 1).text(total);
+});
+
+$(document).ready(function() {
+    $('#example').DataTable({
+        "order": [[ 0, "desc" ]] 
+    });
+} );
+
          </script>

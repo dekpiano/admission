@@ -32,6 +32,11 @@ class Welcome extends CI_Controller {
 		$data['banner'] = base_url()."uploads/banner65-1.png";
 		$data['url'] = "welcome";
 
+		$data['regis'] = $this->db->select('recruit_id,recruit_prefix,recruit_firstName,recruit_lastName,recruit_regLevel,recruit_tpyeRoom,recruit_date,recruit_year,recruit_category,recruit_status')->from('tb_recruitstudent')->order_by('recruit_id','DESC')->get()->result();
+
+		//echo "<pre>"; print_r($data['regis']); exit();
+
+
 		$this->load->view('layout/header.php',$data);
 		$this->load->view('layout/menu_top.php');
 		$this->load->view('AdminssionHome.php');
@@ -104,7 +109,7 @@ class Welcome extends CI_Controller {
 			$data['chart_4'] = json_encode(array_column($chart_re4,'C_count'));
 			$data['chart_All'] = json_encode(array_column($chart_All,'C_count'));
 
-			$data['sel_date'] = $this->db->select('recruit_year,recruit_date')
+			$data['sel_date'] = $this->db->select('recruit_year,recruit_date,recruit_category')
 										->where('recruit_year',$year)
 										->group_by('recruit_date')
 										->get('tb_recruitstudent')
@@ -112,7 +117,8 @@ class Welcome extends CI_Controller {
 
 			$data['sum_date'] = $this->db->select('
 									recruit_regLevel,recruit_year, 
-									recruit_tpyeRoom,recruit_date')
+									recruit_tpyeRoom,recruit_date,
+									recruit_category')
 									->where('recruit_year',$year)
 							->get('tb_recruitstudent')
 							->result();

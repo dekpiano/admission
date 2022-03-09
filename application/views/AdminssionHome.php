@@ -61,6 +61,60 @@
         </div>
     </div>
 
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                รายชื่อผู้สมัคร (รอบปกติ)
+            </div>
+            <div class="card-body">
+                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>เลขที่</th>
+                            <th>ชื่อ - สกุล</th>
+                            <th>ชั้น</th>
+                            <th>แผน</th>
+                            <th>วันที่สมัคร</th>
+                            <th>สถานะ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($regis as $key => $v_regis) :
+                        if($v_regis->recruit_year == "2565" && $v_regis->recruit_category =="normal"):
+                             ?>
+                        <tr>
+                            <td><?=$v_regis->recruit_id?></td>
+                            <td><?=$v_regis->recruit_prefix?><?=$v_regis->recruit_firstName?>
+                                <?=$v_regis->recruit_lastName?></td>
+                            <td>ชั้นมัธยมศึกษาปีที่ <?=$v_regis->recruit_regLevel?></td>
+                            <td>
+                                <?php
+                                $str = explode("(",$v_regis->recruit_tpyeRoom);
+                                echo $str[0];
+                                ?>
+                            </td>
+                            <td><?=$this->datethai->thai_date_fullmonth(strtotime($v_regis->recruit_date))?></td>
+                            <td>
+                                <?php if($v_regis->recruit_status == "รอการตรวจสอบ"){
+                                   $text = "รอการตรวจสอบ";
+                                   $status = "warning";
+                                } elseif($v_regis->recruit_status == "ผ่านการตรวจสอบ"){
+                                    $text = "ผ่านการตรวจสอบ";
+                                    $status = "success";
+                                } elseif($v_regis->recruit_status == "กรอกข้อมูลไม่ครบถ้วน"){
+                                    $text = "ไม่ผ่าน กลับไปตรวจสอบ";
+                                    $status = "danger";
+                                } 
+                                ?>
+                                <span class="badge badge-<?=$status?>" ><h6 style="margin-bottom: 0rem;"><?=$text;?></h6></span>
+                            </td>
+                        </tr>
+                        <?php endif; endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
     <div class="container-fluid">
         <a href="https://drive.google.com/file/d/1zeBOmrYsIl7j9YVyRiuKBODbX1Bi3-WX/view" target="_blank"
