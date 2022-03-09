@@ -43,6 +43,7 @@
     <!-- Side Navbar -->
     <div class="container-fluid">
         <div class="text-center mt-3 mb-3">
+            <!-- 
             <span class="border border-primary p-3">
                 <h2 class="timer-header">ระบบรับสมัครนักเรียนภาคปกติ ม.1 และ ม.4 ปีการศึกษา 2565 <br> จะเปิดในอีก...</h2>
 
@@ -52,7 +53,11 @@
                     <div id="minutes" class="align-items-center flex-column d-flex justify-content-center"></div>
                     <div id="seconds" class="align-items-center flex-column d-flex justify-content-center"></div>
                 </div>
-            </span>
+            </span> -->
+            <a href="#" target="_blank" data-toggle="modal" data-target="#myModal">
+                <img src="https://www.phonics1stonline.com/assets_v2/img/p/b1.png" alt="สมัครเรียน"
+                    class="img-fluid w-50">
+            </a>
         </div>
     </div>
 
@@ -198,8 +203,8 @@
                                     <div class="card-body">
                                         <h5 class="card-title"><?=$v_quota->quota_explain?></h5>
                                         <?php if($v_quota->quota_key == "quotasport"):?>
-                                            <h6 class="card-title text-danger">(เฉพาะนักเรียนที่ผ่านการคัดตัวเท่านั้น)</h6>
-                                            <?php endif; ?>
+                                        <h6 class="card-title text-danger">(เฉพาะนักเรียนที่ผ่านการคัดตัวเท่านั้น)</h6>
+                                        <?php endif; ?>
                                         <?php  $q = explode("|",$v_quota->quota_level);
                                         foreach ($q as $key => $v_q) : ?>
                                         <a href="<?=base_url('RegStudent/'.$v_q.'/'.$v_quota->quota_key);?>"
