@@ -7,8 +7,8 @@
     border-radius: 5px;
     font-size: 35px;
     font-weight: 700;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 #timer div span {
@@ -28,10 +28,14 @@
     }
 
     #timer div {
-        width: 95px;
-        height: 100px;
-        font-size: 32px;
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
         margin-top: 20px;
+        border-radius: 5px;
+        font-weight: 700;
+        margin-left: 5px;
+        margin-right: 5px;
     }
 
     #timer div span {
@@ -42,23 +46,59 @@
 <div class="page-content align-items-stretch">
     <!-- Side Navbar -->
     <div class="container-fluid">
-        <div class="text-center mt-3 mb-3">
-            <!-- 
-            <span class="border border-primary p-3">
-                <h2 class="timer-header">ระบบรับสมัครนักเรียนภาคปกติ ม.1 และ ม.4 ปีการศึกษา 2565 <br> จะเปิดในอีก...</h2>
+        <div class="row mt-3">
+            <div class="col-md-7 align-self-center">
+                <div class="card">
+                    <div class="card-body">
+                        <h2>รอบปกติ เริ่มลงทะเบียนวันนี้ - 13 มี.ค.2565</h2>
+                        <p>การสมัครเข้าเรียนออนไลน ์กรุณาอ่านรายละเอียดประกาศและศึกษาคู่มือการสมัครก่อน
+                            <br>เริ่มตรวจหลักฐานระหว่างวันที่ 9-13 มี.ค.65 ในเวลาราชการ
+                        </p>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <p>รายละเอียดประกาศ <a
+                                        href="https://drive.google.com/file/d/1zeBOmrYsIl7j9YVyRiuKBODbX1Bi3-WX/view"
+                                        target="_blank" rel="noopener noreferrer">คลิกที่นี่</a> </p>
+                                <p>คู่มือการสมัคร <a
+                                        href="<?=base_url('uploads/recruitstudent/คู่มือการเข้าใช้งานระบบรับสมัครนักเรียน.pdf');?>"
+                                        target="_blank" rel="noopener noreferrer">คลิกที่นี่</a> </p>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="text-center">
+                                    <h4>เหลือเวลาสมัครอีก...</h4>
+                                </div>
+                                <div id="timer" class="flex-wrap d-flex justify-content-center">
 
-                <div id="timer" class="flex-wrap d-flex justify-content-center">
-                    <div id="days" class="align-items-center flex-column d-flex justify-content-center"></div>
-                    <div id="hours" class="align-items-center flex-column d-flex justify-content-center"></div>
-                    <div id="minutes" class="align-items-center flex-column d-flex justify-content-center"></div>
-                    <div id="seconds" class="align-items-center flex-column d-flex justify-content-center"></div>
+                                    <div id="days" class="align-items-center flex-column d-flex justify-content-center">
+                                    </div>
+                                    <div id="hours"
+                                        class="align-items-center flex-column d-flex justify-content-center"></div>
+                                    <div id="minutes"
+                                        class="align-items-center flex-column d-flex justify-content-center">
+                                    </div>
+                                    <div id="seconds"
+                                        class="align-items-center flex-column d-flex justify-content-center">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
                 </div>
-            </span> -->
-            <a href="#" target="_blank" data-toggle="modal" data-target="#myModal">
-                <img src="https://www.phonics1stonline.com/assets_v2/img/p/b1.png" alt="สมัครเรียน"
-                    class="img-fluid w-50">
-            </a>
+
+            </div>
+            <div class="col-md-5 align-self-center">
+                <div class="text-center mt-3 mb-3">
+                    <a href="#" target="_blank" data-toggle="modal" data-target="#myModal">
+                        <img src="https://www.phonics1stonline.com/assets_v2/img/p/b1.png" alt="สมัครเรียน"
+                            class="img-fluid w-50">
+                    </a>
+                </div>
+            </div>
         </div>
+
     </div>
 
     <div class="container-fluid">
@@ -67,35 +107,36 @@
                 รายชื่อผู้สมัคร (รอบปกติ)
             </div>
             <div class="card-body">
-                <table id="example" class="table table-striped table-bordered" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>เลขที่</th>
-                            <th>ชื่อ - สกุล</th>
-                            <th>ชั้น</th>
-                            <th>แผน</th>
-                            <th>วันที่สมัคร</th>
-                            <th>สถานะ</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($regis as $key => $v_regis) :
+                <div class="table-responsive">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>เลขที่</th>
+                                <th>ชื่อ - สกุล</th>
+                                <th>ชั้น</th>
+                                <th>แผน</th>
+                                <th>วันที่สมัคร</th>
+                                <th>สถานะ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($regis as $key => $v_regis) :
                         if($v_regis->recruit_year == "2565" && $v_regis->recruit_category =="normal"):
                              ?>
-                        <tr>
-                            <td><?=$v_regis->recruit_id?></td>
-                            <td><?=$v_regis->recruit_prefix?><?=$v_regis->recruit_firstName?>
-                                <?=$v_regis->recruit_lastName?></td>
-                            <td>ชั้นมัธยมศึกษาปีที่ <?=$v_regis->recruit_regLevel?></td>
-                            <td>
-                                <?php
+                            <tr>
+                                <td><?=$v_regis->recruit_id?></td>
+                                <td><?=$v_regis->recruit_prefix?><?=$v_regis->recruit_firstName?>
+                                    <?=$v_regis->recruit_lastName?></td>
+                                <td>ชั้นมัธยมศึกษาปีที่ <?=$v_regis->recruit_regLevel?></td>
+                                <td>
+                                    <?php
                                 $str = explode("(",$v_regis->recruit_tpyeRoom);
                                 echo $str[0];
                                 ?>
-                            </td>
-                            <td><?=$this->datethai->thai_date_fullmonth(strtotime($v_regis->recruit_date))?></td>
-                            <td>
-                                <?php if($v_regis->recruit_status == "รอการตรวจสอบ"){
+                                </td>
+                                <td><?=$this->datethai->thai_date_fullmonth(strtotime($v_regis->recruit_date))?></td>
+                                <td>
+                                    <?php if($v_regis->recruit_status == "รอการตรวจสอบ"){
                                    $text = "รอการตรวจสอบ";
                                    $status = "warning";
                                 } elseif($v_regis->recruit_status == "ผ่านการตรวจสอบ"){
@@ -106,12 +147,15 @@
                                     $status = "danger";
                                 } 
                                 ?>
-                                <span class="badge badge-<?=$status?>" ><h6 style="margin-bottom: 0rem;"><?=$text;?></h6></span>
-                            </td>
-                        </tr>
-                        <?php endif; endforeach; ?>
-                    </tbody>
-                </table>
+                                    <span class="badge badge-<?=$status?>">
+                                        <h6 style="margin-bottom: 0rem;"><?=$text;?></h6>
+                                    </span>
+                                </td>
+                            </tr>
+                            <?php endif; endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

@@ -73,16 +73,16 @@
          <script src="<?=base_url();?>asset/js/front.js"></script>
          <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
          </script>
-        <!-- DataTable-->
-        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+         <!-- DataTable-->
+         <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+         <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
 
-        <script src="<?=base_url()?>asset/js/AutoProvince.js?v=3"></script>
+         <script src="<?=base_url()?>asset/js/AutoProvince.js?v=3"></script>
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.5/dist/sweetalert2.all.min.js"></script>
          <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=2"></script>
 
-         <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=3"></script>
+         <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=4"></script>
 
 
 
@@ -207,10 +207,25 @@ $('.T_m4_N thead th').each(function(i) {
     $('.T_m4_N tfoot td').eq(i + 1).text(total);
 });
 
+$('.T_m1_N tr,.T_m4_N tr').each(function () {
+        //the value of sum needs to be reset for each row, so it has to be set inside the row loop
+        var sum = 0
+        //find the combat elements in the current row and sum it 
+        $(this).find('.numN').each(function () {
+            var combat = $(this).text();
+            if (!isNaN(combat) && combat.length !== 0) {
+                sum += parseFloat(combat);
+            }
+        });
+        //set the value of currents rows sum to the total-combat element in the current row
+        $('.total-numN', this).html(sum);
+    });
+
 $(document).ready(function() {
     $('#example').DataTable({
-        "order": [[ 0, "desc" ]] 
+        "order": [
+            [0, "desc"]
+        ]
     });
-} );
-
+});
          </script>
