@@ -42,16 +42,58 @@
         font-size: 14px;
     }
 }
+
+@media only screen and (max-width: 992px) {
+    #timer {
+        margin-top: -20px;
+    }
+
+    #timer div {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+        margin-top: 20px;
+        border-radius: 5px;
+        font-weight: 700;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #timer div span {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    #timer {
+        margin-top: -20px;
+    }
+
+    #timer div {
+        width: 65px;
+        height: 65px;
+        font-size: 28px;
+        margin-top: 20px;
+        border-radius: 5px;
+        font-weight: 700;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #timer div span {
+        font-size: 14px;
+    }
+}
 </style>
 <div class="page-content align-items-stretch">
     <!-- Side Navbar -->
     <div class="container-fluid">
         <div class="row mt-3">
-            <div class="col-md-7 align-self-center">
+            <div class="col-lg-8 col-sm-6 align-self-center">
                 <div class="card">
                     <div class="card-body">
                         <h2>รอบปกติ เริ่มลงทะเบียนวันนี้ - 13 มี.ค.2565</h2>
-                        <p>การสมัครเข้าเรียนออนไลน ์กรุณาอ่านรายละเอียดประกาศและศึกษาคู่มือการสมัครก่อน
+                        <p>การสมัครเข้าเรียนออนไลน์ กรุณาอ่านรายละเอียดประกาศและศึกษาคู่มือการสมัครก่อน
                             <br>เริ่มตรวจหลักฐานระหว่างวันที่ 9-13 มี.ค.65 ในเวลาราชการ
                         </p>
                         <div class="row">
@@ -65,7 +107,7 @@
                             </div>
                             <div class="col-lg-8">
                                 <div class="text-center">
-                                    <h4>เหลือเวลาสมัครอีก...</h4>
+                                    <h5>เหลือเวลาสมัครอีก...</h5>
                                 </div>
                                 <div id="timer" class="flex-wrap d-flex justify-content-center">
 
@@ -89,7 +131,7 @@
                 </div>
 
             </div>
-            <div class="col-md-5 align-self-center">
+            <div class="col-lg-4 col-sm-6 align-self-center">
                 <div class="text-center mt-3 mb-3">
                     <a href="#" target="_blank" data-toggle="modal" data-target="#myModal">
                         <img src="https://www.phonics1stonline.com/assets_v2/img/p/b1.png" alt="สมัครเรียน"
