@@ -42,17 +42,68 @@
         font-size: 14px;
     }
 }
+
+@media only screen and (max-width: 992px) {
+    #timer {
+        margin-top: -20px;
+    }
+
+    #timer div {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+        margin-top: 20px;
+        border-radius: 5px;
+        font-weight: 700;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #timer div span {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    #timer {
+        margin-top: -20px;
+    }
+
+    #timer div {
+        width: 65px;
+        height: 65px;
+        font-size: 28px;
+        margin-top: 20px;
+        border-radius: 5px;
+        font-weight: 700;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #timer div span {
+        font-size: 14px;
+    }
+}
 </style>
 <div class="page-content align-items-stretch">
     <!-- Side Navbar -->
     <div class="container-fluid">
         <div class="row mt-3">
-            <div class="col-md-7 align-self-center">
+            <!-- <div class="col-lg-4 col-sm-6 align-self-center">
+                <div class="text-center mt-3 mb-3">
+                    <a href="#" target="_blank" data-toggle="modal" data-target="#myModal">
+                        <img src="https://www.phonics1stonline.com/assets_v2/img/p/b1.png" alt="สมัครเรียน"
+                            class="img-fluid w-50">
+                    </a>
+                    <i class="fa fa-bullhorn fa-5x" aria-hidden="true"></i>
+                </div>
+            </div> -->
+            <div class="col-lg-12 col-sm-6 col-12 align-self-center">
                 <div class="card">
-                    <div class="card-body">
-                        <h2>รอบปกติ เริ่มลงทะเบียนวันนี้ - 13 มี.ค.2565</h2>
-                        <p>การสมัครเข้าเรียนออนไลน ์กรุณาอ่านรายละเอียดประกาศและศึกษาคู่มือการสมัครก่อน
-                            <br>เริ่มตรวจหลักฐานระหว่างวันที่ 9-13 มี.ค.65 ในเวลาราชการ
+                    <!-- <div class="card-body">
+                        <h2>รอบปกติ เริ่มลงทะเบียนวันนี้ - 18 มี.ค.2565</h2>
+                        <p>การสมัครเข้าเรียนออนไลน์ กรุณาอ่านรายละเอียดประกาศและศึกษาคู่มือการสมัครก่อน
+                            <br>เริ่มตรวจหลักฐานระหว่างวันที่ 9-18 มี.ค.65 ในเวลาราชการ
                         </p>
                         <div class="row">
                             <div class="col-lg-4">
@@ -65,19 +116,19 @@
                             </div>
                             <div class="col-lg-8">
                                 <div class="text-center">
-                                    <h4>เหลือเวลาสมัครอีก...</h4>
+                                    <h5>เหลือเวลาสมัครอีก...</h5>
                                 </div>
                                 <div id="timer" class="flex-wrap d-flex justify-content-center">
 
-                                    <div id="days" class="align-items-center flex-column d-flex justify-content-center">
+                                    <div  id="days1" class="align-items-center flex-column d-flex justify-content-center"> <span>0 วัน</span>
                                     </div>
-                                    <div id="hours"
-                                        class="align-items-center flex-column d-flex justify-content-center"></div>
-                                    <div id="minutes"
-                                        class="align-items-center flex-column d-flex justify-content-center">
+                                    <div id="hours1"
+                                        class="align-items-center flex-column d-flex justify-content-center"><span>0 ชั่วโมง</span></div>
+                                    <div id="minutes1"
+                                        class="align-items-center flex-column d-flex justify-content-center"><span>0 นาที</span>
                                     </div>
-                                    <div id="seconds"
-                                        class="align-items-center flex-column d-flex justify-content-center">
+                                    <div id="seconds1"
+                                        class="align-items-center flex-column d-flex justify-content-center"><span>0 วินาที</span>
                                     </div>
                                 </div>
                             </div>
@@ -85,18 +136,27 @@
                         </div>
 
 
+                    </div> -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-2 text-center">
+                                <i class="fa fa-bullhorn fa-5x" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-sm-10">
+
+                                <h2>การรับสมัครนักเรียนใน "รอบปกติ ประจำปีการศึกษา 2565" สิ้นสุดลงแล้ว</h2>
+                                <h3>ติดตามการดำเนินงานได้ที่ <a href="https://skj.ac.th/" target="_blank"
+                                        rel="noopener noreferrer">เว็บไซต์</a> และ <a
+                                        href="https://www.facebook.com/SKJNS160" target="_blank"
+                                        rel="noopener noreferrer">Facebook</a> โรงเรียน</h3>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
             </div>
-            <div class="col-md-5 align-self-center">
-                <div class="text-center mt-3 mb-3">
-                    <a href="#" target="_blank" data-toggle="modal" data-target="#myModal">
-                        <img src="https://www.phonics1stonline.com/assets_v2/img/p/b1.png" alt="สมัครเรียน"
-                            class="img-fluid w-50">
-                    </a>
-                </div>
-            </div>
+
         </div>
 
     </div>
@@ -134,7 +194,8 @@
                                 echo $str[0];
                                 ?>
                                 </td>
-                                <td><?=$this->datethai->thai_date_fullmonth(strtotime($v_regis->recruit_date))?></td>
+                                <td><?=$this->datethai->thai_date_fullmonth(strtotime($v_regis->recruit_date))?>
+                                </td>
                                 <td>
                                     <?php if($v_regis->recruit_status == "รอการตรวจสอบ"){
                                    $text = "รอการตรวจสอบ";
@@ -301,7 +362,8 @@
                                     <div class="card-body">
                                         <h5 class="card-title"><?=$v_quota->quota_explain?></h5>
                                         <?php if($v_quota->quota_key == "quotasport"):?>
-                                        <h6 class="card-title text-danger">(เฉพาะนักเรียนที่ผ่านการคัดตัวเท่านั้น)</h6>
+                                        <h6 class="card-title text-danger">(เฉพาะนักเรียนที่ผ่านการคัดตัวเท่านั้น)
+                                        </h6>
                                         <?php endif; ?>
                                         <?php  $q = explode("|",$v_quota->quota_level);
                                         foreach ($q as $key => $v_q) : ?>

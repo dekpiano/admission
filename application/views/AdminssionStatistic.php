@@ -102,7 +102,7 @@
                                 
                                 foreach($sel_date as $v_datatN) :
                                     //echo "<pre>";print_r($v_datat);
-                                    if($v_datatN->recruit_date > "2022-03-08" && $v_datatN->recruit_date < "2022-03-14"): 
+                                    if($v_datatN->recruit_date > "2022-03-08" && $v_datatN->recruit_date < "2022-03-19"): 
                                 ?>
                                                             <tr>
                                                                 <td style="width:150px">
@@ -113,7 +113,7 @@
                                        $sub11N = 0; $sub12N = 0; $sub13N = 0; $sub14N = 0; $sub15N = 0;
                                         foreach($sum_date as $m1N) {
                                             
-                                            if($m1N->recruit_date > "2022-03-08" && $m1N->recruit_date < "2022-03-14"){
+                                            if($m1N->recruit_date > "2022-03-08" && $m1N->recruit_date < "2022-03-19"){
                                             
                                                 if($m1N->recruit_date == $v_datatN->recruit_date && $m1N->recruit_regLevel == 1 && $m1N->recruit_tpyeRoom == "ห้องเรียนความเป็นเลิศทางด้านวิชาการ (Science Match and Technology Program)"){
                                                     //print_r($m1->recruit_date);
@@ -194,7 +194,7 @@
                                 $datat = array('2021-04-24','2021-04-25','2021-04-26','2021-04-27','2021-04-28'); 
 
                                 foreach($sel_date as $v_datatN) :
-                                    if($v_datatN->recruit_date > "2022-03-08" && $v_datatN->recruit_date < "2022-03-14"):
+                                    if($v_datatN->recruit_date > "2022-03-08" && $v_datatN->recruit_date < "2022-03-19"):
                                 ?>
                                                             <tr>
                                                                 <td style="width:150px">

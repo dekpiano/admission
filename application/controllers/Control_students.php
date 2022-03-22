@@ -513,4 +513,6 @@ class Control_students extends CI_Controller {
 		echo json_encode($data);
 	  }
 
+
+
 }

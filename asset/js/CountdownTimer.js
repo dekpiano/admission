@@ -1,7 +1,7 @@
 // countDow("2022/03/07 14:00:00","CountOn","show-3t1400");
 
 function makeTimer() {
-    var endTime = new Date("2022/03/13 18:00:00");
+    var endTime = new Date("2022/03/18 16:00:00");
     var endTime = (Date.parse(endTime)) / 1000;
     var now = new Date();
     var now = (Date.parse(now) / 1000);
@@ -19,3 +19,12 @@ function makeTimer() {
     $("#seconds").html(seconds + "<span>วินาที</span>");
 }
 setInterval(function() { makeTimer(); }, 0);
+
+
+$("#a1").change(function() {
+    if ($(this).is(":checked")) {
+        $("#dvPassport").show();
+    } else {
+        $("#dvPassport").hide();
+    }
+});
