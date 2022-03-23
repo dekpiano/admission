@@ -43,5 +43,6 @@ class Datethai {
             $thai_date_return.= "-".substr((date("Y",$time)+543),-2);   
             return $thai_date_return;   
         } 
+        
 }
 ?>

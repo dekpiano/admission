@@ -89,7 +89,6 @@
     <!-- Side Navbar -->
     <div class="container-fluid">
         <div class="row mt-3">
-<<<<<<< HEAD
             <!-- <div class="col-lg-4 col-sm-6 align-self-center">
                 <div class="text-center mt-3 mb-3">
                     <a href="#" target="_blank" data-toggle="modal" data-target="#myModal">
@@ -105,14 +104,6 @@
                         <h2>รอบปกติ เริ่มลงทะเบียนวันนี้ - 18 มี.ค.2565</h2>
                         <p>การสมัครเข้าเรียนออนไลน์ กรุณาอ่านรายละเอียดประกาศและศึกษาคู่มือการสมัครก่อน
                             <br>เริ่มตรวจหลักฐานระหว่างวันที่ 9-18 มี.ค.65 ในเวลาราชการ
-=======
-            <div class="col-lg-8 col-sm-6 align-self-center">
-                <div class="card">
-                    <div class="card-body">
-                        <h2>รอบปกติ เริ่มลงทะเบียนวันนี้ - 13 มี.ค.2565</h2>
-                        <p>การสมัครเข้าเรียนออนไลน์ กรุณาอ่านรายละเอียดประกาศและศึกษาคู่มือการสมัครก่อน
-                            <br>เริ่มตรวจหลักฐานระหว่างวันที่ 9-13 มี.ค.65 ในเวลาราชการ
->>>>>>> 36efb0d647e16cd7aed2c690b04717b24b367266
                         </p>
                         <div class="row">
                             <div class="col-lg-4">
@@ -165,18 +156,7 @@
                 </div>
 
             </div>
-<<<<<<< HEAD
 
-=======
-            <div class="col-lg-4 col-sm-6 align-self-center">
-                <div class="text-center mt-3 mb-3">
-                    <a href="#" target="_blank" data-toggle="modal" data-target="#myModal">
-                        <img src="https://www.phonics1stonline.com/assets_v2/img/p/b1.png" alt="สมัครเรียน"
-                            class="img-fluid w-50">
-                    </a>
-                </div>
-            </div>
->>>>>>> 36efb0d647e16cd7aed2c690b04717b24b367266
         </div>
 
     </div>

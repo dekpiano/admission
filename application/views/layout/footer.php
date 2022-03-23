@@ -87,7 +87,8 @@
          <script src="https://cdn.jsdelivr.net/npm/vanilla-wizard@0.0.5"></script>
          <script>
 new Wizard("#basicwizard", {
-    validate: true
+    validate: true,
+    progress: true,
 });
          </script>
      
