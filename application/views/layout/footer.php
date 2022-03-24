@@ -84,14 +84,6 @@
 
          <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=7"></script>
 
-         <script src="https://cdn.jsdelivr.net/npm/vanilla-wizard@0.0.5"></script>
-         <script>
-new Wizard("#basicwizard", {
-    validate: true,
-    progress: true,
-});
-         </script>
-     
          <!-- Histats.com  START  (aync)-->
          <script type="text/javascript">
 var _Hasync = _Hasync || [];
@@ -109,8 +101,7 @@ _Hasync.push(['Histats.track_hits', '']);
          </script>
          <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4498483&101" alt=""
                      border="0"></a></noscript>
-         <!-- Histats.com  END  -->
-         <?php $this->load->view('layout/chart/report_bar.php'); ?>
+
          <?php  if($this->session->flashdata('msg') == 'NO' ):?>
          <script>
 Swal.fire("แจ้งเตือน", "<?=$this->session->flashdata('messge');?>", "<?=$this->session->flashdata('status');?>");
