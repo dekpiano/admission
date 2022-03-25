@@ -72,4 +72,30 @@ class Control_login extends CI_Controller {
 					}	
 	}
 
+	public function CheckLoginConfirmStudentNew(){
+
+		if($this->input->post('idenStu')){
+			$this->db->where('recruit_idCard',$this->input->post('idenStu'));
+			$query = $this->db->get('tb_recruitstudent');
+			if($query->num_rows() > 0){
+				$this->session->set_userdata('idenStu',$this->input->post('idenStu'));   
+				echo 1;
+			}else{
+				echo 0;
+				$this->session->sess_destroy();
+			}
+		
+		}else{
+			echo 0;
+			$this->session->sess_destroy();
+		}
+		
+	}
+
+	public function Confirmlogout()
+	{		
+		$this->session->sess_destroy();
+		redirect(base_url('Students/Confirm'));
+	}
+
 }

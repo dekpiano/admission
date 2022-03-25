@@ -19,12 +19,3 @@ function makeTimer() {
     $("#seconds").html(seconds + "<span>วินาที</span>");
 }
 setInterval(function() { makeTimer(); }, 0);
-
-
-$("#a1").change(function() {
-    if ($(this).is(":checked")) {
-        $("#dvPassport").show();
-    } else {
-        $("#dvPassport").hide();
-    }
-});

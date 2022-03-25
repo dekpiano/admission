@@ -58,6 +58,8 @@
              </div>
          </div>
 
+
+
          </html>
 
          <!-- JavaScript files-->
@@ -77,12 +79,28 @@
          <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
          <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
 
-         <script src="<?=base_url()?>asset/js/AutoProvince.js?v=3"></script>
+         <script type="text/javascript"
+             src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
+         <script type="text/javascript"
+             src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js">
+         </script>
+
+         <script type="text/javascript"
+             src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js">
+         </script>
+
+         <?php if($this->uri->segment(1) == "RegStudent"):?>
+         <script src="<?=base_url()?>asset/js/AutoProvince.js?v=5"></script>
+         <?php elseif($this->uri->segment(1) == "Confirm"):?>
+         <script src="<?=base_url()?>asset/js/ConfirmStudent.js?v=8"></script>
+         <?php endif; ?>
+
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.5/dist/sweetalert2.all.min.js"></script>
          <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=2"></script>
 
          <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=7"></script>
+         <script src="<?=base_url()?>asset/js/login.js?v=3"></script>
 
          <!-- Histats.com  START  (aync)-->
          <script type="text/javascript">
@@ -123,6 +141,8 @@ var onloadCallback = function() {
 };
 // รูปแบบการกรอก
 $(":input").inputmask();
+
+
 
 $('body').AutoProvince({
     PROVINCE: '#province', // select div สำหรับรายชื่อจังหวัด

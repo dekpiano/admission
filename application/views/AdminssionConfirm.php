@@ -1,3 +1,89 @@
+<?php if($this->session->userdata('idenStu') =="") :?>
+<div class="row mt-5 justify-content-center">
+<div class="">
+    <div class="text-center mb-3">
+    <img src="https://skj.ac.th/uploads/logo/LogoSKJ_4.png" width="200" alt="KMUTNB">
+    </div>
+
+
+  <!-- /.login-logo -->
+  <div class="card card-outline card-primary">
+    <div class="card-header text-center">
+      <h5><b>ระบบรายงานตัวนักเรียนใหม่ออนไลน์</b></h5>
+    </div>
+    <div class="card-body">
+      <!-- <p class="login-box-msg">Online Matriculation System</p> -->
+
+      <form id="loginConfirmStudent" method="post" class="needs-validation" novalidate>        
+        <div class="input-group mb-3">
+          <input type="text" id="idenStu" name="idenStu" class="form-control" placeholder="หมายเลขบัตรประจำตัวประชาชน" data-inputmask="'mask': '9-9999-99999-99-9'" required>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <!--<div class="icheck-primary">
+              <input type="checkbox" id="remember">
+              <label for="remember">
+                Remember Me
+              </label>
+            </div>
+          -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-block">เข้าสู่ระบบ</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+      <hr>
+
+      <div class="col-12">
+          <center><p><span class="text-danger"> ปิดปรับปรุงระบบ  <br> ตั้งแต่วันที่ 7 กุมภาพันธ์ 2565 เป็นต้นไป  </span></p></center>
+      </div>
+      <hr>
+      <div class="col-12">
+          <p><span class="text-info">
+             <span class="fas fa-phone"></span>  056-009-667  </span></p>
+      </div>
+
+
+
+      <!--<div class="social-auth-links text-center mt-2 mb-3">
+        <a href="#" class="btn btn-block btn-primary">
+          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+        </a>
+        <a href="#" class="btn btn-block btn-danger">
+          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+        </a>
+      </div>
+    -->
+      <!-- /.social-auth-links -->
+      <p class="mb-0">
+        <a href="../OnlineMatriculation.pdf" target="_blank" class="text-center">คู่มือการใช้งานระบบ</a>
+      </p>
+      <p class="mb-0">
+        <a href="../stepMatriculation.pdf" target="_blank" class="text-center">ขั้นตอนการรายงานตัวออนไลน์</a>
+      </p>
+      <p class="mb-1">
+        <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;tf=1&amp;to=newstudent@op.kmutnb.ac.th" target="_blank">ไม่สามารถเข้าใช้งานระบบได้</a>
+      </p>
+      
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</div>
+</div>
+
+<?php else : ?>
+ 
+
+
 
 <style>
     /*
@@ -38,13 +124,9 @@
 }
 </style>
 <section class="py-5 header">
-    <div class="container-fluid py-4">
-        <header class="text-center mb-5 pb-5">
-            <h1 class="display-4">มอบตัวออนไลน์</h1>
-            <p class="font-italic mb-1">โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์</p>
-         
-        </header>
+    
 
+    <div class="container-fluid py-4">  
 
         <div class="row">
             <div class="col-md-3">
@@ -66,15 +148,15 @@
                         <i class="fa fa-check mr-2"></i>
                         <span class="font-weight-bold small text-uppercase">ข้อมูลมารดา</span></a>
                     </div>
+                    <a href="<?=base_url('Confirm/Logout');?>" class="btn btn-danger w-100">ออกจากระบบ</a>
             </div>
 
 
             <div class="col-md-9">
                 <!-- Tabs content -->
                 <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade shadow rounded bg-white show active p-5" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                        <h4 class="font-italic mb-4">Personal information</h4>
-                        <p class="font-italic text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <div class="tab-pane fade shadow rounded bg-white show active p-5" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">                       
+                        <?php $this->load->view('FormData/FormMain/PageFormMain.php'); ?>
                     </div>
                     
                     <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
@@ -97,3 +179,5 @@
         </div>
     </div>
 </section>
+
+<?php endif; ?>

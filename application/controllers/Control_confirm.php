@@ -27,11 +27,19 @@ class Control_confirm extends CI_Controller {
 		$data['quota'] = $this->db->get("tb_quota")->result();
 		$db2 = $this->load->database('skjmain', TRUE);	
 
+		$data['stu'] = $this->db->select('*')->where('recruit_idCard',$this->session->userdata('idenStu'))->from('tb_recruitstudent')->get()->result();
+
 		$this->load->view('layout/header.php',$data);
 		$this->load->view('layout/menu_top.php');
 		$this->load->view('AdminssionConfirm.php');
 		$this->load->view('layout/footer.php');
 
+	  }
+
+
+	  public function InsertConfirmStudent(){
+		  
+		print_r($this->input->post());
 	  }
 
 }

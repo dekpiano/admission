@@ -1,39 +1,45 @@
 <div class="h6">
-    <form id="jobForm" method="post" action="#" class="needs-validation" novalidate>
-    <div class="form-group row">
+    <form id="FormConfirmStudent" method="post" class="check-needs-validation" novalidate>
+        <div class="form-group row">
             <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label">ชื่อ - นามสกุลจริง</label>
             <div class="col-sm-9">
                 <div class="form-row">
-                <div class="col-12 col-md-3 mb-2">
+                    <div class="col-12 col-md-3 mb-2">
                         <select name="" id="" class="form-control">
                             <option value="">เลือกคำนำหน้า</option>
                             <?php 
                             $fix = array("เด็กหญิง","เด็กชาย","นาย","นางสาว"); 
                             foreach ($fix as $key => $v_fix) :
                             ?>
-                            <option value="<?=$v_fix;?>"><?=$v_fix;?></option>
+                            <option <?=$stu[0]->recruit_prefix==$v_fix?"selected":"" ?> value="<?=$v_fix;?>">
+                                <?=$v_fix;?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
                         <input type="text" class="form-control" placeholder="ระบุชื่อจริง" id="stu_fristName"
-                            name="stu_fristName" required11>
+                            name="stu_fristName" required11 value="<?=$stu[0]->recruit_firstName?>">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
                         <input type="text" class="form-control" placeholder="ระบุนามสกุลจริง" id="stu_lastName"
-                            name="stu_lastName" required11>
-                    </div> 
+                            name="stu_lastName" required11 value="<?=$stu[0]->recruit_lastName?>">
+                    </div>
                 </div>
             </div>
-        </div>
+        </div>       
         <div class="form-group row">
             <label for="stu_iden" class="col-sm-3 col-form-label col-form-label">รหัสประจำตัวประชาชน
                 13 หลัก</label>
             <div class="col-sm-9">
                 <input type="text" class="form-control form-control" id="stu_iden"
-                    placeholder="รหัสประจำตัวประชาชน 13 หลัก" required name="stu_iden" data-inputmask="'mask': '9-9999-99999-99-9'">
+                    placeholder="รหัสประจำตัวประชาชน 13 หลัก" required name="stu_iden"
+                    data-inputmask="'mask': '9-9999-99999-99-9'" value="<?php echo $stu[0]->recruit_idCard; ?>"
+                    readonly>
             </div>
         </div>
+        <?php $birt =  explode("-",$stu[0]->recruit_birthday); 
+                        $stuYear = $birt[0]+543;$stuMount = $birt[1];$stuDay = $birt[2];
+                    ?>
         <div class="form-group row">
             <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label">วันที่เกิด</label>
             <div class="col-sm-9">
@@ -42,7 +48,7 @@
                         <select class="form-control" id="stu_day" name="stu_day">
                             <option value="">เลือกวัน</option>
                             <?php for ($i=1; $i <= 31 ; $i++) : ?>
-                            <option value="<?=sprintf("%02d",$i)?>"><?=$i;?></option>
+                            <option <?=$stuDay==$i?"selected":"" ?> value="<?=sprintf("%02d",$i)?>"><?=$i;?></option>
                             <?php endfor; ?>
                         </select>
                     </div>
@@ -53,7 +59,7 @@
                                                             $monthTH = [null,'มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
                                                             for ($i=1; $i <= 12 ; $i++) : 
                                                             ?>
-                            <option value="<?=sprintf("%02d",$i)?>"><?=$monthTH[$i];?>
+                            <option <?=$stuMount==$i?"selected":"" ?> value="<?=sprintf("%02d",$i)?>"><?=$monthTH[$i];?>
                             </option>
                             <?php endfor; ?>
                         </select>
@@ -63,9 +69,9 @@
                             <option value="">เลือกปี</option>
                             <?php 
                                                             $d = date("Y")+543;
-                                                            for ($i=$d-15; $i <= $d ; $i++) : 
+                                                            for ($i=$d-25; $i <= $d ; $i++) : 
                                                             ?>
-                            <option value="<?=$i?>"><?=$i;?></option>
+                            <option <?=$stuYear==$i?"selected":"" ?> value="<?=$i?>"><?=$i;?></option>
                             <?php endfor; ?>
                         </select>
                     </div>
@@ -78,15 +84,15 @@
                 <div class="form-row">
                     <div class="col-12 col-md-3 mb-2">
                         <input type="text" class="form-control" placeholder="ระบุตำบล" id="stu_birthTambon"
-                            name="stu_birthTambon" required11>
+                            name="stu_birthTambon" required>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
                         <input type="text" class="form-control" placeholder="ระบุอำเภอ" id="stu_birthDistrict"
-                            name="stu_birthDistrict" required11>
+                            name="stu_birthDistrict" required>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
                         <input type="text" class="form-control" placeholder="ระบุจังหวัด" id="stu_birthProvirce"
-                            name="stu_birthProvirce" required11>
+                            name="stu_birthProvirce" required>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
                         <input type="text" class="form-control" placeholder="ระบุชื่อโรงพยาบาล" id="stu_birthHospital"
@@ -99,30 +105,30 @@
         <div class="form-group row">
             <label for="stu_nationality" class="col-sm-3 col-form-label col-form-label">เชื้อชาติ</label>
             <div class="col-sm-2">
-                <input type="email" class="form-control form-control" id="stu_nationality" name="stu_nationality"
-                    placeholder="ระบุเชื้อชาติ" required11>
+                <input type="text" class="form-control form-control" id="stu_nationality" name="stu_nationality"
+                    placeholder="ระบุเชื้อชาติ" required11 value="<?=$stu[0]->recruit_nationality?>">
             </div>
         </div>
         <div class="form-group row">
             <label for="stu_race" class="col-sm-3 col-form-label col-form-label">สัญชาติ</label>
             <div class="col-sm-2">
-                <input type="email" class="form-control form-control" id="stu_race" name="stu_race"
-                    placeholder="ระบุสัญชาติ" required11>
+                <input type="text" class="form-control form-control" id="stu_race" name="stu_race"
+                    placeholder="ระบุสัญชาติ" required11 value="<?=$stu[0]->recruit_race?>">
             </div>
         </div>
 
         <div class="form-group row">
             <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label">ศาสนา</label>
             <div class="col-sm-2">
-                <input type="email" class="form-control form-control" id="stu_religion" name="stu_religion"
-                    placeholder="ระบุศาสนา" required11>
+                <input type="text" class="form-control form-control" id="stu_religion" name="stu_religion"
+                    placeholder="ระบุศาสนา" required11 value="<?=$stu[0]->recruit_religion?>">
             </div>
         </div>
 
         <div class="form-group row">
             <label for="stu_bloodType" class="col-sm-3 col-form-label col-form-label">กรุ๊ปเลือด</label>
             <div class="col-sm-2">
-                <input type="email" class="form-control form-control" id="stu_bloodType" name="stu_bloodType"
+                <input type="text" class="form-control form-control" id="stu_bloodType" name="stu_bloodType"
                     placeholder="ระบุกรุ๊ปเลือด" required11>
             </div>
         </div>
@@ -131,7 +137,7 @@
             <label for="stu_diseaes" class="col-sm-3 col-form-label col-form-label">โรคประจำตัว
                 (ระบุ)</label>
             <div class="col-sm-9">
-                <input type="email" class="form-control form-control" id="stu_diseaes" name="stu_diseaes"
+                <input type="text" class="form-control form-control" id="stu_diseaes" name="stu_diseaes"
                     placeholder="ระบุโรคประจำตัว" required11>
             </div>
         </div>
@@ -205,9 +211,9 @@
                                                 foreach ($parstu as $key => $v_parstu) :
                                                 ?>
                 <div class="custom-control custom-checkbox custom-control-inline">
-                    <input class="custom-control-input" type="checkbox" id="inlineCheckbox<?=$key?>"
-                        value="<?=$v_parstu;?>">
-                    <label class="custom-control-label" for="inlineCheckbox<?=$key?>"><?=$v_parstu;?></label>
+                    <input class="custom-control-input" type="checkbox" id="stu_parenalStatus<?=$key?>"
+                        value="<?=$v_parstu;?>" name="stu_parenalStatus[]">
+                    <label class="custom-control-label" for="stu_parenalStatus<?=$key?>"><?=$v_parstu;?></label>
                 </div>
                 <?php endforeach; ?>
             </div>
@@ -220,11 +226,13 @@
                                                 foreach ($pars as $key => $v_pars) :
                                                 ?>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input class="custom-control-input" type="radio" name="inlineRadioOptions" id="inlineRadio<?=$key?>"
+                    <input class="custom-control-input" type="radio" name="stu_presentLife" id="stu_presentLife<?=$key?>"
                         value="<?=$v_pars;?>">
-                    <label class="custom-control-label" for="inlineRadio<?=$key?>"><?=$v_pars;?></label>
-                </div>
+                    <label class="custom-control-label" for="stu_presentLife<?=$key?>"><?=$v_pars;?></label>
+                </div>                
                 <?php endforeach; ?>
+                <input type="text" id="stu_personOther" name="stu_personOther" class="ml-2 textbox form-control" style="display:none;"
+                        placeholder="ระบุชื่อบุคคลอื่น เช่น ปู่ ย่า ตา ยาย พี่ น้อง">
             </div>
         </div>
 
@@ -243,11 +251,11 @@
                             name="stu_hNumber" required11>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
-                        <input type="text" class="form-control" placeholder="หมู่ที่" id="stu_hmoo" name="stu_hmoo"
+                        <input type="text" class="form-control" placeholder="หมู่ที่" id="stu_hMoo" name="stu_hMoo"
                             required11>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
-                        <input type="text" class="form-control" id="stu_hRood" name="stu_hRood" placeholder="ถนน"
+                        <input type="text" class="form-control" id="stu_hRoad" name="stu_hRoad" placeholder="ถนน"
                             required11>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
@@ -282,8 +290,8 @@
         <div class="form-group row">
             <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label">ทีอยู่ปัจจุบัน ( <div
                     class="custom-control custom-checkbox custom-control-inline">
-                    <input class="custom-control-input" type="checkbox" id="tt" value="option1">
-                    <label class="custom-control-label" for="tt">ตามทะเบียนบ้าน</label>
+                    <input class="custom-control-input" type="checkbox" id="clickLike" name="clickLike" value="option1">
+                    <label class="custom-control-label" for="clickLike">ตามทะเบียนบ้าน</label>
                 </div>)</label>
 
             <div class="col-sm-9">
@@ -368,21 +376,21 @@
             </label>
             <div class="col-sm-9">
                 <div class="form-row">
-                    <div class="col-12 col-md-3 mb-2">
+                    <div class="col-12 col-md-12 mb-2">
                         <input type="text" class="form-control" placeholder="ชื่อโรงเรียน" id="stu_schoolfrom"
-                            name="stu_schoolfrom" required11>
+                            name="stu_schoolfrom" required11 value="<?php echo $stu[0]->recruit_oldSchool;?>">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
                         <input type="text" class="form-control" placeholder="ตำบล" id="stu_schoolTambao"
-                            name="stu_schoolTambao" required11>
+                            name="stu_schoolTambao" required11 value="">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
                         <input type="text" class="form-control" placeholder="อำเภอ" id="stu_schoolDistrict"
-                            name="stu_schoolDistrict" required11>
+                            name="stu_schoolDistrict" required11 value="<?php echo $stu[0]->recruit_district;?>">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
                         <input type="text" class="form-control" placeholder="จังหวัด" id="stu_schoolProvince"
-                            name="stu_schoolProvince" required11>
+                            name="stu_schoolProvince" required11 value="<?php echo $stu[0]->recruit_province;?>">
                     </div>
                 </div>
             </div>
@@ -396,16 +404,21 @@
                 <div class="custom-control custom-radio custom-control-inline">
                     <input class="custom-control-input" type="radio" name="stu_usedStudent" id="stu_usedStudent1"
                         value="ไม่เคย">
-                    <label class="custom-control-label" for="stu_usedStudent1">ไม่เคย
+                    <label class="custom-control-label align-self-center" for="stu_usedStudent1">ไม่เคย
                     </label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
                     <input class="custom-control-input" type="radio" name="stu_usedStudent" id="stu_usedStudent2"
                         value="เคย">
-                    <label class="custom-control-label" for="stu_usedStudent2"> เคย
+                    <label class="custom-control-label align-self-center" for="stu_usedStudent2"> เคย
                     </label>
-                    <input type="text" id="stu_inputLevel" name="stu_inputLevel" class="ml-2 textbox form-control"
-                        placeholder="ระบุชั้นเรียน เช่น ม.2, ม.4">
+                    <select class="form-control ml-3" id="stu_inputLevel" name="stu_inputLevel" style="display:none;">
+                            <option value="">เลือกระดับชั้น</option>
+                            <?php for ($i=1; $i <= 6 ; $i++) : ?>
+                            <option <?=$stuDay==$i?"selected":"" ?> value="<?=$i;?>">ม.<?=$i;?></option>
+                            <?php endfor; ?>
+                        </select>
+                   
                 </div>
             </div>
         </div>
