@@ -95,7 +95,7 @@ class Control_login extends CI_Controller {
 	public function Confirmlogout()
 	{		
 		$this->session->sess_destroy();
-		redirect(base_url('Students/Confirm'));
+		redirect(base_url('Confirm'));
 	}
 
 }
