@@ -55,6 +55,7 @@ class Welcome extends CI_Controller {
 		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
 
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();
+		$data['quota'] = $this->db->get("tb_quota")->result();
 
 		$db2 = $this->load->database('skjmain', TRUE);	
 		$data['title'] = "สถิติการรับสมัครนักเรียน".$data['checkYear'][0]->openyear_year;

@@ -84,18 +84,22 @@
             <div class="col-sm-9">
                 <div class="form-row">
                     <div class="col-12 col-md-3 mb-2">
+                    <label>ตำบล</label>
                         <input type="text" class="form-control" placeholder="ระบุตำบล" id="stu_birthTambon"
                             name="stu_birthTambon" required>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                    <label>อำเภอ</label>  
                         <input type="text" class="form-control" placeholder="ระบุอำเภอ" id="stu_birthDistrict"
                             name="stu_birthDistrict" required>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                    <label>จังหวัด</label>  
                         <input type="text" class="form-control" placeholder="ระบุจังหวัด" id="stu_birthProvirce"
                             name="stu_birthProvirce" required>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                    <label>โรงพยาบาล</label>  
                         <input type="text" class="form-control" placeholder="ระบุชื่อโรงพยาบาล" id="stu_birthHospital"
                             name="stu_birthHospital" required11>
                     </div>
@@ -244,42 +248,52 @@
             <div class="col-sm-9">
                 <div class="form-row">
                     <div class="col-12 col-md-3 mb-2">
+                    <label>รหัสประจำบ้าน</label>  
                         <input type="text" class="form-control" placeholder="รหัสประจำบ้าน" id="stu_hCode"
                             name="stu_hCode" required11>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                    <label>บ้านเลขที่</label>  
                         <input type="text" class="form-control" placeholder="บ้านเลขที่" id="stu_hNumber"
                             name="stu_hNumber" required>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                    <label>หมูที่</label>  
                         <input type="text" class="form-control" placeholder="หมู่ที่" id="stu_hMoo" name="stu_hMoo"
                         required>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                    <label>ถนน</label>  
                         <input type="text" class="form-control" id="stu_hRoad" name="stu_hRoad" placeholder="ถนน"
                             required11>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                    <label>ตำบล</label>  
                         <input type="text" class="form-control" placeholder="ตำบล" id="stu_hTambon" name="stu_hTambon"
                         required>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                    <label>อำเภอ</label>  
                         <input type="text" class="form-control" placeholder="อำเภอ" id="stu_hDistrict"
                             name="stu_hDistrict" required>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                    <label>จังหวัด</label>  
                         <input type="text" class="form-control" placeholder="จังหวัด" id="stu_hProvince"
                             name="stu_hProvince" required>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                    <label>รหัสไปรษณีย์</label>  
                         <input type="text" class="form-control" placeholder="รหัสไปรษณีย์" id="stu_hPostCode"
                             name="stu_hPostCode" required>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                    <label>เบอร์โทรศัพท์</label>  
                         <input type="text" class="form-control" id="stu_phone" name="stu_phone"
                             placeholder="เบอร์โทรศัพท์ (นักเรียน)" required data-inputmask="'mask': '999-999-9999'">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                    <label>อีเมล</label>  
                         <input type="email" class="form-control" placeholder="อีเมล" id="stu_email" name="stu_email"
                             required11>
                     </div>
@@ -298,30 +312,37 @@
             <div class="col-sm-9">
                 <div class="form-row">
                     <div class="col-12 col-md-3 mb-2">
+                    <label>บ้านเลขที่</label>  
                         <input type="text" class="form-control" placeholder="บ้านเลขที่" id="stu_cNumber"
                             name="stu_cNumber" required>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                    <label>หมู่ที่</label>  
                         <input type="text" class="form-control" placeholder="หมู่ที่" id="stu_cMoo" name="stu_cMoo"
                         required>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                    <label>ถนน</label>  
                         <input type="text" class="form-control" id="stu_cRoad" name="stu_cRoad" placeholder="ถนน"
                             required11>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                    <label>ตำบล</label>  
                         <input type="text" class="form-control" placeholder="ตำบล" id="stu_cTumbao" name="stu_cTumbao"
                         required>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                    <label>อำเภอ</label>  
                         <input type="text" class="form-control" placeholder="อำเภอ" id="stu_cDistrict"
                             name="stu_cDistrict" required>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                    <label>จังหวัด</label>  
                         <input type="text" class="form-control" placeholder="จังหวัด" id="stu_cProvince"
                             name="stu_cProvince" required>
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                    <label>รหัสไปรษณีย์</label>  
                         <input type="text" class="form-control" id="stu_cPostcode" name="stu_cPostcode"
                             placeholder="รหัสไปรษณีย์" required>
                     </div>

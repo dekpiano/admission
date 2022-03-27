@@ -34,6 +34,7 @@ class Control_confirm extends CI_Controller {
 		$data['stu'] = $this->db->select('*')->where('recruit_idCard',$this->session->userdata('idenStu'))->from('tb_recruitstudent')->get()->result();
 
 		$data['stuConf'] = $Conf->select('*')->where('stu_iden',$this->session->userdata('idenStu'))->from('tb_students')->get()->result();
+		$data['Ckeckstu'] = $Conf->select('*')->where('stu_iden',$this->session->userdata('idenStu'))->from('tb_students')->get()->num_rows();
 
 		$data['FatherCkeck'] = $Conf->select('par_stuID,par_relation')
 							->where('par_stuID',$this->session->userdata('idenStu'))
@@ -42,6 +43,28 @@ class Control_confirm extends CI_Controller {
 		$data['FatherConf'] = $Conf->select('*')
 							->where('par_stuID',$this->session->userdata('idenStu'))
 							->where('par_relation',"บิดา")
+							->from('tb_parent')->get()->result();
+
+		$data['MatherCkeck'] = $Conf->select('par_stuID,par_relation')
+							->where('par_stuID',$this->session->userdata('idenStu'))
+							->where('par_relation',"มารดา")
+							->from('tb_parent')->get()->num_rows();
+		$data['MatherConf'] = $Conf->select('*')
+							->where('par_stuID',$this->session->userdata('idenStu'))
+							->where('par_relation',"มารดา")
+							->from('tb_parent')->get()->result();
+
+	    $data['OtherCkeck'] = $Conf->select('par_stuID,par_relation')
+							->where('par_stuID',$this->session->userdata('idenStu'))
+							->where('par_relation !=',"บิดา")
+							->where('par_relation !=',"มารดา")
+							->from('tb_parent')->get()->num_rows();
+
+		//print_r($data['OtherCkeck']);exit();			
+		$data['OtherConf'] = $Conf->select('*')
+							->where('par_stuID',$this->session->userdata('idenStu'))
+							->where('par_relation !=',"บิดา")
+							->where('par_relation !=',"มารดา")
 							->from('tb_parent')->get()->result();
 
 
@@ -269,5 +292,169 @@ class Control_confirm extends CI_Controller {
 					echo $this->Model_confirm->ConfirmFatherUpdate($data,$id,$relation);
         //print_r($data);
 	}
+
+
+
+	//   มารดาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาา
+	public function InsertConfirmMather(){
+		$data = array('par_stuID' => $this->input->post('par_stuIDM'), 
+						'par_relation' => $this->input->post('par_relationM'),
+						'par_prefix' => $this->input->post('par_prefixM'),
+						'par_firstName' => $this->input->post('par_firstNameM'),
+						'par_lastName' => $this->input->post('par_lastNameM'),
+						'par_ago' => $this->input->post('par_agoM'),
+						'par_IdNumber' => $this->input->post('par_IdNumberM'),
+						'par_national' => $this->input->post('par_nationalM'),
+						'par_race' => $this->input->post('par_raceM'),
+						'par_religion' => $this->input->post('par_religionM'),
+						'par_career' => $this->input->post('par_careerM'),
+						'par_education' => $this->input->post('par_educationM'),
+						'par_salary' => $this->input->post('par_salaryM'),
+						'par_positionJob' => $this->input->post('par_positionJobM'),
+						'par_phone' => $this->input->post('par_phoneM'),
+						'par_decease' => $this->input->post('par_deceaseM'),
+						'par_hNumber' => $this->input->post('par_hNumberM'),
+						'par_hMoo' => $this->input->post('par_hMooM'),
+						'par_hTambon' => $this->input->post('par_hTambonM'),
+						'par_hDistrict' => $this->input->post('par_hDistrictM'),
+						'par_hProvince' => $this->input->post('par_hProvinceM'),
+						'par_hPostcode' => $this->input->post('par_hPostcodeM'),
+						'par_cNumber' => $this->input->post('par_cNumberM'),
+						'par_cMoo' => $this->input->post('par_cMooM'),
+						'par_cTambon' => $this->input->post('par_cTambonM'),
+						'par_cDistrict' => $this->input->post('par_cDistrictM'),
+						'par_cProvince' => $this->input->post('par_cProvinceM'),
+						'par_cPostcode' => $this->input->post('par_cPostcodeM'),
+						'par_rest' => $this->input->post('par_restM'),
+						'par_restOrthor' => $this->input->post('par_restOrthorM'),
+						'par_service' => $this->input->post('par_serviceM'),
+						'par_serviceName' => implode("",$this->input->post('par_serviceNameM')),
+						'par_claim' => $this->input->post('par_claimM')
+					);
+
+					echo $this->Model_confirm->ConfirmMatherInsert($data);
+		//print_r($data);
+	}
+
+	public function UpdateConfirmMather(){
+		$data = array(						
+						'par_prefix' => $this->input->post('par_prefixM'),
+						'par_firstName' => $this->input->post('par_firstNameM'),
+						'par_lastName' => $this->input->post('par_lastNameM'),
+						'par_ago' => $this->input->post('par_agoM'),
+						'par_IdNumber' => $this->input->post('par_IdNumberM'),
+						'par_national' => $this->input->post('par_nationalM'),
+						'par_race' => $this->input->post('par_raceM'),
+						'par_religion' => $this->input->post('par_religionM'),
+						'par_career' => $this->input->post('par_careerM'),
+						'par_education' => $this->input->post('par_educationM'),
+						'par_salary' => $this->input->post('par_salaryM'),
+						'par_positionJob' => $this->input->post('par_positionJobM'),
+						'par_phone' => $this->input->post('par_phoneM'),
+						'par_decease' => $this->input->post('par_deceaseM'),
+						'par_hNumber' => $this->input->post('par_hNumberM'),
+						'par_hMoo' => $this->input->post('par_hMooM'),
+						'par_hTambon' => $this->input->post('par_hTambonM'),
+						'par_hDistrict' => $this->input->post('par_hDistrictM'),
+						'par_hProvince' => $this->input->post('par_hProvinceM'),
+						'par_hPostcode' => $this->input->post('par_hPostcodeM'),
+						'par_cNumber' => $this->input->post('par_cNumberM'),
+						'par_cMoo' => $this->input->post('par_cMooM'),
+						'par_cTambon' => $this->input->post('par_cTambonM'),
+						'par_cDistrict' => $this->input->post('par_cDistrictM'),
+						'par_cProvince' => $this->input->post('par_cProvinceM'),
+						'par_cPostcode' => $this->input->post('par_cPostcodeM'),
+						'par_rest' => $this->input->post('par_restM'),
+						'par_restOrthor' => $this->input->post('par_restOrthorM'),
+						'par_service' => $this->input->post('par_serviceM'),
+						'par_serviceName' => implode("",$this->input->post('par_serviceNameM')),
+						'par_claim' => $this->input->post('par_claimM')
+					);
+					$id = $this->input->post('par_stuIDM');
+					$relation = $this->input->post('par_relationM');
+					echo $this->Model_confirm->ConfirmMatherUpdate($data,$id,$relation);
+        //print_r($data);
+	}
+
+		//   ผู้ปกครองงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงง
+		public function InsertConfirmOther(){
+			$data = array('par_stuID' => $this->input->post('par_stuIDO'), 
+							'par_relation' => $this->input->post('par_relationO'),
+							'par_prefix' => $this->input->post('par_prefixO'),
+							'par_firstName' => $this->input->post('par_firstNameO'),
+							'par_lastName' => $this->input->post('par_lastNameO'),
+							'par_ago' => $this->input->post('par_agoO'),
+							'par_IdNumber' => $this->input->post('par_IdNumberO'),
+							'par_national' => $this->input->post('par_nationalO'),
+							'par_race' => $this->input->post('par_raceO'),
+							'par_religion' => $this->input->post('par_religionO'),
+							'par_career' => $this->input->post('par_careerO'),
+							'par_education' => $this->input->post('par_educationO'),
+							'par_salary' => $this->input->post('par_salaryO'),
+							'par_positionJob' => $this->input->post('par_positionJobO'),
+							'par_phone' => $this->input->post('par_phoneO'),
+							'par_decease' => $this->input->post('par_deceaseO'),
+							'par_hNumber' => $this->input->post('par_hNumberO'),
+							'par_hMoo' => $this->input->post('par_hMooO'),
+							'par_hTambon' => $this->input->post('par_hTambonO'),
+							'par_hDistrict' => $this->input->post('par_hDistrictO'),
+							'par_hProvince' => $this->input->post('par_hProvinceO'),
+							'par_hPostcode' => $this->input->post('par_hPostcodeO'),
+							'par_cNumber' => $this->input->post('par_cNumberO'),
+							'par_cMoo' => $this->input->post('par_cMooO'),
+							'par_cTambon' => $this->input->post('par_cTambonO'),
+							'par_cDistrict' => $this->input->post('par_cDistrictO'),
+							'par_cProvince' => $this->input->post('par_cProvinceO'),
+							'par_cPostcode' => $this->input->post('par_cPostcodeO'),
+							'par_rest' => $this->input->post('par_restO'),
+							'par_restOrthor' => $this->input->post('par_restOrthorO'),
+							'par_service' => $this->input->post('par_serviceO'),
+							'par_serviceName' => implode("",$this->input->post('par_serviceNameO')),
+							'par_claim' => $this->input->post('par_claimO')
+						);
+	
+						echo $this->Model_confirm->ConfirmOtherInsert($data);
+			//print_r($data);
+		}
+	
+		public function UpdateConfirmOther(){
+			$data = array(						
+							'par_prefix' => $this->input->post('par_prefixO'),
+							'par_firstName' => $this->input->post('par_firstNameO'),
+							'par_lastName' => $this->input->post('par_lastNameO'),
+							'par_ago' => $this->input->post('par_agoO'),
+							'par_IdNumber' => $this->input->post('par_IdNumberO'),
+							'par_national' => $this->input->post('par_nationalO'),
+							'par_race' => $this->input->post('par_raceO'),
+							'par_religion' => $this->input->post('par_religionO'),
+							'par_career' => $this->input->post('par_careerO'),
+							'par_education' => $this->input->post('par_educationO'),
+							'par_salary' => $this->input->post('par_salaryO'),
+							'par_positionJob' => $this->input->post('par_positionJobO'),
+							'par_phone' => $this->input->post('par_phoneO'),
+							'par_decease' => $this->input->post('par_deceaseO'),
+							'par_hNumber' => $this->input->post('par_hNumberO'),
+							'par_hMoo' => $this->input->post('par_hMooO'),
+							'par_hTambon' => $this->input->post('par_hTambonO'),
+							'par_hDistrict' => $this->input->post('par_hDistrictO'),
+							'par_hProvince' => $this->input->post('par_hProvinceO'),
+							'par_hPostcode' => $this->input->post('par_hPostcodeO'),
+							'par_cNumber' => $this->input->post('par_cNumberO'),
+							'par_cMoo' => $this->input->post('par_cMooO'),
+							'par_cTambon' => $this->input->post('par_cTambonO'),
+							'par_cDistrict' => $this->input->post('par_cDistrictO'),
+							'par_cProvince' => $this->input->post('par_cProvinceO'),
+							'par_cPostcode' => $this->input->post('par_cPostcodeO'),
+							'par_rest' => $this->input->post('par_restO'),
+							'par_restOrthor' => $this->input->post('par_restOrthorO'),
+							'par_service' => $this->input->post('par_serviceM'),
+							'par_serviceName' => implode("",$this->input->post('par_serviceNameO')),
+							'par_claim' => $this->input->post('par_claimO')
+						);
+						$id = $this->input->post('par_stuIDO');
+						$relation = $this->input->post('par_relationO');
+						echo $this->Model_confirm->ConfirmOtherUpdate($data,$id,$relation);
+			//print_r($data);
+		}
 
 }

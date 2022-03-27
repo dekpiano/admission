@@ -58,7 +58,52 @@
              </div>
          </div>
 
+           <!-- Modal-->
+        <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+            class="modal fade text-left">
+            <div role="document" class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 id="exampleModalLabel" class="modal-title">เลือกการสมัคร</h4>
+                        <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span
+                                aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <?php if($switch[0]->onoff_regis == "off") :?>
+                        <?php echo $switch[0]->onoff_comment; ?>
+                        <?php else : ?>
 
+                        <div class="row">
+                            <?php foreach ($quota as $key => $v_quota) :?>
+                            <?php if($v_quota->quota_status == "on"): ?>
+                            <div class="col-md-6">
+                                <div class="card" style="border: 2px solid #2b90d9;">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?=$v_quota->quota_explain?></h5>
+                                        <?php if($v_quota->quota_key == "quotasport"):?>
+                                        <h6 class="card-title text-danger">(เฉพาะนักเรียนที่ผ่านการคัดตัวเท่านั้น)
+                                        </h6>
+                                        <?php endif; ?>
+                                        <?php  $q = explode("|",$v_quota->quota_level);
+                                        foreach ($q as $key => $v_q) : ?>
+                                        <a href="<?=base_url('RegStudent/'.$v_q.'/'.$v_quota->quota_key);?>"
+                                            class="btn btn-primary mb-1">สมัครเรียน ม.<?=$v_q;?></a>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php endif; ?>
+                            <?php endforeach; ?>
+
+                        </div>
+                        <?php endif; ?>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
          </html>
 
@@ -92,7 +137,7 @@
          <?php if($this->uri->segment(1) == "RegStudent"):?>
          <script src="<?=base_url()?>asset/js/AutoProvince.js?v=5"></script>
          <?php elseif($this->uri->segment(1) == "Confirm"):?>
-         <script src="<?=base_url()?>asset/js/ConfirmStudent.js?v=10"></script>
+         <script src="<?=base_url()?>asset/js/ConfirmStudent.js?v=11"></script>
          <?php endif; ?>
 
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>

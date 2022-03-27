@@ -84,18 +84,22 @@
             <div class="col-sm-9">
                 <div class="form-row">
                     <div class="col-12 col-md-3 mb-2">
+                        <label>ตำบล</label>
                         <input type="text" class="form-control" placeholder="ระบุตำบล" id="stu_birthTambon"
                             name="stu_birthTambon" required value="<?=$stuConf[0]->stu_birthTambon?>">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                        <label>อำเภอ</label>
                         <input type="text" class="form-control" placeholder="ระบุอำเภอ" id="stu_birthDistrict"
                             name="stu_birthDistrict" required value="<?=$stuConf[0]->stu_birthDistrict?>">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                        <label>จังหวัด</label>
                         <input type="text" class="form-control" placeholder="ระบุจังหวัด" id="stu_birthProvirce"
                             name="stu_birthProvirce" required value="<?=$stuConf[0]->stu_birthProvirce?>">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                        <label>โรงพยาบาล</label>
                         <input type="text" class="form-control" placeholder="ระบุชื่อโรงพยาบาล" id="stu_birthHospital"
                             name="stu_birthHospital" required11 value="<?=$stuConf[0]->stu_birthHospital?>">
                     </div>
@@ -234,11 +238,13 @@
                 </div>
                 <?php endforeach; ?>
                 <?php if($stuConf[0]->stu_presentLife == "บุคคลอื่น"):?>
-                <input type="text" id="stu_personOther" name="stu_personOther" class="ml-2 textbox form-control" value="<?=$stuConf[0]->stu_personOther?>"
-                     placeholder="ระบุชื่อบุคคลอื่น เช่น ปู่ ย่า ตา ยาย พี่ น้อง">
+                <input type="text" id="stu_personOther" name="stu_personOther" class="ml-2 textbox form-control"
+                    value="<?=$stuConf[0]->stu_personOther?>"
+                    placeholder="ระบุชื่อบุคคลอื่น เช่น ปู่ ย่า ตา ยาย พี่ น้อง">
                 <?php else :?>
-                    <input type="text" id="stu_personOther" name="stu_personOther" class="ml-2 textbox form-control" value="<?=$stuConf[0]->stu_personOther?>"
-                    style="display:none;" placeholder="ระบุชื่อบุคคลอื่น เช่น ปู่ ย่า ตา ยาย พี่ น้อง">
+                <input type="text" id="stu_personOther" name="stu_personOther" class="ml-2 textbox form-control"
+                    value="<?=$stuConf[0]->stu_personOther?>" style="display:none;"
+                    placeholder="ระบุชื่อบุคคลอื่น เช่น ปู่ ย่า ตา ยาย พี่ น้อง">
                 <?php endif; ?>
             </div>
         </div>
@@ -250,42 +256,53 @@
             <div class="col-sm-9">
                 <div class="form-row">
                     <div class="col-12 col-md-3 mb-2">
+                        <label>รหัสประจำบ้าน</label>
                         <input type="text" class="form-control" placeholder="รหัสประจำบ้าน" id="stu_hCode"
                             name="stu_hCode" required11 value="<?=$stuConf[0]->stu_hCode?>">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                        <label>บ้านเลขที่</label>
                         <input type="text" class="form-control" placeholder="บ้านเลขที่" id="stu_hNumber"
                             name="stu_hNumber" required11 value="<?=$stuConf[0]->stu_hNumber?>">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                        <label>หมู่ที่</label>
                         <input type="text" class="form-control" placeholder="หมู่ที่" id="stu_hMoo" name="stu_hMoo"
                             required11 value="<?=$stuConf[0]->stu_hMoo?>">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                        <label>ถนน</label>
                         <input type="text" class="form-control" id="stu_hRoad" name="stu_hRoad" placeholder="ถนน"
                             required11 value="<?=$stuConf[0]->stu_hRoad?>">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                        <label>ตำบล</label>
                         <input type="text" class="form-control" placeholder="ตำบล" id="stu_hTambon" name="stu_hTambon"
                             required11 value="<?=$stuConf[0]->stu_hTambon?>">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                        <label>อำเภอ</label>
                         <input type="text" class="form-control" placeholder="อำเภอ" id="stu_hDistrict"
                             name="stu_hDistrict" required11 value="<?=$stuConf[0]->stu_hDistrict?>">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                        <label>จังหวัด</label>
                         <input type="text" class="form-control" placeholder="จังหวัด" id="stu_hProvince"
                             name="stu_hProvince" required11 value="<?=$stuConf[0]->stu_hProvince?>">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                        <label>รหัสไปรษณีย์</label>
                         <input type="text" class="form-control" placeholder="รหัสไปรษณีย์" id="stu_hPostCode"
                             name="stu_hPostCode" required11 value="<?=$stuConf[0]->stu_hPostCode?>">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                        <label>เบอร์โทรศัพท์</label>
                         <input type="text" class="form-control" id="stu_phone" name="stu_phone"
-                            placeholder="เบอร์โทรศัพท์ (นักเรียน)" required11 data-inputmask="'mask': '999-999-9999'" value="<?=$stuConf[0]->stu_phone?>">
+                            placeholder="เบอร์โทรศัพท์ (นักเรียน)" required11 data-inputmask="'mask': '999-999-9999'"
+                            value="<?=$stuConf[0]->stu_phone?>">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                        <label>อีเมล</label>
                         <input type="email" class="form-control" placeholder="อีเมล" id="stu_email" name="stu_email"
                             required11 value="<?=$stuConf[0]->stu_email?>">
                     </div>
@@ -304,30 +321,37 @@
             <div class="col-sm-9">
                 <div class="form-row">
                     <div class="col-12 col-md-3 mb-2">
+                        <label>บ้านเลขที่</label>
                         <input type="text" class="form-control" placeholder="บ้านเลขที่" id="stu_cNumber"
                             name="stu_cNumber" required11 value="<?=$stuConf[0]->stu_cNumber?>">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                        <label>หมู่ที่</label>
                         <input type="text" class="form-control" placeholder="หมู่ที่" id="stu_cMoo" name="stu_cMoo"
                             required11 value="<?=$stuConf[0]->stu_cMoo?>">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                        <label>ถนน</label>
                         <input type="text" class="form-control" id="stu_cRoad" name="stu_cRoad" placeholder="ถนน"
                             required11 value="<?=$stuConf[0]->stu_cRoad?>">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                        <label>ตำบล</label>
                         <input type="text" class="form-control" placeholder="ตำบล" id="stu_cTumbao" name="stu_cTumbao"
                             required11 value="<?=$stuConf[0]->stu_cTumbao?>">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                        <label>อำเภอ</label>
                         <input type="text" class="form-control" placeholder="อำเภอ" id="stu_cDistrict"
                             name="stu_cDistrict" required11 value="<?=$stuConf[0]->stu_cDistrict?>">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                        <label>จังหวัด</label>
                         <input type="text" class="form-control" placeholder="จังหวัด" id="stu_cProvince"
                             name="stu_cProvince" required11 value="<?=$stuConf[0]->stu_cProvince?>">
                     </div>
                     <div class="col-12 col-md-3 mb-2">
+                        <label>รหัสไปรษณีย์</label>
                         <input type="text" class="form-control" id="stu_cPostcode" name="stu_cPostcode"
                             placeholder="รหัสไปรษณีย์" required11 value="<?=$stuConf[0]->stu_cPostcode?>">
                     </div>
@@ -345,8 +369,8 @@
                                                 foreach ($addr as $key => $v_addr) :
                                                 ?>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input class="custom-control-input" type="radio" name="stu_natureRoom" id="natureRoom<?=$key?>" <?=$stuConf[0]->stu_natureRoom==$v_addr?"checked":""?>
-                        value="<?=$v_addr;?>">
+                    <input class="custom-control-input" type="radio" name="stu_natureRoom" id="natureRoom<?=$key?>"
+                        <?=$stuConf[0]->stu_natureRoom==$v_addr?"checked":""?> value="<?=$v_addr;?>">
                     <label class="custom-control-label" for="natureRoom<?=$key?>"><?=$v_addr;?></label>
                 </div>
                 <?php endforeach; ?>
@@ -366,7 +390,7 @@
             </label>
             <div class="col-sm-2">
                 <input type="text" class="form-control form-control" id="stu_travel" name="stu_travel"
-                    placeholder="เช่น รถยนต์ เรือ เดิน" required11 value="<?=$stuConf[0]->stu_travel?>"> 
+                    placeholder="เช่น รถยนต์ เรือ เดิน" required11 value="<?=$stuConf[0]->stu_travel?>">
             </div>
         </div>
         <hr>
@@ -409,14 +433,14 @@
             <div class="col-sm-9">
 
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input class="custom-control-input" type="radio" name="stu_usedStudent" id="stu_usedStudent1" <?=$stuConf[0]->stu_usedStudent=="ไม่เคย"?"checked":""?>
-                        value="ไม่เคย">
+                    <input class="custom-control-input" type="radio" name="stu_usedStudent" id="stu_usedStudent1"
+                        <?=$stuConf[0]->stu_usedStudent=="ไม่เคย"?"checked":""?> value="ไม่เคย">
                     <label class="custom-control-label align-self-center" for="stu_usedStudent1">ไม่เคย
                     </label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input class="custom-control-input" type="radio" name="stu_usedStudent" id="stu_usedStudent2" <?=$stuConf[0]->stu_usedStudent=="เคย"?"checked":""?>
-                        value="เคย">
+                    <input class="custom-control-input" type="radio" name="stu_usedStudent" id="stu_usedStudent2"
+                        <?=$stuConf[0]->stu_usedStudent=="เคย"?"checked":""?> value="เคย">
                     <label class="custom-control-label align-self-center" for="stu_usedStudent2"> เคย
                     </label>
 
@@ -424,7 +448,7 @@
                         $display = "";
                     }else{
                         $display = "display:none;";
-                    }?>                                  
+                    }?>
                     <select class="form-control ml-3" id="stu_inputLevel" name="stu_inputLevel" style="<?=$display;?>">
                         <option value="">เลือกระดับชั้น</option>
                         <?php for ($i=1; $i <= 6 ; $i++) : ?>
@@ -441,16 +465,18 @@
             <label for="stu_phoneUrgent" class="col-sm-3 col-form-label col-form-label">โทรศัพท์ติดต่อฉุกเฉิน
             </label>
             <div class="col-sm-3">
-                <input type="text" class="form-control form-control" id="stu_phoneUrgent" name="stu_phoneUrgent" value="<?php echo $stuConf[0]->stu_phoneUrgent;?>"
-                    placeholder="ระบุเบอร์โทรศัพท์" required11 data-inputmask="'mask': '999-999-9999'">
+                <input type="text" class="form-control form-control" id="stu_phoneUrgent" name="stu_phoneUrgent"
+                    value="<?php echo $stuConf[0]->stu_phoneUrgent;?>" placeholder="ระบุเบอร์โทรศัพท์" required11
+                    data-inputmask="'mask': '999-999-9999'">
             </div>
         </div>
         <div class="form-group row">
             <label for="stu_phoneFriend" class="col-sm-3 col-form-label col-form-label">โทรศัพท์เพื่อนบ้านใกล้เคียง
             </label>
             <div class="col-sm-3">
-                <input type="text" class="form-control form-control" id="stu_phoneFriend" name="stu_phoneFriend" value="<?php echo $stuConf[0]->stu_phoneFriend;?>"
-                    placeholder="ระบุเบอร์โทรศัพท์" required11 data-inputmask="'mask': '999-999-9999'">
+                <input type="text" class="form-control form-control" id="stu_phoneFriend" name="stu_phoneFriend"
+                    value="<?php echo $stuConf[0]->stu_phoneFriend;?>" placeholder="ระบุเบอร์โทรศัพท์" required11
+                    data-inputmask="'mask': '999-999-9999'">
             </div>
         </div>
         <hr>

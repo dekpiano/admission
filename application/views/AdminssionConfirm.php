@@ -142,25 +142,47 @@
                     aria-orientation="vertical">
                     <a class="nav-link mb-3 p-3 shadow active" id="v-pills-home-tab" data-toggle="pill"
                         href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
-                        <i class="fa fa-user-circle-o mr-2"></i>
-                        <span class="font-weight-bold small text-uppercase">หน้าแรก</span></a>
+                        <i class="fa fa-star mr-2"></i>
+                        <span class="">หน้าแรก</span></a>
 
                     <a class="nav-link mb-3 p-3 shadow" id="v-pills-profile-tab" data-toggle="pill"
                         href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
-                        <i class="fa fa-calendar-minus-o mr-2"></i>
-                        <span class="font-weight-bold small text-uppercase">ข้อมูลนักเรียน</span></a>
-
+                        <span class="">ข้อมูลนักเรียน</span>
+                        <?php if($Ckeckstu == 1) :?>
+                        ( <i class="fa fa-check mr-2 "></i> กรอกข้อมูลแล้ว)
+                        <?php else :?>
+                        ( <i class="fa fa-times mr-2 "></i> ยังไม่กรอกข้อมูล)
+                        <?php endif; ?>
+                    </a>
                     <a class="nav-link mb-3 p-3 shadow" id="v-pills-messages-tab" data-toggle="pill"
                         href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
-                        <i class="fa fa-star mr-2"></i>
-                        <span class="font-weight-bold small text-uppercase">ข้อมูลบิดา</span></a>
-
+                        <span class="">ข้อมูลบิดา</span>
+                        <?php if($FatherCkeck == 1) :?>
+                        ( <i class="fa fa-check mr-2 "></i> กรอกข้อมูลแล้ว)
+                        <?php else :?>
+                        ( <i class="fa fa-times mr-2 "></i> ยังไม่กรอกข้อมูล)
+                        <?php endif; ?>
+                    </a>
                     <a class="nav-link mb-3 p-3 shadow" id="v-pills-settings-tab" data-toggle="pill"
                         href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">
-                        <i class="fa fa-check mr-2"></i>
-                        <span class="font-weight-bold small text-uppercase">ข้อมูลมารดา</span></a>
+                        <span class="">ข้อมูลมารดา</span>
+                        <?php if($MatherCkeck == 1) :?>
+                        ( <i class="fa fa-check mr-2 "></i> กรอกข้อมูลแล้ว)
+                        <?php else :?>
+                        ( <i class="fa fa-times mr-2 "></i> ยังไม่กรอกข้อมูล)
+                        <?php endif; ?>
+                    </a>
+                    <a class="nav-link mb-3 p-3 shadow" id="v-pills-other-tab" data-toggle="pill"
+                        href="#v-pills-other" role="tab" aria-controls="v-pills-other" aria-selected="false">
+                        <span class="">ข้อมูลผู้ปกครอง</span>
+                        <?php if($OtherCkeck == 1) :?>
+                        ( <i class="fa fa-check mr-2 "></i> กรอกข้อมูลแล้ว)
+                        <?php else :?>
+                        ( <i class="fa fa-times mr-2 "></i> ยังไม่กรอกข้อมูล)
+                        <?php endif; ?>
+                    </a>
                 </div>
-                <a href="<?=base_url('Confirm/Logout');?>" class="btn btn-danger w-100">ออกจากระบบ</a>
+                <a href="<?=base_url('Confirm/Logout');?>" class="btn btn-danger w-100 mb-5">ออกจากระบบ</a>
             </div>
 
 
@@ -172,7 +194,7 @@
                         <?php $this->load->view('FormData/FormMain/PageFormMain.php'); ?>
                     </div>
 
-                    <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-profile" role="tabpanel"
+                    <div class="tab-pane fade shadow rounded bg-white p-3" id="v-pills-profile" role="tabpanel"
                         aria-labelledby="v-pills-profile-tab">
                         <h4 class="font-italic mb-4">ข้อมูลนักเรียน</h4>
 
@@ -184,7 +206,7 @@
                         ?>
                     </div>
 
-                    <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-messages" role="tabpanel"
+                    <div class="tab-pane fade shadow rounded bg-white p-3" id="v-pills-messages" role="tabpanel"
                         aria-labelledby="v-pills-messages-tab">
                         <h4 class="font-italic mb-4">ข้อมูลบิดา</h4>
 
@@ -195,12 +217,27 @@
                         }
                         ?>
                     </div>
-                </div>
 
-                <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-settings" role="tabpanel"
-                    aria-labelledby="v-pills-settings-tab">
-                    <h4 class="font-italic mb-4">ข้อมูลมารดา</h4>
-                    <?php $this->load->view('FormData/FormMather/PageFormMather.php'); ?>
+                    <div class="tab-pane fade shadow rounded bg-white p-3" id="v-pills-settings" role="tabpanel"
+                        aria-labelledby="v-pills-settings-tab">
+                        <h4 class="font-italic mb-4">ข้อมูลมารดา</h4>
+                        <?php if($MatherCkeck == 1){
+                          $this->load->view('FormData/FormMather/PageFormMatherEdit.php');
+                        }else{
+                            $this->load->view('FormData/FormMather/PageFormMather.php');
+                        }
+                        ?>
+                    </div>
+                    <div class="tab-pane fade shadow rounded bg-white p-3" id="v-pills-other" role="tabpanel"
+                        aria-labelledby="v-pills-other-tab">
+                        <h4 class="font-italic mb-4">ข้อมูลผู้ปกครอง</h4>
+                        <?php if($OtherCkeck == 1){
+                          $this->load->view('FormData/FormOther/PageFormOtherEdit.php');
+                        }else{
+                            $this->load->view('FormData/FormOther/PageFormOther.php');
+                        }
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>
