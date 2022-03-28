@@ -6,15 +6,13 @@
         <div class="card-body h5">
 
             <div class="row mb-3">
-                <div class="col-md-6">
-              <img src="<?=base_url('uploads/recruitstudent/m'.$stu[0]->recruit_regLevel.'/'.$stu[0]->recruit_img)?>" alt="55" class="img-fluid">
+                <div class="col-md-6 text-center align-self-center">
+              <img src="<?=base_url('uploads/recruitstudent/m'.$stu[0]->recruit_regLevel.'/img/'.$stu[0]->recruit_img)?>" alt="55" class="img-fluid w-50">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 align-self-center">
                    <p>ชั้นมัธยมศึกษาตอนต้นปีที่ <b>1</b></p> 
                   <p> ปีการศึกษา <b>2565</b></p> 
                 <p> วันที่รายงานตัว <b><?=$this->datethai->thai_date_fullmonth(strtotime(date("d-m-Y")))?></b></p>
-                   
-                    
                 </div>
             </div>
         </div>

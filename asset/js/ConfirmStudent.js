@@ -220,7 +220,7 @@ $(document).on('change', '#checkPer', function() {
         // console.log("Checkbox is checked.");       
         $('#par_cNumber').val($('#par_hNumber').val());
         $('#par_cMoo').val($('#par_hMoo').val());
-        $('#par_cTambon').val($('#par_cTambon').val());
+        $('#par_cTambon').val($('#par_hTambon').val());
         $('#par_cDistrict').val($('#par_hDistrict').val());
         $('#par_cProvince').val($('#par_hProvince').val());
         $('#par_cPostcode').val($('#par_hPostcode').val());

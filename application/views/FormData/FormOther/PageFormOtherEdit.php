@@ -197,7 +197,7 @@
         <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label">ลักษณะที่พัก</label>
         <div class="col-sm-9">
 
-            <?php $Name = array('บ้านตนเอง','เช่าอยู่','อาศัยผู้อื่นอยู่','บ้านพักสวัสดิการ','อื่นๆ');
+            <?php $Name = array('บ้านตนเอง','เช่าบ้าน','อาศัยผู้อื่นอยู่','บ้านพักสวัสดิการ','อื่นๆ');
         foreach ($Name as $key => $v_Name) :
         ?>
             <div class="custom-control custom-radio custom-control-inline">

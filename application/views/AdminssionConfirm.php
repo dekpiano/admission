@@ -172,8 +172,8 @@
                         ( <i class="fa fa-times mr-2 "></i> ยังไม่กรอกข้อมูล)
                         <?php endif; ?>
                     </a>
-                    <a class="nav-link mb-3 p-3 shadow" id="v-pills-other-tab" data-toggle="pill"
-                        href="#v-pills-other" role="tab" aria-controls="v-pills-other" aria-selected="false">
+                    <a class="nav-link mb-3 p-3 shadow" id="v-pills-other-tab" data-toggle="pill" href="#v-pills-other"
+                        role="tab" aria-controls="v-pills-other" aria-selected="false">
                         <span class="">ข้อมูลผู้ปกครอง</span>
                         <?php if($OtherCkeck == 1) :?>
                         ( <i class="fa fa-check mr-2 "></i> กรอกข้อมูลแล้ว)
@@ -182,6 +182,13 @@
                         <?php endif; ?>
                     </a>
                 </div>
+                <hr>
+                <?php if($Ckeckstu == 1 && $FatherCkeck == 1 && $MatherCkeck == 1 && $OtherCkeck == 1): ?>
+                <a href="<?=base_url('Confirm/Print');?>" class="btn btn-info w-100">พิมพ์ใบยืนยันรายงานตัว</a>
+                <?php else: ?>
+                <a href="#" id="checkPirnt" class="btn btn-info w-100">พิมพ์ใบยืนยันรายงานตัว</a>
+                <?php endif; ?>
+                <hr>
                 <a href="<?=base_url('Confirm/Logout');?>" class="btn btn-danger w-100 mb-5">ออกจากระบบ</a>
             </div>
 
@@ -231,6 +238,25 @@
                     <div class="tab-pane fade shadow rounded bg-white p-3" id="v-pills-other" role="tabpanel"
                         aria-labelledby="v-pills-other-tab">
                         <h4 class="font-italic mb-4">ข้อมูลผู้ปกครอง</h4>
+                        <div class="alert alert-success">
+                            <strong>แจ้งเตือน!</strong> กรณีที่นักเรียนอยู่กับบิดา - มารดา เลือกเป็นผู้ปกครอง 1 คน
+                            
+                            <div class="custom-control custom-radio custom-control-inline ml-5">
+                                <input class="custom-control-input checkPu" type="radio" name="par_rest88"
+                                    id="par_rest88" value="เป็นบิดา" required>
+                                <label class="custom-control-label" for="par_rest88">เป็นบิดา</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input class="custom-control-input checkPu" type="radio" name="par_rest89"
+                                    id="par_rest89" value="เป็นมารดา" required>
+                                <label class="custom-control-label" for="par_rest89">เป็นมารดา</label>
+                            </div>
+                           
+                         
+                            แล้วกดบันทึกข้อมูลด้านล่าง
+                            <br><br>
+                            แต่ถ้าไม่ใช่ให้กรอกข้อมูลผู้ปกครองอื่นที่อยู่กับนักเรียนในฟอร์มด้านล่าง
+                        </div>
                         <?php if($OtherCkeck == 1){
                           $this->load->view('FormData/FormOther/PageFormOtherEdit.php');
                         }else{

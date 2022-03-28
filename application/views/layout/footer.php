@@ -175,6 +175,10 @@ Swal.fire("แจ้งเตือน", "<?=$this->session->flashdata('messge')
          </script>
          <?php endif; $this->session->mark_as_temp('msg',20); ?>
          <script>
+             
+$("#checkPirnt").click(function(){
+    Swal.fire("แจ้งเตือน", "ให้นักเรียนตรวจสอบข้อมูล <br> -นักเรียน<br> -บิดา<br> -มารดา <br> -ผู้ปกครอง<br> .ให้ครบถ้วนก่อนถึงจะพิมพ์ใบยืนยันรายงานตัวได้", "warning");
+});
 //  Google Check
 function onHuman(response) {
     document.getElementById('captcha').value = response;
@@ -290,4 +294,6 @@ $(document).ready(function() {
         ]
     });
 });
+
+
          </script>
