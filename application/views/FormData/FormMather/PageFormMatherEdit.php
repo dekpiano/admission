@@ -1,5 +1,7 @@
 <form id="FormConfirmMatherUpdate" method="post" action="#" class="check-needs-validation" novalidate>
 <input type="hidden" class="form-control form-control" id="par_stuIDM" name="par_stuIDM" placeholder="ระบุอายุ" value="<?php echo $MatherConf[0]->par_stuID; ?>" readonly   required11>
+<input type="hidden" class="form-control form-control" id="par_relationKeyM" name="par_relationKeyM" placeholder="ระบุอายุ" value="แม่" readonly   required11>
+<input type="hidden" class="form-control form-control" id="par_idM" name="par_idM" placeholder="ระบุอายุ" value="<?=$MatherConf[0]->par_id?>" readonly   required11>
 <div class="form-group row">
         <label for="par_ago" class="col-sm-3 col-form-label col-form-label">ความสัมพันธ์เป็น</label>
         <div class="col-sm-3">
@@ -30,7 +32,7 @@
         <label for="par_agoM" class="col-sm-3 col-form-label col-form-label">อายุ</label>
         <div class="col-sm-3">
             <input type="text" class="form-control form-control" id="par_agoM" name="par_agoM" placeholder="ระบุอายุ"
-                required value="<?=$MatherConf[0]->par_lastName;?>">
+                required value="<?=$MatherConf[0]->par_ago;?>">
         </div>
     </div>
     <div class="form-group row">
@@ -199,9 +201,16 @@
             <div class="custom-control custom-radio custom-control-inline">
                 <input class="custom-control-input par_restM" type="radio" name="par_restM" id="par_restM<?=$key;?>" value="<?=$v_Name;?>" required <?=$MatherConf[0]->par_rest==$v_Name?"checked":""?>>
                 <label class="custom-control-label" for="par_restM<?=$key;?>"><?=$v_Name;?></label>
+                <?php if($MatherConf[0]->par_rest==$v_Name): ?>
+            <input type="text" class="form-control" placeholder="ระบุที่พักอื่น ๆ"
+                id="par_restOrthorM<?=$key;?>" name="par_restOrthorM" required11
+                value="<?=$MatherConf[0]->par_restOrthor?>">
+            <?php else :?>
+            <input type="text" style="display:none;" class="form-control" placeholder="ระบุที่พักอื่น ๆ"
+                id="par_restOrthorM<?=$key;?>" name="par_restOrthorM" required11>
+            <?php endif; ?>
             </div>           
-                <input type="text" style="display:none;"  class="form-control" placeholder="ระบุที่พักอื่น ๆ" id="par_restOrthorM<?=$key;?>"
-                    name="par_restOrthorM" required11 value="<?=$MatherConf[0]->par_restOrthor;?>">
+            
          
             <?php endforeach; ?>
             

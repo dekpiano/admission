@@ -259,7 +259,7 @@ $(document).on('change', '.par_rest', function() {
     selected_value = $("input[name='par_rest']:checked").val();
     $("#par_restOrthor0").hide();
     $("#par_restOrthor1").hide();
-    $("#par_restOrthor").hide();
+    $("#par_restOrthor2").hide();
     $("#par_restOrthor3").hide();
     $("#par_restOrthor4").hide();
     if (selected_value == "อื่นๆ") {
@@ -524,4 +524,153 @@ $(document).on('submit', '#FormConfirmOtherUpdate', function(e) {
             // }, 5000);
         }
     });
+});
+
+
+$(document).on('change', '.checkPu', function() {
+    selected_value = $("input[name='checkPu']:checked").val();    
+    console.log(selected_value);
+    if(selected_value == "บิดา"){
+      //  $('par_stuIDO').val($('par_stuID').val()); 
+        $('#par_relationO').val($('#par_relation').val()); 
+       // $('#par_relationKeyO').val($('#par_relationKey').val());
+        $('#par_prefixO').val($('#par_prefix').val());  
+        $('#par_firstNameO').val($('#par_firstName').val());  
+        $('#par_lastNameO').val($('#par_lastName').val());  
+        $('#par_agoO').val($('#par_ago').val());
+        $('#par_IdNumberO').val($('#par_IdNumber').val());  
+        $('#par_nationalO').val($('#par_national').val());
+        $('#par_raceO').val($('#par_race').val());
+        $('#par_religionO').val($('#par_religion').val());
+        $('#par_careerO').val($('#par_career').val());
+        $('#par_educationO').val($('#par_education').val()); 
+        $('#par_salaryO').val($('#par_salary').val()); 
+        $('#par_positionJobO').val($('#par_positionJob').val());
+        $('#par_phoneO').val($('#par_phone').val()); 
+        $('#par_deceaseO').val($('#par_decease').val());
+        $('#par_hNumberO').val($('#par_hNumber').val());
+        $('#par_hMooO').val($('#par_hMoo').val());
+        $('#par_hTambonO').val($('#par_hTambon').val());
+        $('#par_hDistrictO').val($('#par_hDistrict').val()); 
+        $('#par_hProvinceO').val($('#par_hProvince').val()); 
+        $('#par_hPostcodeO').val($('#par_hPostcode').val());  
+        $('#par_cNumberO').val($('#par_cNumber').val());
+        $('#par_cMooO').val($('#par_cMoo').val()); 
+        $('#par_cTambonO').val($('#par_cTambon').val()); 
+        $('#par_cDistrictO').val($('#par_cDistrict').val());
+        $('#par_cProvinceO').val($('#par_cProvince').val());
+        $('#par_cPostcodeO').val($('#par_cPostcode').val());
+
+        const T = ["บ้านตนเอง", "เช่าบ้าน", "อาศัยผู้อื่นอยู่", "บ้านพักสวัสดิกา","อื่นๆ"];
+        
+            for (let index = 0; index < T.length; index++) {
+               
+                if(T[index] == $("input[name='par_rest']:checked").val()){
+                    $('#par_restO'+index).prop("checked", true);                    
+                    $('#par_restOrthorO'+index).val($('#par_restOrthor'+index).val());
+                    
+                    if($("input[name='par_rest']:checked").val() == "อื่นๆ"){
+                        $('#par_restOrthorO'+index).show();
+                    }else{
+                        $('#par_restOrthorO'+index).hide();
+                    }
+                }
+
+                  
+            }     
+           
+
+        const service = ["กระทรวง", "กรม", "กอง", "ฝ่าย/แผนก"];
+            for (let index = 0; index < service.length; index++) {
+                if(service[index] == $("input[name='par_service']:checked").val()){
+                    $('#par_serviceO'+index).prop("checked", true);
+                    $('#par_serviceNameO'+index).show();
+                    $('#par_serviceNameO'+index).val($('#par_serviceName'+index).val());
+                }else{
+                    $('#par_serviceNameO'+index).hide();
+                  }
+                
+            }
+        const claim = ["เบิกได้", "เบิกไม่ได้"];
+            for (let index = 0; index < claim.length; index++) {
+                if(claim[index] == $("input[name='par_claim']:checked").val()){
+                    $('#par_claimO'+index).prop("checked", true);
+                }
+                
+            }
+       
+    }else if(selected_value == "มารดา"){
+
+         //  $('par_stuIDO').val($('par_stuID').val()); 
+         $('#par_relationO').val($('#par_relationM').val()); 
+         // $('#par_relationKeyO').val($('#par_relationKeyM').val());
+          $('#par_prefixO').val($('#par_prefixM').val());  
+          $('#par_firstNameO').val($('#par_firstNameM').val());  
+          $('#par_lastNameO').val($('#par_lastNameM').val());  
+          $('#par_agoO').val($('#par_agoM').val());
+          $('#par_IdNumberO').val($('#par_IdNumberM').val());  
+          $('#par_nationalO').val($('#par_nationalM').val());
+          $('#par_raceO').val($('#par_raceM').val());
+          $('#par_religionO').val($('#par_religionM').val());
+          $('#par_careerO').val($('#par_careerM').val());
+          $('#par_educationO').val($('#par_educationM').val()); 
+          $('#par_salaryO').val($('#par_salaryM').val()); 
+          $('#par_positionJobO').val($('#par_positionJobM').val());
+          $('#par_phoneO').val($('#par_phoneM').val()); 
+          $('#par_deceaseO').val($('#par_deceaseM').val());
+          $('#par_hNumberO').val($('#par_hNumberM').val());
+          $('#par_hMooO').val($('#par_hMooM').val());
+          $('#par_hTambonO').val($('#par_hTambonM').val());
+          $('#par_hDistrictO').val($('#par_hDistrictM').val()); 
+          $('#par_hProvinceO').val($('#par_hProvinceM').val()); 
+          $('#par_hPostcodeO').val($('#par_hPostcodeM').val());  
+          $('#par_cNumberO').val($('#par_cNumberM').val());
+          $('#par_cMooO').val($('#par_cMooM').val()); 
+          $('#par_cTambonO').val($('#par_cTambonM').val()); 
+          $('#par_cDistrictO').val($('#par_cDistrictM').val());
+          $('#par_cProvinceO').val($('#par_cProvinceM').val());
+          $('#par_cPostcodeO').val($('#par_cPostcodeM').val());
+  
+          const T = ["บ้านตนเอง", "เช่าบ้าน", "อาศัยผู้อื่นอยู่", "บ้านพักสวัสดิกา","อื่นๆ"];
+              for (let index = 0; index < T.length; index++) {
+                  if(T[index] == $("input[name='par_restM']:checked").val()){
+                      $('#par_restO'+index).prop("checked", true);
+                      $('#par_restOrthorO'+index).val($('#par_restOrthor'+index).val());
+                      
+                      if($("input[name='par_rest']:checked").val() == "อื่นๆ"){
+                        $('#par_restOrthorO'+index).show();
+                        }else{
+                            $('#par_restOrthorO'+index).hide();
+                        }
+                  }
+                  
+              }     
+  
+          const service = ["กระทรวง", "กรม", "กอง", "ฝ่าย/แผนก"];
+              for (let index = 0; index < service.length; index++) {
+                  if(service[index] == $("input[name='par_serviceM']:checked").val()){
+                      $('#par_serviceO'+index).prop("checked", true);
+                      $('#par_serviceNameO'+index).show();
+                      $('#par_serviceNameO'+index).val($('#par_serviceNameM'+index).val());
+                  }else{
+                    $('#par_serviceNameO'+index).hide();
+                  }
+                  
+              }
+          const claim = ["เบิกได้", "เบิกไม่ได้"];
+              for (let index = 0; index < claim.length; index++) {
+                  if(claim[index] == $("input[name='par_claimM']:checked").val()){
+                      $('#par_claimO'+index).prop("checked", true);
+                  }
+                  
+              }
+
+    }else if(selected_value == "ผู้ปกครองอื่น"){
+
+        $('.FormConfirmOther')[0].reset();
+
+   }
+
+   
+
 });

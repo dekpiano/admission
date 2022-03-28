@@ -137,7 +137,7 @@
          <?php if($this->uri->segment(1) == "RegStudent"):?>
          <script src="<?=base_url()?>asset/js/AutoProvince.js?v=5"></script>
          <?php elseif($this->uri->segment(1) == "Confirm"):?>
-         <script src="<?=base_url()?>asset/js/ConfirmStudent.js?v=11"></script>
+         <script src="<?=base_url()?>asset/js/ConfirmStudent.js?v=12"></script>
          <?php endif; ?>
 
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>

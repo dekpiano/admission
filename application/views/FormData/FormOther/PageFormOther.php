@@ -1,5 +1,6 @@
-<form id="FormConfirmOther" method="post" action="#" class="check-needs-validation" novalidate>
+<form id="FormConfirmOther" method="post" action="#" class="check-needs-validation FormConfirmOther" novalidate>
 <input type="hidden" class="form-control form-control" id="par_stuIDO" name="par_stuIDO" placeholder="ระบุอายุ" value="<?php echo $stu[0]->recruit_idCard; ?>" readonly   required11>
+<input type="hidden" class="form-control form-control" id="par_relationKeyO" name="par_relationKeyO" placeholder="ระบุอายุ" value="ผู้ปกครอง" readonly   required11>
 <div class="form-group row">
         <label for="par_ago" class="col-sm-3 col-form-label col-form-label">ความสัมพันธ์เป็น</label>
         <div class="col-sm-3">
@@ -199,9 +200,10 @@
             <div class="custom-control custom-radio custom-control-inline">
                 <input class="custom-control-input par_restO" type="radio" name="par_restO" id="par_restO<?=$key;?>" value="<?=$v_Name;?>" required>
                 <label class="custom-control-label" for="par_restO<?=$key;?>"><?=$v_Name;?></label>
-            </div>           
                 <input type="text" style="display:none;"  class="form-control" placeholder="ระบุที่พักอื่น ๆ" id="par_restOrthorO<?=$key;?>"
                     name="par_restOrthorO" >
+            </div>           
+              
          
             <?php endforeach; ?>
             
@@ -239,14 +241,14 @@
             class="col-sm-3 col-form-label col-form-label">สิทธ์ในการเบิกค่าเล่าเรียนบุตร</label>
         <div class="col-sm-9">
             <div class="custom-control custom-radio custom-control-inline">
-                <input class="custom-control-input" type="radio" name="par_claimO" id="par_claimO1"
+                <input class="custom-control-input" type="radio" name="par_claimO" id="par_claimO0"
                     value="เบิกได้" required>
-                <label class="custom-control-label" for="par_claimO1">เบิกได้</label>
+                <label class="custom-control-label" for="par_claimO0">เบิกได้</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-                <input class="custom-control-input" type="radio" name="par_claimO" id="par_claimO2"
+                <input class="custom-control-input" type="radio" name="par_claimO" id="par_claimO1"
                     value="เบิกไม่ได้" required>
-                <label class="custom-control-label" for="par_claimO2">เบิกไม่ได้
+                <label class="custom-control-label" for="par_claimO1">เบิกไม่ได้
                 </label>
             </div>
 

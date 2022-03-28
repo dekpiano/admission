@@ -27,10 +27,10 @@ class Model_confirm extends CI_Model
 		return $Conf->insert('tb_parent',$data);
 	}
 
-	public function ConfirmFatherUpdate($data,$id,$relation)
+	public function ConfirmFatherUpdate($data,$id)
 	{
 		$Conf = $this->load->database('skjpers', TRUE);
-		return $Conf->Update('tb_parent',$data,array("par_stuID"=> $id,"par_relation" => $relation));
+		return $Conf->Update('tb_parent',$data,array("par_id"=> $id));
 	}
 
 
@@ -41,10 +41,10 @@ class Model_confirm extends CI_Model
 		return $Conf->insert('tb_parent',$data);
 	}
 
-	public function ConfirmMatherUpdate($data,$id,$relation)
+	public function ConfirmMatherUpdate($data,$id)
 	{
 		$Conf = $this->load->database('skjpers', TRUE);
-		return $Conf->Update('tb_parent',$data,array("par_stuID"=> $id,"par_relation" => $relation));
+		return $Conf->Update('tb_parent',$data,array("par_id"=> $id));
 	}
 
 	// ผู้ปกครองงงงงงงงง
@@ -54,10 +54,10 @@ class Model_confirm extends CI_Model
 		return $Conf->insert('tb_parent',$data);
 	}
 
-	public function ConfirmOtherUpdate($data,$id,$relation)
+	public function ConfirmOtherUpdate($data,$id)
 	{
 		$Conf = $this->load->database('skjpers', TRUE);
-		return $Conf->Update('tb_parent',$data,array("par_stuID"=> $id,"par_relation" => $relation));
+		return $Conf->Update('tb_parent',$data,array("par_id"=> $id));
 	}
 
 

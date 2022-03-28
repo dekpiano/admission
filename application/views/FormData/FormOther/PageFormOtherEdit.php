@@ -1,6 +1,8 @@
-<form id="FormConfirmOtherUpdate" method="post" action="#">
+<form id="FormConfirmOtherUpdate"  method="post" action="#" class="check-needs-validation FormConfirmOther" novalidate>
     <input type="hidden" class="form-control form-control" id="par_stuIDO" name="par_stuIDO" placeholder="ระบุอายุ"
         value="<?php echo $stu[0]->recruit_idCard; ?>" readonly required11>
+        <input type="hidden" class="form-control form-control" id="par_relationKeyO" name="par_relationKeyO" placeholder="ระบุอายุ" value="ผู้ปกครอง" readonly   required11>
+        <input type="hidden" class="form-control form-control" id="par_idO" name="par_idO" placeholder="ระบุอายุ" value="<?=$OtherConf[0]->par_id?>" readonly   required11>
     <div class="form-group row">
         <label for="par_ago" class="col-sm-3 col-form-label col-form-label">ความสัมพันธ์เป็น</label>
         <div class="col-sm-3">
@@ -204,9 +206,17 @@
                 <input class="custom-control-input par_restO" type="radio" name="par_restO" id="par_restO<?=$key;?>"
                     value="<?=$v_Name;?>" <?=$OtherConf[0]->par_rest==$v_Name?"checked":""?>>
                 <label class="custom-control-label" for="par_restO<?=$key;?>"><?=$v_Name;?></label>
-            </div>
+                <?php if($OtherConf[0]->par_rest==$v_Name): ?>
+            <input type="text" class="form-control" placeholder="ระบุที่พักอื่น ๆ"
+                id="par_restOrthorO<?=$key;?>" name="par_restOrthorO" required11
+                value="<?=$FatherConf[0]->par_restOrthor?>">
+            <?php else :?>
             <input type="text" style="display:none;" class="form-control" placeholder="ระบุที่พักอื่น ๆ"
                 id="par_restOrthorO<?=$key;?>" name="par_restOrthorO" required11>
+            <?php endif; ?>
+            </div>
+           
+    
 
             <?php endforeach; ?>
 
@@ -250,14 +260,14 @@
             class="col-sm-3 col-form-label col-form-label">สิทธ์ในการเบิกค่าเล่าเรียนบุตร</label>
         <div class="col-sm-9">
             <div class="custom-control custom-radio custom-control-inline">
-                <input class="custom-control-input" type="radio" name="par_claimO" id="par_claimO1" value="เบิกได้"
+                <input class="custom-control-input" type="radio" name="par_claimO" id="par_claimO0" value="เบิกได้"
                     <?=$OtherConf[0]->par_claim=="เบิกได้"?"checked":""?>>
-                <label class="custom-control-label" for="par_claimO1">เบิกได้</label>
+                <label class="custom-control-label" for="par_claimO0">เบิกได้</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-                <input class="custom-control-input" type="radio" name="par_claimO" id="par_claimO2" value="เบิกไม่ได้"
+                <input class="custom-control-input" type="radio" name="par_claimO" id="par_claimO1" value="เบิกไม่ได้"
                     <?=$OtherConf[0]->par_claim=="เบิกไม่ได้"?"checked":""?>>
-                <label class="custom-control-label" for="par_claimO2">เบิกไม่ได้
+                <label class="custom-control-label" for="par_claimO1">เบิกไม่ได้
                 </label>
             </div>
 

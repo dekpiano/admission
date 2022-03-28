@@ -36,35 +36,35 @@ class Control_confirm extends CI_Controller {
 		$data['stuConf'] = $Conf->select('*')->where('stu_iden',$this->session->userdata('idenStu'))->from('tb_students')->get()->result();
 		$data['Ckeckstu'] = $Conf->select('*')->where('stu_iden',$this->session->userdata('idenStu'))->from('tb_students')->get()->num_rows();
 
-		$data['FatherCkeck'] = $Conf->select('par_stuID,par_relation')
+		$data['FatherCkeck'] = $Conf->select('par_stuID,par_relationKey')
 							->where('par_stuID',$this->session->userdata('idenStu'))
-							->where('par_relation',"บิดา")
+							->where('par_relationKey',"พ่อ")
 							->from('tb_parent')->get()->num_rows();
 		$data['FatherConf'] = $Conf->select('*')
 							->where('par_stuID',$this->session->userdata('idenStu'))
-							->where('par_relation',"บิดา")
+							->where('par_relationKey',"พ่อ")
 							->from('tb_parent')->get()->result();
 
-		$data['MatherCkeck'] = $Conf->select('par_stuID,par_relation')
+		$data['MatherCkeck'] = $Conf->select('par_stuID,par_relationKey')
 							->where('par_stuID',$this->session->userdata('idenStu'))
-							->where('par_relation',"มารดา")
+							->where('par_relationKey',"แม่")
 							->from('tb_parent')->get()->num_rows();
 		$data['MatherConf'] = $Conf->select('*')
 							->where('par_stuID',$this->session->userdata('idenStu'))
-							->where('par_relation',"มารดา")
+							->where('par_relationKey',"แม่")
 							->from('tb_parent')->get()->result();
 
-	    $data['OtherCkeck'] = $Conf->select('par_stuID,par_relation')
+	    $data['OtherCkeck'] = $Conf->select('par_stuID,par_relationKey')
 							->where('par_stuID',$this->session->userdata('idenStu'))
-							->where('par_relation !=',"บิดา")
-							->where('par_relation !=',"มารดา")
+							->where('par_relationKey !=',"พ่อ")
+							->where('par_relationKey !=',"แม่")
 							->from('tb_parent')->get()->num_rows();
 
 		//print_r($data['OtherCkeck']);exit();			
 		$data['OtherConf'] = $Conf->select('*')
 							->where('par_stuID',$this->session->userdata('idenStu'))
-							->where('par_relation !=',"บิดา")
-							->where('par_relation !=',"มารดา")
+							->where('par_relationKey !=',"พ่อ")
+							->where('par_relationKey !=',"แม่")
 							->from('tb_parent')->get()->result();
 
 
@@ -218,6 +218,7 @@ class Control_confirm extends CI_Controller {
 	public function InsertConfirmFather(){
 		$data = array('par_stuID' => $this->input->post('par_stuID'), 
 						'par_relation' => $this->input->post('par_relation'),
+						'par_relationKey' => $this->input->post('par_relationKey'),
 						'par_prefix' => $this->input->post('par_prefix'),
 						'par_firstName' => $this->input->post('par_firstName'),
 						'par_lastName' => $this->input->post('par_lastName'),
@@ -256,7 +257,7 @@ class Control_confirm extends CI_Controller {
 	}
 
 	public function UpdateConfirmFather(){
-		$data = array(						
+		$data = array(	'par_relationKey' => $this->input->post('par_relationKey'),
 						'par_prefix' => $this->input->post('par_prefix'),
 						'par_firstName' => $this->input->post('par_firstName'),
 						'par_lastName' => $this->input->post('par_lastName'),
@@ -289,9 +290,9 @@ class Control_confirm extends CI_Controller {
 						'par_serviceName' => implode("",$this->input->post('par_serviceName')),
 						'par_claim' => $this->input->post('par_claim')
 					);
-					$id = $this->input->post('par_stuID');
-					$relation = $this->input->post('par_relation');
-					echo $this->Model_confirm->ConfirmFatherUpdate($data,$id,$relation);
+					$id = $this->input->post('par_id');
+					
+					echo $this->Model_confirm->ConfirmFatherUpdate($data,$id);
         //print_r($data);
 	}
 
@@ -301,6 +302,7 @@ class Control_confirm extends CI_Controller {
 	public function InsertConfirmMather(){
 		$data = array('par_stuID' => $this->input->post('par_stuIDM'), 
 						'par_relation' => $this->input->post('par_relationM'),
+						'par_relationKey' => $this->input->post('par_relationKeyM'),
 						'par_prefix' => $this->input->post('par_prefixM'),
 						'par_firstName' => $this->input->post('par_firstNameM'),
 						'par_lastName' => $this->input->post('par_lastNameM'),
@@ -339,7 +341,7 @@ class Control_confirm extends CI_Controller {
 	}
 
 	public function UpdateConfirmMather(){
-		$data = array(						
+		$data = array(	'par_relationKey' => $this->input->post('par_relationKeyM'),			
 						'par_prefix' => $this->input->post('par_prefixM'),
 						'par_firstName' => $this->input->post('par_firstNameM'),
 						'par_lastName' => $this->input->post('par_lastNameM'),
@@ -372,9 +374,8 @@ class Control_confirm extends CI_Controller {
 						'par_serviceName' => implode("",$this->input->post('par_serviceNameM')),
 						'par_claim' => $this->input->post('par_claimM')
 					);
-					$id = $this->input->post('par_stuIDM');
-					$relation = $this->input->post('par_relationM');
-					echo $this->Model_confirm->ConfirmMatherUpdate($data,$id,$relation);
+					$id = $this->input->post('par_idM');
+					echo $this->Model_confirm->ConfirmMatherUpdate($data,$id);
         //print_r($data);
 	}
 
@@ -382,6 +383,7 @@ class Control_confirm extends CI_Controller {
 		public function InsertConfirmOther(){
 			$data = array('par_stuID' => $this->input->post('par_stuIDO'), 
 							'par_relation' => $this->input->post('par_relationO'),
+							'par_relationKey' => $this->input->post('par_relationKeyO'),
 							'par_prefix' => $this->input->post('par_prefixO'),
 							'par_firstName' => $this->input->post('par_firstNameO'),
 							'par_lastName' => $this->input->post('par_lastNameO'),
@@ -420,7 +422,8 @@ class Control_confirm extends CI_Controller {
 		}
 	
 		public function UpdateConfirmOther(){
-			$data = array(						
+			$data = array(	'par_relationKey' => $this->input->post('par_relationKeyO'),
+							'par_relation' => $this->input->post('par_relationO'),
 							'par_prefix' => $this->input->post('par_prefixO'),
 							'par_firstName' => $this->input->post('par_firstNameO'),
 							'par_lastName' => $this->input->post('par_lastNameO'),
@@ -449,13 +452,12 @@ class Control_confirm extends CI_Controller {
 							'par_cPostcode' => $this->input->post('par_cPostcodeO'),
 							'par_rest' => $this->input->post('par_restO'),
 							'par_restOrthor' => $this->input->post('par_restOrthorO'),
-							'par_service' => $this->input->post('par_serviceM'),
+							'par_service' => $this->input->post('par_serviceO'),
 							'par_serviceName' => implode("",$this->input->post('par_serviceNameO')),
 							'par_claim' => $this->input->post('par_claimO')
 						);
-						$id = $this->input->post('par_stuIDO');
-						$relation = $this->input->post('par_relationO');
-						echo $this->Model_confirm->ConfirmOtherUpdate($data,$id,$relation);
+						$id = $this->input->post('par_idO');
+						echo $this->Model_confirm->ConfirmOtherUpdate($data,$id);
 			//print_r($data);
 		}
 

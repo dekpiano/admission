@@ -1,7 +1,7 @@
 <hr>
 <div class="h6">
     <form id="FormConfirmStudent" method="post" class="check-needs-validation" novalidate>
-        <input type="hidden" id="stu_img" class="stu_img" value="<?=$stu[0]->recruit_img;?>">
+        <input type="hidden" id="stu_img" name="stu_img" class="stu_img" value="<?=$stu[0]->recruit_img;?>">
         <div class="form-group row">
             <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label">ชื่อ - นามสกุลจริง</label>
             <div class="col-sm-9">

@@ -1,6 +1,8 @@
 <form id="FormConfirmFatherUpdate" method="post" action="#">
     <input type="hidden" class="form-control form-control" id="par_stuID" name="par_stuID" placeholder="ระบุอายุ"
         value="<?php echo $stu[0]->recruit_idCard; ?>" readonly required11>
+        <input type="hidden" class="form-control form-control" id="par_relationKey" name="par_relationKey" placeholder="ระบุอายุ" value="พ่อ" readonly   required11>
+        <input type="hidden" class="form-control form-control" id="par_id" name="par_id" placeholder="ระบุอายุ" value="<?=$FatherConf[0]->par_id?>" readonly   required11>
     <div class="form-group row">
         <label for="par_ago" class="col-sm-3 col-form-label col-form-label">ความสัมพันธ์เป็น</label>
         <div class="col-sm-3">
@@ -116,32 +118,32 @@
         <div class="col-sm-9">
             <div class="form-row">
                 <div class="col-12 col-md-3 mb-2">
-                <label>บ้านเลขที่</label>  
+                    <label>บ้านเลขที่</label>
                     <input type="text" class="form-control" placeholder="บ้านเลขที่" id="par_hNumber" name="par_hNumber"
                         required11 value="<?=$FatherConf[0]->par_hNumber?>">
                 </div>
                 <div class="col-12 col-md-3 mb-2">
-                <label>หมู่ที่</label>  
+                    <label>หมู่ที่</label>
                     <input type="text" class="form-control" placeholder="หมู่ที่" id="par_hMoo" name="par_hMoo"
                         required11 value="<?=$FatherConf[0]->par_hMoo?>">
                 </div>
                 <div class="col-12 col-md-3 mb-2">
-                <label>ตำบล</label>  
+                    <label>ตำบล</label>
                     <input type="text" class="form-control" placeholder="ตำบล" id="par_hTambon" name="par_hTambon"
                         required11 value="<?=$FatherConf[0]->par_hTambon?>">
                 </div>
                 <div class="col-12 col-md-3 mb-2">
-                <label>อำเภอ</label>  
+                    <label>อำเภอ</label>
                     <input type="text" class="form-control" placeholder="อำเภอ" id="par_hDistrict" name="par_hDistrict"
                         required11 value="<?=$FatherConf[0]->par_hDistrict?>">
                 </div>
                 <div class="col-12 col-md-3 mb-2">
-                <label>จังหวัด</label>  
+                    <label>จังหวัด</label>
                     <input type="text" class="form-control" placeholder="จังหวัด" id="par_hProvince"
                         name="par_hProvince" required11 value="<?=$FatherConf[0]->par_hProvince?>">
                 </div>
                 <div class="col-12 col-md-3 mb-2">
-                <label>รหัสไปรษณีย์</label>  
+                    <label>รหัสไปรษณีย์</label>
                     <input type="text" class="form-control" placeholder="รหัสไปรษณีย์" id="par_hPostcode"
                         name="par_hPostcode" required11 value="<?=$FatherConf[0]->par_hPostcode?>">
                 </div>
@@ -160,32 +162,32 @@
         <div class="col-sm-9">
             <div class="form-row">
                 <div class="col-12 col-md-3 mb-2">
-                <label>บ้านเลขที่</label>  
+                    <label>บ้านเลขที่</label>
                     <input type="text" class="form-control" placeholder="บ้านเลขที่" id="par_cNumber" name="par_cNumber"
                         required11 value="<?=$FatherConf[0]->par_cNumber?>">
                 </div>
                 <div class="col-12 col-md-3 mb-2">
-                <label>หมู่ที่</label>  
+                    <label>หมู่ที่</label>
                     <input type="text" class="form-control" placeholder="หมู่ที่" id="par_cMoo" name="par_cMoo"
                         required11 value="<?=$FatherConf[0]->par_cMoo?>">
                 </div>
                 <div class="col-12 col-md-3 mb-2">
-                <label>ตำบล</label>  
+                    <label>ตำบล</label>
                     <input type="text" class="form-control" placeholder="ตำบล" id="par_cTambon" name="par_cTambon"
                         required11 value="<?=$FatherConf[0]->par_cTambon?>">
                 </div>
                 <div class="col-12 col-md-3 mb-2">
-                <label>อำเภอ</label>  
+                    <label>อำเภอ</label>
                     <input type="text" class="form-control" placeholder="อำเภอ" id="par_cDistrict" name="par_cDistrict"
                         required11 value="<?=$FatherConf[0]->par_cDistrict?>">
                 </div>
                 <div class="col-12 col-md-3 mb-2">
-                <label>จังหวัด</label>  
+                    <label>จังหวัด</label>
                     <input type="text" class="form-control" placeholder="จังหวัด" id="par_cProvince"
                         name="par_cProvince" required11 value="<?=$FatherConf[0]->par_cProvince?>">
                 </div>
                 <div class="col-12 col-md-3 mb-2">
-                <label>รหัสไปรษณีย์</label>  
+                    <label>รหัสไปรษณีย์</label>
                     <input type="text" class="form-control" placeholder="รหัสไปรษณีย์" id="par_cPostcode"
                         name="par_cPostcode" required11 value="<?=$FatherConf[0]->par_cPostcode?>">
                 </div>
@@ -204,10 +206,16 @@
                 <input class="custom-control-input par_rest" type="radio" name="par_rest" id="par_rest<?=$key;?>"
                     value="<?=$v_Name;?>" <?=$FatherConf[0]->par_rest==$v_Name?"checked":""?>>
                 <label class="custom-control-label" for="par_rest<?=$key;?>"><?=$v_Name;?></label>
-            </div>
+                <?php if($FatherConf[0]->par_rest==$v_Name): ?>
+            <input type="text" class="form-control" placeholder="ระบุที่พักอื่น ๆ"
+                id="par_restOrthor<?=$key;?>" name="par_restOrthor" required11
+                value="<?=$FatherConf[0]->par_restOrthor?>">
+            <?php else :?>
             <input type="text" style="display:none;" class="form-control" placeholder="ระบุที่พักอื่น ๆ"
                 id="par_restOrthor<?=$key;?>" name="par_restOrthor" required11>
-
+            <?php endif; ?>
+            </div>
+            
             <?php endforeach; ?>
 
         </div>
@@ -223,22 +231,23 @@
         ?>
             <div class="custom-control custom-radio ">
                 <input class="custom-control-input par_service" type="radio" name="par_service"
-                    id="par_service<?=$key?>" value="<?=$v_Name?>" <?=$FatherConf[0]->par_service==$v_Name?"checked":""?>> 
+                    id="par_service<?=$key?>" value="<?=$v_Name?>"
+                    <?=$FatherConf[0]->par_service==$v_Name?"checked":""?>>
                 <label class="custom-control-label" for="par_service<?=$key?>"><?=$v_Name?></label>
             </div>
             <?php  if($FatherConf[0]->par_service==$v_Name) : ?>
-            <input type="text" class="form-control" id="par_serviceName<?=$key?>"
-                name="par_serviceName[]" placeholder="ระบุ" required11 value="<?=$FatherConf[0]->par_serviceName;?>">
+            <input type="text" class="form-control" id="par_serviceName<?=$key?>" name="par_serviceName[]"
+                placeholder="ระบุ" required11 value="<?=$FatherConf[0]->par_serviceName;?>">
             <?php else :?>
-                <input type="text" style="display:none;" class="form-control" id="par_serviceName<?=$key?>"
+            <input type="text" style="display:none;" class="form-control" id="par_serviceName<?=$key?>"
                 name="par_serviceName[]" placeholder="ระบุ" required11>
             <?php endif; ?>
 
             <?php endforeach; ?>
 
             <div class="custom-control custom-radio ">
-                <input class="custom-control-input par_serviceM" type="radio" name="par_service"
-                    id="par_service99" value="ไม่ได้รับราชการ" <?=$FatherConf[0]->par_service=="ไม่ได้รับราชการ"?"checked":""?>>
+                <input class="custom-control-input par_serviceM" type="radio" name="par_service" id="par_service99"
+                    value="ไม่ได้รับราชการ" <?=$FatherConf[0]->par_service=="ไม่ได้รับราชการ"?"checked":""?>>
                 <label class="custom-control-label" for="par_service99">ไม่ได้รับราชการ</label>
             </div>
 

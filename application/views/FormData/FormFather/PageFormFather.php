@@ -1,5 +1,8 @@
 <form id="FormConfirmFather" method="post" action="#" class="check-needs-validation" novalidate>
 <input type="hidden" class="form-control form-control" id="par_stuID" name="par_stuID" placeholder="ระบุอายุ" value="<?php echo $stu[0]->recruit_idCard; ?>" readonly   required11>
+<input type="hidden" class="form-control form-control" id="par_relationKey" name="par_relationKey" placeholder="ระบุอายุ" value="พ่อ" readonly   required11>
+
+
 <div class="form-group row">
         <label for="par_ago" class="col-sm-3 col-form-label col-form-label">ความสัมพันธ์เป็น</label>
         <div class="col-sm-3">
@@ -7,6 +10,7 @@
                 required11>
         </div>
     </div>
+
     <div class="form-group row">
         <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label">ชื่อ-นามสกุลบิดา</label>
         <div class="col-sm-9">

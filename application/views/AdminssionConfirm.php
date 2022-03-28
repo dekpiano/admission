@@ -242,20 +242,28 @@
                             <strong>แจ้งเตือน!</strong> กรณีที่นักเรียนอยู่กับบิดา - มารดา เลือกเป็นผู้ปกครอง 1 คน
                             
                             <div class="custom-control custom-radio custom-control-inline ml-5">
-                                <input class="custom-control-input checkPu" type="radio" name="par_rest88"
-                                    id="par_rest88" value="เป็นบิดา" required>
+                                <input class="custom-control-input checkPu" type="radio" name="checkPu"
+                                    id="par_rest88" value="บิดา" <?=@$OtherConf[0]->par_relation=="บิดา"?"checked":""?> required11>
                                 <label class="custom-control-label" for="par_rest88">เป็นบิดา</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input class="custom-control-input checkPu" type="radio" name="par_rest89"
-                                    id="par_rest89" value="เป็นมารดา" required>
+                                <input class="custom-control-input checkPu" type="radio" name="checkPu"
+                                    id="par_rest89" value="มารดา" required11 <?=@$OtherConf[0]->par_relation=="มารดา"?"checked":""?>>
                                 <label class="custom-control-label" for="par_rest89">เป็นมารดา</label>
-                            </div>
-                           
-                         
+                            </div>  
                             แล้วกดบันทึกข้อมูลด้านล่าง
                             <br><br>
-                            แต่ถ้าไม่ใช่ให้กรอกข้อมูลผู้ปกครองอื่นที่อยู่กับนักเรียนในฟอร์มด้านล่าง
+                            แต่ถ้าไม่ใช่ให้กรอกข้อมูลผู้ปกครองอื่นที่อยู่กับนักเรียนในฟอร์มด้านล่าง 
+                            <?php if(@$OtherConf[0]->par_relation=="บิดา" || @$OtherConf[0]->par_relation=="มารดา"){
+                                $check = "";
+                            }else{
+                                $check = "checked";
+                            }?>
+                            <div class="custom-control custom-radio custom-control-inline ml-5">
+                                <input class="custom-control-input checkPu" type="radio" name="checkPu"
+                                    id="par_rest90" value="ผู้ปกครองอื่น" required11 <?=$check;?>>
+                                <label class="custom-control-label" for="par_rest90">ผู้ปกครองอื่น</label>
+                            </div> 
                         </div>
                         <?php if($OtherCkeck == 1){
                           $this->load->view('FormData/FormOther/PageFormOtherEdit.php');

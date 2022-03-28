@@ -1,5 +1,6 @@
 <form id="FormConfirmMather" method="post" action="#" class="check-needs-validation" novalidate>
 <input type="hidden" class="form-control form-control" id="par_stuIDM" name="par_stuIDM" placeholder="ระบุอายุ" value="<?php echo $stu[0]->recruit_idCard; ?>" readonly   required11>
+<input type="hidden" class="form-control form-control" id="par_relationKeyM" name="par_relationKeyM" placeholder="ระบุอายุ" value="แม่" readonly   required11>
 <div class="form-group row">
         <label for="par_ago" class="col-sm-3 col-form-label col-form-label">ความสัมพันธ์เป็น</label>
         <div class="col-sm-3">
