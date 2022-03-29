@@ -7,7 +7,7 @@
         <label for="par_ago" class="col-sm-3 col-form-label col-form-label">ความสัมพันธ์เป็น</label>
         <div class="col-sm-3">
             <input type="text" class="form-control form-control" id="par_relation" name="par_relation"
-                placeholder="ระบุอายุ" value="<?=$FatherConf[0]->par_relation?>" required>
+                placeholder="ระบุอายุ" value="<?=$FatherConf[0]->par_relation?>" required readonly>
         </div>
     </div>
     <div class="form-group row">

@@ -17,8 +17,7 @@ class Welcome extends CI_Controller {
 	public static $description = "เป็นผู้นำ รักเพื่อน นับถือพี่ เคารพครู กตัญญูพ่อแม่ ดูแลน้อง สนองคุณแผ่นดิน โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
 	
 	public function index()
-	{
-		
+	{	
 
 		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
 		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();

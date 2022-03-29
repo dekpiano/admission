@@ -9,7 +9,7 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <h5><b>ระบบรายงานตัวนักเรียนใหม่ออนไลน์</b></h5>
+                <h5><b>รายงานตัวนักเรียนใหม่ออนไลน์</b></h5>
             </div>
             <div class="card-body">
                 <!-- <p class="login-box-msg">Online Matriculation System</p> -->
@@ -42,14 +42,6 @@
                         <!-- /.col -->
                     </div>
                 </form>
-                <hr>
-
-                <div class="col-12">
-                    <center>
-                        <p><span class="text-danger"> ปิดปรับปรุงระบบ <br> ตั้งแต่วันที่ 7 กุมภาพันธ์ 2565 เป็นต้นไป
-                            </span></p>
-                    </center>
-                </div>
                 <hr>
                 <div class="col-12">
                     <p><span class="text-info">
@@ -183,10 +175,10 @@
                     </a>
                 </div>
                 <hr>
-                <?php if($Ckeckstu == 1 && $FatherCkeck == 1 && $MatherCkeck == 1 && $OtherCkeck == 1): ?>
+                <?php if($Ckeckstu == 1 && $FatherCkeck == 1 || $MatherCkeck == 1 || $OtherCkeck == 1): ?>
                 <a href="<?=base_url('Confirm/Print');?>" class="btn btn-info w-100">พิมพ์ใบยืนยันรายงานตัว</a>
                 <?php else: ?>
-                <a href="#" id="checkPirnt" class="btn btn-info w-100">พิมพ์ใบยืนยันรายงานตัว</a>
+                <a href="#" id="checkPirnt" class="btn btn-info w-100 checkPirnt">พิมพ์ใบยืนยันรายงานตัว</a>
                 <?php endif; ?>
                 <hr>
                 <a href="<?=base_url('Confirm/Logout');?>" class="btn btn-danger w-100 mb-5">ออกจากระบบ</a>
@@ -196,7 +188,7 @@
             <div class="col-md-9">
                 <!-- Tabs content -->
                 <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade shadow rounded bg-white show active p-5" id="v-pills-home" role="tabpanel"
+                    <div class="tab-pane fade shadow rounded bg-white show active " id="v-pills-home" role="tabpanel"
                         aria-labelledby="v-pills-home-tab">
                         <?php $this->load->view('FormData/FormMain/PageFormMain.php'); ?>
                     </div>

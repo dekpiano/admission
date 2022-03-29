@@ -1,7 +1,7 @@
 <hr>
 <div class="h6">
     <form id="FormConfirmStudentUpdate" method="post" class="check-needs-validation" novalidate>
-    <input type="hidden" id="stu_img" class="stu_img" value="<?=$stu[0]->recruit_img;?>">
+    <input type="hidden" id="stu_img" name="stu_img" class="stu_img" value="<?=$stu[0]->recruit_img;?>">
         <div class="form-group row">
             <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label">ชื่อ - นามสกุลจริง</label>
             <div class="col-sm-9">
@@ -136,6 +136,7 @@
             <div class="col-sm-2">
                 <input type="text" class="form-control form-control" id="stu_bloodType" name="stu_bloodType"
                     placeholder="ระบุกรุ๊ปเลือด" required11 value="<?=$stuConf[0]->stu_bloodType?>">
+                    <small id="stu_bloodType" class="form-text text-muted">กรอกเป็นภาษาอังกฤษ เช่น A B O AB</small>
             </div>
         </div>
 
@@ -453,7 +454,7 @@
                     <select class="form-control ml-3" id="stu_inputLevel" name="stu_inputLevel" style="<?=$display;?>">
                         <option value="">เลือกระดับชั้น</option>
                         <?php for ($i=1; $i <= 6 ; $i++) : ?>
-                        <option <?=$stuDay==$i?"selected":"" ?> value="<?=$i;?>">ม.<?=$i;?></option>
+                        <option <?=$stuConf[0]->stu_inputLevel==$i?"selected":"" ?> value="<?=$i;?>">ม.<?=$i;?></option>
                         <?php endfor; ?>
                     </select>
 

@@ -55,7 +55,7 @@ $('#TB_stu').DataTable({
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
         ],
-        "order": [[ 1, "asc" ]]
+        "order": [[ 0, "desc" ]]
 });
 
 function StatusWait(){

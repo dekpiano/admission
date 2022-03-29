@@ -38,7 +38,7 @@
                         <a style="color: white;" class="nav-link" href="<?=base_url('Statistic/'.$checkYear[0]->openyear_year);?>"> <i class="far fa-chart-bar"></i> สถิติรับสมัคร</a>
                     </li>
                     <li  class="nav-item">
-                        <a style="color: white;" class="nav-link" href="<?=base_url('Confirm')?>"> <i class="far fa-chart-bar"></i> รายงานตัว</a>
+                        <a style="color: white;" class="nav-link" href="<?=base_url('Confirm')?>"> <i class="fas fa-user-edit"></i> รายงานตัว</a>
                     </li>
                 </ul>
             </div>

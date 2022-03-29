@@ -135,9 +135,9 @@
          </script>
 
          <?php if($this->uri->segment(1) == "RegStudent"):?>
-         <script src="<?=base_url()?>asset/js/AutoProvince.js?v=5"></script>
+         <script src="<?=base_url()?>asset/js/AutoProvince.js?v=6"></script>
          <?php elseif($this->uri->segment(1) == "Confirm"):?>
-         <script src="<?=base_url()?>asset/js/ConfirmStudent.js?v=12"></script>
+         <script src="<?=base_url()?>asset/js/ConfirmStudent.js?v=13"></script>
          <?php endif; ?>
 
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
@@ -145,7 +145,7 @@
          <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=2"></script>
 
          <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=7"></script>
-         <script src="<?=base_url()?>asset/js/login.js?v=3"></script>
+         <script src="<?=base_url()?>asset/js/login.js?v=5"></script>
 
          <!-- Histats.com  START  (aync)-->
          <script type="text/javascript">
@@ -176,7 +176,7 @@ Swal.fire("แจ้งเตือน", "<?=$this->session->flashdata('messge')
          <?php endif; $this->session->mark_as_temp('msg',20); ?>
          <script>
              
-$("#checkPirnt").click(function(){
+$(".checkPirnt").click(function(){
     Swal.fire("แจ้งเตือน", "ให้นักเรียนตรวจสอบข้อมูล <br> -นักเรียน<br> -บิดา<br> -มารดา <br> -ผู้ปกครอง<br> .ให้ครบถ้วนก่อนถึงจะพิมพ์ใบยืนยันรายงานตัวได้", "warning");
 });
 //  Google Check
@@ -192,17 +192,6 @@ var onloadCallback = function() {
 $(":input").inputmask();
 
 
-
-$('body').AutoProvince({
-    PROVINCE: '#province', // select div สำหรับรายชื่อจังหวัด
-    AMPHUR: '#amphur', // select div สำหรับรายชื่ออำเภอ
-    DISTRICT: '#district', // select div สำหรับรายชื่อตำบล
-    POSTCODE: '#postcode', // input field สำหรับรายชื่อรหัสไปรษณีย์
-    CURRENT_PROVINCE: 1, //  แสดงค่าเริ่มต้น ใส่ไอดีจังหวัดที่เคยเลือกไว้
-    CURRENT_AMPHUR: 1, // แสดงค่าเริ่มต้น  ใส่ไอดีอำเภอที่เคยเลือกไว้
-    CURRENT_DISTRICT: 1, // แสดงค่าเริ่มต้น  ใส่ไอดีตำบลที่เคยเลือกไว้
-    arrangeByName: false // กำหนดให้เรียงตามตัวอักษร
-});
 
 
 
@@ -288,7 +277,7 @@ $('.T_m1_N tr,.T_m4_N tr').each(function() {
 });
 
 $(document).ready(function() {
-    $('#example').DataTable({
+    $('.example').DataTable({
         "order": [
             [0, "desc"]
         ]

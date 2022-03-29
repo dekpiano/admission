@@ -160,3 +160,17 @@ $("#recruit_oldSchool").autocomplete({
         return false;
     }
 });
+
+
+
+
+$('body').AutoProvince({
+    PROVINCE: '#province', // select div สำหรับรายชื่อจังหวัด
+    AMPHUR: '#amphur', // select div สำหรับรายชื่ออำเภอ
+    DISTRICT: '#district', // select div สำหรับรายชื่อตำบล
+    POSTCODE: '#postcode', // input field สำหรับรายชื่อรหัสไปรษณีย์
+    CURRENT_PROVINCE: 1, //  แสดงค่าเริ่มต้น ใส่ไอดีจังหวัดที่เคยเลือกไว้
+    CURRENT_AMPHUR: 1, // แสดงค่าเริ่มต้น  ใส่ไอดีอำเภอที่เคยเลือกไว้
+    CURRENT_DISTRICT: 1, // แสดงค่าเริ่มต้น  ใส่ไอดีตำบลที่เคยเลือกไว้
+    arrangeByName: false // กำหนดให้เรียงตามตัวอักษร
+});

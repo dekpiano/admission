@@ -76,6 +76,7 @@ class Control_login extends CI_Controller {
 
 		if($this->input->post('idenStu')){
 			$this->db->where('recruit_idCard',$this->input->post('idenStu'));
+			$this->db->where('recruit_status',"ผ่านการตรวจสอบ");
 			$query = $this->db->get('tb_recruitstudent');
 			if($query->num_rows() > 0){
 				$this->session->set_userdata('idenStu',$this->input->post('idenStu'));   

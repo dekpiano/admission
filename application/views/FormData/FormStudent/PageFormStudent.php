@@ -136,6 +136,7 @@
             <div class="col-sm-2">
                 <input type="text" class="form-control form-control" id="stu_bloodType" name="stu_bloodType"
                     placeholder="ระบุกรุ๊ปเลือด" required>
+                    <small id="stu_bloodType" class="form-text text-muted">กรอกเป็นภาษาอังกฤษ เช่น A B O AB</small>
             </div>
         </div>
 

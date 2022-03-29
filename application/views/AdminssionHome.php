@@ -1,4 +1,45 @@
 <style>
+.service {
+    text-align: center;
+    padding: 25px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    background: transparent;
+    transition: transform 0.5s, background 0.5s;
+}
+
+.service a {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.service i {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.service h2 {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.service:hover {
+    background: #007bff;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.service:hover i {
+    color: #fff;
+}
+
+.service:hover a {
+    color: #fff;
+}
+
 #timer div {
     background-color: #000000;
     color: #ffffff;
@@ -87,78 +128,100 @@
 </style>
 <div class="page-content align-items-stretch">
     <!-- Side Navbar -->
-    <div class="container-fluid">
-        <div class="row mt-3">
-            <!-- <div class="col-lg-4 col-sm-6 align-self-center">
-                <div class="text-center mt-3 mb-3">
-                    <a href="#" target="_blank" data-toggle="modal" data-target="#myModal">
-                        <img src="https://www.phonics1stonline.com/assets_v2/img/p/b1.png" alt="สมัครเรียน"
-                            class="img-fluid w-50">
-                    </a>
-                    <i class="fa fa-bullhorn fa-5x" aria-hidden="true"></i>
+    <div class="container mt-4 mb-4">
+        <div class="row">
+            <div class="col-md-6">
+            <a href="#" href="#" data-toggle="modal" data-target="#myModal">
+                <div class="service">
+                    <i class="fas fa-laptop-code"></i>
+                    <h2>สมัครเรียน สำหรับกีฬา</h2>
+                    <p> กรอกข้อมูลสำหรับนักกีฬาที่มีรายชื่อผ่านการคัดตัวเท่านั้น </p>
+                    <p><a href="https://drive.google.com/file/d/1O1cI0nOnD27YqpqPKX24ngrRLTQiheca/view?usp=sharing"
+                            target="_blank" rel="noopener noreferrer">ดูรายชื่อนักกีฬา</a></p>
                 </div>
-            </div> -->
-            <div class="col-lg-12 col-sm-6 col-12 align-self-center">
-                <div class="card">
-                    <!-- <div class="card-body">
-                        <h2>รอบปกติ เริ่มลงทะเบียนวันนี้ - 18 มี.ค.2565</h2>
-                        <p>การสมัครเข้าเรียนออนไลน์ กรุณาอ่านรายละเอียดประกาศและศึกษาคู่มือการสมัครก่อน
-                            <br>เริ่มตรวจหลักฐานระหว่างวันที่ 9-18 มี.ค.65 ในเวลาราชการ
-                        </p>
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <p>รายละเอียดประกาศ <a
-                                        href="https://drive.google.com/file/d/1zeBOmrYsIl7j9YVyRiuKBODbX1Bi3-WX/view"
-                                        target="_blank" rel="noopener noreferrer">คลิกที่นี่</a> </p>
-                                <p>คู่มือการสมัคร <a
-                                        href="<?=base_url('uploads/recruitstudent/คู่มือการเข้าใช้งานระบบรับสมัครนักเรียน.pdf');?>"
-                                        target="_blank" rel="noopener noreferrer">คลิกที่นี่</a> </p>
-                            </div>
-                            <div class="col-lg-8">
-                                <div class="text-center">
-                                    <h5>เหลือเวลาสมัครอีก...</h5>
-                                </div>
-                                <div id="timer" class="flex-wrap d-flex justify-content-center">
-
-                                    <div  id="days1" class="align-items-center flex-column d-flex justify-content-center"> <span>0 วัน</span>
-                                    </div>
-                                    <div id="hours1"
-                                        class="align-items-center flex-column d-flex justify-content-center"><span>0 ชั่วโมง</span></div>
-                                    <div id="minutes1"
-                                        class="align-items-center flex-column d-flex justify-content-center"><span>0 นาที</span>
-                                    </div>
-                                    <div id="seconds1"
-                                        class="align-items-center flex-column d-flex justify-content-center"><span>0 วินาที</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                    </div> -->
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-2 text-center">
-                                <i class="fa fa-bullhorn fa-5x" aria-hidden="true"></i>
-                            </div>
-                            <div class="col-sm-10">
-
-                                <h2>การรับสมัครนักเรียนใน "รอบปกติ ประจำปีการศึกษา 2565" สิ้นสุดลงแล้ว</h2>
-                                <h3>ติดตามการดำเนินงานได้ที่ <a href="https://skj.ac.th/" target="_blank"
-                                        rel="noopener noreferrer">เว็บไซต์</a> และ <a
-                                        href="https://www.facebook.com/SKJNS160" target="_blank"
-                                        rel="noopener noreferrer">Facebook</a> โรงเรียน</h3>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
+                </a>
             </div>
+           
+                <div class="col-md-6">
+                <a href="<?=base_url('Confirm')?>">
+                    <div class="service">
+                        <i class="fas fa-user-edit"></i>
+                        <h2>รายงานตัวออนไลน์</h2>
+                        <p>
+                            สำหรับนักเรียนที่มีผลประกาศคัดเลือกให้ปีการศึกษา 2565
+                        </p>
+                        <p>
+                            <a href="https://drive.google.com/file/d/1FD6TKzCi2brH7oxxIJzbjaA2zPNwijXV/view?usp=sharing"
+                                target="_blank" rel="noopener noreferrer">ดูรายชื่อ ม.1</a>
+                            <a href="https://drive.google.com/file/d/1nfNiCcKzSuiGE5uKLTICtDs54chu1J4Y/view?usp=sharing"
+                                target="_blank" rel="noopener noreferrer">ดูรายชื่อ ม.4</a>
+                        </p>
+                    </div>
+                    </a>
+                </div>
+           
 
         </div>
+    </div>
 
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                รายชื่อผู้สมัคร (รอบโควตา นักกีฬา)
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example" class="table table-striped table-bordered example" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>เลขที่</th>
+                                <th>ชื่อ - สกุล</th>
+                                <th>ชั้น</th>
+                                <th>แผน</th>
+                                <th>วันที่สมัคร</th>
+                                <th>สถานะ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($regis as $key => $v_regis) :
+                        if($v_regis->recruit_year == "2565" && $v_regis->recruit_category =="quotasport"):
+                             ?>
+                            <tr>
+                                <td><?=$v_regis->recruit_id?></td>
+                                <td><?=$v_regis->recruit_prefix?><?=$v_regis->recruit_firstName?>
+                                    <?=$v_regis->recruit_lastName?></td>
+                                <td>ชั้นมัธยมศึกษาปีที่ <?=$v_regis->recruit_regLevel?></td>
+                                <td>
+                                    <?php
+                                $str = explode("(",$v_regis->recruit_tpyeRoom);
+                                echo $str[0];
+                                ?>
+                                </td>
+                                <td><?=$this->datethai->thai_date_fullmonth(strtotime($v_regis->recruit_date))?>
+                                </td>
+                                <td>
+                                    <?php if($v_regis->recruit_status == "รอการตรวจสอบ"){
+                                   $text = "รอการตรวจสอบ";
+                                   $status = "warning";
+                                } elseif($v_regis->recruit_status == "ผ่านการตรวจสอบ"){
+                                    $text = "ผ่านการตรวจสอบ";
+                                    $status = "success";
+                                } elseif($v_regis->recruit_status == "กรอกข้อมูลไม่ครบถ้วน"){
+                                    $text = "ไม่ผ่าน กลับไปตรวจสอบ";
+                                    $status = "danger";
+                                } 
+                                ?>
+                                    <span class="badge badge-<?=$status?>">
+                                        <h6 style="margin-bottom: 0rem;"><?=$text;?></h6>
+                                    </span>
+                                </td>
+                            </tr>
+                            <?php endif; endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="container-fluid">
@@ -168,7 +231,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <table id="example" class="table table-striped table-bordered example" style="width:100%">
                         <thead>
                             <tr>
                                 <th>เลขที่</th>
@@ -339,7 +402,7 @@
             </div>
         </div>
 
-      
+
 
         <!-- <?php if($switch[0]->onoff_regis == "off") :?>
         <div class="text-success">

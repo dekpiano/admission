@@ -11,7 +11,7 @@ $("#loginConfirmStudent").on('submit', function(e) {
         success: function(response) {
             console.log(response);
             if (response == 1) {
-                // alert(1);
+                //alert(1);
                 location.reload();
             } else if (response == 0) {
                 // alert(0);
