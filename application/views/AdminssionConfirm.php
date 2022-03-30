@@ -175,7 +175,7 @@
                     </a>
                 </div>
                 <hr>
-                <?php if($Ckeckstu == 1 && $FatherCkeck == 1 || $MatherCkeck == 1 || $OtherCkeck == 1): ?>
+                <?php if($Ckeckstu == 1 && $OtherCkeck == 1): ?>
                 <a href="<?=base_url('Confirm/Print');?>" class="btn btn-info w-100">พิมพ์ใบยืนยันรายงานตัว</a>
                 <?php else: ?>
                 <a href="#" id="checkPirnt" class="btn btn-info w-100 checkPirnt">พิมพ์ใบยืนยันรายงานตัว</a>

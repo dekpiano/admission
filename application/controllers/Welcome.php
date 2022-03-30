@@ -21,20 +21,41 @@ class Welcome extends CI_Controller {
 
 		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
 		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
-
+		
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();
 		$data['quota'] = $this->db->get("tb_quota")->result();
 
 		$db2 = $this->load->database('skjmain', TRUE);	
+	    $DBPers = $this->load->database('skjpers', TRUE);
+
 		$data['title'] = "ระบบรับสมัครนักเรียนปีการศึกษา ".$data['checkYear'][0]->openyear_year;
 		$data['description'] = "รับสมัครนักเรียน ม.1 และ ม.4 ใหม่ ปีการศึกษา ".$data['checkYear'][0]->openyear_year;
 		$data['banner'] = base_url()."uploads/banner65-1.png";
 		$data['url'] = "welcome";
 
-		$data['regis'] = $this->db->select('recruit_id,recruit_prefix,recruit_firstName,recruit_lastName,recruit_regLevel,recruit_tpyeRoom,recruit_date,recruit_year,recruit_category,recruit_status')->from('tb_recruitstudent')->order_by('recruit_id','DESC')->get()->result();
+		// $data['regis'] = $this->db->select('recruit_id,recruit_prefix,recruit_firstName,recruit_lastName,recruit_regLevel,recruit_tpyeRoom,recruit_date,recruit_year,recruit_category,recruit_status')->from('tb_recruitstudent')->where('recruit_year',$data['checkYear'][0]->openyear_year)->order_by('recruit_id','DESC')->get()->result();
 
 		//echo "<pre>"; print_r($data['regis']); exit();
 
+		$this->db->select('
+		tb_recruitstudent.recruit_id,
+		tb_recruitstudent.recruit_regLevel,
+		tb_recruitstudent.recruit_prefix,
+		tb_recruitstudent.recruit_firstName,
+		tb_recruitstudent.recruit_lastName,
+		tb_recruitstudent.recruit_date,
+		tb_recruitstudent.recruit_year,
+		tb_recruitstudent.recruit_status,
+		tb_recruitstudent.recruit_tpyeRoom,
+		tb_recruitstudent.recruit_idCard,
+		tb_students.stu_fristName,
+		tb_recruitstudent.recruit_category');
+		$this->db->from('tb_recruitstudent');
+		$this->db->join($DBPers->database.'.tb_students','tb_recruitstudent.recruit_idCard = tb_students.stu_iden','LEFT');
+		// $this->DBSKJ->where('recruit_year',$data['checkYear'][0]->openyear_year)->order_by('recruit_id','DESC');
+		$data['regis'] = $this->db->get()->result();
+
+		//echo "<pre>"; print_r($data['regis']); exit();
 
 		$this->load->view('layout/header.php',$data);
 		$this->load->view('layout/menu_top.php');

@@ -18,8 +18,21 @@ class Control_admin_confirm extends CI_Controller {
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();
 		//$data = $this->report_student($year);
 		$data['title'] = $this->title;		
-		$this->db->select('*');
-		$this->db->from('tb_recruitstudent');
+		$this->db->select('skjacth_admission.tb_recruitstudent.recruit_id,
+		skjacth_admission.tb_recruitstudent.recruit_regLevel,
+		skjacth_admission.tb_recruitstudent.recruit_prefix,
+		skjacth_admission.tb_recruitstudent.recruit_firstName,
+		skjacth_admission.tb_recruitstudent.recruit_lastName,
+		skjacth_admission.tb_recruitstudent.recruit_year,
+		skjacth_admission.tb_recruitstudent.recruit_status,
+		skjacth_admission.tb_recruitstudent.recruit_tpyeRoom,
+		skjacth_admission.tb_recruitstudent.recruit_idCard,
+		skjacth_admission.tb_recruitstudent.recruit_category,
+		skjacth_admission.tb_recruitstudent.recruit_img,
+		skjacth_admission.tb_recruitstudent.recruit_phone,
+		skjacth_personnel.tb_students.stu_id');
+		$this->db->from('skjacth_admission.tb_recruitstudent');
+		$this->db->join('skjacth_personnel.tb_students','skjacth_admission.tb_recruitstudent.recruit_idCard = skjacth_personnel.tb_students.stu_iden','LEFT');
 		$this->db->where('recruit_year',$year);
 		$this->db->where('recruit_status',"ผ่านการตรวจสอบ");
 		$this->db->order_by('recruit_id','DESC');
@@ -130,10 +143,10 @@ class Control_admin_confirm extends CI_Controller {
 		$html .= '<div style="position:absolute;top:790px;left:225px; width:100%"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></div>';
 		}else if($confrim[0]->stu_presentLife == 'อยู่กับบิดาหรือมารดา'){
 		$html .= '<div style="position:absolute;top:790px;left:360px; width:100%"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></div>';
-		}else if($confrim[0]->stu_presentLife == 'อื่นๆ'){
+		}else if($confrim[0]->stu_presentLife == 'บุคคลอื่น'){
 		$html .= '<div style="position:absolute;top:790px;left:510px; width:100%"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></div>';
 		}
-		$html .= '<div style="position:absolute;top:790px;left:620px; width:100%">'.$confrim[0]->stu_personOther.'</div>';
+		$html .= '<div style="position:absolute;top:787px;left:620px; width:100%">'.$confrim[0]->stu_personOther.'</div>';
 
 		$html .= '<div style="position:absolute;top:814px;left:310px; width:100%">'.$confrim[0]->stu_hCode.'</div>';
 		$html .= '<div style="position:absolute;top:814px;left:500px;px; width:100%">'.$confrim[0]->stu_hNumber.'</div>';
@@ -214,7 +227,7 @@ class Control_admin_confirm extends CI_Controller {
 		$html2 .= '<div style="position:absolute;top:330px;left:197px; width:100%">'.@$confrimFa[0]->par_salary.'</div>';
 		$html2 .= '<div style="position:absolute;top:355px;left:197px; width:100%">'.@$confrimFa[0]->par_positionJob.'</div>';
 		$html2 .= '<div style="position:absolute;top:380px;left:197px; width:100%">'.@$confrimFa[0]->par_phone.'</div>';
-		$html2 .= '<div style="position:absolute;top:405px;left:197px; width:100%">'.@$confrimFa[0]->par_decease.'</div>';
+		$html2 .= '<div style="position:absolute;top:405px;left:197px; width:100%">'.@$confrimFa[0]->par_decease==0?"":$confrimFa[0]->par_decease.'</div>';
 
 		$html2 .= '<div style="position:absolute;top:430px;left:255px; width:100%">'.@$confrimFa[0]->par_hNumber.'</div>';
 		$html2 .= '<div style="position:absolute;top:430px;left:335px; width:100%">'.@$confrimFa[0]->par_hMoo.'</div>';
@@ -279,7 +292,7 @@ class Control_admin_confirm extends CI_Controller {
 		$html2 .= '<div style="position:absolute;top:330px;left:400px; width:100%">'.@$confrimMa[0]->par_salary.'</div>';
 		$html2 .= '<div style="position:absolute;top:355px;left:400px; width:100%">'.@$confrimMa[0]->par_positionJob.'</div>';
 		$html2 .= '<div style="position:absolute;top:380px;left:400px; width:100%">'.@$confrimMa[0]->par_phone.'</div>';
-		$html2 .= '<div style="position:absolute;top:405px;left:400px; width:100%">'.@$confrimMa[0]->par_decease.'</div>';
+		$html2 .= '<div style="position:absolute;top:405px;left:400px; width:100%">'.@$confrimMa[0]->par_decease==0?"":$confrimMa[0]->par_decease.'</div>';
 
 		$html2 .= '<div style="position:absolute;top:430px;left:455px; width:100%">'.@$confrimMa[0]->par_hNumber.'</div>';
 		$html2 .= '<div style="position:absolute;top:430px;left:530px; width:100%">'.@$confrimMa[0]->par_hMoo.'</div>';
@@ -337,7 +350,7 @@ class Control_admin_confirm extends CI_Controller {
 		$html2 .= '<div style="position:absolute;top:115px;left:600px; width:100%">'.@$confrimPu[0]->par_prefix.@$confrimPu[0]->par_firstName.' '.@$confrimPu[0]->par_lastName.'</div>';
 		$html2 .= '<div style="position:absolute;top:133px;left:710px; width:100%">'.@$confrimPu[0]->par_relation.'</div>';
 		$html2 .= '<div style="position:absolute;top:155px;left:675px; width:100%">'.@$confrimPu[0]->par_ago.'</div>';
-		$html2 .= '<div style="position:absolute;top:180px;left:600px; width:100%">'.@$confrimPu[0]->par_IdNumber.'</div>';
+		$html2 .= '<div style="position:absolute;top:177px;left:600px; width:100%">'.@$confrimPu[0]->par_IdNumber.'</div>';
 		$html2 .= '<div style="position:absolute;top:205px;left:600px; width:100%">'.@$confrimPu[0]->par_national.'</div>';
 		$html2 .= '<div style="position:absolute;top:230px;left:600px; width:100%">'.@$confrimPu[0]->par_race.'</div>';
 		$html2 .= '<div style="position:absolute;top:255px;left:600px; width:100%">'.@$confrimPu[0]->par_religion.'</div>';
@@ -346,21 +359,21 @@ class Control_admin_confirm extends CI_Controller {
 		$html2 .= '<div style="position:absolute;top:330px;left:600px; width:100%">'.@$confrimPu[0]->par_salary.'</div>';
 		$html2 .= '<div style="position:absolute;top:355px;left:600px; width:100%">'.@$confrimPu[0]->par_positionJob.'</div>';
 		$html2 .= '<div style="position:absolute;top:380px;left:600px; width:100%">'.@$confrimPu[0]->par_phone.'</div>';
-		$html2 .= '<div style="position:absolute;top:405px;left:600px; width:100%">'.@$confrimPu[0]->par_decease.'</div>';
+		$html2 .= '<div style="position:absolute;top:405px;left:600px; width:100%">'.@$confrimPu[0]->par_decease==0?"":$confrimPu[0]->par_decease.'</div>';
 
-		$html2 .= '<div style="position:absolute;top:430px;left:655px; width:100%">'.@$confrimPu[0]->par_hNumber.'</div>';
-		$html2 .= '<div style="position:absolute;top:430px;left:730px; width:100%">'.@$confrimPu[0]->par_hMoo.'</div>';
-		$html2 .= '<div style="position:absolute;top:452px;left:650px; width:100%">'.@$confrimPu[0]->par_hTambon.'</div>';
-		$html2 .= '<div style="position:absolute;top:474px;left:650px; width:100%">'.@$confrimPu[0]->par_hDistrict.'</div>';
-		$html2 .= '<div style="position:absolute;top:496px;left:650px; width:100%">'.@$confrimPu[0]->par_hProvince.'</div>';
-		$html2 .= '<div style="position:absolute;top:518px;left:680px; width:100%">'.@$confrimPu[0]->par_hPostcode.'</div>';
+		$html2 .= '<div style="position:absolute;top:428px;left:655px; width:100%">'.@$confrimPu[0]->par_hNumber.'</div>';
+		$html2 .= '<div style="position:absolute;top:428px;left:730px; width:100%">'.@$confrimPu[0]->par_hMoo.'</div>';
+		$html2 .= '<div style="position:absolute;top:450px;left:650px; width:100%">'.@$confrimPu[0]->par_hTambon.'</div>';
+		$html2 .= '<div style="position:absolute;top:472px;left:650px; width:100%">'.@$confrimPu[0]->par_hDistrict.'</div>';
+		$html2 .= '<div style="position:absolute;top:494px;left:650px; width:100%">'.@$confrimPu[0]->par_hProvince.'</div>';
+		$html2 .= '<div style="position:absolute;top:516px;left:680px; width:100%">'.@$confrimPu[0]->par_hPostcode.'</div>';
 
-		$html2 .= '<div style="position:absolute;top:540px;left:655px; width:100%">'.@$confrimPu[0]->par_cNumber.'</div>';
-		$html2 .= '<div style="position:absolute;top:540px;left:730px; width:100%">'.@$confrimPu[0]->par_cMoo.'</div>';
-		$html2 .= '<div style="position:absolute;top:562px;left:650px; width:100%">'.@$confrimPu[0]->par_cTambon.'</div>';
-		$html2 .= '<div style="position:absolute;top:584px;left:650px; width:100%">'.@$confrimPu[0]->par_cDistrict.'</div>';
-		$html2 .= '<div style="position:absolute;top:605px;left:650px; width:100%">'.@$confrimPu[0]->par_cProvince.'</div>';
-		$html2 .= '<div style="position:absolute;top:628px;left:680px; width:100%">'.@$confrimPu[0]->par_cPostcode.'</div>';
+		$html2 .= '<div style="position:absolute;top:537px;left:655px; width:100%">'.@$confrimPu[0]->par_cNumber.'</div>';
+		$html2 .= '<div style="position:absolute;top:537px;left:730px; width:100%">'.@$confrimPu[0]->par_cMoo.'</div>';
+		$html2 .= '<div style="position:absolute;top:559px;left:650px; width:100%">'.@$confrimPu[0]->par_cTambon.'</div>';
+		$html2 .= '<div style="position:absolute;top:581px;left:650px; width:100%">'.@$confrimPu[0]->par_cDistrict.'</div>';
+		$html2 .= '<div style="position:absolute;top:602px;left:650px; width:100%">'.@$confrimPu[0]->par_cProvince.'</div>';
+		$html2 .= '<div style="position:absolute;top:625px;left:680px; width:100%">'.@$confrimPu[0]->par_cPostcode.'</div>';
 
 		if(@$confrimPu[0]->par_rest == 'บ้านตนเอง'){
 		$html2 .= '<div style="position:absolute;top:655px;left:600px; width:100%"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></div>';
@@ -374,7 +387,7 @@ class Control_admin_confirm extends CI_Controller {
 		$html2 .= '<div style="position:absolute;top:755px;left:600px; width:100%"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></div>';
 		}
 
-		$html2 .= '<div style="position:absolute;top:750px;left:680px; width:100%">'.@$confrimPu[0]->par_restOrthor.'</div>';
+		$html2 .= '<div style="position:absolute;top:747px;left:680px; width:100%">'.@$confrimPu[0]->par_restOrthor.'</div>';
 
 		if(@$confrimPu[0]->par_service == 'กระทรวง'){
 		$html2 .= '<div style="position:absolute;top:777px;left:600px; width:100%"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></div>';

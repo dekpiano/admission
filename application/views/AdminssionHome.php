@@ -180,11 +180,12 @@
                                 <th>แผน</th>
                                 <th>วันที่สมัคร</th>
                                 <th>สถานะ</th>
+                                <th>สถานะรายงานตัว</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($regis as $key => $v_regis) :
-                        if($v_regis->recruit_year == "2565" && $v_regis->recruit_category =="quotasport"):
+                        if($v_regis->recruit_category =="quotasport"):
                              ?>
                             <tr>
                                 <td><?=$v_regis->recruit_id?></td>
@@ -215,6 +216,18 @@
                                         <h6 style="margin-bottom: 0rem;"><?=$text;?></h6>
                                     </span>
                                 </td>
+                                <td>
+                                <?php if($v_regis->stu_fristName != null){
+                                     $status = "success";
+                                        $txt = "รายงานตัวออนไลน์แล้ว";
+                                }else{
+                                    $status = "danger";
+                                    $txt = "ยังไม่ได้รายงานตัวออนไลน์";
+                                }?>
+                                 <span class="badge badge-<?=$status?>">
+                                        <h6 style="margin-bottom: 0rem;"><?=$txt;?></h6>
+                                    </span>
+                                </td>
                             </tr>
                             <?php endif; endforeach; ?>
                         </tbody>
@@ -239,12 +252,13 @@
                                 <th>ชั้น</th>
                                 <th>แผน</th>
                                 <th>วันที่สมัคร</th>
-                                <th>สถานะ</th>
+                                <th>สถานะการสมัคร</th>
+                                <th>สถานะรายงานตัว</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($regis as $key => $v_regis) :
-                        if($v_regis->recruit_year == "2565" && $v_regis->recruit_category =="normal"):
+                        if($v_regis->recruit_category =="normal"):
                              ?>
                             <tr>
                                 <td><?=$v_regis->recruit_id?></td>
@@ -273,6 +287,18 @@
                                 ?>
                                     <span class="badge badge-<?=$status?>">
                                         <h6 style="margin-bottom: 0rem;"><?=$text;?></h6>
+                                    </span>
+                                </td>
+                                <td>
+                                <?php if($v_regis->stu_fristName != null){
+                                     $status = "success";
+                                        $txt = "รายงานตัวออนไลน์แล้ว";
+                                }else{
+                                    $status = "danger";
+                                    $txt = "ยังไม่ได้รายงานตัวออนไลน์";
+                                }?>
+                                 <span class="badge badge-<?=$status?>">
+                                        <h6 style="margin-bottom: 0rem;"><?=$txt;?></h6>
                                     </span>
                                 </td>
                             </tr>

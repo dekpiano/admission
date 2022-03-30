@@ -470,39 +470,39 @@ class Control_confirm extends CI_Controller {
 			$datapdfRe = $this->db->select('*')->where('recruit_idCard',$this->session->userdata('idenStu'))->get('tb_recruitstudent')->result();
 			
 	
-			$date_Y = date('Y',strtotime($datapdf[0]->stu_birthDay));
+			$date_Y = date('Y',strtotime(@$datapdf[0]->stu_birthDay));
 			$TH_Month = array("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฏาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
-			$date_D = date('d',strtotime($datapdf[0]->stu_birthDay));
-			$date_M = date('n',strtotime($datapdf[0]->stu_birthDay));
+			$date_D = date('d',strtotime(@$datapdf[0]->stu_birthDay));
+			$date_M = date('n',strtotime(@$datapdf[0]->stu_birthDay));
 	
-			$date_Y_regis = date('Y',strtotime($datapdf[0]->stu_createDate))+543;
-			$date_D_regis = date('d',strtotime($datapdf[0]->stu_createDate));
-			$date_M_regis = date('n',strtotime($datapdf[0]->stu_createDate));
+			$date_Y_regis = date('Y',strtotime(@$datapdf[0]->stu_createDate))+543;
+			$date_D_regis = date('d',strtotime(@$datapdf[0]->stu_createDate));
+			$date_M_regis = date('n',strtotime(@$datapdf[0]->stu_createDate));
 	
 			//print_r($date_M); exit();
-			$sch = explode("โรงเรียน", $datapdf[0]->stu_schoolfrom); //แยกคำว่าโรงเรียน
+			$sch = explode("โรงเรียน", @$datapdf[0]->stu_schoolfrom); //แยกคำว่าโรงเรียน
 			
 			$mpdf = new \Mpdf\Mpdf([
 						'default_font_size' => 16,
 						'default_font' => 'sarabun',
 						'format' => [210, 90]
 					]);
-			$mpdf->SetTitle($datapdf[0]->stu_prefix.$datapdf[0]->stu_fristName.' '.$datapdf[0]->stu_lastName);
+			$mpdf->SetTitle(@$datapdf[0]->stu_prefix.@$datapdf[0]->stu_fristName.' '.@$datapdf[0]->stu_lastName);
 			$mpdf->showImageErrors = true;
 			// ส่วนที่ 2recruit_date
-			$html = '<div style="position:absolute;top:100px;left:75px; width:100%"><img style="width:120px;hight:100px;" src='.FCPATH.'uploads/recruitstudent/m'.$datapdfRe[0]->recruit_regLevel.'/img/'.$datapdfRe[0]->recruit_img.'></div>'; 
-			$html .= '<div style="position:absolute;top:57px;left:150px; width:100%">'.sprintf("%04d",$datapdfRe[0]->recruit_id).'</div>'; //เลขที่สมัคร
-			$html .= '<div style="position:absolute;top:100px;left:250px; width:100%">'.$datapdf[0]->stu_prefix.$datapdf[0]->stu_fristName.'</div>'; //ชื่อผู้สมัคร
-			$html .= '<div style="position:absolute;top:100px;left:480px; width:100%">'.$datapdf[0]->stu_lastName.'</div>'; //นามสกุลผู้สมัคร
-			$html .= '<div style="position:absolute;top:127;left:400px; width:100%">'.$datapdf[0]->stu_iden.'</div>';	
-			$html .= '<div style="position:absolute;top:155;left:270px; width:100%">'.$datapdfRe[0]->recruit_tpyeRoom.'</div>';	
+			$html = '<div style="position:absolute;top:100px;left:75px; width:100%"><img style="width:120px;hight:100px;" src='.FCPATH.'uploads/recruitstudent/m'.@$datapdfRe[0]->recruit_regLevel.'/img/'.@$datapdfRe[0]->recruit_img.'></div>'; 
+			$html .= '<div style="position:absolute;top:57px;left:150px; width:100%">'.sprintf("%04d",@$datapdfRe[0]->recruit_id).'</div>'; //เลขที่สมัคร
+			$html .= '<div style="position:absolute;top:100px;left:250px; width:100%">'.@$datapdf[0]->stu_prefix.@$datapdf[0]->stu_fristName.'</div>'; //ชื่อผู้สมัคร
+			$html .= '<div style="position:absolute;top:100px;left:480px; width:100%">'.@$datapdf[0]->stu_lastName.'</div>'; //นามสกุลผู้สมัคร
+			$html .= '<div style="position:absolute;top:127;left:400px; width:100%">'.@$datapdf[0]->stu_iden.'</div>';	
+			$html .= '<div style="position:absolute;top:155;left:270px; width:100%">'.@$datapdfRe[0]->recruit_tpyeRoom.'</div>';	
 			$html .= '<div style="position:absolute;top:200px;left:340px; width:100%"><img style="width:120px;hight:100px;" src='.FCPATH.'asset/img/license.png'.'></div>';
 			$html .= '<div style="position:absolute;top:255x;left:360px; width:100%">'.$date_D_regis.' '.$TH_Month[$date_M_regis-1].' '.$date_Y_regis.'</div>'; // วันที่สมัครตอนที่ 2
 	
 			$mpdf->SetDocTemplate('uploads/recruitstudent/pdf_registudentForStudent'.'.pdf',true);
 	
 			$mpdf->WriteHTML($html);
-			$mpdf->Output('Reg_'.$datapdf[0]->recruit_idCard.'.pdf','I'); // opens in browser
+			$mpdf->Output('Reg_'.@$datapdf[0]->recruit_idCard.'.pdf','I'); // opens in browser
 			//$mpdf->Output('arjun.pdf','D'); // it downloads the file into the user system, with give name
 		}
 
