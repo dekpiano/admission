@@ -62,13 +62,17 @@
                 <!-- /.social-auth-links -->
                 <p class="mb-0">
                     <a href="https://www.canva.com/design/DAE8dEvbv_0/0BOZnsblL5N2guiWoMXeng/view?utm_content=DAE8dEvbv_0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="text-center">คู่มือการใช้งานระบบ</a>
+<<<<<<< HEAD
                 </p>
                 <p class="mb-0">
                     <a href="../stepMatriculation.pdf" target="_blank"
                         class="text-center">ขั้นตอนการรายงานตัวออนไลน์</a>
                 </p>
+=======
+                </p>               
+>>>>>>> 5c61dbe3851e92d8ba8bd568540d5a88198a72fb
                 <p class="mb-1">
-                    <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;tf=1&amp;to=newstudent@op.kmutnb.ac.th"
+                    <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;tf=1&amp;to=dekpiano@skj.ac.th"
                         target="_blank">ไม่สามารถเข้าใช้งานระบบได้</a>
                 </p>
 
