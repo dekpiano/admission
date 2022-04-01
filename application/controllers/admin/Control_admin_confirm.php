@@ -48,7 +48,7 @@ class Control_admin_confirm extends CI_Controller {
 			$this->load->view('admin/layout/footer_admin.php');
 	  }	
 
-	public function pdfConnfirm($id)
+	public function pdfConfirm($id)
     {
 		$Conf = $this->load->database('skjpers', TRUE);
 		$thai = $this->load->database('thailandpa', TRUE);
@@ -66,12 +66,13 @@ class Control_admin_confirm extends CI_Controller {
 			$date_M = date('n',strtotime($confrim[0]->stu_createDate));
 	
 			$date_Y_birt = date('Y',strtotime($confrim[0]->stu_birthDay));
-			$date_D_birt = date('d',strtotime($confrim[0]->stu_birthDay));
+			$date_D_birt = (int)date('d',strtotime($confrim[0]->stu_birthDay));
 			$date_M_birt = date('n',strtotime($confrim[0]->stu_birthDay));
     	
         $mpdf = new \Mpdf\Mpdf([
 					'default_font_size' => 16,
-					'default_font' => 'sarabun'
+					'default_font' => 'sarabun',
+					'debug' => false
 				]);
         $mpdf->SetTitle($confrim[0]->stu_prefix.$confrim[0]->stu_fristName.' '.$confrim[0]->stu_lastName);
 
@@ -88,6 +89,13 @@ class Control_admin_confirm extends CI_Controller {
 		$html .= '<div style="position:absolute;top:577px;left:645px; width:100%; font-size:1.5rem">'.$idstu[10].'</div>';
 		$html .= '<div style="position:absolute;top:577px;left:680px; width:100%; font-size:1.5rem">'.$idstu[11].'</div>';
 		$html .= '<div style="position:absolute;top:577px;left:722px; width:100%; font-size:1.5rem">'.$idstu[12].'</div>';
+
+		$html .= '<div style="position:absolute;top:30px;left:50px; width:100%">เลขที่สมัคร '.$recruit[0]->recruit_id.'</div>'; //เลขที่สมัคร
+
+		$html .= '<div style="position:absolute;top:463px;left:420px; width:100%">'.$date_D.'</div>'; //วัน
+		$html .= '<div style="position:absolute;top:463px;left:475px; width:100%">'.$TH_Month[$date_M-1].'</div>'; //เดือน
+		$html .= '<div style="position:absolute;top:463px;left:550px; width:100%">'.$date_Y.'</div>'; //ปี
+
        
 		$html .= '<div style="position:absolute;top:75px;left:663px; width:100%"><img style="width: 100px;hight:70px;" src='.FCPATH.'uploads/recruitstudent/m'.$recruit[0]->recruit_regLevel.'/img/'.$recruit[0]->recruit_img.'></div>'; 
 		$html .= '<div style="position:absolute;top:105px;left:230px; width:100%">'.$confrim[0]->stu_regLevel.'</div>'; //ชั้นที่สมัครเรียน
@@ -292,7 +300,7 @@ class Control_admin_confirm extends CI_Controller {
 		$html2 .= '<div style="position:absolute;top:330px;left:400px; width:100%">'.@$confrimMa[0]->par_salary.'</div>';
 		$html2 .= '<div style="position:absolute;top:355px;left:400px; width:100%">'.@$confrimMa[0]->par_positionJob.'</div>';
 		$html2 .= '<div style="position:absolute;top:380px;left:400px; width:100%">'.@$confrimMa[0]->par_phone.'</div>';
-		$html2 .= '<div style="position:absolute;top:405px;left:400px; width:100%">'.@$confrimMa[0]->par_decease==0?"":$confrimMa[0]->par_decease.'</div>';
+		$html2 .= '<div style="position:absolute;top:405px;left:400px; width:100%">'.@$confrimMa[0]->par_decease==0?"":@$confrimMa[0]->par_decease.'</div>';
 
 		$html2 .= '<div style="position:absolute;top:430px;left:455px; width:100%">'.@$confrimMa[0]->par_hNumber.'</div>';
 		$html2 .= '<div style="position:absolute;top:430px;left:530px; width:100%">'.@$confrimMa[0]->par_hMoo.'</div>';
@@ -359,7 +367,7 @@ class Control_admin_confirm extends CI_Controller {
 		$html2 .= '<div style="position:absolute;top:330px;left:600px; width:100%">'.@$confrimPu[0]->par_salary.'</div>';
 		$html2 .= '<div style="position:absolute;top:355px;left:600px; width:100%">'.@$confrimPu[0]->par_positionJob.'</div>';
 		$html2 .= '<div style="position:absolute;top:380px;left:600px; width:100%">'.@$confrimPu[0]->par_phone.'</div>';
-		$html2 .= '<div style="position:absolute;top:405px;left:600px; width:100%">'.@$confrimPu[0]->par_decease==0?"":$confrimPu[0]->par_decease.'</div>';
+		$html2 .= '<div style="position:absolute;top:405px;left:600px; width:100%">'.@$confrimPu[0]->par_decease==0?"":@$confrimPu[0]->par_decease.'</div>';
 
 		$html2 .= '<div style="position:absolute;top:428px;left:655px; width:100%">'.@$confrimPu[0]->par_hNumber.'</div>';
 		$html2 .= '<div style="position:absolute;top:428px;left:730px; width:100%">'.@$confrimPu[0]->par_hMoo.'</div>';
@@ -402,6 +410,10 @@ class Control_admin_confirm extends CI_Controller {
 		$html2 .= '<div style="position:absolute;top:850px;left:600px; width:100%"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></div>';
 		$html2 .= '<div style="position:absolute;top:845px;left:685px; width:100%">'.@$confrimPu[0]->par_serviceName.'</div>';
 		}		
+
+		$html2 .= '<div style="position:absolute;top:993px;left:230px; width:100%">'.$date_D.'</div>'; //วัน
+		$html2 .= '<div style="position:absolute;top:993px;left:350px; width:100%">'.$TH_Month[$date_M-1].'</div>'; //เดือน
+		$html2 .= '<div style="position:absolute;top:993px;left:540px; width:100%">'.$date_Y.'</div>'; //ปี
 
 
 		$mpdf->WriteHTML($html2);

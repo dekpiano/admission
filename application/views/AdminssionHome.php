@@ -178,7 +178,7 @@
                                 <th>ชื่อ - สกุล</th>
                                 <th>ชั้น</th>
                                 <th>แผน</th>
-                                <th>วันที่สมัคร</th>
+                                <!-- <th>วันที่สมัคร</th> -->
                                 <th>สถานะ</th>
                                 <th>สถานะรายงานตัว</th>
                             </tr>
@@ -198,7 +198,7 @@
                                 echo $str[0];
                                 ?>
                                 </td>
-                                <td><?=$this->datethai->thai_date_fullmonth(strtotime($v_regis->recruit_date))?>
+                                <!-- <td><?=$this->datethai->thai_date_fullmonth(strtotime($v_regis->recruit_date))?> -->
                                 </td>
                                 <td>
                                     <?php if($v_regis->recruit_status == "รอการตรวจสอบ"){
@@ -251,7 +251,7 @@
                                 <th>ชื่อ - สกุล</th>
                                 <th>ชั้น</th>
                                 <th>แผน</th>
-                                <th>วันที่สมัคร</th>
+                                <!-- <th>วันที่สมัคร</th> -->
                                 <th>สถานะการสมัคร</th>
                                 <th>สถานะรายงานตัว</th>
                             </tr>
@@ -271,7 +271,7 @@
                                 echo $str[0];
                                 ?>
                                 </td>
-                                <td><?=$this->datethai->thai_date_fullmonth(strtotime($v_regis->recruit_date))?>
+                                <!-- <td><?=$this->datethai->thai_date_fullmonth(strtotime($v_regis->recruit_date))?> -->
                                 </td>
                                 <td>
                                     <?php if($v_regis->recruit_status == "รอการตรวจสอบ"){

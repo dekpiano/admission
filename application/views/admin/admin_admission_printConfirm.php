@@ -48,7 +48,7 @@
                                         <th>สถานะการรายงานตัว</th>
                                         <th>สถานะการสมัคร</th>
                                         <th>คำสั่ง</th>
-                                        <th>ประเภท</th>
+                                        <th>เลขที่สมัคร</th>
                                         <th>รูปภาพ</th>
                                         <th>ชื่อผู้<?=$title;?></th>
                                         <th>เลขประชาชน</th>
@@ -86,16 +86,16 @@
                                     <td>
                                         <?php if($v_recruit->stu_id == null): ?>
                                         <button type="button" class="btn btn-primary" disabled>
-                                        <i class="fas fa-print"></i> รอรายงานตัว</button>
+                                            <i class="fas fa-print"></i> รอรายงานตัว</button>
                                         <?php else : ?>
                                         <a target="_blank"
-                                            href="<?=base_url('admin/Control_admin_confirm/pdfConnfirm/'.$v_recruit->recruit_idCard);?>"
+                                            href="<?=base_url('admin/Control_admin_confirm/pdfConfirm/'.$v_recruit->recruit_idCard);?>"
                                             class="btn btn-primary btn-sm"><i class="fas fa-print"></i>
                                             พิมพ์ใบรายงานตัว</a>
                                         <?php endif; ?>
 
                                     </td>
-                                    <td><?=$v_recruit->recruit_category;?></td>
+                                    <td><?=$v_recruit->recruit_id;?></td>
                                     <td><img style="width: 100px"
                                             src="<?=base_url('uploads/recruitstudent/m'.$v_recruit->recruit_regLevel.'/img/'.$v_recruit->recruit_img)?>">
                                     </td>

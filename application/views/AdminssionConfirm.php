@@ -61,7 +61,7 @@
     -->
                 <!-- /.social-auth-links -->
                 <p class="mb-0">
-                    <a href="../OnlineMatriculation.pdf" target="_blank" class="text-center">คู่มือการใช้งานระบบ</a>
+                    <a href="https://www.canva.com/design/DAE8dEvbv_0/0BOZnsblL5N2guiWoMXeng/view?utm_content=DAE8dEvbv_0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="text-center">คู่มือการใช้งานระบบ</a>
                 </p>
                 <p class="mb-0">
                     <a href="../stepMatriculation.pdf" target="_blank"
@@ -176,7 +176,7 @@
                 </div>
                 <hr>
                 <?php if($Ckeckstu == 1 && $OtherCkeck == 1): ?>
-                <a href="<?=base_url('Confirm/Print');?>" class="btn btn-info w-100">พิมพ์ใบยืนยันรายงานตัว</a>
+                <a target="_blank" href="<?=base_url('Confirm/Print');?>" class="btn btn-info w-100">พิมพ์ใบยืนยันรายงานตัว</a>
                 <?php else: ?>
                 <a href="#" id="checkPirnt" class="btn btn-info w-100 checkPirnt">พิมพ์ใบยืนยันรายงานตัว</a>
                 <?php endif; ?>
