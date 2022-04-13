@@ -233,4 +233,5 @@ class Welcome extends CI_Controller {
 			return $data;
 	}
 	
+	
 }

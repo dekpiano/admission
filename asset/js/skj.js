@@ -185,5 +185,19 @@ $(document).on('change', '#select_year', function() {
                 window.location = "../../admin/admission/" + dataYear;
             }
         });
+});
 
+$(document).on('change', '#select_year_confrim', function() {
+    var dataYear = $(this).val();
+
+    Swal.fire({
+            title: "แจ้งเตือน",
+            text: "คุณได้ทำการเปลี่ยนปีการศึกษาสำเร็จ",
+            icon: "warning"
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                window.location = "../../admin/PrintConfirm/" + dataYear;
+            }
+        });
 });

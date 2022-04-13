@@ -21,7 +21,7 @@
                         </h6>
                         <div>
                             <span class="mx-2">เลือกดู</span>
-                            <select id="select_year" name="select_year"
+                            <select id="select_year_confrim" name="select_year_confrim"
                                 class="custom-select custom-select-sm float-right" style="width: 75px;">
                                 <option <?=$this->uri->segment('3') == ($year[0]->recruit_year)+1 ? 'selected' : '' ;?>
                                     value="<?=($year[0]->recruit_year)+1?>"><?=($year[0]->recruit_year)+1?></option>
@@ -33,9 +33,7 @@
                         </div>
 
                         <div class="dropdown no-arrow">
-                            <a target="_blank"
-                                href="<?=base_url('admin/control_admin_admission/pdf_all/'.$this->uri->segment(3));?>"
-                                class="btn btn-primary btn-sm"><i class="fas fa-print"></i> พิมพ์ใบสมัครทั้งหมด</a>
+                            <!-- <a target="_blank"  href="<?=base_url('admin/control_admin_admission/pdf_all/'.$this->uri->segment(3));?>"  class="btn btn-primary btn-sm"><i class="fas fa-print"></i> พิมพ์ใบสมัครทั้งหมด</a> -->
                         </div>
                     </div>
                     <div class="card-body">

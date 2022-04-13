@@ -55,10 +55,10 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['login'] = 'control_login/login_main';
 
+$route['CloseSystem'] = 'control_login/CloseSystem';
 
 // Main
 $route['Statistic/(:any)'] = 'welcome/AllStatistic/$1';
-
 $route['RegStudent/(:num)/(:any)'] = 'control_admission/reg_student/$1/$2';
 
 //นักเรียน

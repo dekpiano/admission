@@ -130,19 +130,36 @@
     <!-- Side Navbar -->
     <div class="container mt-4 mb-4">
         <div class="row">
+
+        <?php if($quota[2]->quota_status == 'on') : ?>
             <div class="col-md-6">
-            <a href="#" href="#" data-toggle="modal" data-target="#myModal">
-                <div class="service">
-                    <i class="fas fa-laptop-code"></i>
-                    <h2>สมัครเรียน สำหรับกีฬา</h2>
-                    <p> กรอกข้อมูลสำหรับนักกีฬาที่มีรายชื่อผ่านการคัดตัวเท่านั้น </p>
-                    <p><a href="https://drive.google.com/file/d/1O1cI0nOnD27YqpqPKX24ngrRLTQiheca/view?usp=sharing"
-                            target="_blank" rel="noopener noreferrer">ดูรายชื่อนักกีฬา</a></p>
-                </div>
+                <a href="#" href="#" data-toggle="modal" data-target="#myModal">
+                    <div class="service">
+                        <i class="fas fa-laptop-code"></i>
+                        <h2>สมัครเรียน รอบปกติ</h2>
+                        <p> สำหรับนักเรียนที่จะสมัครรอบปกติ </p>
+                        <p><a href="#" href="#" data-toggle="modal" data-target="#myModal">สมัครเรียน</a></p>
+                    </div>
                 </a>
             </div>
-           
-                <div class="col-md-6">
+            <?php endif; ?>
+
+            <?php if($quota[3]->quota_status == 'on') : ?>
+            <div class="col-md-6">
+                <a href="#" href="#" data-toggle="modal" data-target="#myModal">
+                    <div class="service">
+                        <i class="fas fa-laptop-code"></i>
+                        <h2>สมัครเรียน สำหรับกีฬา</h2>
+                        <p> กรอกข้อมูลสำหรับนักกีฬาที่มีรายชื่อผ่านการคัดตัวเท่านั้น </p>
+                        <p><a href="https://drive.google.com/file/d/1O1cI0nOnD27YqpqPKX24ngrRLTQiheca/view?usp=sharing"
+                                target="_blank" rel="noopener noreferrer">ดูรายชื่อนักกีฬา</a></p>
+                    </div>
+                </a>
+            </div>
+            <?php endif; ?>
+
+
+            <div class="col-md-6">
                 <a href="<?=base_url('Confirm')?>">
                     <div class="service">
                         <i class="fas fa-user-edit"></i>
@@ -157,9 +174,9 @@
                                 target="_blank" rel="noopener noreferrer">ดูรายชื่อ ม.4</a>
                         </p>
                     </div>
-                    </a>
-                </div>
-           
+                </a>
+            </div>
+
 
         </div>
     </div>
@@ -217,14 +234,14 @@
                                     </span>
                                 </td>
                                 <td>
-                                <?php if($v_regis->stu_fristName != null){
+                                    <?php if($v_regis->stu_fristName != null){
                                      $status = "success";
                                         $txt = "รายงานตัวออนไลน์แล้ว";
                                 }else{
                                     $status = "danger";
                                     $txt = "ยังไม่ได้รายงานตัวออนไลน์";
                                 }?>
-                                 <span class="badge badge-<?=$status?>">
+                                    <span class="badge badge-<?=$status?>">
                                         <h6 style="margin-bottom: 0rem;"><?=$txt;?></h6>
                                     </span>
                                 </td>
@@ -290,14 +307,14 @@
                                     </span>
                                 </td>
                                 <td>
-                                <?php if($v_regis->stu_fristName != null){
+                                    <?php if($v_regis->stu_fristName != null){
                                      $status = "success";
                                         $txt = "รายงานตัวออนไลน์แล้ว";
                                 }else{
                                     $status = "danger";
                                     $txt = "ยังไม่ได้รายงานตัวออนไลน์";
                                 }?>
-                                 <span class="badge badge-<?=$status?>">
+                                    <span class="badge badge-<?=$status?>">
                                         <h6 style="margin-bottom: 0rem;"><?=$txt;?></h6>
                                     </span>
                                 </td>
