@@ -12,7 +12,7 @@
                      </div>
 
                      <div class="col-sm-3 text-right">
-                         <p>Design by <a href="#" class="" data-toggle="modal" data-target="#LoginAdmin">Dekpiano</a>
+                         <p>Design by <a href="<?=base_url('loginAdmin');?>" class="" data-toggle1="modal" data-target1="#LoginAdmin">Dekpiano</a>
                          </p>
                          <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
                      </div>
@@ -137,7 +137,7 @@
          <?php if($this->uri->segment(1) == "RegStudent"):?>
          <script src="<?=base_url()?>asset/js/AutoProvince.js?v=6"></script>
          <?php elseif($this->uri->segment(1) == "Confirm"):?>
-         <script src="<?=base_url()?>asset/js/ConfirmStudent.js?v=13"></script>
+         <script src="<?=base_url()?>asset/js/ConfirmStudent.js?v=14"></script>
          <?php endif; ?>
 
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
@@ -191,6 +191,10 @@ var onloadCallback = function() {
 // รูปแบบการกรอก
 $(":input").inputmask();
 
+$("#idenStu").inputmask("9-9999-99999-99-9",{ "onincomplete": function(){ alert('กรอกเลขประจำตัวประชาชนให้ครบ 13 หลัก'); } });
+$("#par_IdNumber").inputmask("9-9999-99999-99-9",{ "onincomplete": function(){ alert('กรอกเลขประจำตัวประชาชนให้ครบ 13 หลัก'); } });
+$("#par_IdNumberM").inputmask("9-9999-99999-99-9",{ "onincomplete": function(){ alert('กรอกเลขประจำตัวประชาชนให้ครบ 13 หลัก'); } });
+$("#par_IdNumberO").inputmask("9-9999-99999-99-9",{ "onincomplete": function(){ alert('กรอกเลขประจำตัวประชาชนให้ครบ 13 หลัก'); } });
 
 
 

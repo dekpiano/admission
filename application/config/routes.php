@@ -54,6 +54,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['login'] = 'control_login/login_main';
+$route['loginAdmin'] = 'control_login/login_admin';
 
 
 // Main

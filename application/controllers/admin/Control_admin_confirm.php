@@ -352,8 +352,7 @@ class Control_admin_confirm extends CI_Controller {
 
 		// ดึงข้อมูลผู้ปกครอง--------------------
 		$confrimPu= $Conf->where('par_stuID',$id)
-						->where('par_relation !=',"มารดา")
-						->where('par_relation !=',"บิดา")
+						->where('par_relationKey',"ผู้ปกครอง")
 						->get('tb_parent')->result();
 		$html2 .= '<div style="position:absolute;top:115px;left:600px; width:100%">'.@$confrimPu[0]->par_prefix.@$confrimPu[0]->par_firstName.' '.@$confrimPu[0]->par_lastName.'</div>';
 		$html2 .= '<div style="position:absolute;top:133px;left:710px; width:100%">'.@$confrimPu[0]->par_relation.'</div>';
