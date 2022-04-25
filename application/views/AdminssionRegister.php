@@ -66,18 +66,21 @@ label {
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="row justify-content-center">
-                                    <div class="mb-3 col-md-4" style="text-align: -webkit-center;">                                        
-                                        <div class="fileinput-new img-thumbnail" style="width: 180px; height: 200px;overflow: hidden;">
+                                    <div class="mb-3 col-md-4" style="text-align: -webkit-center;">
+                                        <div class="fileinput-new img-thumbnail"
+                                            style="width: 180px; height: 200px;overflow: hidden;">
 
-                                            <img id="blah" class="img-fluid"  src="https://us.123rf.com/450wm/happyvector071/happyvector0711904/happyvector071190415714/121105442-creative-illustration-of-default-avatar-profile-placeholder-isolated-on-background-art-design-grey-p.jpg?ver=6" alt="">
-                                           
+                                            <img id="blah" class="img-fluid"
+                                                src="https://us.123rf.com/450wm/happyvector071/happyvector0711904/happyvector071190415714/121105442-creative-illustration-of-default-avatar-profile-placeholder-isolated-on-background-art-design-grey-p.jpg?ver=6"
+                                                alt="">
+
                                         </div>
                                         <span class="file-input btn btn-primary btn-file mt-2"> เลือกรูปภาพ
                                             <input type="file" id="recruit_img" name="recruit_img" required>
                                         </span>
                                         <div class="invalid-feedback">
-                                                อัพโหลดรูปภาพ
-                                            </div>
+                                            อัพโหลดรูปภาพ
+                                        </div>
                                     </div>
                                     <div class="mb-3 col-md-4">
                                         <h2>ลักษณะของรูปถ่ายที่จะนำมาใช้งาน :</h2>
@@ -398,7 +401,7 @@ label {
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="d-block my-3">
-                                    <?php if($TypeQuota[0]->quota_key == "normal"):?>
+                                    <?php if($TypeQuota[0]->quota_key == "normal" || $TypeQuota[0]->quota_key == "quotaM4" || $TypeQuota[0]->quota_key == "quotaM1"):?>
 
                                     <div class="custom-control custom-radio">
                                         <input id="credit" name="recruit_tpyeRoom" type="radio"

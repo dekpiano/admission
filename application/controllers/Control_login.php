@@ -17,6 +17,13 @@ class Control_login extends CI_Controller {
 		
 	}
 
+	public function login_admin()
+	{
+		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
+		$this->load->view('login/login_admin.php',$data);
+		
+	}
+
 	public function validlogin()
 	{
 			$username = $this->input->post('username');

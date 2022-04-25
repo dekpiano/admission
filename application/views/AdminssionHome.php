@@ -131,26 +131,26 @@
     <div class="container mt-4 mb-4">
         <div class="row">
 
-        <?php if($quota[2]->quota_status == 'on') : ?>
-            <div class="col-md-6">
+            <?php if($quota[2]->quota_status == 'on') : ?>
+            <div class="col align-self-center">
                 <a href="#" href="#" data-toggle="modal" data-target="#myModal">
                     <div class="service">
                         <i class="fas fa-laptop-code"></i>
-                        <h2>สมัครเรียน รอบปกติ</h2>
-                        <p> สำหรับนักเรียนที่จะสมัครรอบปกติ </p>
-                        <p><a href="#" href="#" data-toggle="modal" data-target="#myModal">สมัครเรียน</a></p>
+                        <h3>สมัครเรียน</h3>
+                        <h2> <?=$quota[2]->quota_explain?> (เพิ่มเติม) </h2>
+                        <p><a href="#" href="#" data-toggle="modal" data-target="#myModal"></a></p>
                     </div>
                 </a>
             </div>
             <?php endif; ?>
 
             <?php if($quota[3]->quota_status == 'on') : ?>
-            <div class="col-md-6">
+            <div class="col align-self-center">
                 <a href="#" href="#" data-toggle="modal" data-target="#myModal">
                     <div class="service">
-                        <i class="fas fa-laptop-code"></i>
-                        <h2>สมัครเรียน สำหรับกีฬา</h2>
-                        <p> กรอกข้อมูลสำหรับนักกีฬาที่มีรายชื่อผ่านการคัดตัวเท่านั้น </p>
+                    <i class="fas fa-solid fa-futbol"></i>
+                        <h3>สมัครเรียน</h3>
+                        <h2><?=$quota[3]->quota_explain?> </h2>
                         <p><a href="https://drive.google.com/file/d/1O1cI0nOnD27YqpqPKX24ngrRLTQiheca/view?usp=sharing"
                                 target="_blank" rel="noopener noreferrer">ดูรายชื่อนักกีฬา</a></p>
                     </div>
@@ -158,8 +158,37 @@
             </div>
             <?php endif; ?>
 
-
-            <div class="col-md-6">
+            <?php if($quota[0]->quota_status == 'on') : ?>
+            <div class="col align-self-center">
+                <a href="#" href="#" data-toggle="modal" data-target="#myModal">
+                    <div class="service">
+                    <i class="fas fa-solid fa-child"></i>
+                        <h3>สมัครเรียน</h3>
+                        <h2> <?=$quota[0]->quota_explain?> </h2>
+                        <p><a href="https://drive.google.com/file/d/1O1cI0nOnD27YqpqPKX24ngrRLTQiheca/view?usp=sharing"
+                                target="_blank" rel="noopener noreferrer"></a></p>
+                    </div>
+                </a>
+            </div>
+            <?php endif; ?>
+            <?php if($quota[1]->quota_status == 'on') : ?>
+            <div class="col align-self-center">
+                <a href="#" href="#" data-toggle="modal" data-target="#myModal">
+                    <div class="service">
+                    <i class="fas fa-solid fa-child"></i>
+                        <h3>สมัครเรียน</h3>
+                        <h2> <?=$quota[1]->quota_explain?> </h2>
+                        <p><a href="https://drive.google.com/file/d/1O1cI0nOnD27YqpqPKX24ngrRLTQiheca/view?usp=sharing"
+                                target="_blank" rel="noopener noreferrer"></a></p>
+                    </div>
+                </a>
+            </div>
+            <?php endif; ?>
+        </div>
+        
+        <?php if($switch[0]->onoff_report == 'on') : ?>
+        <div class="row">
+            <div class="col align-self-center">
                 <a href="<?=base_url('Confirm')?>">
                     <div class="service">
                         <i class="fas fa-user-edit"></i>
@@ -169,17 +198,90 @@
                         </p>
                         <p>
                             <a href="https://drive.google.com/file/d/1FD6TKzCi2brH7oxxIJzbjaA2zPNwijXV/view?usp=sharing"
-                                target="_blank" rel="noopener noreferrer">ดูรายชื่อ ม.1</a>
+                                target="_blank" rel="noopener noreferrer"></a>
                             <a href="https://drive.google.com/file/d/1nfNiCcKzSuiGE5uKLTICtDs54chu1J4Y/view?usp=sharing"
-                                target="_blank" rel="noopener noreferrer">ดูรายชื่อ ม.4</a>
+                                target="_blank" rel="noopener noreferrer"></a>
                         </p>
                     </div>
                 </a>
             </div>
+        </div>
+        <?php endif; ?>
+    </div>
 
-
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                รายชื่อผู้สมัคร (รอบปกติ)
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example" class="table table-striped table-bordered example" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>เลขที่</th>
+                                <th>ชื่อ - สกุล</th>
+                                <th>ชั้น</th>
+                                <th>แผน</th>
+                                <th>วันที่สมัคร</th>
+                                <th>สถานะการสมัคร</th>
+                                <th>สถานะรายงานตัว</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($regis as $key => $v_regis) :
+                        if($v_regis->recruit_category =="normal"):
+                             ?>
+                            <tr>
+                                <td><?=$v_regis->recruit_id?></td>
+                                <td><?=$v_regis->recruit_prefix?><?=$v_regis->recruit_firstName?>
+                                    <?=$v_regis->recruit_lastName?></td>
+                                <td>ชั้นมัธยมศึกษาปีที่ <?=$v_regis->recruit_regLevel?></td>
+                                <td>
+                                    <?php
+                                $str = explode("(",$v_regis->recruit_tpyeRoom);
+                                echo $str[0];
+                                ?>
+                                </td>
+                                <td><?=$this->datethai->thai_date_fullmonth(strtotime($v_regis->recruit_date))?>
+                                </td>
+                                <td>
+                                    <?php if($v_regis->recruit_status == "รอการตรวจสอบ"){
+                                   $text = "รอการตรวจสอบ";
+                                   $status = "warning";
+                                } elseif($v_regis->recruit_status == "ผ่านการตรวจสอบ"){
+                                    $text = "ผ่านการตรวจสอบ";
+                                    $status = "success";
+                                } elseif($v_regis->recruit_status == "กรอกข้อมูลไม่ครบถ้วน" || $v_regis->recruit_status == "ไม่มีรูปภาพ หรือรูปภาพไม่ผ่านการตรวจสอบ"){
+                                    $text = $v_regis->recruit_status;
+                                    $status = "danger";
+                                } 
+                                ?>
+                                    <span class="badge badge-<?=$status?>">
+                                        <h6 style="margin-bottom: 0rem;"><?=$text;?></h6>
+                                    </span>
+                                </td>
+                                <td>
+                                    <?php if($v_regis->stu_fristName != null){
+                                     $status = "success";
+                                        $txt = "รายงานตัวออนไลน์แล้ว";
+                                }else{
+                                    $status = "danger";
+                                    $txt = "ยังไม่ได้รายงานตัวออนไลน์";
+                                }?>
+                                    <span class="badge badge-<?=$status?>">
+                                        <h6 style="margin-bottom: 0rem;"><?=$txt;?></h6>
+                                    </span>
+                                </td>
+                            </tr>
+                            <?php endif; endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
+
 
     <div class="container-fluid">
         <div class="card">
@@ -254,79 +356,7 @@
         </div>
     </div>
 
-    <div class="container-fluid">
-        <div class="card">
-            <div class="card-header bg-primary text-white">
-                รายชื่อผู้สมัคร (รอบปกติ)
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table id="example" class="table table-striped table-bordered example" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>เลขที่</th>
-                                <th>ชื่อ - สกุล</th>
-                                <th>ชั้น</th>
-                                <th>แผน</th>
-                                <!-- <th>วันที่สมัคร</th> -->
-                                <th>สถานะการสมัคร</th>
-                                <th>สถานะรายงานตัว</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($regis as $key => $v_regis) :
-                        if($v_regis->recruit_category =="normal"):
-                             ?>
-                            <tr>
-                                <td><?=$v_regis->recruit_id?></td>
-                                <td><?=$v_regis->recruit_prefix?><?=$v_regis->recruit_firstName?>
-                                    <?=$v_regis->recruit_lastName?></td>
-                                <td>ชั้นมัธยมศึกษาปีที่ <?=$v_regis->recruit_regLevel?></td>
-                                <td>
-                                    <?php
-                                $str = explode("(",$v_regis->recruit_tpyeRoom);
-                                echo $str[0];
-                                ?>
-                                </td>
-                                <!-- <td><?=$this->datethai->thai_date_fullmonth(strtotime($v_regis->recruit_date))?> -->
-                                </td>
-                                <td>
-                                    <?php if($v_regis->recruit_status == "รอการตรวจสอบ"){
-                                   $text = "รอการตรวจสอบ";
-                                   $status = "warning";
-                                } elseif($v_regis->recruit_status == "ผ่านการตรวจสอบ"){
-                                    $text = "ผ่านการตรวจสอบ";
-                                    $status = "success";
-                                } elseif($v_regis->recruit_status == "กรอกข้อมูลไม่ครบถ้วน"){
-                                    $text = "ไม่ผ่าน กลับไปตรวจสอบ";
-                                    $status = "danger";
-                                } 
-                                ?>
-                                    <span class="badge badge-<?=$status?>">
-                                        <h6 style="margin-bottom: 0rem;"><?=$text;?></h6>
-                                    </span>
-                                </td>
-                                <td>
-                                    <?php if($v_regis->stu_fristName != null){
-                                     $status = "success";
-                                        $txt = "รายงานตัวออนไลน์แล้ว";
-                                }else{
-                                    $status = "danger";
-                                    $txt = "ยังไม่ได้รายงานตัวออนไลน์";
-                                }?>
-                                    <span class="badge badge-<?=$status?>">
-                                        <h6 style="margin-bottom: 0rem;"><?=$txt;?></h6>
-                                    </span>
-                                </td>
-                            </tr>
-                            <?php endif; endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
+   
     <div class="container-fluid">
         <a href="https://drive.google.com/file/d/1zeBOmrYsIl7j9YVyRiuKBODbX1Bi3-WX/view" target="_blank"
             rel="noopener noreferrer">

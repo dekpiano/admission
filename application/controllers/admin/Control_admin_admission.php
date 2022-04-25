@@ -100,6 +100,19 @@ class Control_admin_admission extends CI_Controller {
 		}
 	}
 
+	public function switch_report()
+	{
+		if($this->input->post('mode') == 'true'){
+			$data = array('onoff_report' => 'on','onoff_user_report' => $this->session->userdata('login_id'));
+			$this->db->update('tb_onoffsys',$data,"onoff_id='1'");
+			echo "เปิด";
+		}else{
+			$data = array('onoff_report' => 'off','onoff_user_report' => $this->session->userdata('login_id'));
+			$this->db->update('tb_onoffsys',$data,"onoff_id='1'");
+			echo "ปิด";
+		}
+	}
+
 	public function quotaType()
 	{
 		if($this->input->post('mode') == 'true'){

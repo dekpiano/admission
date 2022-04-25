@@ -37,7 +37,7 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block">เข้าสู่ระบบ</button>
+                            <button type="submit" id="submit" class="btn btn-primary btn-block">เข้าสู่ระบบ</button>
                         </div>
                         <!-- /.col -->
                     </div>

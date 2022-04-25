@@ -69,6 +69,29 @@ $(document).on('change', '#switch_year', function() {
     });
 });
 
+$(document).on('change', '#switch_report', function() {
+    category = $(this).is(":checked");
+    $.ajax({
+        type: 'POST',
+        url: '../../admin/control_admin_admission/switch_report',
+        data: {
+            mode: category
+        },
+        success: function(data) {
+            Swal.fire({
+                    title: "แจ้งเตือน",
+                    text: "คุณได้ทำการเปลี่ยนรายงานตัวสำเร็จ",
+                    icon: "warning"
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        // window.location = "../admin/system";
+                    }
+                });
+        }
+    });
+});
+
 //------------- เปิดปิดประเภทโควตา ----------------------
 
 $(document).on('change', '#quotaM1', function() {

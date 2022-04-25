@@ -19,6 +19,13 @@
     }, false);
 })();
 
+$(document).on('keyup', "#idenStu", function() {
+    console.log($(this).val().length);
+    if ($(this).val().length <= 13) {
+        $('#submit').prop('disabled', false);
+    }
+});
+
 // Add smooth scrolling to all links
 $("a").on('click', function(event) {
 
