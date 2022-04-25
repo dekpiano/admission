@@ -40,6 +40,24 @@
                         <div class="project-title d-flex align-items-center">
 
                             <div class="text">
+                                <h3 class="h4">เปิด - ปิด ระบบรายงานตัว</h3><small>ระบบจะปิดทั้งหมด</small>
+                            </div>
+                        </div>
+                        <div class="project-date">
+                            <input type="checkbox" id="switch_report" valun="<?=$switch[0]->onoff_report?>"
+                                <?=$switch[0]->onoff_report == "on" ? 'checked' : '' ?> data-toggle="toggle"
+                                data-on="เปิด" data-off="ปิด">
+                            <label for="switch_report"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="project mb-2">
+                <div class=" bg-white has-shadow col-lg-6">
+                    <div class="left-col p-3 d-flex align-items-center justify-content-between">
+                        <div class="project-title d-flex align-items-center">
+
+                            <div class="text">
                                 <h3 class="h4">ปีการศึกษาที่รับสมัคร</h3><small>สามารถเปิดรับสมัครล่วงหน้าได้ 1
                                     ปีการศึกษา</small>
                             </div>
@@ -80,13 +98,14 @@
                     </div>
                 </div>
             </div>
+            <hr>
             <div class="project mb-2">
                 <div class=" bg-white has-shadow col-lg-6">
                     <div class="left-col p-3 d-flex align-items-center justify-content-between">
                         <div class="project-title d-flex align-items-center">
 
                             <div class="text">
-                                <h3 class="h4">สถานะระบบ</h3><small>ระบบจะปิดทั้งหมด</small>
+                                <h3 class="h4">สถานะระบบจะปิดทั้งหมด</h3><small>ระบบจะปิดทั้งหมด</small>
                             </div>
                         </div>
                         <div class="project-date">
