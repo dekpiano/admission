@@ -651,8 +651,6 @@ $(document).on('change', '.checkPu', function() {
                     $('#par_restOrthorO' + index).hide();
                 }
             }
-
-
         }
 
 

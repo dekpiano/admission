@@ -60,10 +60,15 @@ class Control_admin_confirm extends CI_Controller {
 		$idstu = str_replace('-','', $confrim[0]->stu_iden); //แยกเลข 13 หลัก
 	    //print_r($idstu[1]);exit();	
 
-			$date_Y = date('Y',strtotime($confrim[0]->stu_createDate))+543;
+			$date_Y1 = date('Y',strtotime($confrim[0]->stu_createDate))+543;
 			$TH_Month = array("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฏาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
-			$date_D = date('d',strtotime($confrim[0]->stu_createDate));
-			$date_M = date('n',strtotime($confrim[0]->stu_createDate));
+			$date_D1 = date('d',strtotime($confrim[0]->stu_createDate));
+			$date_M1 = date('n',strtotime($confrim[0]->stu_createDate));
+			
+			$date_Y = date('Y',strtotime(date('d-m-Y')))+543;
+			$date_D = (int)date('d',strtotime(date('d-m-Y')));
+			$date_M = date('n',strtotime(date('d-m-Y')));
+
 	
 			$date_Y_birt = date('Y',strtotime($confrim[0]->stu_birthDay));
 			$date_D_birt = (int)date('d',strtotime($confrim[0]->stu_birthDay));

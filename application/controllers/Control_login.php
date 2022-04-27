@@ -106,4 +106,11 @@ class Control_login extends CI_Controller {
 		redirect(base_url('Confirm'));
 	}
 
+	
+	public function CloseSystem(){
+
+		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
+		$this->load->view('AdminssionCloseSystem.php',$data);
+	}
+
 }

@@ -260,8 +260,8 @@
                                 } elseif($v_regis->recruit_status == "ผ่านการตรวจสอบ"){
                                     $text = "ผ่านการตรวจสอบ";
                                     $status = "success";
-                                } elseif($v_regis->recruit_status == "กรอกข้อมูลไม่ครบถ้วน"){
-                                    $text = "ไม่ผ่าน กลับไปตรวจสอบ";
+                                } elseif($v_regis->recruit_status == "กรอกข้อมูลไม่ครบถ้วน" || $v_regis->recruit_status == "ไม่มีรูปภาพ หรือรูปภาพไม่ผ่านการตรวจสอบ"){
+                                    $text = $v_regis->recruit_status;
                                     $status = "danger";
                                 } 
                                 ?>
