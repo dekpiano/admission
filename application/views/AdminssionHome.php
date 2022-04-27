@@ -128,6 +128,14 @@
 </style>
 <div class="page-content align-items-stretch">
     <!-- Side Navbar -->
+    <div class="container-fluid text-center">
+        <a href="https://admission.skj.ac.th/" target="_blank"
+            rel="noopener noreferrer">
+            <img src="https://skj.ac.th/uploads/banner/all/admis65-2.png" class="img-fluid mb-3"
+                alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน">
+        </a>
+    </div>
+
     <div class="container mt-4 mb-4">
         <div class="row">
 
@@ -357,29 +365,7 @@
     </div>
 
    
-    <div class="container-fluid">
-        <a href="https://drive.google.com/file/d/1zeBOmrYsIl7j9YVyRiuKBODbX1Bi3-WX/view" target="_blank"
-            rel="noopener noreferrer">
-            <img src="<?=base_url('uploads/admis65.png')?>" class="img-fluid mb-3"
-                alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน">
-        </a>
-
-        <!-- <div class="row mb-3">
-            <div class="col-6">
-                <img src="<?=base_url('uploads/bannersport1.jpg')?>" class="img-fluid"
-                    alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน">
-            </div>
-            <div class="col-6">
-                <img src="<?=base_url('uploads/bannersport2.jpg')?>" class="img-fluid"
-                    alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน">
-            </div>
-        </div>
-
-        <img src="<?=base_url('uploads/banner65-1.png')?>" class="img-fluid" alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน">
-        <img src="<?=base_url('uploads/banner65.png')?>" class="img-fluid" alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน"> -->
-
-    </div>
-
+  
     <div class="w-100">
         <!-- Page Header-->
         <!-- <header class="page-header">
