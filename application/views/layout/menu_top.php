@@ -28,7 +28,7 @@
                         <a style="color: white;" class="nav-link" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-user-plus"></i> สมัครเรียน</a>
                     </li>
                     <li class="nav-item">
-                        <a style="color: white;" class="nav-link" href="<?=base_url('login');?>"><i class="icon-search"></i> ตรวจสอบการสมัคร
+                        <a style="color: white;" class="nav-link" href="<?=base_url('login');?>"><i class="icon-search"></i> ตรวจสอบ/แก้ไขการสมัคร
                         </a>
                     </li>
                     <!-- <li  class="nav-item">
@@ -37,9 +37,11 @@
                     <li  class="nav-item">
                         <a style="color: white;" class="nav-link" href="<?=base_url('Statistic/'.$checkYear[0]->openyear_year);?>"> <i class="far fa-chart-bar"></i> สถิติรับสมัคร</a>
                     </li>
+                    <?php  if($switch[0]->onoff_report == "on"): ?>
                     <li  class="nav-item">
                         <a style="color: white;" class="nav-link" href="<?=base_url('Confirm')?>"> <i class="fas fa-user-edit"></i> รายงานตัว</a>
                     </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

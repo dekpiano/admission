@@ -130,7 +130,7 @@ class Control_admin_confirm extends CI_Controller {
 
 		$html .= '<div style="position:absolute;top:668px;left:370px; width:100%">'.$confrim[0]->stu_numberSibling.'</div>';
 		$html .= '<div style="position:absolute;top:668px;left:620px; width:100%">'.$confrim[0]->stu_firstChild.'</div>';
-		$html .= '<div style="position:absolute;top:690px;left:530px; width:100%">'.$confrim[0]->stu_firstChild.'</div>';
+		$html .= '<div style="position:absolute;top:690px;left:530px; width:100%">'.$confrim[0]->stu_numberSiblingSkj.'</div>';
 		$html .= '<div style="position:absolute;top:690px;left:700px; width:100%">'.$confrim[0]->stu_nickName.'</div>';
 
 		$html .= '<div style="position:absolute;top:710px;left:120px; width:100%">'.$confrim[0]->stu_disablde.'</div>';
@@ -152,7 +152,7 @@ class Control_admin_confirm extends CI_Controller {
 		$html .= '<div style="position:absolute;top:765px;left:178px; width:100%"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></div>';
 		}
 
-		if($confrim[0]->stu_presentLife == 'อยู่กับบิดา-มารดา'){
+		if($confrim[0]->stu_presentLife == 'อยู่กับบิดาและมารดา'){
 		$html .= '<div style="position:absolute;top:790px;left:225px; width:100%"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></div>';
 		}else if($confrim[0]->stu_presentLife == 'อยู่กับบิดาหรือมารดา'){
 		$html .= '<div style="position:absolute;top:790px;left:360px; width:100%"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></div>';
@@ -162,7 +162,7 @@ class Control_admin_confirm extends CI_Controller {
 		$html .= '<div style="position:absolute;top:787px;left:620px; width:100%">'.$confrim[0]->stu_personOther.'</div>';
 
 		$html .= '<div style="position:absolute;top:814px;left:310px; width:100%">'.$confrim[0]->stu_hCode.'</div>';
-		$html .= '<div style="position:absolute;top:814px;left:500px;px; width:100%">'.$confrim[0]->stu_hNumber.'</div>';
+		$html .= '<div style="position:absolute;top:814px;left:495px;px; width:100%">'.$confrim[0]->stu_hNumber.'</div>';
 		$html .= '<div style="position:absolute;top:814px;left:585px; width:100%">'.$confrim[0]->stu_hMoo.'</div>';
 		$html .= '<div style="position:absolute;top:814px;left:665px; width:100%">'.$confrim[0]->stu_hRoad.'</div>';
 		$html .= '<div style="position:absolute;top:835px;left:120px;px; width:100%">'.$confrim[0]->stu_hTambon.'</div>';
@@ -173,10 +173,10 @@ class Control_admin_confirm extends CI_Controller {
 		$html .= '<div style="position:absolute;top:857px;left:450px;px; width:100%">'.$confrim[0]->stu_email.'</div>';
 
 		$html .= '<div style="position:absolute;top:883px;left:340px; width:100%">'.$confrim[0]->stu_hNumber.'</div>';
-		$html .= '<div style="position:absolute;top:883px;left:450px; width:100%">'.$confrim[0]->stu_hRoad.'</div>';
-		$html .= '<div style="position:absolute;top:883px;left:520px; width:100%">'.$confrim[0]->stu_hNumber.'</div>';
+		$html .= '<div style="position:absolute;top:883px;left:450px; width:100%">'.$confrim[0]->stu_hMoo.'</div>';
+		$html .= '<div style="position:absolute;top:883px;left:520px; width:100%">'.$confrim[0]->stu_hRoad.'</div>';
 		$html .= '<div style="position:absolute;top:883px;left:660px; width:100%">'.$confrim[0]->stu_hTambon.'</div>';
-		$html .= '<div style="position:absolute;top:905px;left:120px; width:100%">'.$confrim[0]->stu_hDistrict.'</div>';
+		$html .= '<div style="position:absolute;top:905px;left:110px; width:100%">'.$confrim[0]->stu_hDistrict.'</div>';
 		$html .= '<div style="position:absolute;top:905px;left:300px; width:100%">'.$confrim[0]->stu_hProvince.'</div>';
 		$html .= '<div style="position:absolute;top:905px;left:490px; width:100%">'.$confrim[0]->stu_hPostCode.'</div>';
 		$html .= '<div style="position:absolute;top:905px;left:640px; width:100%">'.$confrim[0]->stu_phone.'</div>';
@@ -352,7 +352,7 @@ class Control_admin_confirm extends CI_Controller {
 		if(@$confrimMa[0]->par_claim == 'เบิกได้'){
 		$html2 .= '<div style="position:absolute;top:875px;left:400px; width:100%"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></div>';
 		}else if(@$confrimMa[0]->par_claim == 'เบิกไม่ได้'){
-		$html2 .= '<div style="position:absolute;top:875px;left:470px; width:100%"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></div>';
+		// $html2 .= '<div style="position:absolute;top:875px;left:470px; width:100%"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></div>';
 		}
 
 		// ดึงข้อมูลผู้ปกครอง--------------------
