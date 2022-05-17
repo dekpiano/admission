@@ -151,14 +151,26 @@
                 </a>
             </div>
             <?php endif; ?>
-
             <?php if($quota[3]->quota_status == 'on') : ?>
+            <div class="col align-self-center">
+                <a href="#" href="#" data-toggle="modal" data-target="#myModal">
+                    <div class="service">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>สมัครเรียน</h3>
+                        <h2> <?=$quota[3]->quota_explain?></h2>
+                        <p><a href="#" href="#" data-toggle="modal" data-target="#myModal"></a></p>
+                    </div>
+                </a>
+            </div>
+            <?php endif; ?>
+
+            <?php if($quota[4]->quota_status == 'on') : ?>
             <div class="col align-self-center">
                 <a href="#" href="#" data-toggle="modal" data-target="#myModal">
                     <div class="service">
                     <i class="fas fa-solid fa-futbol"></i>
                         <h3>สมัครเรียน</h3>
-                        <h2><?=$quota[3]->quota_explain?> </h2>
+                        <h2><?=$quota[4]->quota_explain?> </h2>
                         <p><a href="https://drive.google.com/file/d/1O1cI0nOnD27YqpqPKX24ngrRLTQiheca/view?usp=sharing"
                                 target="_blank" rel="noopener noreferrer">ดูรายชื่อนักกีฬา</a></p>
                     </div>

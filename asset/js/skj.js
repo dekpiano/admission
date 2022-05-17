@@ -169,7 +169,7 @@ $(document).on('change', '#normal', function() {
     });
 });
 
-$(document).on('change', '#quotasport', function() {
+$(document).on('change', '#normal-between', function() {
     var category = $(this).is(":checked");
     console.log(category);
     $.ajax({
@@ -178,6 +178,31 @@ $(document).on('change', '#quotasport', function() {
         data: {
             mode: category,
             ID: 4
+        },
+        success: function(data) {
+            Swal.fire({
+                    title: "แจ้งเตือน",
+                    text: "คุณได้ทำการ " + data,
+                    icon: "warning"
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        // window.location = "../admin/system";
+                    }
+                });
+        }
+    });
+});
+
+$(document).on('change', '#quotasport', function() {
+    var category = $(this).is(":checked");
+    console.log(category);
+    $.ajax({
+        type: 'POST',
+        url: '../../admin/control_admin_admission/quotaType',
+        data: {
+            mode: category,
+            ID: 5
         },
         success: function(data) {
             Swal.fire({
