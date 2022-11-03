@@ -83,6 +83,8 @@ $route['admin/checkData/(:any)'] = 'admin/Control_admin_admission/edit_recruitst
 $route['admin/Print/(:any)'] = 'admin/Control_admin_admission/PagePrint';
 $route['admin/Print/(:any)/(:any)/(:num)'] = 'admin/Control_admin_admission/pdf_type_all/$1/$2/$3';
 
+$route['admin/Student/Update/(:any)'] = 'admin/Control_admin_admission/update_recruitstudent/$1';
+
 $route['admin/PrintConfirm/(:any)'] = 'admin/Control_admin_confirm/PagePrintConnfirm/$1';
 
 $route['admin/admission/(:num)'] = 'admin/control_admin_admission/index/$1';

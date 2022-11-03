@@ -210,7 +210,7 @@ class Control_admin_admission extends CI_Controller {
 	}
 
 
-	public function update_recruitstudent($id,$img)
+	public function update_recruitstudent($id)
 	{	
 		
 		$data_R = $this->db->where('recruit_id',$id)->get('tb_recruitstudent')->result();
