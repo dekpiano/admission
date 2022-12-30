@@ -17,6 +17,13 @@ class Control_login extends CI_Controller {
 		
 	}
 
+	public function login_admin()
+	{
+		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
+		$this->load->view('login/login_admin.php',$data);
+		
+	}
+
 	public function validlogin()
 	{
 			$username = $this->input->post('username');
@@ -70,6 +77,33 @@ class Control_login extends CI_Controller {
 						redirect('StudentHome');
 						
 					}	
+	}
+
+	public function CheckLoginConfirmStudentNew(){
+
+		if($this->input->post('idenStu')){
+			$this->db->where('recruit_idCard',$this->input->post('idenStu'));
+			$this->db->where('recruit_status',"ผ่านการตรวจสอบ");
+			$query = $this->db->get('tb_recruitstudent');
+			if($query->num_rows() > 0){
+				$this->session->set_userdata('idenStu',$this->input->post('idenStu'));   
+				echo 1;
+			}else{
+				echo 0;
+				$this->session->sess_destroy();
+			}
+		
+		}else{
+			echo 0;
+			$this->session->sess_destroy();
+		}
+		
+	}
+
+	public function Confirmlogout()
+	{		
+		$this->session->sess_destroy();
+		redirect(base_url('Confirm'));
 	}
 
 }

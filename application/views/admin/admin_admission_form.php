@@ -35,7 +35,7 @@ label {
                             <div class="card-body">
 
                                 <form enctype="multipart/form-data"
-                                    action="<?=base_url('admin/Control_admin_admission/').$action.'/'.$recruit[0]->recruit_id.'/'.($recruit[0]->recruit_img=='' ? '0' : $recruit[0]->recruit_img);?>"
+                                    action="<?=base_url('admin/Student/Update/').$recruit[0]->recruit_id;?>"
                                     method="post">
                                     <div class="row">
                                         <div class="col-md-6 col-lg-6 mb-3">

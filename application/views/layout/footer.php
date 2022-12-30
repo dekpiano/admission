@@ -12,7 +12,7 @@
                      </div>
 
                      <div class="col-sm-3 text-right">
-                         <p>Design by <a href="#" class="" data-toggle="modal" data-target="#LoginAdmin">Dekpiano</a>
+                         <p>Design by <a href="<?=base_url('loginAdmin');?>" class="" data-toggle1="modal" data-target1="#LoginAdmin">Dekpiano</a>
                          </p>
                          <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
                      </div>
@@ -58,6 +58,53 @@
              </div>
          </div>
 
+           <!-- Modal-->
+        <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+            class="modal fade text-left">
+            <div role="document" class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 id="exampleModalLabel" class="modal-title">เลือกการสมัคร</h4>
+                        <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span
+                                aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <?php if($switch[0]->onoff_regis == "off") :?>
+                        <?php echo $switch[0]->onoff_comment; ?>
+                        <?php else : ?>
+
+                        <div class="row">
+                            <?php foreach ($quota as $key => $v_quota) :?>
+                            <?php if($v_quota->quota_status == "on"): ?>
+                            <div class="col-md-6">
+                                <div class="card" style="border: 2px solid #2b90d9;">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?=$v_quota->quota_explain?></h5>
+                                        <?php if($v_quota->quota_key == "quotasport"):?>
+                                        <h6 class="card-title text-danger">(เฉพาะนักเรียนที่ผ่านการคัดตัวเท่านั้น)
+                                        </h6>
+                                        <?php endif; ?>
+                                        <?php  $q = explode("|",$v_quota->quota_level);
+                                        foreach ($q as $key => $v_q) : ?>
+                                        <a href="<?=base_url('RegStudent/'.$v_q.'/'.$v_quota->quota_key);?>"
+                                            class="btn btn-primary mb-1">สมัครเรียน ม.<?=$v_q;?></a>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php endif; ?>
+                            <?php endforeach; ?>
+
+                        </div>
+                        <?php endif; ?>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
          </html>
 
          <!-- JavaScript files-->
@@ -73,15 +120,32 @@
          <script src="<?=base_url();?>asset/js/front.js"></script>
          <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
          </script>
+         <!-- DataTable-->
+         <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+         <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
 
-         <script src="<?=base_url()?>asset/js/AutoProvince.js?v=3"></script>
+         <script type="text/javascript"
+             src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
+         <script type="text/javascript"
+             src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js">
+         </script>
+
+         <script type="text/javascript"
+             src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js">
+         </script>
+
+         <?php if($this->uri->segment(1) == "RegStudent"):?>
+         <script src="<?=base_url()?>asset/js/AutoProvince.js?v=6"></script>
+         <?php elseif($this->uri->segment(1) == "Confirm"):?>
+         <script src="<?=base_url()?>asset/js/ConfirmStudent.js?v=14"></script>
+         <?php endif; ?>
+
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.5/dist/sweetalert2.all.min.js"></script>
          <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=2"></script>
 
-         <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=2"></script>
-
-
+         <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=7"></script>
+         <script src="<?=base_url()?>asset/js/login.js?v=5"></script>
 
          <!-- Histats.com  START  (aync)-->
          <script type="text/javascript">
@@ -100,8 +164,7 @@ _Hasync.push(['Histats.track_hits', '']);
          </script>
          <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4498483&101" alt=""
                      border="0"></a></noscript>
-         <!-- Histats.com  END  -->
-         <?php $this->load->view('layout/chart/report_bar.php'); ?>
+
          <?php  if($this->session->flashdata('msg') == 'NO' ):?>
          <script>
 Swal.fire("แจ้งเตือน", "<?=$this->session->flashdata('messge');?>", "<?=$this->session->flashdata('status');?>");
@@ -112,6 +175,10 @@ Swal.fire("แจ้งเตือน", "<?=$this->session->flashdata('messge')
          </script>
          <?php endif; $this->session->mark_as_temp('msg',20); ?>
          <script>
+             
+$(".checkPirnt").click(function(){
+    Swal.fire("แจ้งเตือน", "ให้นักเรียนตรวจสอบข้อมูล <br> -ข้อมูลนักเรียน (จำเป็นต้องกรอก)<br> -ข้อมูลบิดา มารดา ถ้ามีในกรอกทั้ง 2 คน หรือ ถ้าไม่มีกรอกข้อมูล บิดา หรือ มารดา ก็ได้ <br> -ข้อมูลผู้ปกครอง  (จำเป็นต้องกรอก)<br> .ให้ครบถ้วนก่อนถึงจะพิมพ์ใบยืนยันรายงานตัวได้", "warning");
+});
 //  Google Check
 function onHuman(response) {
     document.getElementById('captcha').value = response;
@@ -124,16 +191,11 @@ var onloadCallback = function() {
 // รูปแบบการกรอก
 $(":input").inputmask();
 
-$('body').AutoProvince({
-    PROVINCE: '#province', // select div สำหรับรายชื่อจังหวัด
-    AMPHUR: '#amphur', // select div สำหรับรายชื่ออำเภอ
-    DISTRICT: '#district', // select div สำหรับรายชื่อตำบล
-    POSTCODE: '#postcode', // input field สำหรับรายชื่อรหัสไปรษณีย์
-    CURRENT_PROVINCE: 1, //  แสดงค่าเริ่มต้น ใส่ไอดีจังหวัดที่เคยเลือกไว้
-    CURRENT_AMPHUR: 1, // แสดงค่าเริ่มต้น  ใส่ไอดีอำเภอที่เคยเลือกไว้
-    CURRENT_DISTRICT: 1, // แสดงค่าเริ่มต้น  ใส่ไอดีตำบลที่เคยเลือกไว้
-    arrangeByName: false // กำหนดให้เรียงตามตัวอักษร
-});
+$("#idenStu").inputmask("9-9999-99999-99-9",{ "onincomplete": function(){ alert('กรอกเลขประจำตัวประชาชนให้ครบ 13 หลัก'); } });
+$("#par_IdNumber").inputmask("9-9999-99999-99-9",{ "onincomplete": function(){ alert('กรอกเลขประจำตัวประชาชนให้ครบ 13 หลัก'); } });
+$("#par_IdNumberM").inputmask("9-9999-99999-99-9",{ "onincomplete": function(){ alert('กรอกเลขประจำตัวประชาชนให้ครบ 13 หลัก'); } });
+$("#par_IdNumberO").inputmask("9-9999-99999-99-9",{ "onincomplete": function(){ alert('กรอกเลขประจำตัวประชาชนให้ครบ 13 หลัก'); } });
+
 
 
 
@@ -162,23 +224,69 @@ $('body').AutoProvince({
 
 $('.T_m1 thead th').each(function(i) {
     var total = 0;
-            $('.T_m1 tr').each(function() {
-                var value = parseInt($('td', this).eq(i+1).text());
-                if (!isNaN(value)) {
-                    total += value;
-                }
-            });
-            $('.T_m1 tfoot td').eq(i+1).text(total);
+    $('.T_m1 tr').each(function() {
+        var value = parseInt($('td', this).eq(i + 1).text());
+        if (!isNaN(value)) {
+            total += value;
+        }
+    });
+    $('.T_m1 tfoot td').eq(i + 1).text(total);
 });
 
 $('.T_m4 thead th').each(function(i) {
     var total = 0;
-            $('.T_m4 tr').each(function() {
-                var value = parseInt($('td', this).eq(i+1).text());
-                if (!isNaN(value)) {
-                    total += value;
-                }
-            });
-            $('.T_m4 tfoot td').eq(i+1).text(total);
+    $('.T_m4 tr').each(function() {
+        var value = parseInt($('td', this).eq(i + 1).text());
+        if (!isNaN(value)) {
+            total += value;
+        }
+    });
+    $('.T_m4 tfoot td').eq(i + 1).text(total);
 });
+
+$('.T_m1_N thead th').each(function(i) {
+    var total = 0;
+    $('.T_m1_N tr').each(function() {
+        var value = parseInt($('td', this).eq(i + 1).text());
+        if (!isNaN(value)) {
+            total += value;
+        }
+    });
+    $('.T_m1_N tfoot td').eq(i + 1).text(total);
+});
+
+$('.T_m4_N thead th').each(function(i) {
+    var total = 0;
+    $('.T_m4_N tr').each(function() {
+        var value = parseInt($('td', this).eq(i + 1).text());
+        if (!isNaN(value)) {
+            total += value;
+        }
+    });
+    $('.T_m4_N tfoot td').eq(i + 1).text(total);
+});
+
+$('.T_m1_N tr,.T_m4_N tr').each(function() {
+    //the value of sum needs to be reset for each row, so it has to be set inside the row loop
+    var sum = 0
+    //find the combat elements in the current row and sum it 
+    $(this).find('.numN').each(function() {
+        var combat = $(this).text();
+        if (!isNaN(combat) && combat.length !== 0) {
+            sum += parseFloat(combat);
+        }
+    });
+    //set the value of currents rows sum to the total-combat element in the current row
+    $('.total-numN', this).html(sum);
+});
+
+$(document).ready(function() {
+    $('.example').DataTable({
+        "order": [
+            [0, "desc"]
+        ]
+    });
+});
+
+
          </script>

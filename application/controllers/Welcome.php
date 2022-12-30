@@ -17,20 +17,45 @@ class Welcome extends CI_Controller {
 	public static $description = "เป็นผู้นำ รักเพื่อน นับถือพี่ เคารพครู กตัญญูพ่อแม่ ดูแลน้อง สนองคุณแผ่นดิน โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
 	
 	public function index()
-	{
-		
+	{	
 
 		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
 		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
-
+		
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();
 		$data['quota'] = $this->db->get("tb_quota")->result();
 
 		$db2 = $this->load->database('skjmain', TRUE);	
+	    $DBPers = $this->load->database('skjpers', TRUE);
+
 		$data['title'] = "ระบบรับสมัครนักเรียนปีการศึกษา ".$data['checkYear'][0]->openyear_year;
 		$data['description'] = "รับสมัครนักเรียน ม.1 และ ม.4 ใหม่ ปีการศึกษา ".$data['checkYear'][0]->openyear_year;
-		$data['banner'] = base_url()."uploads/admis65.png";
+		$data['banner'] = base_url()."uploads/banner65-1.png";
 		$data['url'] = "welcome";
+
+		// $data['regis'] = $this->db->select('recruit_id,recruit_prefix,recruit_firstName,recruit_lastName,recruit_regLevel,recruit_tpyeRoom,recruit_date,recruit_year,recruit_category,recruit_status')->from('tb_recruitstudent')->where('recruit_year',$data['checkYear'][0]->openyear_year)->order_by('recruit_id','DESC')->get()->result();
+
+		//echo "<pre>"; print_r($data['regis']); exit();
+
+		$this->db->select('
+		tb_recruitstudent.recruit_id,
+		tb_recruitstudent.recruit_regLevel,
+		tb_recruitstudent.recruit_prefix,
+		tb_recruitstudent.recruit_firstName,
+		tb_recruitstudent.recruit_lastName,
+		tb_recruitstudent.recruit_date,
+		tb_recruitstudent.recruit_year,
+		tb_recruitstudent.recruit_status,
+		tb_recruitstudent.recruit_tpyeRoom,
+		tb_recruitstudent.recruit_idCard,
+		tb_students.stu_fristName,
+		tb_recruitstudent.recruit_category');
+		$this->db->from('tb_recruitstudent');
+		$this->db->join($DBPers->database.'.tb_students','tb_recruitstudent.recruit_idCard = tb_students.stu_iden','LEFT');
+		// $this->DBSKJ->where('recruit_year',$data['checkYear'][0]->openyear_year)->order_by('recruit_id','DESC');
+		$data['regis'] = $this->db->get()->result();
+
+		//echo "<pre>"; print_r($data['regis']); exit();
 
 		$this->load->view('layout/header.php',$data);
 		$this->load->view('layout/menu_top.php');
@@ -50,6 +75,7 @@ class Welcome extends CI_Controller {
 		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
 
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();
+		$data['quota'] = $this->db->get("tb_quota")->result();
 
 		$db2 = $this->load->database('skjmain', TRUE);	
 		$data['title'] = "สถิติการรับสมัครนักเรียน".$data['checkYear'][0]->openyear_year;
@@ -104,7 +130,7 @@ class Welcome extends CI_Controller {
 			$data['chart_4'] = json_encode(array_column($chart_re4,'C_count'));
 			$data['chart_All'] = json_encode(array_column($chart_All,'C_count'));
 
-			$data['sel_date'] = $this->db->select('recruit_year,recruit_date')
+			$data['sel_date'] = $this->db->select('recruit_year,recruit_date,recruit_category')
 										->where('recruit_year',$year)
 										->group_by('recruit_date')
 										->get('tb_recruitstudent')
@@ -112,7 +138,8 @@ class Welcome extends CI_Controller {
 
 			$data['sum_date'] = $this->db->select('
 									recruit_regLevel,recruit_year, 
-									recruit_tpyeRoom,recruit_date')
+									recruit_tpyeRoom,recruit_date,
+									recruit_category')
 									->where('recruit_year',$year)
 							->get('tb_recruitstudent')
 							->result();
@@ -205,5 +232,6 @@ class Welcome extends CI_Controller {
 			
 			return $data;
 	}
+	
 	
 }

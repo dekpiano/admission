@@ -69,6 +69,29 @@ $(document).on('change', '#switch_year', function() {
     });
 });
 
+$(document).on('change', '#switch_report', function() {
+    category = $(this).is(":checked");
+    $.ajax({
+        type: 'POST',
+        url: '../../admin/control_admin_admission/switch_report',
+        data: {
+            mode: category
+        },
+        success: function(data) {
+            Swal.fire({
+                    title: "แจ้งเตือน",
+                    text: "คุณได้ทำการเปลี่ยนรายงานตัวสำเร็จ",
+                    icon: "warning"
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        // window.location = "../admin/system";
+                    }
+                });
+        }
+    });
+});
+
 //------------- เปิดปิดประเภทโควตา ----------------------
 
 $(document).on('change', '#quotaM1', function() {
@@ -146,7 +169,7 @@ $(document).on('change', '#normal', function() {
     });
 });
 
-$(document).on('change', '#quotasport', function() {
+$(document).on('change', '#normal-between', function() {
     var category = $(this).is(":checked");
     console.log(category);
     $.ajax({
@@ -155,6 +178,31 @@ $(document).on('change', '#quotasport', function() {
         data: {
             mode: category,
             ID: 4
+        },
+        success: function(data) {
+            Swal.fire({
+                    title: "แจ้งเตือน",
+                    text: "คุณได้ทำการ " + data,
+                    icon: "warning"
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        // window.location = "../admin/system";
+                    }
+                });
+        }
+    });
+});
+
+$(document).on('change', '#quotasport', function() {
+    var category = $(this).is(":checked");
+    console.log(category);
+    $.ajax({
+        type: 'POST',
+        url: '../../admin/control_admin_admission/quotaType',
+        data: {
+            mode: category,
+            ID: 5
         },
         success: function(data) {
             Swal.fire({
@@ -185,5 +233,19 @@ $(document).on('change', '#select_year', function() {
                 window.location = "../../admin/admission/" + dataYear;
             }
         });
+});
 
+$(document).on('change', '#select_year_confrim', function() {
+    var dataYear = $(this).val();
+
+    Swal.fire({
+            title: "แจ้งเตือน",
+            text: "คุณได้ทำการเปลี่ยนปีการศึกษาสำเร็จ",
+            icon: "warning"
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                window.location = "../../admin/PrintConfirm/" + dataYear;
+            }
+        });
 });

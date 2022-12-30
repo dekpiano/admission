@@ -21,6 +21,10 @@
 
     </ul>
     <ul class="list-unstyled">
+        <li <?=$this->uri->segment('2') == "PrintConnfirm" ? 'class="active"' : ''?>> <a href="<?=base_url('admin/PrintConfirm/'.$this->session->userdata('year'));?>"> <i class="fas fa-print"></i>
+        พิมพ์ใบรายงานตัว </a></li>
+    </ul>
+    <ul class="list-unstyled">
         <li <?=$this->uri->segment('2') == "system" ? 'class="active"' : ''?>> <a href="<?=base_url('admin/system/'.$this->session->userdata('year'));?>"> <i class="fas fa-stream"></i>
                 สถานะระบบ </a></li>
     </ul>

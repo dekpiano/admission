@@ -35,7 +35,7 @@
 
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.5/dist/sweetalert2.all.min.js"></script>
-         <script src="<?=base_url()?>asset/js/skj.js?v=1002"></script>
+         <script src="<?=base_url()?>asset/js/skj.js?v=1003"></script>
          <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=2"></script>
 
          <?php $this->load->view('admin/chart/report_bar.php'); ?>
@@ -55,7 +55,7 @@ $('#TB_stu').DataTable({
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
         ],
-        "order": [[ 1, "asc" ]]
+        "order": [[ 0, "desc" ]]
 });
 
 function StatusWait(){
