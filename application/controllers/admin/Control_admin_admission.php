@@ -414,6 +414,7 @@ class Control_admin_admission extends CI_Controller {
 		$thpa = $thai->database;
 		
 		$datapdf = $this->db->select('skjacth_admission.tb_recruitstudent.*,
+									  skjacth_admission.tb_quota.quota_explain,
 										'.$thpa.'.province.PROVINCE_NAME,
 										'.$thpa.'.district.DISTRICT_NAME,
 										'.$thpa.'.amphur.AMPHUR_NAME')
@@ -421,6 +422,7 @@ class Control_admin_admission extends CI_Controller {
 										->join($thpa.'.province','skjacth_admission.tb_recruitstudent.recruit_homeProvince = '.$thpa.'.province.PROVINCE_ID', 'INNER')
 										->join($thpa.'.district','skjacth_admission.tb_recruitstudent.recruit_homeSubdistrict = '.$thpa.'.district.DISTRICT_ID', 'INNER')
 										->join($thpa.'.amphur','skjacth_admission.tb_recruitstudent.recruit_homedistrict = '.$thpa.'.amphur.AMPHUR_ID', 'INNER')
+										->join('skjacth_admission.tb_quota','skjacth_admission.tb_quota.quota_key = skjacth_admission.tb_recruitstudent.recruit_category')
 		->where('skjacth_admission.tb_recruitstudent.recruit_id',$id)
 		->get()->result();
 
@@ -443,7 +445,7 @@ class Control_admin_admission extends CI_Controller {
 				]);
         $mpdf->SetTitle($datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.' '.$datapdf[0]->recruit_lastName);
         $html = '<div style="position:absolute;top:60px;left:635px; width:100%"><img style="width: 120px;hight:100px;" src='.FCPATH.'uploads/recruitstudent/m'.$datapdf[0]->recruit_regLevel.'/img/'.$datapdf[0]->recruit_img.'></div>'; 
-		$html .= '<div style="position:absolute;top:18px;left:100px; width:100%">รอบ '.$datapdf[0]->recruit_category.'</div>'; //รอบการสมัคร
+		$html .= '<div style="position:absolute;top:18px;left:100px; width:100%;font-size:16px;">'.$datapdf[0]->quota_explain.'</div>'; //รอบโควตาการสมัคร
 
         $html .= '<div style="position:absolute;top:18px;left:690px; width:100%">'.sprintf("%04d",$datapdf[0]->recruit_id).'</div>'; //เลขที่สมัคร
 		$html .= '<div style="position:absolute;top:232px;left:180px; width:100%">'.$datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.'</div>'; //ชื่อผู้สมัคร
@@ -700,7 +702,8 @@ class Control_admin_admission extends CI_Controller {
 		$thai = $this->load->database('thailandpa', TRUE);
 		$thpa = $thai->database;
 		
-		$datapdf_all = $this->db->select('skjacth_admission.tb_recruitstudent.*,
+		$datapdf_all = $this->db->select('skjacth_admission.tb_recruitstudent.*,		
+										skjacth_admission.tb_quota.quota_explain,
 										'.$thpa.'.province.PROVINCE_NAME,
 										'.$thpa.'.district.DISTRICT_NAME,
 										'.$thpa.'.amphur.AMPHUR_NAME')
@@ -708,6 +711,7 @@ class Control_admin_admission extends CI_Controller {
 										->join($thpa.'.province','skjacth_admission.tb_recruitstudent.recruit_homeProvince = '.$thpa.'.province.PROVINCE_ID', 'INNER')
 										->join($thpa.'.district','skjacth_admission.tb_recruitstudent.recruit_homeSubdistrict = '.$thpa.'.district.DISTRICT_ID', 'INNER')
 										->join($thpa.'.amphur','skjacth_admission.tb_recruitstudent.recruit_homedistrict = '.$thpa.'.amphur.AMPHUR_ID', 'INNER')
+										->join('skjacth_admission.tb_quota','skjacth_admission.tb_quota.quota_key = skjacth_admission.tb_recruitstudent.recruit_category')
 		->where('recruit_year',$year)
 		->where('recruit_tpyeRoom',$type)
 		->where('recruit_regLevel',$mo)
@@ -734,7 +738,7 @@ class Control_admin_admission extends CI_Controller {
 			
 			$mpdf->SetTitle($datapdf->recruit_prefix.$datapdf->recruit_firstName.' '.$datapdf->recruit_lastName);
 			$html = '<div style="position:absolute;top:60px;left:635px; width:100%"><img style="width: 120px;hight:100px;" src='.FCPATH.'uploads/recruitstudent/m'.$datapdf->recruit_regLevel.'/img/'.$datapdf->recruit_img.'></div>'; 
-			$html .= '<div style="position:absolute;top:18px;left:100px; width:100%">รอบ '.$datapdf->recruit_category.'</div>'; //รอบการสมัคร
+			$html .= '<div style="position:absolute;top:18px;left:100px; width:100%">รอบ '.$datapdf->quota_explain.'</div>'; //รอบการสมัคร
 	
 			$html .= '<div style="position:absolute;top:18px;left:690px; width:100%">'.sprintf("%04d",$datapdf->recruit_id).'</div>'; //เลขที่สมัคร
 			$html .= '<div style="position:absolute;top:232px;left:180px; width:100%">'.$datapdf->recruit_prefix.$datapdf->recruit_firstName.'</div>'; //ชื่อผู้สมัคร
