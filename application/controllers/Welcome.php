@@ -232,6 +232,42 @@ class Welcome extends CI_Controller {
 			
 			return $data;
 	}
+
+
+
+	public function CheckRegister(){
+
+		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
+		$data['DataStudents'] = $this->db->select('
+		recruit_id,
+		recruit_regLevel,
+		recruit_prefix,
+		recruit_firstName,
+		recruit_lastName,
+		recruit_tpyeRoom,
+		recruit_status,
+		recruit_category')->from('tb_recruitstudent')
+		->where('recruit_year',$data['checkYear'][0]->openyear_year)
+		->order_by('recruit_year','DESC')->get()->result();
+		//echo '<pre>'; print_r($data['year']); exit();
+		
+
+		$data['switch'] = $this->db->get("tb_onoffsys")->result();
+		$data['quota'] = $this->db->get("tb_quota")->result();
+
+		$db2 = $this->load->database('skjmain', TRUE);	
+		$data['title'] = "เช็คข้อมูลการสมัครเรียน ".$data['checkYear'][0]->openyear_year;
+		$data['description'] = "เช็คข้อมูลการสมัครเรียนแบบเรียลไทม์";
+		$data['banner'] = base_url()."asset/img/Statistics.png";
+		$data['url'] = "CheckRegister";
+	
+		//echo '<pre>'; print_r($data); exit();
+		$this->load->view('layout/header.php',$data);
+		$this->load->view('layout/menu_top.php');
+		$this->load->view('AdminssionCheckData.php');
+		$this->load->view('layout/footer.php');
+	}
+
 	
 	
 }

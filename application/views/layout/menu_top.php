@@ -28,7 +28,7 @@
                         <a style="color: white;" class="nav-link" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-user-plus"></i> สมัครเรียน</a>
                     </li>
                     <li class="nav-item">
-                        <a style="color: white;" class="nav-link" href="<?=base_url('login');?>"><i class="icon-search"></i> ตรวจสอบ/แก้ไขการสมัคร
+                        <a style="color: white;" class="nav-link" href="<?=base_url('CheckRegister');?>"><i class="icon-search"></i> ตรวจสอบ/แก้ไขการสมัคร
                         </a>
                     </li>
                     <!-- <li  class="nav-item">

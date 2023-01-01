@@ -9,26 +9,52 @@
 }
 
 @-webkit-keyframes AnimationName {
-    0%{background-position:0% 51%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 51%}
+    0% {
+        background-position: 0% 51%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 51%
+    }
 }
+
 @-o-keyframes AnimationName {
-    0%{background-position:0% 51%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 51%}
+    0% {
+        background-position: 0% 51%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 51%
+    }
 }
+
 @keyframes AnimationName {
-    0%{background-position:0% 51%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 51%}
+    0% {
+        background-position: 0% 51%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 51%
+    }
 }
 
 #timer div {
     background-color: #000000;
     color: #ffffff;
-    width: 100px;
-    height: 105px;
+    width: 90px;
+    height: 90px;
     border-radius: 5px;
     font-size: 35px;
     font-weight: 700;
@@ -45,7 +71,7 @@
 
 
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
     #timer {
         margin-top: -20px;
     }
@@ -63,6 +89,16 @@
 
     #timer div span {
         font-size: 14px;
+    }
+
+    .main-banner {
+        padding: 0rem 0 5rem 0 !important;
+        color: #ffffff;
+        background-size: cover;
+    }
+
+    .home {
+        padding-top: 0px !important;
     }
 }
 
@@ -85,34 +121,125 @@
     #timer div span {
         font-size: 14px;
     }
+
 }
 
-table thead tr th{
-    text-align:center;
+@media only screen and (max-width: 991px) {
+    .home {
+        padding-top: 0px !important;
+    }
+
+    #timer {
+        margin-top: -20px;
+    }
+
+    .timer-header {
+        font-size: 2.6rem;
+    }
+
+    #timer div {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+        margin-top: 20px;
+    }
+
+    #timer div span {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .home {
+        padding-top: 50px !important;
+    }
+}
+
+
+
+
+table thead tr th {
+    text-align: center;
+}
+
+.home {
+    background: url(uploads/home/banner-bg.svg);
+    background-repeat-y: no-repeat;
+    background-position: 0 -50px;
+    padding-top: 150px;
+}
+
+.main-banner {
+    padding: 3.2rem 0 17rem 0;
+    color: #ffffff;
+    background-size: cover;
 }
 </style>
-<div class="page-content align-items-stretch">
-    <!-- Side Navbar -->
-    <div class="container-fluid">
-        <div class="text-center mt-3 mb-3">
-            <span class="border border-primary p-3">
-                <h2>
-                    รับสมัครนักเรียน 2566
-                </h2>
-                <h2 class="timer-header"> รอบโควตา (โรงเรียนในเขตพิ้นที่บริการ) ในระดับชั้น ม.1
-                    <br>และ (ม.3 เดิม) ในระดับชั้น ม.4 ปีการศึกษา 2566 <br> จะเปิดในอีก...
-                </h2>
 
-                <div id="timer" class="flex-wrap d-flex justify-content-center">
-                    <div id="days" class="align-items-center flex-column d-flex justify-content-center"></div>
-                    <div id="hours" class="align-items-center flex-column d-flex justify-content-center"></div>
-                    <div id="minutes" class="align-items-center flex-column d-flex justify-content-center"></div>
-                    <div id="seconds" class="align-items-center flex-column d-flex justify-content-center"></div>
+<section id="home" class="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="main-banner">
+                    <div class="d-sm-flex justify-content-between">
+                        <div data-aos="zoom-in-up" class="aos-init aos-animate">
+                            <div class="banner-title">
+                                <h1 class="font-weight-medium"> รับสมัครนักเรียน 2566
+                                </h1>
+                            </div>
+                            <p class="mt-3">รอบโควตา (โรงเรียนในเขตพิ้นที่บริการ) ในระดับชั้น ม.1
+
+                                <br>
+                                (ม.3 เดิม) ในระดับชั้น ม.4 ปีการศึกษา 2566
+                            </p>
+
+                            <div class="text-center mt-5">
+                                <button type="button" class="btn btn-outline-light" data-toggle="modal"
+                                    data-target="#myModal" style="font-size:34px;">สมัครเรียนเลย ที่นี่...</button>
+                            </div>
+
+
+                            <!-- <div id="timer" class="flex-wrap d-flex justify-content-center">
+                                <div id="days" class="align-items-center flex-column d-flex justify-content-center">
+                                </div>
+                                <div id="hours" class="align-items-center flex-column d-flex justify-content-center">
+                                </div>
+                                <div id="minutes" class="align-items-center flex-column d-flex justify-content-center">
+                                </div>
+                                <div id="seconds" class="align-items-center flex-column d-flex justify-content-center">
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
                 </div>
-            </span>
+            </div>
+            <div class="col-sm-6">
+                <div class="mt-5">
+                    <img src="https://skj.ac.th/uploads/Admission/banner-main1.svg" alt="marsmello"
+                        class="img-fluid aos-init aos-animate" data-aos="zoom-in-up" style="width:100%">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4 col-6 align-self-center">
+        <img src="<?=base_url('uploads/home/check-data.svg')?>" alt="marsmello"
+                        class="img-fluid aos-init aos-animate" data-aos="zoom-in-up" style="width:100%">
+        </div>
+        <div class="col-md-4 col-6 align-self-center">
+        <a href="<?=base_url('CheckRegister');?>" class="btn btn-outline-primary"
+        style="font-size:26px;">ตรวจสอบการสมัครเรียน</a>
         </div>
     </div>
 
+ 
+</div>
+
+<div class="page-content align-items-stretch">
+    <!-- Side Navbar -->
     <div class="container-fluid py-5">
 
         <h3 class="text-center">กำหนดการรับนักเรียน ปีการศึกษา 2566</h3>

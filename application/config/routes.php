@@ -61,6 +61,7 @@ $route['CloseSystem'] = 'control_login/CloseSystem';
 // Main
 $route['Statistic/(:any)'] = 'welcome/AllStatistic/$1';
 $route['RegStudent/(:num)/(:any)'] = 'control_admission/reg_student/$1/$2';
+$route['CheckRegister'] = 'Welcome/CheckRegister';
 
 //นักเรียน
 $route['StudentLogin'] = 'Control_students/StudentLogin';
@@ -68,6 +69,7 @@ $route['StudentCheckLogin'] = 'Control_login/CheckLogin';
 $route['StudentHome'] = 'Control_students/StudentsHome';
 $route['StudentsEdit'] = 'Control_students/StudentsEdit';
 $route['StudentsStatus'] = 'Control_students/StudentsStatus';
+
 
 $route['Students/Logout'] = 'Control_students/logoutStudent';
 $route['Students/Print'] = 'Control_students/PDFForStudent';
