@@ -1,4 +1,29 @@
 <style>
+.css-selector {
+    background: linear-gradient(273deg, #ec19ee, #5094cc);
+    background-size: 400% 400%;
+
+    -webkit-animation: AnimationName 22s ease infinite;
+    -o-animation: AnimationName 22s ease infinite;
+    animation: AnimationName 22s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
+@-o-keyframes AnimationName {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
+
 #timer div {
     background-color: #000000;
     color: #ffffff;
@@ -18,13 +43,15 @@
     font-weight: 500;
 }
 
-.timer-header {
-    font-size: 2.6rem;
-}
+
 
 @media only screen and (max-width: 767px) {
     #timer {
         margin-top: -20px;
+    }
+
+    .timer-header {
+        font-size: 2.6rem;
     }
 
     #timer div {
@@ -38,13 +65,43 @@
         font-size: 14px;
     }
 }
+
+@media only screen and (max-width: 480px) {
+    .timer-header {
+        font-size: 16px;
+    }
+
+    #timer {
+        margin-top: -20px;
+    }
+
+    #timer div {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        margin-top: 20px;
+    }
+
+    #timer div span {
+        font-size: 14px;
+    }
+}
+
+table thead tr th{
+    text-align:center;
+}
 </style>
 <div class="page-content align-items-stretch">
     <!-- Side Navbar -->
     <div class="container-fluid">
         <div class="text-center mt-3 mb-3">
             <span class="border border-primary p-3">
-                <h2 class="timer-header">ระบบรับสมัครนักเรียนภาคปกติ ม.1 และ ม.4 ปีการศึกษา 2565 <br> จะเปิดในอีก...</h2>
+                <h2>
+                    รับสมัครนักเรียน 2566
+                </h2>
+                <h2 class="timer-header"> รอบโควตา (โรงเรียนในเขตพิ้นที่บริการ) ในระดับชั้น ม.1
+                    <br>และ (ม.3 เดิม) ในระดับชั้น ม.4 ปีการศึกษา 2566 <br> จะเปิดในอีก...
+                </h2>
 
                 <div id="timer" class="flex-wrap d-flex justify-content-center">
                     <div id="days" class="align-items-center flex-column d-flex justify-content-center"></div>
@@ -56,6 +113,96 @@
         </div>
     </div>
 
+    <div class="container-fluid py-5">
+
+        <h3 class="text-center">กำหนดการรับนักเรียน ปีการศึกษา 2566</h3>
+        <div class="card">
+            <div class="card-body">
+                <h5>ชั้นมัธยมศึกษาปีที่ 1</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="bg-primary text-white">
+                            <tr>
+                                <th scope="col">รอบการสมัคร</th>
+                                <th scope="col">รับสมัคร</th>
+                                <th scope="col">สอบ</th>
+                                <th scope="col">ประกาศผล</th>
+                                <th scope="col">สัมภาษณ์ รายงานตัว มอบตัว</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <th scope="row">รอบโควตา (โรงเรียนในเขตพิ้นที่บริการ)</th>
+                                <td>1 - 30 มกราคม 2566</td>
+                                <td>-</td>
+                                <td>1 กุมภาพันธ์ 2566</td>
+                                <td>วันเสาร์ที่ 18 กุมภาพันธ์ 2566 (08.30 - 11.30 น.)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">รอบปกติ</th>
+                                <td>11 - 15 มีนาคม 2566</td>
+                                <td>25 มีนาคม 2566</td>
+                                <td>29 มีนาคม 2566</td>
+                                <td>1 เมษายน 2566 (08.30 - 11.30 น.)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">รอบความสามารถพิเศษด้านกีฬา</th>
+                                <td>คัดตัวนักกีฬา 18 - 19 กุมภาพันธ์ 2566</td>
+                                <td>-</td>
+                                <td>19 กุมภาพันธ์ 2566</td>
+                                <td>1 เมษายน 2566 (08.30 - 11.30 น.)</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5>ชั้นมัธยมศึกษาปีที่ 4</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="bg-primary text-white">
+                            <tr>
+                                <th scope="col">รอบการสมัคร</th>
+                                <th scope="col">รับสมัคร</th>
+                                <th scope="col">สอบ</th>
+                                <th scope="col">ประกาศผล</th>
+                                <th scope="col">สัมภาษณ์ รายงานตัว มอบตัว</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <th scope="row">รอบโควตา (ม.3 เดิม)</th>
+                                <td>1 - 30 มกราคม 2566</td>
+                                <td>-</td>
+                                <td>1 กุมภาพันธ์ 2566</td>
+                                <td>วันเสาร์ที่ 18 กุมภาพันธ์ 2566 (08.30 - 11.30 น.)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">รอบปกติ</th>
+                                <td>11 - 15 มีนาคม 2566</td>
+                                <td>26 มีนาคม 2566</td>
+                                <td>30 มีนาคม 2566</td>
+                                <td>1 เมษายน 2566 (08.30 - 11.30 น.)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">รอบความสามารถพิเศษด้านกีฬา</th>
+                                <td>คัดตัวนักกีฬา 18 - 19 กุมภาพันธ์ 2566</td>
+                                <td>-</td>
+                                <td>19 กุมภาพันธ์ 2566</td>
+                                <td>1 เมษายน 2566 (08.30 - 11.30 น.)</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <div class="w-100">
         <!-- Page Header-->

@@ -103,7 +103,7 @@ label {
                                             value="<?=$checkYear[0]->openyear_year;?>" readonly>
 
                                     </div>
-                                    <div class="col-md-4 mb-3 col-lg-2">
+                                    <div class="col-md-6 mb-3 col-lg-6">
                                         <label for="">ประเภทสมัครเรียน <span class="text-red">*</span> </label>
                                         <input type="text" class="form-control"
                                             value="<?=$TypeQuota[0]->quota_explain;?>" readonly>
@@ -377,9 +377,9 @@ label {
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3 mb-3">
-                                        <label for="recruit_grade">เกรดเฉลี่ย <span class="text-red">*</span> </label>
+                                        <label for="recruit_grade">เกรดเฉลี่ย <small>(กรณีเกรดเฉลี่ยใบ ปพ.1 ยังไม่ออก ไม่ต้องกรอก)</small>  <span class="text-red"></span> </label>
                                         <input type="text" class="form-control" id="recruit_grade" name="recruit_grade"
-                                            placeholder required data-toggle="tooltip" data-placement="top"
+                                            placeholder  data-toggle="tooltip" data-placement="top"
                                             title="ระบุเกรดเฉลี่ย ในใบ ปพ.1">
                                         <div class="invalid-feedback">
                                             ระบุเกรดเฉลี่ย ในใบ ปพ.1
@@ -398,7 +398,7 @@ label {
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="d-block my-3">
-                                    <?php if($TypeQuota[0]->quota_key == "normal"):?>
+                                    <?php if($TypeQuota[0]->quota_key == "normal" || $TypeQuota[0]->quota_key == "quotaM1" || $TypeQuota[0]->quota_key == "quotaM4"):?>
 
                                     <div class="custom-control custom-radio">
                                         <input id="credit" name="recruit_tpyeRoom" type="radio"

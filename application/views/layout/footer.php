@@ -144,7 +144,7 @@
          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.5/dist/sweetalert2.all.min.js"></script>
          <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=2"></script>
 
-         <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=7"></script>
+         <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=9"></script>
          <script src="<?=base_url()?>asset/js/login.js?v=5"></script>
 
          <!-- Histats.com  START  (aync)-->
