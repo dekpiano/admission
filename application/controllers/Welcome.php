@@ -69,7 +69,7 @@ class Welcome extends CI_Controller {
 	}
 
 	public function AllStatistic($year){
-		$data = $this->report_student($year);
+		$data = $this->report_student(2565);
 
 		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
 		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
@@ -94,7 +94,7 @@ class Welcome extends CI_Controller {
 	{
 		$type_quota = $this->db->get('tb_quota')->result();
 
-		//echo '<pre>'; print_r($type_quota); exit();
+		
 
 		$chart_re1 = $this->db->select('COUNT(recruit_regLevel) AS C_count,
 		tb_recruitstudent.recruit_regLevel,tb_recruitstudent.recruit_year, 
@@ -105,16 +105,21 @@ class Welcome extends CI_Controller {
 				->group_by('recruit_tpyeRoom')
 				->order_by('recruit_tpyeRoom','DESC')
 				->get()->result();
-			
+
+
 			$chart_re4 = $this->db->select('COUNT(recruit_regLevel) AS C_count,
 					tb_recruitstudent.recruit_regLevel,tb_recruitstudent.recruit_year, 
-					tb_recruitstudent.recruit_tpyeRoom')
+					tb_recruitstudent.recruit_tpyeRoom,tb_recruitstudent.recruit_date')
 				->from('tb_recruitstudent')
 				->where('recruit_year',$year)
 				->where('recruit_regLevel',4)
-				->group_by('recruit_tpyeRoom')
+				->group_by('recruit_date')
 				->order_by('recruit_tpyeRoom','DESC')
 				->get()->result();
+
+			echo '<pre>'; print_r($chart_re4); exit();
+
+
 			$chart_All = $this->db->select('COUNT(recruit_regLevel) AS C_count,
 					tb_recruitstudent.recruit_regLevel,tb_recruitstudent.recruit_year ,
 					tb_recruitstudent.recruit_tpyeRoom')
