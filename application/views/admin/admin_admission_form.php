@@ -408,7 +408,7 @@ label {
                                     action="<?=base_url('admin/Control_admin_admission/confrim_report/').$recruit[0]->recruit_id;?>">
                                     <div class="form-group">
                                         <?php 
-   $confrim = array('ผ่านการตรวจสอบ','ไม่มีรูปภาพ หรือรูปภาพไม่ผ่านการตรวจสอบ','กรอกข้อมูลไม่ครบถ้วน');
+   $confrim = array('ผ่านการตรวจสอบ','ไม่มีรูปภาพ หรือรูปภาพไม่ผ่านการตรวจสอบ','กรอกข้อมูลไม่ครบถ้วน','คุณสมบัติไม่ผ่านตามเงื่อนไข');
    foreach ($confrim as $key => $value) : ?>
 
                                         <div class="custom-control custom-radio">
