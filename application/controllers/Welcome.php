@@ -69,7 +69,7 @@ class Welcome extends CI_Controller {
 	}
 
 	public function AllStatistic($year){
-		$data = $this->report_student(2565);
+		$data = $this->report_student($year);
 
 		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
 		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
@@ -94,147 +94,29 @@ class Welcome extends CI_Controller {
 	{
 		$type_quota = $this->db->get('tb_quota')->result();
 
-		
-
-		$chart_re1 = $this->db->select('COUNT(recruit_regLevel) AS C_count,
-		tb_recruitstudent.recruit_regLevel,tb_recruitstudent.recruit_year, 
-		tb_recruitstudent.recruit_tpyeRoom')
+			$data['StatisticCroTar'] = $this->db->select('
+					SUM(CASE WHEN recruit_tpyeRoom = "ห้องเรียนความเป็นเลิศทางด้านวิชาการ (Science Match and Technology Program)" THEN 1 END) AS SMT,
+					SUM(CASE WHEN recruit_tpyeRoom = "ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program))" THEN 1 END) AS SP,
+					SUM(CASE WHEN recruit_tpyeRoom = "ห้องเรียนความเป็นเลิศด้านการงานอาชีพ (Career Program)" THEN 1 END) AS CP,
+					SUM(CASE WHEN recruit_tpyeRoom = "ห้องเรียนความเป็นเลิศทางด้านภาษา (Chinese English Program)" THEN 1 END) AS CEP,
+					SUM(CASE WHEN recruit_tpyeRoom = "ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ การแสดง (Preforming Art Program)" THEN 1 END) AS PAP,
+					tb_recruitstudent.recruit_regLevel
+					,tb_recruitstudent.recruit_year
+					,tb_recruitstudent.recruit_date,
+					tb_recruitstudent.recruit_category')
 				->from('tb_recruitstudent')
 				->where('recruit_year',$year)
-				->where('recruit_regLevel',1)
-				->group_by('recruit_tpyeRoom')
-				->order_by('recruit_tpyeRoom','DESC')
-				->get()->result();
-
-
-			$chart_re4 = $this->db->select('COUNT(recruit_regLevel) AS C_count,
-					tb_recruitstudent.recruit_regLevel,tb_recruitstudent.recruit_year, 
-					tb_recruitstudent.recruit_tpyeRoom,tb_recruitstudent.recruit_date')
-				->from('tb_recruitstudent')
-				->where('recruit_year',$year)
-				->where('recruit_regLevel',4)
 				->group_by('recruit_date')
-				->order_by('recruit_tpyeRoom','DESC')
+				->order_by('recruit_date','ASC')
 				->get()->result();
 
-			echo '<pre>'; print_r($chart_re4); exit();
+			$data['RegisterAll'] = $this->db->select("
+			recruit_year
+			")->get('tb_recruitstudent')->result();
+
+			echo '<pre>'; print_r($data['RegisterAll']); exit();
 
 
-			$chart_All = $this->db->select('COUNT(recruit_regLevel) AS C_count,
-					tb_recruitstudent.recruit_regLevel,tb_recruitstudent.recruit_year ,
-					tb_recruitstudent.recruit_tpyeRoom')
-				->from('tb_recruitstudent')
-				->where('recruit_year',$year)
-				->group_by('recruit_tpyeRoom')					
-				->order_by('recruit_tpyeRoom','DESC')
-				->get()->result();
-			$data['sum_1'] = array_column($chart_re1,'C_count');
-			$data['sum_4'] = array_column($chart_re4,'C_count');
-			$data['sum_all'] = array_column($chart_All,'C_count');
-			$data['chart_1'] = json_encode(array_column($chart_re1,'C_count'));	
-			$data['chart_4'] = json_encode(array_column($chart_re4,'C_count'));
-			$data['chart_All'] = json_encode(array_column($chart_All,'C_count'));
-
-			$data['sel_date'] = $this->db->select('recruit_year,recruit_date,recruit_category')
-										->where('recruit_year',$year)
-										->group_by('recruit_date')
-										->get('tb_recruitstudent')
-										->result();
-
-			$data['sum_date'] = $this->db->select('
-									recruit_regLevel,recruit_year, 
-									recruit_tpyeRoom,recruit_date,
-									recruit_category')
-									->where('recruit_year',$year)
-							->get('tb_recruitstudent')
-							->result();
-			// ผ่านการตรวจสอบ	
-			$data['sum_pass'] = $this->db->select('COUNT(recruit_status) AS sumall,
-									recruit_regLevel,recruit_year, 
-									recruit_tpyeRoom,recruit_date,recruit_status')
-									->where('recruit_status','ผ่านการตรวจสอบ')
-									->where('recruit_year',$year)
-							->get('tb_recruitstudent')
-							->result();
-			//ไม่ผ่านการตรวจสอบ				
-			$data['sum_NoPass'] = $this->db->select('COUNT(recruit_status) AS sumall,
-					recruit_regLevel,recruit_year, 
-					recruit_tpyeRoom,recruit_date,recruit_status')
-					->where('recruit_year',$year)
-					->where('recruit_status !=','ผ่านการตรวจสอบ')
-			->get('tb_recruitstudent')
-			->result();
-
-			//echo '<pre>';print_r($data['sum_NoPass']); exit();
-
-			$chart_re1_cota = $this->db->select('COUNT(recruit_regLevel) AS C_count,
-		tb_recruitstudent.recruit_regLevel,tb_recruitstudent.recruit_year, 
-		tb_recruitstudent.recruit_tpyeRoom')
-				->from('tb_recruitstudent')
-				->where('recruit_year',$year)
-				->where('recruit_regLevel',1)
-				->group_by('recruit_tpyeRoom')
-				->order_by('recruit_tpyeRoom','DESC')
-				->get()->result();
-			$chart_re4_cota = $this->db->select('COUNT(recruit_regLevel) AS C_count,
-					tb_recruitstudent.recruit_regLevel,tb_recruitstudent.recruit_year, 
-					tb_recruitstudent.recruit_tpyeRoom')
-				->from('tb_recruitstudent')
-				->where('recruit_year',$year)
-				->where('recruit_regLevel',4)
-				->group_by('recruit_tpyeRoom')
-				->order_by('recruit_tpyeRoom','DESC')
-				->get()->result();
-			$chart_All_cota = $this->db->select('COUNT(recruit_regLevel) AS C_count,
-					tb_recruitstudent.recruit_regLevel,tb_recruitstudent.recruit_year ,
-					tb_recruitstudent.recruit_tpyeRoom')
-				->from('tb_recruitstudent')
-				->where('recruit_year',$year)
-				->group_by('recruit_tpyeRoom')					
-				->order_by('recruit_tpyeRoom','DESC')
-				->get()->result();
-			$data['sum_1_cota'] = array_column($chart_re1_cota,'C_count');
-			$data['sum_4_cota'] = array_column($chart_re4_cota,'C_count');
-			$data['sum_all_cota'] = array_column($chart_All_cota,'C_count');
-			$data['chart_1_cota'] = json_encode(array_column($chart_re1_cota,'C_count'));	
-			$data['chart_4_cota'] = json_encode(array_column($chart_re4_cota,'C_count'));
-			$data['chart_All_cota'] = json_encode(array_column($chart_All_cota,'C_count'));
-
-
-
-			$chart_re1_all = $this->db->select('COUNT(recruit_regLevel) AS C_count,
-			tb_recruitstudent.recruit_regLevel,tb_recruitstudent.recruit_year, 
-			tb_recruitstudent.recruit_tpyeRoom')
-					->from('tb_recruitstudent')
-					->where('recruit_year',$year)
-					->where('recruit_regLevel',1)
-					->group_by('recruit_tpyeRoom')
-					->order_by('recruit_tpyeRoom','DESC')
-					->get()->result();
-				$chart_re4_all = $this->db->select('COUNT(recruit_regLevel) AS C_count,
-						tb_recruitstudent.recruit_regLevel,tb_recruitstudent.recruit_year, 
-						tb_recruitstudent.recruit_tpyeRoom')
-					->from('tb_recruitstudent')
-					->where('recruit_year',$year)
-					->where('recruit_regLevel',4)
-					->group_by('recruit_tpyeRoom')
-					->order_by('recruit_tpyeRoom','DESC')
-					->get()->result();
-				$chart_All_all = $this->db->select('COUNT(recruit_regLevel) AS C_count,
-						tb_recruitstudent.recruit_regLevel,tb_recruitstudent.recruit_year ,
-						tb_recruitstudent.recruit_tpyeRoom')
-					->from('tb_recruitstudent')
-					->where('recruit_year',$year)
-					->group_by('recruit_tpyeRoom')					
-					->order_by('recruit_tpyeRoom','DESC')
-					->get()->result();
-				$data['sum_1_all'] = array_column($chart_re1_all,'C_count');
-				$data['sum_4_all'] = array_column($chart_re4_all,'C_count');
-				$data['sum_all_all'] = array_column($chart_All_all,'C_count');
-				$data['chart_1_all'] = json_encode(array_column($chart_re1_all,'C_count'));	
-				$data['chart_4_all'] = json_encode(array_column($chart_re4_all,'C_count'));
-				$data['chart_All_all'] = json_encode(array_column($chart_All_all,'C_count'));
-			
 			return $data;
 	}
 
@@ -253,7 +135,7 @@ class Welcome extends CI_Controller {
 		recruit_status,
 		recruit_category')->from('tb_recruitstudent')
 		->where('recruit_year',$data['checkYear'][0]->openyear_year)
-		->order_by('recruit_year','DESC')->get()->result();
+		->order_by('recruit_id','ASC')->get()->result();
 		//echo '<pre>'; print_r($data['year']); exit();
 		
 

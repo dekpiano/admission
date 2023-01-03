@@ -25,8 +25,22 @@
                                 <td>ม.<?=$v_DataStudents->recruit_regLevel?></td>
                                 <td><?=$v_DataStudents->recruit_category?></td>
                                 <td><?=$v_DataStudents->recruit_tpyeRoom?></td>
-                                <td><?=$v_DataStudents->recruit_status?></td>
-                                <td><a href="<?=base_url('login'); ?>" class="btn btn-warning btn-sm">แก้ไขการสมัคร</a></td>
+                                <td>
+                                    <?php if($v_DataStudents->recruit_status === "ผ่านการตรวจสอบ"): ?>
+                                        <span class="badge badge-pill badge-success">
+                                        <h6 style="margin-bottom: 0rem;"><?=$v_DataStudents->recruit_status?></h6> 
+                                        </span>
+                                    <?php else: ?>
+                                        <span class="badge badge-pill badge-danger">
+                                        <h6 style="margin-bottom: 0rem;"><?=$v_DataStudents->recruit_status?></h6>
+                                        </span>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                <?php if($v_DataStudents->recruit_status != "ผ่านการตรวจสอบ"): ?>
+                                    <a href="<?=base_url('login'); ?>" class="btn btn-warning btn-sm">แก้ไขการสมัคร</a>
+                                    <?php endif; ?>
+                                </td>
                             </tr>
                            <?php endforeach; ?>
 

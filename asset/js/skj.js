@@ -47,7 +47,7 @@ $(document).on('change', '#switch_sys', function() {
 });
 
 $(document).on('change', '#switch_year', function() {
-    var dataYear = $(this).val();
+    let dataYear = $(this).val();
     $.ajax({
         type: 'POST',
         url: '../../admin/control_admin_admission/switch_year',
@@ -62,7 +62,7 @@ $(document).on('change', '#switch_year', function() {
                 })
                 .then((willDelete) => {
                     if (willDelete) {
-                        window.location = "../admin/system";
+                        window.location = "../../admin/system/" + dataYear;
                     }
                 });
         }
