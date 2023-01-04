@@ -111,10 +111,14 @@ class Welcome extends CI_Controller {
 				->get()->result();
 
 			$data['RegisterAll'] = $this->db->select("
-			recruit_year
-			")->get('tb_recruitstudent')->result();
+			COUNT(recruit_year) AS RegAll,
+			SUM(CASE WHEN recruit_status = 'ผ่านการตรวจสอบ' THEN 1 END) AS Pass,
+			SUM(CASE WHEN recruit_status != 'ผ่านการตรวจสอบ' THEN 1 END) AS NoPass
+			")
+			->where('recruit_year',$year)
+			->get('tb_recruitstudent')->result();
 
-			echo '<pre>'; print_r($data['RegisterAll']); exit();
+			//echo '<pre>'; print_r($data['RegisterAll']); exit();
 
 
 			return $data;

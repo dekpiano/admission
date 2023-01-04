@@ -19,11 +19,11 @@
                             <div class="title"><span>ผู้สมัคร<br>ทั้งหมด</span>
                                 <div class="progress">
                                     <div role="progressbar" style="width: 25%; height: 4px;"
-                                        aria-valuenow="<?=array_sum($sum_all);?>" aria-valuemin="0" aria-valuemax="100"
+                                        aria-valuenow="<?=$RegisterAll[0]->RegAll;?>" aria-valuemin="0" aria-valuemax="100"
                                         class="progress-bar bg-violet"></div>
                                 </div>
                             </div>
-                            <div class="number"><strong><?=array_sum($sum_all);?></strong></div>
+                            <div class="number"><strong><?=$RegisterAll[0]->RegAll;?></strong></div>
                         </div>
                     </div>
                     <!-- Item -->
@@ -33,11 +33,11 @@
                             <div class="title"><span>ผู้สมัคร<br>ผ่านการตรวจสอบ</span>
                                 <div class="progress">
                                     <div role="progressbar" style="width: 70%; height: 4px;"
-                                        aria-valuenow="<?=$sum_pass[0]->sumall?>" aria-valuemin="0" aria-valuemax="100"
+                                        aria-valuenow="<?=$RegisterAll[0]->Pass;?>" aria-valuemin="0" aria-valuemax="100"
                                         class="progress-bar bg-green"></div>
                                 </div>
                             </div>
-                            <div class="number"><strong><?=$sum_pass[0]->sumall?></strong></div>
+                            <div class="number"><strong><?=$RegisterAll[0]->Pass;?></strong></div>
                         </div>
                     </div>
                     <!-- Item -->
@@ -47,11 +47,11 @@
                             <div class="title"><span>ผู้สมัคร<br>ไม่ผ่านการตรวจสอบ (รอแก้ไข)</span>
                                 <div class="progress">
                                     <div role="progressbar" style="width: 40%; height: 4px;"
-                                        aria-valuenow="<?=$sum_NoPass[0]->sumall?>" aria-valuemin="0"
+                                        aria-valuenow="<?=$RegisterAll[0]->NoPass;?>" aria-valuemin="0"
                                         aria-valuemax="100" class="progress-bar bg-red"></div>
                                 </div>
                             </div>
-                            <div class="number"><strong><?=$sum_NoPass[0]->sumall?></strong></div>
+                            <div class="number"><strong><?=$RegisterAll[0]->NoPass;?></strong></div>
                         </div>
                     </div>
                 </div>
