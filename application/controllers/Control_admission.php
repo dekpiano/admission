@@ -107,14 +107,15 @@ class Control_admission extends CI_Controller {
         if ($status['success']) {
 			$openyear = $this->db->get('tb_openyear')->result();
 		//print_r($this->input->post('recruit_idCard'));
-		$data['chk_stu'] = $this->db->where('recruit_idCard',$this->input->post('recruit_idCard'))->get('tb_recruitstudent')->result();
+		$data['chk_stu'] = $this->db->where('recruit_idCard',$this->input->post('recruit_idCard'))
+		->where('recruit_year',$data['checkYear'][0]->openyear_year)
+		->where('recruit_category',$this->input->post('recruit_category'))
+		->get('tb_recruitstudent')->result();
 		if (count($data['chk_stu']) > 0) {
-			$this->session->set_flashdata(array('msg'=> 'NO','messge' => 'คุณได้ลงทะเบียนแล้ว กรุณาตรวจสอบการสมัคร','status'=>'error'));
+			$this->session->set_flashdata(array('msg'=> 'NO','messge' => 'คุณได้ลงทะเบียนแล้ว กรุณาตรวจสอบการสมัคร ปีการศึกษานี้แล้ว','status'=>'error'));
 			redirect('welcome');
 		}else{
 		$data_insert = array();
-		
-
 		$recruit_birthday = ($this->input->post('recruit_birthdayY')-543).'-'.$this->input->post('recruit_birthdayM').'-'.$this->input->post('recruit_birthdayD');
 		$data_insert += array(
 			'recruit_id'  => $this->NumberID(),
