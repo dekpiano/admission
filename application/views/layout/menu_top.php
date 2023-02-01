@@ -1,6 +1,7 @@
 <!-- Main Navbar-->
 <style>
 .btn-outline-light:hover {
+   
     color: deeppink;
 }
 </style>

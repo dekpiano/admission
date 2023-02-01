@@ -1,87 +1,155 @@
 <?php if($this->session->userdata('idenStu') =="") :?>
-<div class="row mt-5 justify-content-center">
-    <div class="">
-        <div class="text-center mb-3">
-            <img src="https://skj.ac.th/uploads/logo/LogoSKJ_4.png" width="200" alt="KMUTNB">
-        </div>
+<style>
+input {
+    border: none;
+    outline: none
+}
+
+.container {
+    border-radius: 15px
+}
+
+@media(min-width:992px) {
+    .img-logo img {
+        width: 500px;
+        height: 500px
+    }
+
+    #circle {
+        border: 10px solid rgba(255, 0, 234, 0.945);
+        border-radius: 50%;
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        left: 290px;
+        top: -25px
+    }
+
+    .container {
+        background-image: linear-gradient(to bottom, rgb(255, 255, 255) 80%, rgb(242, 242, 253), rgb(164, 164, 235))
+    }
+}
+
+@media(max-width:991px) {
+    .img-logo img {
+        display: none;
+    }
+
+    #circle {
+        border: 10px solid rgba(255, 0, 234, 0.945);
+        border-radius: 50%;
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        left: 100px;
+        top: -25px
+    }
+
+    .container {
+        background-image: linear-gradient(to bottom, rgb(255, 255, 255) 80%, rgb(242, 242, 253), rgb(164, 164, 235))
+    }
+}
+
+@media(max-width:768px) {
 
 
-        <!-- /.login-logo -->
-        <div class="card card-outline card-primary">
-            <div class="card-header text-center">
-                <h5><b>รายงานตัวนักเรียนใหม่ออนไลน์</b></h5>
-            </div>
-            <div class="card-body">
-                <!-- <p class="login-box-msg">Online Matriculation System</p> -->
+    #circle {
+        border: 10px solid rgba(255, 0, 234, 0.945);
+        border-radius: 50%;
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        left: 302px;
+        top: -29px
+    }
+}
 
-                <form id="loginConfirmStudent" method="post" class="needs-validation" novalidate>
-                    <div class="input-group mb-3">
-                        <input type="text" id="idenStu" name="idenStu" class="form-control"
-                            placeholder="หมายเลขบัตรประจำตัวประชาชน" data-inputmask="'mask': '9-9999-99999-99-9'"
-                            required>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <!--<div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Remember Me
-              </label>
-            </div>
-          -->
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-12">
-                            <button type="submit" id="submit" class="btn btn-primary btn-block">เข้าสู่ระบบ</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                </form>
-                <hr>
-                <div class="col-12">
-                    <p><span class="text-info">
-                            <span class="fas fa-phone"></span> 056-009-667 </span></p>
+@media(max-width:567px) {
+
+
+    .container {
+        margin-left: 0px;
+        margin-top: 30px
+    }
+
+    #circle {
+        border: 10px solid rgba(255, 0, 234, 0.945);
+        border-radius: 50%;
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        left: 202px;
+        top: -29px
+    }
+}
+</style>
+
+<div class="vh-100">
+    <div class="container bg-white pb-5">
+        <div class="row d-flex justify-content-start align-items-center mt-sm-5">
+            <div class="col-lg-7 col-md-7 col-10">
+                <div class="pb-5">
+                    <img src="https://img.freepik.com/free-vector/woman-standing-mammography-machine-examination-disease-diagnosis_74855-11248.jpg?w=740&t=st=1675048019~exp=1675048619~hmac=6e3fa360d90084c342c29d0c81d4eb779b6d00d88a3ea3cc00721cf98e32c98b"
+                        class="img-fluid" alt="">
                 </div>
-
-
-
-                <!--<div class="social-auth-links text-center mt-2 mb-3">
-        <a href="#" class="btn btn-block btn-primary">
-          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-        </a>
-        <a href="#" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-        </a>
-      </div>
-    -->
-                <!-- /.social-auth-links -->
-                <p class="mb-0">
-                    <a href="https://www.canva.com/design/DAE8dEvbv_0/0BOZnsblL5N2guiWoMXeng/view?utm_content=DAE8dEvbv_0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="text-center">คู่มือการใช้งานระบบ</a>
-
-                </p>
-                <p class="mb-0">
-                    <a href="../stepMatriculation.pdf" target="_blank"
-                        class="text-center">ขั้นตอนการรายงานตัวออนไลน์</a>
-                </p>
-
-                </p>               
-
-                <p class="mb-1">
-                    <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;tf=1&amp;to=dekpiano@skj.ac.th"
-                        target="_blank">ไม่สามารถเข้าใช้งานระบบได้</a>
-                </p>
-
             </div>
-            <!-- /.card-body -->
+            <div class="col-lg-4  col-md-5">
+                <div class="text-center">
+                    <img src="https://skj.ac.th/uploads/logo/LogoSKJ_4.png" class="img-fluid" style="width: 64px;"
+                        alt="KMUTNB">
+                </div>
+                <div class="mt-3">
+                    <div class="text-center">
+                        <h5>รายงานตัวนักเรียนใหม่ออนไลน์</h5>
+                    </div>
+
+                    <form id="loginConfirmStudent" method="post" class="needs-validation mt-5" novalidate>
+                        <div class="d-flex flex-column pb-3">
+                            <label for="email">เลขบัตรประจำตัวประชาชน</label>
+                            <input type="text" id="idenStu" name="idenStu" class="border-bottom border-primary"
+                                placeholder="หมายเลขบัตรประจำตัวประชาชน" data-inputmask="'mask': '9-9999-99999-99-9'"
+                                required>
+                        </div>
+                        <input type="submit" id="submit" value="เข้าสู่ระบบ" class="btn btn-primary btn-block mb-3">
+
+                        <div class="col-12">
+                            <p><span class="text-info">
+                                    <span class="fas fa-phone"></span> 056-009-667 </span></p>
+                        </div>
+                        <p class="mb-0">
+                            <a href="https://www.canva.com/design/DAE8dEvbv_0/0BOZnsblL5N2guiWoMXeng/view?utm_content=DAE8dEvbv_0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+                                target="_blank" class="text-center">คู่มือการใช้งานระบบ</a>
+
+                        </p>
+                        <p class="mb-0">
+                            <a href="../stepMatriculation.pdf" target="_blank"
+                                class="text-center">ขั้นตอนการรายงานตัวออนไลน์</a>
+                        </p>
+
+                        </p>
+
+                        <p class="mb-1">
+                            <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;tf=1&amp;to=dekpiano@skj.ac.th"
+                                target="_blank">ไม่สามารถเข้าใช้งานระบบได้</a>
+                        </p>
+
+
+                    </form>
+                </div>
+            </div>
         </div>
-        <!-- /.card -->
     </div>
+
 </div>
+
+
+
+
+
+
+
+
+
 
 <?php else : ?>
 
@@ -127,7 +195,28 @@
 }
 </style>
 <section class="py-5 header">
+    <div class="container">
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">อ่านฉันก่อน!</h4>
+            <p>
 
+                - ให้นักเรียนกรอกข้อมูลนักเรียน ข้อมูลบิดา มารดา และผู้ปกครองให้เรียบร้อยก่อน
+                <b>เพื่อจะได้ไม่ต้องมาเสียเวลากรอกที่โรงเรียน</b> <br>
+                - เมื่อเสร็จแล้วให้นักเรียนให้เตรียมเอกสารที่สมัคร นำมาโรงเรียนในวันที่รายงานตัว ในวันที่ 18 กุมภาพันธ์
+                2566
+                <br>
+                - นักเรียนไม่ต้องพิมพ์เอกสารใด ๆ ออกจากระบบ ถ้านักเรียนบันทึกข้อมูลเสร็จแล้ว
+                ทางโรงเรียนจะพิมพ์ออกมาเพื่อบริการในไว้ให้ <br>
+            </p>
+            <hr>
+            <p class="mb-0">เมื่อทำต้องขั้นตอนขอระบบ นักเรียนจะเสร็จไวขึ้น
+                <b>นักเรียนคนที่มากรอกข้อมูลที่โรงเรียนจะทำให้เสียเวลา</b>
+            </p>
+            <p class="mb-0">เมื่อนักเรียนมีปัญหาในการกรอกข้อมูล ในติดต่อช่องแชท ในเพจ Facebook โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์
+                <b> <a href="https://m.me/SKJNS160">แจ้งปัญหาที่นี่</a> </b>
+            </p>
+        </div>
+    </div>
 
     <div class="container-fluid py-4">
 
@@ -180,7 +269,8 @@
                 </div>
                 <hr>
                 <?php if($Ckeckstu == 1 && $OtherCkeck == 1): ?>
-                <a target="_blank" href="<?=base_url('Confirm/Print');?>" class="btn btn-info w-100">พิมพ์ใบยืนยันรายงานตัว</a>
+                <a target="_blank" href="<?=base_url('Confirm/Print');?>"
+                    class="btn btn-info w-100">พิมพ์ใบยืนยันรายงานตัว</a>
                 <?php else: ?>
                 <a href="#" id="checkPirnt" class="btn btn-info w-100 checkPirnt">พิมพ์ใบยืนยันรายงานตัว</a>
                 <?php endif; ?>
@@ -236,30 +326,30 @@
                         <h4 class="font-italic mb-4">ข้อมูลผู้ปกครอง</h4>
                         <div class="alert alert-success">
                             <strong>แจ้งเตือน!</strong> กรณีที่นักเรียนอยู่กับบิดา - มารดา เลือกเป็นผู้ปกครอง 1 คน
-                            
+
                             <div class="custom-control custom-radio custom-control-inline ml-5">
-                                <input class="custom-control-input checkPu" type="radio" name="checkPu"
-                                    id="par_rest88" value="บิดา" <?=@$OtherConf[0]->par_relation=="บิดา"?"checked":""?> required11>
+                                <input class="custom-control-input checkPu" type="radio" name="checkPu" id="par_rest88"
+                                    value="บิดา" <?=@$OtherConf[0]->par_relation=="บิดา"?"checked":""?> required11>
                                 <label class="custom-control-label" for="par_rest88">เป็นบิดา</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input class="custom-control-input checkPu" type="radio" name="checkPu"
-                                    id="par_rest89" value="มารดา" required11 <?=@$OtherConf[0]->par_relation=="มารดา"?"checked":""?>>
+                                <input class="custom-control-input checkPu" type="radio" name="checkPu" id="par_rest89"
+                                    value="มารดา" required11 <?=@$OtherConf[0]->par_relation=="มารดา"?"checked":""?>>
                                 <label class="custom-control-label" for="par_rest89">เป็นมารดา</label>
-                            </div>  
+                            </div>
                             แล้วกดบันทึกข้อมูลด้านล่าง
                             <br><br>
-                            แต่ถ้าไม่ใช่ให้กรอกข้อมูลผู้ปกครองอื่นที่อยู่กับนักเรียนในฟอร์มด้านล่าง 
+                            แต่ถ้าไม่ใช่ให้กรอกข้อมูลผู้ปกครองอื่นที่อยู่กับนักเรียนในฟอร์มด้านล่าง
                             <?php if(@$OtherConf[0]->par_relation=="บิดา" || @$OtherConf[0]->par_relation=="มารดา"){
                                 $check = "";
                             }else{
                                 $check = "checked";
                             }?>
                             <div class="custom-control custom-radio custom-control-inline ml-5">
-                                <input class="custom-control-input checkPu" type="radio" name="checkPu"
-                                    id="par_rest90" value="ผู้ปกครองอื่น" required11 <?=$check;?>>
+                                <input class="custom-control-input checkPu" type="radio" name="checkPu" id="par_rest90"
+                                    value="ผู้ปกครองอื่น" required11 <?=$check;?>>
                                 <label class="custom-control-label" for="par_rest90">ผู้ปกครองอื่น</label>
-                            </div> 
+                            </div>
                         </div>
                         <?php if($OtherCkeck == 1){
                           $this->load->view('FormData/FormOther/PageFormOtherEdit.php');

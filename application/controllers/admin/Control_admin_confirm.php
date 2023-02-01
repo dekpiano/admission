@@ -15,6 +15,7 @@ class Control_admin_confirm extends CI_Controller {
 	}
 
 	  public function PagePrintConnfirm($year){
+		$ConnPers = $this->load->database('skjpers', TRUE);
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();
 		//$data = $this->report_student($year);
 		$data['title'] = $this->title;		
@@ -41,6 +42,7 @@ class Control_admin_confirm extends CI_Controller {
 		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
 		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
 
+		//echo "<pre>"; print_r($data['recruit']);exit();
 			
 			$this->load->view('admin/layout/navber_admin.php',$data);
 			$this->load->view('admin/layout/menu_top_admin.php');
@@ -48,17 +50,18 @@ class Control_admin_confirm extends CI_Controller {
 			$this->load->view('admin/layout/footer_admin.php');
 	  }	
 
-	public function pdfConfirm($id)
+	public function pdfConfirm($Year,$id)
     {
 		$Conf = $this->load->database('skjpers', TRUE);
 		$thai = $this->load->database('thailandpa', TRUE);
 		
 		
-		$recruit = $this->db->where('recruit_idCard',$id)->get('tb_recruitstudent')->result();	
+		$recruit = $this->db->where('recruit_idCard',$id)
+		->where('recruit_year',$Year)->get('tb_recruitstudent')->result();	
 		$confrim = $Conf->where('stu_iden',$id)->get('tb_students')->result();	
 		
 		$idstu = str_replace('-','', $confrim[0]->stu_iden); //แยกเลข 13 หลัก
-	    //print_r($idstu[1]);exit();	
+	    //print_r($Year);exit();	
 
 			$date_Y1 = date('Y',strtotime($confrim[0]->stu_createDate))+543;
 			$TH_Month = array("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฏาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
@@ -104,7 +107,7 @@ class Control_admin_confirm extends CI_Controller {
        
 		$html .= '<div style="position:absolute;top:75px;left:663px; width:100%"><img style="width: 100px;hight:70px;" src='.FCPATH.'uploads/recruitstudent/m'.$recruit[0]->recruit_regLevel.'/img/'.$recruit[0]->recruit_img.'></div>'; 
 		$html .= '<div style="position:absolute;top:105px;left:230px; width:100%">'.$confrim[0]->stu_regLevel.'</div>'; //ชั้นที่สมัครเรียน
-		$html .= '<div style="position:absolute;top:105px;left:470px; width:100%">'.(date("Y",strtotime($confrim[0]->stu_createDate))+543).'</div>'; //ปีการศึกษา
+		$html .= '<div style="position:absolute;top:105px;left:470px; width:100%">'.($Year).'</div>'; //ปีการศึกษา
 		$html .= '<div style="position:absolute;top:130px;left:140px; width:100%">'.$confrim[0]->stu_prefix.$confrim[0]->stu_fristName.'</div>'; //ชื่อนักเรียน 
 		$html .= '<div style="position:absolute;top:130px;left:400px; width:100%">'.$confrim[0]->stu_lastName.'</div>'; //นามสกุลนักเรียน
 		$html .= '<div style="position:absolute;top:158px;left:120px; width:100%">'.$date_D.'</div>'; //วัน

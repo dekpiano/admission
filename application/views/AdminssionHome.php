@@ -176,7 +176,7 @@ table thead tr th {
 }
 </style>
 
-<section id="home" class="home">
+<div id="home" class="home">
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
@@ -194,8 +194,11 @@ table thead tr th {
                             </p>
 
                             <div class="text-center mt-5">
-                                <button type="button" class="btn btn-outline-light" data-toggle="modal"
-                                    data-target="#myModal" style="font-size:34px;">สมัครเรียนเลย ที่นี่...</button>
+                                <button type="button" class="btn btn-outline-light" data-bs-toggle="modal"
+                                    data-bs-target="#myModal" style="font-size:34px;">
+                                    <?=$switch[0]->onoff_regis == "on"?"สมัครเรียนเลย ที่นี่...": $switch[0]->onoff_comment?>
+                                    
+                                </button>
                             </div>
 
 
@@ -221,22 +224,43 @@ table thead tr th {
             </div>
         </div>
     </div>
-</section>
+</div>
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-4 col-6 align-self-center">
-        <img src="<?=base_url('uploads/home/check-data.svg')?>" alt="marsmello"
+<?php  if($switch[0]->onoff_report == "on"): ?>
+<div class="bg-white p-5">
+    <div class="row  justify-content-center">
+        <div class="col-md-6  align-self-center">
+        <img src="https://img.freepik.com/free-vector/tiny-hr-manager-looking-candidate-job-interview-magnifier-computer-screen-flat-vector-illustration-career-employment_74855-8619.jpg?w=996&t=st=1675070479~exp=1675071079~hmac=896bbf82a8c06eab169bb4542c4005c8b0663176e08dc713312d58520ef2ac65" alt="marsmello"
                         class="img-fluid aos-init aos-animate" data-aos="zoom-in-up" style="width:100%">
         </div>
-        <div class="col-md-4 col-6 align-self-center">
+        <div class="col-md-6  align-self-center">
+        <h1>รายงานตัว</h1>
+        <h5>
+            เมื่อผ่านการตรวจสอบแล้ว นักเรียนสามารถรายงานตัว กรอกข้อมูลประวัติส่วนตัว ของนักเรียน และผู้ปกครอง เพื่อเป็นการรายงานเข้าเรียน ณ โรงเรียนแห่งนี้ 
+        </h5>
+        <a href="<?=base_url('Confirm');?>" class="btn btn-outline-primary"
+        style="font-size:26px;">รายงานตัว</a>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
+
+<div class="container p-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5 align-self-center">
+        <img src="https://img.freepik.com/free-vector/illustration-checklist-clipboard_53876-37233.jpg?w=740&t=st=1675069565~exp=1675070165~hmac=88fabebd0a95ef41b3cbcce53ff7c2f55c474787877cdd7a90187529f432a823" alt="marsmello"
+                        class="img-fluid aos-init aos-animate" data-aos="zoom-in-up" style="width:100%">
+        </div>
+        <div class="col-md-6 align-self-center">
+            <h1>ตรวจสอบการสมัครเรียน</h1>
+            <h5>นักเรียนสามารถตรวจสอบสถานะว่า ผ่านการตรวจสอบ หรือต้องแก้ไขข้อมูลหรือไม่</h5>
+            <h5>เมื่อผ่านการตรวจสอบแล้ว รอการรายงานตัวผ่านระบบออนไลน์ ในวันที่กำหนด</h5>
         <a href="<?=base_url('CheckRegister');?>" class="btn btn-outline-primary"
         style="font-size:26px;">ตรวจสอบการสมัครเรียน</a>
         </div>
     </div>
-
- 
 </div>
+
 
 <div class="page-content align-items-stretch">
     <!-- Side Navbar -->
@@ -262,7 +286,7 @@ table thead tr th {
                                 <th scope="row">รอบโควตา (โรงเรียนในเขตพิ้นที่บริการ)</th>
                                 <td>1 - 30 มกราคม 2566</td>
                                 <td>-</td>
-                                <td>1 กุมภาพันธ์ 2566</td>
+                                <td>3 กุมภาพันธ์ 2566</td>
                                 <td>วันเสาร์ที่ 18 กุมภาพันธ์ 2566 (08.30 - 11.30 น.)</td>
                             </tr>
                             <tr>
@@ -305,7 +329,7 @@ table thead tr th {
                                 <th scope="row">รอบโควตา (ม.3 เดิม)</th>
                                 <td>1 - 30 มกราคม 2566</td>
                                 <td>-</td>
-                                <td>1 กุมภาพันธ์ 2566</td>
+                                <td>3 กุมภาพันธ์ 2566</td>
                                 <td>วันเสาร์ที่ 18 กุมภาพันธ์ 2566 (08.30 - 11.30 น.)</td>
                             </tr>
                             <tr>
@@ -313,14 +337,14 @@ table thead tr th {
                                 <td>11 - 15 มีนาคม 2566</td>
                                 <td>26 มีนาคม 2566</td>
                                 <td>30 มีนาคม 2566</td>
-                                <td>1 เมษายน 2566 (08.30 - 11.30 น.)</td>
+                                <td>1 เมษายน 2566 (13.00 - 15.30 น.)</td>
                             </tr>
                             <tr>
                                 <th scope="row">รอบความสามารถพิเศษด้านกีฬา</th>
                                 <td>คัดตัวนักกีฬา 18 - 19 กุมภาพันธ์ 2566</td>
                                 <td>-</td>
                                 <td>19 กุมภาพันธ์ 2566</td>
-                                <td>1 เมษายน 2566 (08.30 - 11.30 น.)</td>
+                                <td>1 เมษายน 2566 (13.00 - 15.30 น.)</td>
                             </tr>
 
                         </tbody>
@@ -433,7 +457,7 @@ table thead tr th {
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 id="exampleModalLabel" class="modal-title">เลือกการสมัคร</h4>
-                        <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span
+                        <button type="button" data-bs-dismiss="modal" aria-label="Close" class="close"><span
                                 aria-hidden="true">×</span></button>
                     </div>
                     <div class="modal-body">

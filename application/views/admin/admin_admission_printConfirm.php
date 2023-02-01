@@ -55,7 +55,7 @@
                                         <th>หลักสูตร</th>
 
                                     </tr>
-                                </thead>
+                                </thead>                               
                                 <?php foreach ($recruit as $key => $v_recruit) : ?>
                                 <tr>
                                     <td>
@@ -87,7 +87,7 @@
                                             <i class="fas fa-print"></i> รอรายงานตัว</button>
                                         <?php else : ?>
                                         <a target="_blank"
-                                            href="<?=base_url('admin/Control_admin_confirm/pdfConfirm/'.$v_recruit->recruit_idCard);?>"
+                                            href="<?=base_url('admin/Control_admin_confirm/pdfConfirm/'.$this->uri->segment(3).'/'.$v_recruit->recruit_idCard);?>"
                                             class="btn btn-primary btn-sm"><i class="fas fa-print"></i>
                                             พิมพ์ใบรายงานตัว</a>
                                         <?php endif; ?>

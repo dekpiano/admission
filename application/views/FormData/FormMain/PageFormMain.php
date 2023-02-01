@@ -1,13 +1,13 @@
 <div class="pb-4 p-3">
-<h4 class="font-italic ">ยินดีต้อนรับ
-    <?php echo $stu[0]->recruit_prefix.$stu[0]->recruit_firstName.' '.$stu[0]->recruit_lastName; ?>
-    สู่ระบบรับรายตัวนักเรียนใหม่ออนไลน์</h4>
+    <h4 class="font-italic ">ยินดีต้อนรับ
+        <?php echo $stu[0]->recruit_prefix.$stu[0]->recruit_firstName.' '.$stu[0]->recruit_lastName; ?>
+        สู่ระบบรับรายตัวนักเรียนใหม่ออนไลน์</h4>
+    
 </div>
 
 <form id="contactForm" method="post" action="#">
     <div class="card border border-primary">
         <div class="card-body h5">
-
             <div class="row mb-3">
                 <div class="col-md-6 text-center align-self-center">
                     <img src="<?=base_url('uploads/recruitstudent/m'.$stu[0]->recruit_regLevel.'/img/'.$stu[0]->recruit_img)?>"
@@ -35,14 +35,18 @@
                         <ol>- ข้อมูลผู้ปกครองที่นักเรียนอยู่ด้วยในปัจจุบัน</ol>
                     </ul>
                 </li>
-                <li class="list-group-item">เมื่อกรอกข้อมูลสำเร็จจะมีเครื่องหมาย ( <i class="fa fa-check mr-2 "></i> กรอกข้อมูลแล้ว) </li>
-                <li class="list-group-item">แต่เมื่อยังไม่กรอกข้อมูลหรือกรอกไม่สำเร็จจะมีเครื่องหมาย ( <i class="fa fa-times mr-2 "></i> ยังไม่กรอกข้อมูล)</li>
-                <li class="list-group-item">เมื่อกรอกข้อมูลครบทุกรายการ นักเรียนจะสามารถพิมพ์ใบยืนยันรายงานตัวได้   <a href="#" id="checkPirnt" class="btn btn-info checkPirnt">พิมพ์ใบยืนยันรายงานตัว</a></li>
+                <li class="list-group-item">เมื่อกรอกข้อมูลสำเร็จจะมีเครื่องหมาย ( <i class="fa fa-check mr-2 "></i>
+                    กรอกข้อมูลแล้ว) </li>
+                <li class="list-group-item">แต่เมื่อยังไม่กรอกข้อมูลหรือกรอกไม่สำเร็จจะมีเครื่องหมาย ( <i
+                        class="fa fa-times mr-2 "></i> ยังไม่กรอกข้อมูล)</li>
+                <li class="list-group-item">เมื่อกรอกข้อมูลครบทุกรายการ นักเรียนจะสามารถพิมพ์ใบยืนยันรายงานตัวได้ <a
+                        href="#" id="checkPirnt" class="btn btn-info checkPirnt">พิมพ์ใบยืนยันรายงานตัว</a></li>
                 <li class="list-group-item">เป็นอันเสร็จสิ้นการรายงานตัวออนไลน์</li>
                 <li class="list-group-item">
-                   <p>ตัวอย่างใบยืนยันการรายงานตัวออนไลน์ เมื่อกดพิมพ์ใบยืนยัน</p> 
-                    <img src="<?=base_url('uploads/confirm/img1.PNG');?>" alt=""class="img-fluid">
-                    <p>(นักเรียนสามารถแคปหน้าจอไว้หรือบันทึกเป็นไฟล์ PDF ถ้าไม่สะดวกพิมพ์ เพื่อไว้ยืนยันเวลาส่งเอกสารหลักฐาน)</p> 
+                    <p>ตัวอย่างใบยืนยันการรายงานตัวออนไลน์ เมื่อกดพิมพ์ใบยืนยัน</p>
+                    <img src="<?=base_url('uploads/confirm/img1.PNG');?>" alt="" class="img-fluid">
+                    <p>(นักเรียนสามารถแคปหน้าจอไว้หรือบันทึกเป็นไฟล์ PDF ถ้าไม่สะดวกพิมพ์
+                        เพื่อไว้ยืนยันเวลาส่งเอกสารหลักฐาน)</p>
                 </li>
                 <li class="list-group-item">ใบมอมตัวที่กรอกข้อมูลแล้ว ทางโรงเรียนเตรียมไว้ให้เพื่อความสะดวก</li>
                 <li class="list-group-item">ให้นักเรียนนำหลักฐานสำเนาเพื่อยื่นให้ทางโรงเรียน</li>
