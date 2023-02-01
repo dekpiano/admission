@@ -1,11 +1,11 @@
 <div class="page-content align-items-stretch">
     <!-- Side Navbar -->
     <div class="container-fluid py-5">
-       <h2>ตรวจสอบข้อมูลการสมัครเรียน และ แก้ไขการสมัคร</h2> 
+        <h2>ตรวจสอบข้อมูลการสมัครเรียน และ แก้ไขการสมัคร</h2>
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-bordered table-hover" id="TB_CheckRegister">
                         <thead class="bg-primary text-white">
                             <tr class="text-center">
                                 <th scope="col">ลำดับ</th>
@@ -15,34 +15,42 @@
                                 <th scope="col">สายการเรียน</th>
                                 <th scope="col">สถานะการสมัคร</th>
                                 <th scope="col">แก้ไขการสมัคร</th>
+                                <th scope="col">สถานะรายงานตัว</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
                             <?php foreach ($DataStudents as $key => $v_DataStudents): ?>
                             <tr>
                                 <th scope="row"><?=$v_DataStudents->recruit_id?></th>
-                                <td><?=$v_DataStudents->recruit_prefix.$v_DataStudents->recruit_firstName.' '.$v_DataStudents->recruit_lastName?></td>
+                                <td><?=$v_DataStudents->recruit_prefix.$v_DataStudents->recruit_firstName.' '.$v_DataStudents->recruit_lastName?>
+                                </td>
                                 <td>ม.<?=$v_DataStudents->recruit_regLevel?></td>
                                 <td><?=$v_DataStudents->recruit_category?></td>
                                 <td><?=$v_DataStudents->recruit_tpyeRoom?></td>
                                 <td>
                                     <?php if($v_DataStudents->recruit_status === "ผ่านการตรวจสอบ"): ?>
-                                        <span class="badge badge-pill badge-success">
-                                        <h6 style="margin-bottom: 0rem;"><?=$v_DataStudents->recruit_status?></h6> 
-                                        </span>
-                                    <?php else: ?>
-                                        <span class="badge badge-pill badge-danger">
+                                    <span class="badge badge-pill badge-success">
                                         <h6 style="margin-bottom: 0rem;"><?=$v_DataStudents->recruit_status?></h6>
-                                        </span>
+                                    </span>
+                                    <?php else: ?>
+                                    <span class="badge badge-pill badge-danger">
+                                        <h6 style="margin-bottom: 0rem;"><?=$v_DataStudents->recruit_status?></h6>
+                                    </span>
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                <?php if($v_DataStudents->recruit_status != "ผ่านการตรวจสอบ"): ?>
+                                    <?php if($v_DataStudents->recruit_status != "ผ่านการตรวจสอบ"): ?>
                                     <a href="<?=base_url('login'); ?>" class="btn btn-warning btn-sm">แก้ไขการสมัคร</a>
                                     <?php endif; ?>
                                 </td>
+                                <td>
+                                    <span class="badge badge-pill badge-info">
+                                        <h6 style="margin-bottom: 0rem;">รอรายงานตัว</h6>
+                                    </span>
+
+                                </td>
                             </tr>
-                           <?php endforeach; ?>
+                            <?php endforeach; ?>
 
                         </tbody>
                     </table>

@@ -146,7 +146,12 @@
 
          <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=9"></script>
          <script src="<?=base_url()?>asset/js/login.js?v=5"></script>
-
+<script>
+    
+    $(document).ready( function () {
+    $('#TB_CheckRegister').DataTable();
+} );
+</script>
          <!-- Histats.com  START  (aync)-->
          <script type="text/javascript">
 var _Hasync = _Hasync || [];
