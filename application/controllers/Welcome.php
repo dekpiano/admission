@@ -149,7 +149,7 @@ class Welcome extends CI_Controller {
 		$db2 = $this->load->database('skjmain', TRUE);	
 		$data['title'] = "เช็คข้อมูลการสมัครเรียน ".$data['checkYear'][0]->openyear_year;
 		$data['description'] = "เช็คข้อมูลการสมัครเรียนแบบเรียลไทม์";
-		$data['banner'] = base_url()."asset/img/Statistics.png";
+		$data['banner'] = base_url()."uploads/confirm/logoCheckData.PNG";
 		$data['url'] = "CheckRegister";
 	
 		//echo '<pre>'; print_r($data); exit();

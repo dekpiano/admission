@@ -44,9 +44,17 @@
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <span class="badge badge-pill badge-info">
-                                        <h6 style="margin-bottom: 0rem;">รอรายงานตัว</h6>
-                                    </span>
+                                    <?php if($v_DataStudents->recruit_status == "ผ่านการตรวจสอบ"): ?>
+                                        <?php  if($switch[0]->onoff_report == "on"): ?>                                  
+                                        <a href="<?=base_url('Confirm')?>" class="btn btn-info">
+                                        รอรายงานตัว
+                                        </a>
+                                        <?php else : ?>
+                                            <a href="#" data-toggle="modal" data-target="#AlertConfirm" class="btn btn-info">
+                                        รอรายงานตัว
+                                        </a>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
 
                                 </td>
                             </tr>

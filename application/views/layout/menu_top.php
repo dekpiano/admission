@@ -41,6 +41,10 @@
                     <li  class="nav-item">
                         <a style="color: white;" class="nav-link" href="<?=base_url('Confirm')?>"> <i class="fas fa-user-edit"></i> รายงานตัว</a>
                     </li>
+                    <?php else :  ?>
+                        <li  class="nav-item">
+                        <a style="color: white;" href="#" class="nav-link" data-toggle="modal" data-target="#AlertConfirm"> <i class="fas fa-user-edit"></i> รายงานตัว</a>
+                    </li>
                     <?php endif; ?>
                 </ul>
             </div>

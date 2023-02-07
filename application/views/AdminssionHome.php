@@ -197,7 +197,7 @@ table thead tr th {
                                 <button type="button" class="btn btn-outline-light" data-bs-toggle="modal"
                                     data-bs-target="#myModal" style="font-size:34px;">
                                     <?=$switch[0]->onoff_regis == "on"?"สมัครเรียนเลย ที่นี่...": $switch[0]->onoff_comment?>
-                                    
+
                                 </button>
                             </div>
 
@@ -226,37 +226,31 @@ table thead tr th {
     </div>
 </div>
 
-<?php  if($switch[0]->onoff_report == "on"): ?>
+
 <div class="bg-white p-5">
     <div class="row  justify-content-center">
-        <div class="col-md-6  align-self-center">
-        <img src="https://img.freepik.com/free-vector/tiny-hr-manager-looking-candidate-job-interview-magnifier-computer-screen-flat-vector-illustration-career-employment_74855-8619.jpg?w=996&t=st=1675070479~exp=1675071079~hmac=896bbf82a8c06eab169bb4542c4005c8b0663176e08dc713312d58520ef2ac65" alt="marsmello"
-                        class="img-fluid aos-init aos-animate" data-aos="zoom-in-up" style="width:100%">
+        <div class="col-md-4  align-self-center">
+            <img src="https://img.freepik.com/free-vector/tiny-hr-manager-looking-candidate-job-interview-magnifier-computer-screen-flat-vector-illustration-career-employment_74855-8619.jpg?w=996&t=st=1675070479~exp=1675071079~hmac=896bbf82a8c06eab169bb4542c4005c8b0663176e08dc713312d58520ef2ac65"
+                alt="marsmello" class="img-fluid aos-init aos-animate" data-aos="zoom-in-up" style="width:100%">
         </div>
-        <div class="col-md-6  align-self-center">
-        <h1>รายงานตัว</h1>
-        <h5>
-            เมื่อผ่านการตรวจสอบแล้ว นักเรียนสามารถรายงานตัว กรอกข้อมูลประวัติส่วนตัว ของนักเรียน และผู้ปกครอง เพื่อเป็นการรายงานเข้าเรียน ณ โรงเรียนแห่งนี้ 
-        </h5>
-        <a href="<?=base_url('Confirm');?>" class="btn btn-outline-primary"
-        style="font-size:26px;">รายงานตัว</a>
+        <div class="col-md-4  align-self-center">
+            <h2>ตรวจสอบการสมัครเรียน</h2>
+            <h5>
+            นักเรียนสามารถตรวจสอบสถานะว่า ผ่านการตรวจสอบ หรือต้องแก้ไขข้อมูลหรือไม่ <br> เมื่อผ่านการตรวจสอบแล้ว รอการรายงานตัวผ่านระบบออนไลน์ ในวันที่กำหนด
+            </h5>
+            <a href="<?=base_url('CheckRegister');?>" class="btn btn-outline-primary" style="font-size:26px;">ตรวจสอบการสมัครเรียน</a>
         </div>
-    </div>
-</div>
-<?php endif; ?>
-
-<div class="container p-5">
-    <div class="row justify-content-center">
-        <div class="col-md-5 align-self-center">
-        <img src="https://img.freepik.com/free-vector/illustration-checklist-clipboard_53876-37233.jpg?w=740&t=st=1675069565~exp=1675070165~hmac=88fabebd0a95ef41b3cbcce53ff7c2f55c474787877cdd7a90187529f432a823" alt="marsmello"
-                        class="img-fluid aos-init aos-animate" data-aos="zoom-in-up" style="width:100%">
-        </div>
-        <div class="col-md-6 align-self-center">
-            <h1>ตรวจสอบการสมัครเรียน</h1>
-            <h5>นักเรียนสามารถตรวจสอบสถานะว่า ผ่านการตรวจสอบ หรือต้องแก้ไขข้อมูลหรือไม่</h5>
-            <h5>เมื่อผ่านการตรวจสอบแล้ว รอการรายงานตัวผ่านระบบออนไลน์ ในวันที่กำหนด</h5>
-        <a href="<?=base_url('CheckRegister');?>" class="btn btn-outline-primary"
-        style="font-size:26px;">ตรวจสอบการสมัครเรียน</a>
+        <div class="col-md-4  align-self-center pt-3">
+            <h2>รายงานตัวออนไลน์</h2>
+            <h5>
+                เมื่อผ่านการตรวจสอบแล้ว นักเรียนสามารถรายงานตัว กรอกข้อมูลประวัติส่วนตัว ของนักเรียน และผู้ปกครอง
+                เพื่อเป็นการรายงานเข้าเรียน ณ โรงเรียนแห่งนี้
+            </h5>
+            <?php  if($switch[0]->onoff_report == "on"): ?>
+            <a href="<?=base_url('Confirm');?>" class="btn btn-outline-primary" style="font-size:26px;">รายงานตัวออนไลน์</a>
+            <?php else : ?>
+                <a href="#" data-toggle="modal" data-target="#AlertConfirm" class="btn btn-outline-primary" style="font-size:26px;">รายงานตัวออนไลน์</a>
+            <?php endif; ?>
         </div>
     </div>
 </div>

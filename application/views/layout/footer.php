@@ -25,6 +25,25 @@
 
          </body>
 
+         <!-- Modal แจ้งเตือนรายงานตัวออนไลน์ -->
+<div class="modal fade" id="AlertConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">แจ้งเตือน</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="alert alert-danger" role="alert">  ระบบยังไม่เปิดให้รายงานตัว กรุณารอ... </div>
+        ** หมั่นตรวจสอบข้อมูลหน้าเว็บไซต์รับสมัครนักเรียน หรือ เพจ Facebook โรงเรียน สกจ.
+      </div>
+ 
+    </div>
+  </div>
+</div>
+
          <!-- Modal-->
          <div id="LoginAdmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
              class="modal fade text-left">

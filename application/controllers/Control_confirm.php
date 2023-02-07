@@ -23,8 +23,8 @@ class Control_confirm extends CI_Controller {
 
 		$data['title'] = 'รายงานตัวออนไลน์';
 		$data['description'] = 'ระบบรายงานตัวออนไลน์';
-		$data['banner'] = base_url()."uploads/banner65-1.png";
-		$data['url'] = "welcome";
+		$data['banner'] = base_url()."uploads/confirm/logo.PNG";
+		$data['url'] = "Confirm";
 		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
 		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();

@@ -87,20 +87,20 @@ input {
 <div class="vh-100">
     <div class="container bg-white pb-5">
         <div class="row d-flex justify-content-start align-items-center mt-sm-5">
-            <div class="col-lg-7 col-md-7 col-10">
+            <div class="col-lg-7 col-md-7 col-12">
                 <div class="pb-5">
                     <img src="https://img.freepik.com/free-vector/woman-standing-mammography-machine-examination-disease-diagnosis_74855-11248.jpg?w=740&t=st=1675048019~exp=1675048619~hmac=6e3fa360d90084c342c29d0c81d4eb779b6d00d88a3ea3cc00721cf98e32c98b"
                         class="img-fluid" alt="">
                 </div>
             </div>
             <div class="col-lg-4  col-md-5">
-                <div class="text-center">
+                <div class="text-center d-none">
                     <img src="https://skj.ac.th/uploads/logo/LogoSKJ_4.png" class="img-fluid" style="width: 64px;"
                         alt="KMUTNB">
                 </div>
                 <div class="mt-3">
                     <div class="text-center">
-                        <h5>รายงานตัวนักเรียนใหม่ออนไลน์</h5>
+                        <h3>รายงานตัวนักเรียนใหม่ออนไลน์</h3>
                     </div>
 
                     <form id="loginConfirmStudent" method="post" class="needs-validation mt-5" novalidate>
@@ -118,13 +118,13 @@ input {
                         </div>
                         <p class="mb-0">
                             <a href="https://www.canva.com/design/DAE8dEvbv_0/0BOZnsblL5N2guiWoMXeng/view?utm_content=DAE8dEvbv_0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
-                                target="_blank" class="text-center">คู่มือการใช้งานระบบ</a>
+                                target="_blank" class="text-center">คู่มือการใช้งานระบบรายงานตัวออนไลน์</a>
 
                         </p>
-                        <p class="mb-0">
+                        <!-- <p class="mb-0">
                             <a href="../stepMatriculation.pdf" target="_blank"
                                 class="text-center">ขั้นตอนการรายงานตัวออนไลน์</a>
-                        </p>
+                        </p> -->
 
                         </p>
 
