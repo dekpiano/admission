@@ -43,17 +43,23 @@
                                     <a href="<?=base_url('login'); ?>" class="btn btn-warning btn-sm">แก้ไขการสมัคร</a>
                                     <?php endif; ?>
                                 </td>
-                                <td>
+                                <td> 
                                     <?php if($v_DataStudents->recruit_status == "ผ่านการตรวจสอบ"): ?>
-                                        <?php  if($switch[0]->onoff_report == "on"): ?>                                  
-                                        <a href="<?=base_url('Confirm')?>" class="btn btn-info">
+                                    <?php  if($switch[0]->onoff_report == "on"): ?>
+                                    <?php if($v_DataStudents->stu_id != null &&  $v_DataStudents->stu_UpdateConfirm >= $checkYear[0]->openyear_year): ?>
+                                    <a href="<?=base_url('Confirm')?>" class="btn btn-success">
+                                        รายงานตัวแล้ว
+                                    </a>
+                                    <?php else: ?>
+                                    <a href="<?=base_url('Confirm')?>" class="btn btn-info">
                                         รอรายงานตัว
-                                        </a>
-                                        <?php else : ?>
-                                            <a href="#" data-toggle="modal" data-target="#AlertConfirm" class="btn btn-info">
+                                    </a>
+                                    <?php endif; ?>
+                                    <?php else : ?>
+                                    <a href="#" data-toggle="modal" data-target="#AlertConfirm" class="btn btn-info">
                                         รอรายงานตัว
-                                        </a>
-                                        <?php endif; ?>
+                                    </a>
+                                    <?php endif; ?>
                                     <?php endif; ?>
 
                                 </td>

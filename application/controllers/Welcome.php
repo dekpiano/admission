@@ -129,18 +129,37 @@ class Welcome extends CI_Controller {
 	public function CheckRegister(){
 
 		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
-		$data['DataStudents'] = $this->db->select('
-		recruit_id,
-		recruit_regLevel,
-		recruit_prefix,
-		recruit_firstName,
-		recruit_lastName,
-		recruit_tpyeRoom,
-		recruit_status,
-		recruit_category')->from('tb_recruitstudent')
-		->where('recruit_year',$data['checkYear'][0]->openyear_year)
-		->order_by('recruit_id','ASC')->get()->result();
-		//echo '<pre>'; print_r($data['year']); exit();
+		// $data['DataStudents'] = $this->db->select('
+		// recruit_id,
+		// recruit_regLevel,
+		// recruit_prefix,
+		// recruit_firstName,
+		// recruit_lastName,
+		// recruit_tpyeRoom,
+		// recruit_status,
+		// recruit_category,
+		// recruit_idCard')->from('tb_recruitstudent')
+		// ->where('recruit_year',$data['checkYear'][0]->openyear_year)
+		// ->order_by('recruit_id','ASC')->get()->result();
+
+		$this->db->select('skjacth_admission.tb_recruitstudent.recruit_id,
+		skjacth_admission.tb_recruitstudent.recruit_regLevel,
+		skjacth_admission.tb_recruitstudent.recruit_prefix,
+		skjacth_admission.tb_recruitstudent.recruit_firstName,
+		skjacth_admission.tb_recruitstudent.recruit_lastName,
+		skjacth_admission.tb_recruitstudent.recruit_status,
+		skjacth_admission.tb_recruitstudent.recruit_tpyeRoom,
+		skjacth_admission.tb_recruitstudent.recruit_idCard,
+		skjacth_admission.tb_recruitstudent.recruit_category,
+		skjacth_personnel.tb_students.stu_id,
+		skjacth_personnel.tb_students.stu_UpdateConfirm');
+		$this->db->from('skjacth_admission.tb_recruitstudent');
+		$this->db->join('skjacth_personnel.tb_students','skjacth_admission.tb_recruitstudent.recruit_idCard = skjacth_personnel.tb_students.stu_iden','LEFT');
+		$this->db->where('recruit_year',$data['checkYear'][0]->openyear_year);
+		$this->db->order_by('recruit_id','DESC');
+		$data['DataStudents'] =	$this->db->get()->result();
+
+		//echo '<pre>'; print_r($data['DataStudents']); exit();
 		
 
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();

@@ -81,6 +81,7 @@ class Control_confirm extends CI_Controller {
 		$stu_birthDay = $this->input->post('stu_day').'-'.$this->input->post('stu_month').'-'.$this->input->post('stu_year');
 
 		$data = array(  'stu_iden' => $this->input->post('stu_iden'),
+						'stu_UpdateConfirm' => $this->input->post('stu_UpdateConfirm'),
 						'stu_prefix' => $this->input->post('stu_prefix'),
 						'stu_fristName' =>$this->input->post('stu_fristName') ,
 						'stu_lastName' => $this->input->post('stu_lastName'), 
@@ -150,6 +151,7 @@ class Control_confirm extends CI_Controller {
 
 		$data = array( 
 						'stu_prefix' => $this->input->post('stu_prefix'),
+						'stu_UpdateConfirm' => $this->input->post('stu_UpdateConfirm'),
 						'stu_fristName' =>$this->input->post('stu_fristName') ,
 						'stu_lastName' => $this->input->post('stu_lastName'), 
 						'stu_nickName' => $this->input->post('stu_nickName'), 
