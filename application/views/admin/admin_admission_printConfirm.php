@@ -60,12 +60,11 @@
                                 <tr>
                                     <td>
                                         <?php
-                                            if($v_recruit->stu_id == null){
-                                                echo '<h4><span class="badge badge-pill badge-danger">ยังไม่ได้รายงานตัว</span></h4>';
+                                            if($v_recruit->stu_id != null && $v_recruit->stu_UpdateConfirm >= $checkYear[0]->openyear_year){
+                                                echo '<h4><span class="badge badge-pill badge-success">รายงานตัวแล้ว</span></h4>';
                                             }else{                                              
-                                                echo '<h4><span class=" badge badge-pill badge-success">รายงานตัวแล้ว</span></h4>';
+                                                echo '<h4><span class=" badge badge-pill badge-danger">ยังไม่ได้รายงานตัว</span></h4>';
                                             }
-
                                             ?>
                                     </td>
                                     <td>
@@ -82,14 +81,15 @@
                                     </td>
 
                                     <td>
-                                        <?php if($v_recruit->stu_id == null): ?>
-                                        <button type="button" class="btn btn-primary" disabled>
-                                            <i class="fas fa-print"></i> รอรายงานตัว</button>
-                                        <?php else : ?>
-                                        <a target="_blank"
+                                        <?php if($v_recruit->stu_id != null && $v_recruit->stu_UpdateConfirm >= $checkYear[0]->openyear_year): ?>
+                                            <a target="_blank"
                                             href="<?=base_url('admin/Control_admin_confirm/pdfConfirm/'.$this->uri->segment(3).'/'.$v_recruit->recruit_idCard);?>"
                                             class="btn btn-primary btn-sm"><i class="fas fa-print"></i>
                                             พิมพ์ใบรายงานตัว</a>
+                                        <?php else : ?>
+                                            <button type="button" class="btn btn-primary" disabled>
+                                            <i class="fas fa-print"></i> รอรายงานตัว</button>
+                                       
                                         <?php endif; ?>
 
                                     </td>

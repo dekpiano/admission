@@ -31,7 +31,8 @@ class Control_admin_confirm extends CI_Controller {
 		skjacth_admission.tb_recruitstudent.recruit_category,
 		skjacth_admission.tb_recruitstudent.recruit_img,
 		skjacth_admission.tb_recruitstudent.recruit_phone,
-		skjacth_personnel.tb_students.stu_id');
+		skjacth_personnel.tb_students.stu_id,
+		skjacth_personnel.tb_students.stu_UpdateConfirm');
 		$this->db->from('skjacth_admission.tb_recruitstudent');
 		$this->db->join('skjacth_personnel.tb_students','skjacth_admission.tb_recruitstudent.recruit_idCard = skjacth_personnel.tb_students.stu_iden','LEFT');
 		$this->db->where('recruit_year',$year);
