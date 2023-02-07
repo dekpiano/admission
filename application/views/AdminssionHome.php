@@ -227,7 +227,7 @@ table thead tr th {
 </div>
 
 
-<div class="bg-white p-5">
+<div class="p-5">
     <div class="row  justify-content-center">
         <div class="col-md-4  align-self-center">
             <img src="https://img.freepik.com/free-vector/tiny-hr-manager-looking-candidate-job-interview-magnifier-computer-screen-flat-vector-illustration-career-employment_74855-8619.jpg?w=996&t=st=1675070479~exp=1675071079~hmac=896bbf82a8c06eab169bb4542c4005c8b0663176e08dc713312d58520ef2ac65"
