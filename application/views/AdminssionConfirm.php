@@ -103,21 +103,28 @@ input {
                         <h3>รายงานตัวนักเรียนใหม่ออนไลน์</h3>
                     </div>
 
-                    <form id="loginConfirmStudent" method="post" class="needs-validation mt-5" novalidate>
+                    <form id="loginConfirmStudent" class="needs-validation mt-5" novalidate>
                         <div class="d-flex flex-column pb-3">
                             <label for="email">เลขบัตรประจำตัวประชาชน</label>
-                            <input type="text" id="idenStu" name="idenStu" class="border-bottom border-primary" autocomplete="off"
-                                placeholder="หมายเลขบัตรประจำตัวประชาชน" data-inputmask="'mask': '9-9999-99999-99-9'"
-                                required>
+                            <input type="text" id="idenStu" name="idenStu" class="border-bottom border-primary"
+                                autocomplete="off" placeholder="หมายเลขบัตรประจำตัวประชาชน"
+                                data-inputmask="'mask': '9-9999-99999-99-9'" required>
+                            <div class="invalid-feedback">
+                                กรุณากรอกข้อมูลหมายเลขบัตรประจำตัวประชาชน
+                            </div>
                         </div>
                         <div class="d-flex flex-column pb-3">
                             <label for="email">เบอร์โทรศัพท์</label>
-                            <input type="text" id="recruit_phone" name="recruit_phone" class="border-bottom border-primary" autocomplete="off"
-                                placeholder="กรอกเบอร์โทรศัพท์ที่ใช้สมัครเท่านั้น" data-inputmask="'mask': '99-9999-9999'"
-                                required>
+                            <input type="text" id="recruit_phone" name="recruit_phone"
+                                class="border-bottom border-primary" autocomplete="off"
+                                placeholder="กรอกเบอร์โทรศัพท์ที่ใช้สมัครเท่านั้น"
+                                data-inputmask="'mask': '99-9999-9999'" required>
+                            <div class="invalid-feedback">
+                                กรุณากรอกเบอร์โทรศัพท์
+                            </div>
                         </div>
                         <input type="submit" id="submit" value="เข้าสู่ระบบ" class="btn btn-primary btn-block mb-3">
-                        
+
 
                         <div class="col-12">
                             <p><span class="text-info">
@@ -219,7 +226,8 @@ input {
             <p class="mb-0">เมื่อทำต้องขั้นตอนขอระบบ นักเรียนจะเสร็จไวขึ้น
                 <b>นักเรียนคนที่มากรอกข้อมูลที่โรงเรียนจะทำให้เสียเวลา</b>
             </p>
-            <p class="mb-0">เมื่อนักเรียนมีปัญหาในการกรอกข้อมูล ในติดต่อช่องแชท ในเพจ Facebook โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์
+            <p class="mb-0">เมื่อนักเรียนมีปัญหาในการกรอกข้อมูล ในติดต่อช่องแชท ในเพจ Facebook โรงเรียนสวนกุหลาบวิทยาลัย
+                (จิรประวัติ) นครสวรรค์
                 <b> <a href="https://m.me/SKJNS160">แจ้งปัญหาที่นี่</a> </b>
             </p>
         </div>

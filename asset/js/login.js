@@ -1,5 +1,5 @@
 // Login รายงานตั้วนักเรียนใหม่
-$("#loginConfirmStudent").on('submit', function(e) {
+$(document).on('submit', "#loginConfirmStudent", function(e) {
     e.preventDefault();
 
     var login = $(this);
@@ -9,7 +9,7 @@ $("#loginConfirmStudent").on('submit', function(e) {
         type: 'post',
         data: login.serialize(),
         success: function(response) {
-            console.log(response);
+            //console.log(response);
             if (response == 1) {
                 //alert(1);
                 location.reload();

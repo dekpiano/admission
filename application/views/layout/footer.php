@@ -156,15 +156,14 @@
          <?php if($this->uri->segment(1) == "RegStudent"):?>
          <script src="<?=base_url()?>asset/js/AutoProvince.js?v=6"></script>
          <?php elseif($this->uri->segment(1) == "Confirm"):?>
-         <script src="<?=base_url()?>asset/js/ConfirmStudent.js?v=14"></script>
+         <script src="<?=base_url()?>asset/js/ConfirmStudent.js?v=14"></script>         
+         <script src="<?=base_url()?>asset/js/login.js?v=7"></script>
          <?php endif; ?>
 
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.5/dist/sweetalert2.all.min.js"></script>
          <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=2"></script>
-
          <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=9"></script>
-         <script src="<?=base_url()?>asset/js/login.js?v=5"></script>
 <script>
     
     $(document).ready( function () {
@@ -237,7 +236,7 @@ $("#par_IdNumberO").inputmask("9-9999-99999-99-9",{ "onincomplete": function(){ 
                 if (form.checkValidity() === false) {
                     event.preventDefault();
                     event.stopPropagation();
-                    Swal.fire("แจ้งเตือน", "กรุณากรอกข้อมูลให้ครบ!", "warning")
+                    // Swal.fire("แจ้งเตือน", "กรุณากรอกข้อมูลให้ครบ!", "warning")
                 }
                 form.classList.add('was-validated');
             }, false);
