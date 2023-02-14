@@ -71,4 +71,4 @@
 
 <body style="font-family:Sarabun">
 
-    <div class="page">
+    <div class="">

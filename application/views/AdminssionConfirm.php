@@ -106,11 +106,18 @@ input {
                     <form id="loginConfirmStudent" method="post" class="needs-validation mt-5" novalidate>
                         <div class="d-flex flex-column pb-3">
                             <label for="email">เลขบัตรประจำตัวประชาชน</label>
-                            <input type="text" id="idenStu" name="idenStu" class="border-bottom border-primary"
+                            <input type="text" id="idenStu" name="idenStu" class="border-bottom border-primary" autocomplete="off"
                                 placeholder="หมายเลขบัตรประจำตัวประชาชน" data-inputmask="'mask': '9-9999-99999-99-9'"
                                 required>
                         </div>
+                        <div class="d-flex flex-column pb-3">
+                            <label for="email">เบอร์โทรศัพท์</label>
+                            <input type="text" id="recruit_phone" name="recruit_phone" class="border-bottom border-primary" autocomplete="off"
+                                placeholder="กรอกเบอร์โทรศัพท์ที่ใช้สมัครเท่านั้น" data-inputmask="'mask': '99-9999-9999'"
+                                required>
+                        </div>
                         <input type="submit" id="submit" value="เข้าสู่ระบบ" class="btn btn-primary btn-block mb-3">
+                        
 
                         <div class="col-12">
                             <p><span class="text-info">
