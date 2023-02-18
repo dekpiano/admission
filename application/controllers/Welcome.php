@@ -151,6 +151,7 @@ class Welcome extends CI_Controller {
 		skjacth_admission.tb_recruitstudent.recruit_tpyeRoom,
 		skjacth_admission.tb_recruitstudent.recruit_idCard,
 		skjacth_admission.tb_recruitstudent.recruit_category,
+		skjacth_admission.tb_recruitstudent.recruit_statusSurrender,
 		skjacth_personnel.tb_students.stu_id,
 		skjacth_personnel.tb_students.stu_UpdateConfirm');
 		$this->db->from('skjacth_admission.tb_recruitstudent');
