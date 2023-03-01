@@ -29,13 +29,13 @@ class Welcome extends CI_Controller {
 	    $DBPers = $this->load->database('skjpers', TRUE);
 
 		$data['title'] = "ระบบรับสมัครนักเรียนปีการศึกษา ".$data['checkYear'][0]->openyear_year;
-		$data['description'] = "รับสมัครนักเรียน ม.1 และ ม.4 ใหม่ ปีการศึกษา ".$data['checkYear'][0]->openyear_year;
+		$data['description'] = "รับสมัครนักเรียน ม.1 และ ม.4 และนักกีฬาใหม่ ปีการศึกษา ".$data['checkYear'][0]->openyear_year;
 		$data['banner'] = base_url()."uploads/banner2566.png";
 		$data['url'] = "welcome";
 
 		// $data['regis'] = $this->db->select('recruit_id,recruit_prefix,recruit_firstName,recruit_lastName,recruit_regLevel,recruit_tpyeRoom,recruit_date,recruit_year,recruit_category,recruit_status')->from('tb_recruitstudent')->where('recruit_year',$data['checkYear'][0]->openyear_year)->order_by('recruit_id','DESC')->get()->result();
 
-		//echo "<pre>"; print_r($data['regis']); exit();
+		//echo "<pre>"; print_r($data['quota']); exit();
 
 		$this->db->select('
 		tb_recruitstudent.recruit_id,

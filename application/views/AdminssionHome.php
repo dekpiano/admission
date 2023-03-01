@@ -187,15 +187,23 @@ table thead tr th {
                                 <h1 class="font-weight-medium"> รับสมัครนักเรียน 2566
                                 </h1>
                             </div>
-                            <p class="mt-3">รอบโควตา (โรงเรียนในเขตพิ้นที่บริการ) ในระดับชั้น ม.1
 
-                                <br>
-                                (ม.3 เดิม) ในระดับชั้น ม.4 ปีการศึกษา 2566
-                            </p>
+                            <?php foreach ($quota as $key => $v_quota) :
+                            if($v_quota->quota_status == "on"):
+                               
+                            ?>                            
+                            <h3 class="mt-3">
+                               <u> <?=$v_quota->quota_explain;?></u>
+                            </h3>
+                            <?php 
+                                endif;
+                             endforeach; ?>
+
+                            
 
                             <div class="text-center mt-5">
-                                <button type="button" class="btn btn-outline-light" data-bs-toggle="modal"
-                                    data-bs-target="#myModal" style="font-size:34px;">
+                                <button type="button" class="btn btn-outline-light" data-toggle="modal"
+                                    data-target="#myModal" style="font-size:34px;">
                                     <?=$switch[0]->onoff_regis == "on"?"สมัครเรียนเลย ที่นี่...": $switch[0]->onoff_comment?>
 
                                 </button>
@@ -236,9 +244,11 @@ table thead tr th {
         <div class="col-md-4  align-self-center">
             <h2>ตรวจสอบการสมัครเรียน</h2>
             <h5>
-            นักเรียนสามารถตรวจสอบสถานะว่า ผ่านการตรวจสอบ หรือต้องแก้ไขข้อมูลหรือไม่ <br> เมื่อผ่านการตรวจสอบแล้ว รอการรายงานตัวผ่านระบบออนไลน์ ในวันที่กำหนด
+                นักเรียนสามารถตรวจสอบสถานะว่า ผ่านการตรวจสอบ หรือต้องแก้ไขข้อมูลหรือไม่ <br> เมื่อผ่านการตรวจสอบแล้ว
+                รอการรายงานตัวผ่านระบบออนไลน์ ในวันที่กำหนด
             </h5>
-            <a href="<?=base_url('CheckRegister');?>" class="btn btn-outline-primary" style="font-size:26px;">ตรวจสอบการสมัครเรียน</a>
+            <a href="<?=base_url('CheckRegister');?>" class="btn btn-outline-primary"
+                style="font-size:26px;">ตรวจสอบการสมัครเรียน</a>
         </div>
         <div class="col-md-4  align-self-center pt-3">
             <h2>รายงานตัวออนไลน์</h2>
@@ -247,9 +257,11 @@ table thead tr th {
                 เพื่อเป็นการรายงานเข้าเรียน ณ โรงเรียนแห่งนี้
             </h5>
             <?php  if($switch[0]->onoff_report == "on"): ?>
-            <a href="<?=base_url('Confirm');?>" class="btn btn-outline-primary" style="font-size:26px;">รายงานตัวออนไลน์</a>
+            <a href="<?=base_url('Confirm');?>" class="btn btn-outline-primary"
+                style="font-size:26px;">รายงานตัวออนไลน์</a>
             <?php else : ?>
-                <a href="#" data-toggle="modal" data-target="#AlertConfirm" class="btn btn-outline-primary" style="font-size:26px;">รายงานตัวออนไลน์</a>
+            <a href="#" data-toggle="modal" data-target="#AlertConfirm" class="btn btn-outline-primary"
+                style="font-size:26px;">รายงานตัวออนไลน์</a>
             <?php endif; ?>
         </div>
     </div>
@@ -451,7 +463,7 @@ table thead tr th {
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 id="exampleModalLabel" class="modal-title">เลือกการสมัคร</h4>
-                        <button type="button" data-bs-dismiss="modal" aria-label="Close" class="close"><span
+                        <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span
                                 aria-hidden="true">×</span></button>
                     </div>
                     <div class="modal-body">
@@ -465,12 +477,17 @@ table thead tr th {
                             <div class="col-md-6">
                                 <div class="card" style="border: 2px solid #2b90d9;">
                                     <div class="card-body">
+                                        <?php if($v_quota->quota_key == "quotasport"):?>
+                                        <h6 class="card-title text-danger">(**เฉพาะนักเรียนที่ผ่านการคัดตัวเท่านั้น**)
+                                        </h6>
+                                        <?php endif; ?>
                                         <h5 class="card-title"><?=$v_quota->quota_explain?></h5>
                                         <?php  $q = explode("|",$v_quota->quota_level);
                                         foreach ($q as $key => $v_q) : ?>
                                         <a href="<?=base_url('RegStudent/'.$v_q.'/'.$v_quota->quota_key);?>"
-                                            class="btn btn-primary">สมัครเรียน ม.<?=$v_q;?></a>
+                                            class="btn btn-primary mb-2">สมัครเรียน ม.<?=$v_q;?></a>
                                         <?php endforeach; ?>
+
                                     </div>
                                 </div>
                             </div>
