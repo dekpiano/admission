@@ -12,7 +12,8 @@
                      </div>
 
                      <div class="col-sm-3 text-right">
-                         <p>Design by <a href="<?=base_url('loginAdmin');?>" class="" data-toggle1="modal" data-target1="#LoginAdmin">Dekpiano</a>
+                         <p>Design by <a href="<?=base_url('loginAdmin');?>" class="" data-toggle1="modal"
+                                 data-target1="#LoginAdmin">Dekpiano</a>
                          </p>
                          <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
                      </div>
@@ -26,23 +27,24 @@
          </body>
 
          <!-- Modal แจ้งเตือนรายงานตัวออนไลน์ -->
-<div class="modal fade" id="AlertConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">แจ้งเตือน</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <div class="alert alert-danger" role="alert">  ระบบยังไม่เปิดให้รายงานตัว กรุณารอ... </div>
-        ** หมั่นตรวจสอบข้อมูลหน้าเว็บไซต์รับสมัครนักเรียน หรือ เพจ Facebook โรงเรียน สกจ.
-      </div>
- 
-    </div>
-  </div>
-</div>
+         <div class="modal fade" id="AlertConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <h5 class="modal-title" id="exampleModalLabel">แจ้งเตือน</h5>
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                         </button>
+                     </div>
+                     <div class="modal-body">
+                         <div class="alert alert-danger" role="alert"> ระบบยังไม่เปิดให้รายงานตัว กรุณารอ... </div>
+                         ** หมั่นตรวจสอบข้อมูลหน้าเว็บไซต์รับสมัครนักเรียน หรือ เพจ Facebook โรงเรียน สกจ.
+                     </div>
+
+                 </div>
+             </div>
+         </div>
 
          <!-- Modal-->
          <div id="LoginAdmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
@@ -77,52 +79,52 @@
              </div>
          </div>
 
-           <!-- Modal-->
-        <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-            class="modal fade text-left">
-            <div role="document" class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 id="exampleModalLabel" class="modal-title">เลือกการสมัคร</h4>
-                        <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span
-                                aria-hidden="true">×</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <?php if($switch[0]->onoff_regis == "off") :?>
-                        <?php echo $switch[0]->onoff_comment; ?>
-                        <?php else : ?>
+         <!-- Modal-->
+         <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+             class="modal fade text-left">
+             <div role="document" class="modal-dialog modal-dialog-centered modal-lg">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <h4 id="exampleModalLabel" class="modal-title">เลือกการสมัคร</h4>
+                         <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span
+                                 aria-hidden="true">×</span></button>
+                     </div>
+                     <div class="modal-body">
+                         <?php if($switch[0]->onoff_regis == "off") :?>
+                         <?php echo $switch[0]->onoff_comment; ?>
+                         <?php else : ?>
 
-                        <div class="row">
-                            <?php foreach ($quota as $key => $v_quota) :?>
-                            <?php if($v_quota->quota_status == "on"): ?>
-                            <div class="col-md-6">
-                                <div class="card" style="border: 2px solid #2b90d9;">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><?=$v_quota->quota_explain?></h5>
-                                        <?php if($v_quota->quota_key == "quotasport"):?>
-                                        <h6 class="card-title text-danger">(เฉพาะนักเรียนที่ผ่านการคัดตัวเท่านั้น)
-                                        </h6>
-                                        <?php endif; ?>
-                                        <?php  $q = explode("|",$v_quota->quota_level);
+                         <div class="row">
+                             <?php foreach ($quota as $key => $v_quota) :?>
+                             <?php if($v_quota->quota_status == "on"): ?>
+                             <div class="col-md-6">
+                                 <div class="card" style="border: 2px solid #2b90d9;">
+                                     <div class="card-body">
+                                         <h5 class="card-title"><?=$v_quota->quota_explain?></h5>
+                                         <?php if($v_quota->quota_key == "quotasport"):?>
+                                         <h6 class="card-title text-danger">(เฉพาะนักเรียนที่ผ่านการคัดตัวเท่านั้น)
+                                         </h6>
+                                         <?php endif; ?>
+                                         <?php  $q = explode("|",$v_quota->quota_level);
                                         foreach ($q as $key => $v_q) : ?>
-                                        <a href="<?=base_url('RegStudent/'.$v_q.'/'.$v_quota->quota_key);?>"
-                                            class="btn btn-primary mb-1">สมัครเรียน ม.<?=$v_q;?></a>
-                                        <?php endforeach; ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php endif; ?>
-                            <?php endforeach; ?>
+                                         <a href="<?=base_url('RegStudent/'.$v_q.'/'.$v_quota->quota_key);?>"
+                                             class="btn btn-primary mb-1">สมัครเรียน ม.<?=$v_q;?></a>
+                                         <?php endforeach; ?>
+                                     </div>
+                                 </div>
+                             </div>
+                             <?php endif; ?>
+                             <?php endforeach; ?>
 
-                        </div>
-                        <?php endif; ?>
+                         </div>
+                         <?php endif; ?>
 
 
-                    </div>
+                     </div>
 
-                </div>
-            </div>
-        </div>
+                 </div>
+             </div>
+         </div>
 
          </html>
 
@@ -156,7 +158,7 @@
          <?php if($this->uri->segment(1) == "RegStudent"):?>
          <script src="<?=base_url()?>asset/js/AutoProvince.js?v=6"></script>
          <?php elseif($this->uri->segment(1) == "Confirm"):?>
-         <script src="<?=base_url()?>asset/js/ConfirmStudent.js?v=14"></script>         
+         <script src="<?=base_url()?>asset/js/ConfirmStudent.js?v=14"></script>
          <script src="<?=base_url()?>asset/js/login.js?v=7"></script>
          <?php endif; ?>
 
@@ -164,12 +166,15 @@
          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.5/dist/sweetalert2.all.min.js"></script>
          <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=2"></script>
          <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=9"></script>
-<script>
-    
-    $(document).ready( function () {
-    $('#TB_CheckRegister').DataTable();
-} );
-</script>
+         <script>
+$(document).ready(function() {
+    $('#TB_CheckRegister').DataTable ({
+        order: [
+            [0, 'desc']
+        ],
+    });
+});
+         </script>
          <!-- Histats.com  START  (aync)-->
          <script type="text/javascript">
 var _Hasync = _Hasync || [];
@@ -198,9 +203,10 @@ Swal.fire("แจ้งเตือน", "<?=$this->session->flashdata('messge')
          </script>
          <?php endif; $this->session->mark_as_temp('msg',20); ?>
          <script>
-             
-$(".checkPirnt").click(function(){
-    Swal.fire("แจ้งเตือน", "ให้นักเรียนตรวจสอบข้อมูล <br> -ข้อมูลนักเรียน (จำเป็นต้องกรอก)<br> -ข้อมูลบิดา มารดา ถ้ามีในกรอกทั้ง 2 คน หรือ ถ้าไม่มีกรอกข้อมูล บิดา หรือ มารดา ก็ได้ <br> -ข้อมูลผู้ปกครอง  (จำเป็นต้องกรอก)<br> .ให้ครบถ้วนก่อนถึงจะพิมพ์ใบยืนยันรายงานตัวได้", "warning");
+$(".checkPirnt").click(function() {
+    Swal.fire("แจ้งเตือน",
+        "ให้นักเรียนตรวจสอบข้อมูล <br> -ข้อมูลนักเรียน (จำเป็นต้องกรอก)<br> -ข้อมูลบิดา มารดา ถ้ามีในกรอกทั้ง 2 คน หรือ ถ้าไม่มีกรอกข้อมูล บิดา หรือ มารดา ก็ได้ <br> -ข้อมูลผู้ปกครอง  (จำเป็นต้องกรอก)<br> .ให้ครบถ้วนก่อนถึงจะพิมพ์ใบยืนยันรายงานตัวได้",
+        "warning");
 });
 //  Google Check
 function onHuman(response) {
@@ -214,10 +220,26 @@ var onloadCallback = function() {
 // รูปแบบการกรอก
 $(":input").inputmask();
 
-$("#idenStu").inputmask("9-9999-99999-99-9",{ "onincomplete": function(){ alert('กรอกเลขประจำตัวประชาชนให้ครบ 13 หลัก'); } });
-$("#par_IdNumber").inputmask("9-9999-99999-99-9",{ "onincomplete": function(){ alert('กรอกเลขประจำตัวประชาชนให้ครบ 13 หลัก'); } });
-$("#par_IdNumberM").inputmask("9-9999-99999-99-9",{ "onincomplete": function(){ alert('กรอกเลขประจำตัวประชาชนให้ครบ 13 หลัก'); } });
-$("#par_IdNumberO").inputmask("9-9999-99999-99-9",{ "onincomplete": function(){ alert('กรอกเลขประจำตัวประชาชนให้ครบ 13 หลัก'); } });
+$("#idenStu").inputmask("9-9999-99999-99-9", {
+    "onincomplete": function() {
+        alert('กรอกเลขประจำตัวประชาชนให้ครบ 13 หลัก');
+    }
+});
+$("#par_IdNumber").inputmask("9-9999-99999-99-9", {
+    "onincomplete": function() {
+        alert('กรอกเลขประจำตัวประชาชนให้ครบ 13 หลัก');
+    }
+});
+$("#par_IdNumberM").inputmask("9-9999-99999-99-9", {
+    "onincomplete": function() {
+        alert('กรอกเลขประจำตัวประชาชนให้ครบ 13 หลัก');
+    }
+});
+$("#par_IdNumberO").inputmask("9-9999-99999-99-9", {
+    "onincomplete": function() {
+        alert('กรอกเลขประจำตัวประชาชนให้ครบ 13 หลัก');
+    }
+});
 
 
 
@@ -310,6 +332,4 @@ $(document).ready(function() {
         ]
     });
 });
-
-
          </script>

@@ -43,8 +43,9 @@
                                 cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>สถานะการรายงานตัว</th>
                                         <th>สถานะการสมัคร</th>
+                                        <th>สถานะการรายงานตัว</th>
+                                       
                                         <th>คำสั่ง</th>
                                         <th>เลขที่สมัคร</th>
                                         <th>รูปภาพ</th>
@@ -58,16 +59,7 @@
                                 </thead>                               
                                 <?php foreach ($recruit as $key => $v_recruit) : ?>
                                 <tr>
-                                    <td>
-                                        <?php
-                                            if($v_recruit->stu_id != null && $v_recruit->stu_UpdateConfirm >= $checkYear[0]->openyear_year){
-                                                echo '<h4><span class="badge badge-pill badge-success">รายงานตัวแล้ว</span></h4>';
-                                            }else{                                              
-                                                echo '<h4><span class=" badge badge-pill badge-danger">ยังไม่ได้รายงานตัว</span></h4>';
-                                            }
-                                            ?>
-                                    </td>
-                                    <td>
+                                <td>
                                         <?php 
                                         if($v_recruit->recruit_status == "รอการตรวจสอบ"){
                                             echo '<h4><span class=" badge badge-pill badge-warning">'.$v_recruit->recruit_status.'</span></h4>';
@@ -79,6 +71,16 @@
                                         
                                     ?>
                                     </td>
+                                    <td>
+                                        <?php
+                                            if($v_recruit->stu_id != null && $v_recruit->stu_UpdateConfirm >= $checkYear[0]->openyear_year){
+                                                echo '<h4><span class="badge badge-pill badge-success">รายงานตัวแล้ว</span></h4>';
+                                            }else{                                              
+                                                echo '<h4><span class=" badge badge-pill badge-danger">ยังไม่ได้รายงานตัว</span></h4>';
+                                            }
+                                            ?>
+                                    </td>
+                                
 
                                     <td>
                                         <?php if($v_recruit->stu_id != null && $v_recruit->stu_UpdateConfirm >= $checkYear[0]->openyear_year): ?>

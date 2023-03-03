@@ -138,7 +138,7 @@
       <form action="" method="post" id="FormSurrender">
       <div class="modal-body">
       
-        <input type="text" name="recruit_id" id="recruit_id">
+        <input type="hidden" name="recruit_id" id="recruit_id">
         <h3>คุณจะยืนยันการมอบตัวของ... หรือไม่!!</h3> 
         <p class="text-danger">
             หมายเหตุ! การยืนยันที่ถูกต้องครบถ้วน คือ ใบนำทางถูกตรวจสอบครบทุกจุดแล้ว ถึงจะยืนยันการมอบตัวได้
