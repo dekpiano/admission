@@ -38,6 +38,10 @@
          <script src="<?=base_url()?>asset/js/skj.js?v=1003"></script>
          <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=2"></script>
 
+         <?php if($this->uri->segment(2) == "Surrender") :?>
+            <script src="<?=base_url()?>asset/js/Admin/AdminSurrender.js"></script>
+            <?php endif; ?>
+
          <?php $this->load->view('admin/chart/report_bar.php'); ?>
          <?php  if($this->session->flashdata('msg') == 'NO' ):?>
          <script>

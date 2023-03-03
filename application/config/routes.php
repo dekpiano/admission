@@ -89,6 +89,8 @@ $route['admin/Student/Update/(:any)'] = 'admin/Control_admin_admission/update_re
 
 $route['admin/PrintConfirm/(:any)'] = 'admin/Control_admin_confirm/PagePrintConnfirm/$1';
 
+$route['admin/Surrender/(:any)'] = 'admin/Control_admin_surrender/PageSurrenderMain/$1';
+
 $route['admin/admission/(:num)'] = 'admin/control_admin_admission/index/$1';
 $route['admin/admission/add'] = 'admin/control_admin_admission/add';
 

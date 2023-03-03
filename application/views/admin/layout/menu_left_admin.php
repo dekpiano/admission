@@ -12,20 +12,37 @@
     <span class="heading">ข้อมูลระบบ</span>
 
     <ul class="list-unstyled">
-        <li <?=$this->uri->segment('2') == "admission" ? 'class="active"' : ''?> > <a href="<?=base_url('admin/admission/'.$this->session->userdata('year'));?>"> <i class="far fa-edit"></i>
-                ข้อมูลรับสมัคร </a></li>
-        <li <?=$this->uri->segment('2') == "Statistic" ? 'class="active"' : ''?>> <a href="<?=base_url('admin/Statistic/'.$this->session->userdata('year'));?>"> <i class="fas fa-chart-bar"></i>
-                สถิติ </a></li>
-        <li <?=$this->uri->segment('2') == "Print" ? 'class="active"' : ''?>> <a href="<?=base_url('admin/Print/'.$this->session->userdata('year'));?>"> <i class="fas fa-print"></i>
-                พิมพ์ใบสมัคร </a></li>
+        <li <?=$this->uri->segment('2') == "admission" ? 'class="active"' : ''?>>
+            <a href="<?=base_url('admin/admission/'.$this->session->userdata('year'));?>">
+                <i class="far fa-edit"></i>
+                ข้อมูลการรับสมัคร </a>
+        </li>
+        <li <?=$this->uri->segment('2') == "PrintConfirm" ? 'class="active"' : ''?>>
+            <a href="<?=base_url('admin/PrintConfirm/'.$this->session->userdata('year'));?>">
+                <i class="fas fa-print"></i>
+                ข้อมูลการรายงานตัว </a>
+        </li>
+        <li <?=$this->uri->segment('2') == "Surrender" ? 'class="active"' : ''?>>
+            <a href="<?=base_url('admin/Surrender/'.$this->session->userdata('year'));?>">
+                <i class="fas fa-print"></i>
+                ข้อมูลการมอบตัว </a>
+        </li>
+
+
 
     </ul>
     <ul class="list-unstyled">
-        <li <?=$this->uri->segment('2') == "PrintConnfirm" ? 'class="active"' : ''?>> <a href="<?=base_url('admin/PrintConfirm/'.$this->session->userdata('year'));?>"> <i class="fas fa-print"></i>
-        พิมพ์ใบรายงานตัว </a></li>
+        <li <?=$this->uri->segment('2') == "Statistic" ? 'class="active"' : ''?>> <a
+                href="<?=base_url('admin/Statistic/'.$this->session->userdata('year'));?>"> <i
+                    class="fas fa-chart-bar"></i>
+                สถิติ </a></li>
+        <li <?=$this->uri->segment('2') == "Print" ? 'class="active"' : ''?>> <a
+                href="<?=base_url('admin/Print/'.$this->session->userdata('year'));?>"> <i class="fas fa-print"></i>
+                พิมพ์ใบสมัครทั้งหมด </a></li>
     </ul>
     <ul class="list-unstyled">
-        <li <?=$this->uri->segment('2') == "system" ? 'class="active"' : ''?>> <a href="<?=base_url('admin/system/'.$this->session->userdata('year'));?>"> <i class="fas fa-stream"></i>
-                สถานะระบบ </a></li>
+        <li <?=$this->uri->segment('2') == "system" ? 'class="active"' : ''?>> <a
+                href="<?=base_url('admin/system/'.$this->session->userdata('year'));?>"> <i class="fas fa-stream"></i>
+                ตั้งค่าระบบ </a></li>
     </ul>
 </nav>
