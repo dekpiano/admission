@@ -424,7 +424,7 @@ label {
                                             required>
                                         <label class="custom-control-label"
                                             for="paypal">ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ
-                                            การแสดง (Preforming Art Program)</label>
+                                            การแสดง (Performing Arts Program)</label>
                                     </div>
                                     <div class="custom-control custom-radio">
                                         <input id="paypal1" name="recruit_tpyeRoom" type="radio"
