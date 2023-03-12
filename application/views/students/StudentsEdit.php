@@ -119,7 +119,7 @@ label {
                                         <div class="col-md-3 mb-3">
                                             <label for="recruit_grade">เกรดเฉลี่ย</label>
                                             <input type="text" class="form-control" id="recruit_grade"
-                                                name="recruit_grade" value="<?=$stu->recruit_grade?>" required>
+                                                name="recruit_grade" value="<?=$stu->recruit_grade?>" >
                                             <div class="invalid-feedback">
                                                 ระบุเกรดเฉลี่ย
                                             </div>
@@ -327,7 +327,7 @@ label {
                                         <h4>หลักสูตรที่ต้องการศึกษาต่อ </h4>
 
                                         <div class="d-block my-3">
-                                            <?php $AtpyeRoom = array('ห้องเรียนความเป็นเลิศทางด้านวิชาการ (Science Match and Technology Program)','ห้องเรียนความเป็นเลิศทางด้านภาษา (Chinese English Program)','ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ การแสดง (Preforming Art Program)','ห้องเรียนความเป็นเลิศด้านการงานอาชีพ (Career Program)'); //,'ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program)' 
+                                            <?php $AtpyeRoom = array('ห้องเรียนความเป็นเลิศทางด้านวิชาการ (Science Match and Technology Program)','ห้องเรียนความเป็นเลิศทางด้านภาษา (Chinese English Program)','ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ การแสดง (Performing Arts Program)','ห้องเรียนความเป็นเลิศด้านการงานอาชีพ (Career Program)','ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program)'); //,'ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program)' 
                                             foreach ($AtpyeRoom as $key => $v_AtpyeRoom) : ?>
                                             <div class="custom-control custom-radio">
                                                 <input <?=$v_AtpyeRoom == $stu->recruit_tpyeRoom ? 'checked' : ''?>

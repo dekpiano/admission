@@ -13,7 +13,8 @@ class Control_login extends CI_Controller {
 
 	public function login_main()
 	{
-		$this->load->view('login/login_main.php');
+		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
+		$this->load->view('login/login_main.php',$data);
 		
 	}
 

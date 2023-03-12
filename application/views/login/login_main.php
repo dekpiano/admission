@@ -4,8 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>เข้าสู่ระบบ | ระบบรับสมัครนักเรียน สวนกุหลาบ ฯ จิรประวัติ นครสวรรค์</title>
-    <meta name="description" content="">
+    <title>เข้าสู่ระบบ (สำหรับนักเรียน) | ระบบรับสมัครนักเรียน สวนกุหลาบ ฯ จิรประวัติ นครสวรรค์</title>
+    <meta name="description" content="สำหรับแก้ไข หรือ อัพเดตข้อมูล ในกรณีเจ้าตรวจสอบแล้วไม่ผ่านการตรวจสอบ
+- ดูสถานะการสมัครเรียน">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
@@ -40,9 +41,13 @@
                                 <div class="logo">
                                     <img src="https://skj.ac.th/uploads/logo/LogoSKJ_4.png" alt="logoSKJ"
                                         class="img-fluid mx-2" style="width: 72px;">
-                                    <h1>ระบบรับสมัครนักเรียน</h1>
-                                    <h2>ประจำปีการศึกษา 2564</h2>
+                                    <h1>ระบบรับสมัคร (สำหรับนักเรียน)</h1>
+                                    <h2>ประจำปีการศึกษา <?=$checkYear[0]->openyear_year?></h2>
                                 </div>
+                                <p>
+                                    - สำหรับแก้ไข หรือ อัพเดตข้อมูล ในกรณีเจ้าตรวจสอบแล้วไม่ผ่านการตรวจสอบ <br>
+                                    - ดูสถานะการสมัครเรียน
+                                </p>
                                 <p>งานวิชาการและงานทะเบียนโรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์</p>
                             </div>
                         </div>
