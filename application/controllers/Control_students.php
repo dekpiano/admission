@@ -110,21 +110,21 @@ class Control_students extends CI_Controller {
 	}
 
 
-	public function reg_update($id,$img)
+	public function reg_update($id)
 	{	
 		$status = $this->recaptcha_google($this->input->post('captcha')); 
         if ($status['success']) {
+			$data_update = array();
 			$openyear = $this->db->get('tb_openyear')->result();
 			$data_R = $this->db->where('recruit_id',$id)->get('tb_recruitstudent')->result();
 		
 		$file = array($_FILES['recruit_img']['error'],
 							$_FILES['recruit_certificateEdu']['error'],
 							$_FILES['recruit_certificateEduB']['error'],
-							$_FILES['recruit_copyidCard']['error'],
-							$_FILES['recruit_copyAddress']['error']);
-		//print_r($file);
+							$_FILES['recruit_copyidCard']['error']);
+		//print_r($file); exit();
 		$recruit_birthday = ($this->input->post('recruit_birthdayY')-543).'-'.$this->input->post('recruit_birthdayM').'-'.$this->input->post('recruit_birthdayD');
-		$data_update = array(
+		$data_update += array(
 			'recruit_regLevel' => $this->input->post('recruit_regLevel'),
 			'recruit_prefix' => $this->input->post('recruit_prefix'),
 			'recruit_firstName' => $this->input->post('recruit_firstName'),
@@ -146,57 +146,58 @@ class Control_students extends CI_Controller {
 			'recruit_homeProvince' => $this->input->post('recruit_homeProvince'),
 			'recruit_homePostcode' => $this->input->post('recruit_homePostcode'),
 			'recruit_tpyeRoom' => $this->input->post('recruit_tpyeRoom'),
-			'recruit_grade' => $this->input->post('recruit_grade')
+			'recruit_grade' => $this->input->post('recruit_grade'),
+			'recruit_status' => "รอการตรวจสอบ"
 		);
 	
-			if(in_array($_FILES['recruit_img']['error'],$file)){
+			if($file[0] == 0){
 				$imageFileType = strtolower(pathinfo($_FILES['recruit_img']['name'],PATHINFO_EXTENSION));						
 				$file_check = $_FILES['recruit_img']['error'];
 				$foder = 'img';
 				$do_upload = 'recruit_img';
 				$rand_name = $openyear[0]->openyear_year.'-'.$this->input->post('recruit_idCard').rand();
-				if($file_check == 0 ){
-					$data_update = array('recruit_img' => $rand_name.'.'.$imageFileType);	
+				if($file_check == 0){
+					$data_update += array('recruit_img' => $rand_name.'.'.$imageFileType);	
 					$this->update_img($id,$data_R[0]->recruit_img,$file_check,$foder,$do_upload,$data_update,$imageFileType,$rand_name);
 				}else{
 					$imageFileType = 0;
 					$this->update_img($id,$data_R[0]->recruit_img,$file_check,$foder,$do_upload,$data_update,$imageFileType,$rand_name);
 				}			
 
-			}if(in_array($_FILES['recruit_certificateEdu']['error'],$file)){
+			}if($file[1] == 0){
 				$imageFileType = strtolower(pathinfo($_FILES['recruit_certificateEdu']['name'],PATHINFO_EXTENSION));						
 				$file_check = $_FILES['recruit_certificateEdu']['error'];
 				$foder = 'certificate';
 				$do_upload = 'recruit_certificateEdu';
 				$rand_name = $openyear[0]->openyear_year.'-'.$this->input->post('recruit_idCard').rand();
-				if($file_check == 0 ){
-					$data_update = array('recruit_certificateEdu' => $rand_name.'.'.$imageFileType);	
+				if($file_check == 0){
+					$data_update += array('recruit_certificateEdu' => $rand_name.'.'.$imageFileType);	
 					$this->update_img($id,$data_R[0]->recruit_certificateEdu,$file_check,$foder,$do_upload,$data_update,$imageFileType,$rand_name);
 				}else{
 					$imageFileType = 0;
 					$this->update_img($id,$data_R[0]->recruit_certificateEdu,$file_check,$foder,$do_upload,$data_update,$imageFileType,$rand_name);
 				}
-			}if(in_array($_FILES['recruit_certificateEduB']['error'],$file)){
+			}if($file[2] == 0){
 				$imageFileType = strtolower(pathinfo($_FILES['recruit_certificateEduB']['name'],PATHINFO_EXTENSION));						
 				$file_check = $_FILES['recruit_certificateEduB']['error'];
 				$foder = 'certificateB';
 				$do_upload = 'recruit_certificateEduB';
 				$rand_name = $openyear[0]->openyear_year.'-'.$this->input->post('recruit_idCard').rand();
-				if($file_check == 0 ){
-					$data_update = array('recruit_certificateEduB' => $rand_name.'.'.$imageFileType);	
+				if($file_check == 0){
+					$data_update += array('recruit_certificateEduB' => $rand_name.'.'.$imageFileType);	
 					$this->update_img($id,$data_R[0]->recruit_certificateEduB,$file_check,$foder,$do_upload,$data_update,$imageFileType,$rand_name);
 				}else{
 					$imageFileType = 0;
 					$this->update_img($id,$data_R[0]->recruit_certificateEduB,$file_check,$foder,$do_upload,$data_update,$imageFileType,$rand_name);
 				}
-			}if(in_array($_FILES['recruit_copyidCard']['error'],$file)){
+			}if($file[3] == 0){
 				$imageFileType = strtolower(pathinfo($_FILES['recruit_copyidCard']['name'],PATHINFO_EXTENSION));						
 				$file_check = $_FILES['recruit_copyidCard']['error'];
 				$foder = 'copyidCard';
 				$do_upload = 'recruit_copyidCard';
 				$rand_name = $openyear[0]->openyear_year.'-'.$this->input->post('recruit_idCard').rand();
-				if($file_check == 0 ){
-					$data_update = array('recruit_copyidCard' => $rand_name.'.'.$imageFileType);	
+				if($file_check == 0){
+					$data_update += array('recruit_copyidCard' => $rand_name.'.'.$imageFileType);	
 					$this->update_img($id,$data_R[0]->recruit_copyidCard,$file_check,$foder,$do_upload,$data_update,$imageFileType,$rand_name);
 				}else{
 					$imageFileType = 0;

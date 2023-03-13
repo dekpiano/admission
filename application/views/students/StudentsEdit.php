@@ -34,7 +34,7 @@ label {
                             <div class="col-md-12 order-md-1">
 
                                 <form class="needs-validation" enctype="multipart/form-data" method="post" novalidate=""
-                                    action="<?=base_url('Control_students/reg_update/').$stu->recruit_id.'/'.($stu->recruit_img=='' ? '0' : $stu->recruit_img);?>">
+                                    action="<?=base_url('Control_students/reg_update/').$stu->recruit_id?>">
                                     <input hidden type="text" name="recruit_regLevel" id="recruit_regLevel"
                                         value="<?=(isset($stu)) ? $stu->recruit_regLevel : $this->uri->segment(2);?>">
 
