@@ -327,6 +327,10 @@ $('.T_m1_N tr,.T_m4_N tr').each(function() {
 
 $(document).ready(function() {
     $('.example').DataTable({
+        "columnDefs": [
+            {
+                targets: [0], type: "date"
+            }],
         "order": [
             [0, "desc"]
         ]

@@ -96,10 +96,10 @@ class Welcome extends CI_Controller {
 
 			$data['StatisticCroTar'] = $this->db->select('
 					SUM(CASE WHEN recruit_tpyeRoom = "ห้องเรียนความเป็นเลิศทางด้านวิชาการ (Science Match and Technology Program)" THEN 1 END) AS SMT,
-					SUM(CASE WHEN recruit_tpyeRoom = "ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program))" THEN 1 END) AS SP,
+					SUM(CASE WHEN recruit_tpyeRoom = "ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program)" THEN 1 END) AS SP,
 					SUM(CASE WHEN recruit_tpyeRoom = "ห้องเรียนความเป็นเลิศด้านการงานอาชีพ (Career Program)" THEN 1 END) AS CP,
 					SUM(CASE WHEN recruit_tpyeRoom = "ห้องเรียนความเป็นเลิศทางด้านภาษา (Chinese English Program)" THEN 1 END) AS CEP,
-					SUM(CASE WHEN recruit_tpyeRoom = "ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ การแสดง (Preforming Art Program)" THEN 1 END) AS PAP,
+					SUM(CASE WHEN recruit_tpyeRoom = "ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ การแสดง (Performing Arts Program)" THEN 1 END) AS PAP,
 					tb_recruitstudent.recruit_regLevel
 					,tb_recruitstudent.recruit_year
 					,tb_recruitstudent.recruit_date,
@@ -107,6 +107,17 @@ class Welcome extends CI_Controller {
 				->from('tb_recruitstudent')
 				->where('recruit_year',$year)
 				->group_by('recruit_date')
+				->order_by('recruit_date','ASC')
+				->get()->result();
+
+				$data['StatisticAll'] = $this->db->select('
+					COUNT(tb_recruitstudent.recruit_category) AS num,
+					tb_quota.quota_explain				
+					')
+				->from('tb_recruitstudent')
+				->join('tb_quota','tb_quota.quota_key = tb_recruitstudent.recruit_category')
+				->where('recruit_year',$year)
+				->group_by('tb_recruitstudent.recruit_category')
 				->order_by('recruit_date','ASC')
 				->get()->result();
 
@@ -118,7 +129,7 @@ class Welcome extends CI_Controller {
 			->where('recruit_year',$year)
 			->get('tb_recruitstudent')->result();
 
-			//echo '<pre>'; print_r($data['RegisterAll']); exit();
+			//echo '<pre>'; print_r($data['StatisticAll']); exit();
 
 
 			return $data;
