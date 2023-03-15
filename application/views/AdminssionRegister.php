@@ -420,7 +420,7 @@ label {
                                     <div class="custom-control custom-radio">
                                         <input id="paypal" name="recruit_tpyeRoom" type="radio"
                                             class="custom-control-input"
-                                            value="ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ การแสดง (Preforming Art Program)"
+                                            value="ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ การแสดง (Performing Arts Program)"
                                             required>
                                         <label class="custom-control-label"
                                             for="paypal">ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ

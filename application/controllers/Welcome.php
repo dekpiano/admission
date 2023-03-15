@@ -129,9 +129,7 @@ class Welcome extends CI_Controller {
 			->where('recruit_year',$year)
 			->get('tb_recruitstudent')->result();
 
-			//echo '<pre>'; print_r($data['StatisticAll']); exit();
-
-
+			//echo '<pre>'; print_r($data['StatisticCroTar']); exit();
 			return $data;
 	}
 
