@@ -204,12 +204,12 @@
         ?>
             <div class="custom-control custom-radio custom-control-inline">
                 <input class="custom-control-input par_restO" type="radio" name="par_restO" id="par_restO<?=$key;?>"
-                    value="<?=$v_Name;?>" <?=$OtherConf[0]->par_rest==$v_Name?"checked":""?>>
+                    value="<?=$v_Name;?>" <?=@$OtherConf[0]->par_rest==$v_Name?"checked":""?>>
                 <label class="custom-control-label" for="par_restO<?=$key;?>"><?=$v_Name;?></label>
-                <?php if($OtherConf[0]->par_rest==$v_Name): ?>
+                <?php if(@$OtherConf[0]->par_rest==$v_Name): ?>
             <input type="text" class="form-control" placeholder="ระบุที่พักอื่น ๆ"
                 id="par_restOrthorO<?=$key;?>" name="par_restOrthorO" required11
-                value="<?=$FatherConf[0]->par_restOrthor?>">
+                value="<?=@$FatherConf[0]->par_restOrthor?>">
             <?php else :?>
             <input type="text" style="display:none;" class="form-control" placeholder="ระบุที่พักอื่น ๆ"
                 id="par_restOrthorO<?=$key;?>" name="par_restOrthorO" required11>

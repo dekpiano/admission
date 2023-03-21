@@ -39,8 +39,15 @@
                     กรอกข้อมูลแล้ว) </li>
                 <li class="list-group-item">แต่เมื่อยังไม่กรอกข้อมูลหรือกรอกไม่สำเร็จจะมีเครื่องหมาย ( <i
                         class="fa fa-times mr-2 "></i> ยังไม่กรอกข้อมูล)</li>
-                <li class="list-group-item">เมื่อกรอกข้อมูลครบทุกรายการ นักเรียนจะสามารถพิมพ์ใบยืนยันรายงานตัวได้ <a
-                        href="#" id="checkPirnt" class="btn btn-info checkPirnt">พิมพ์ใบยืนยันรายงานตัว</a></li>
+                <li class="list-group-item">เมื่อกรอกข้อมูลครบทุกรายการ นักเรียนจะสามารถพิมพ์ใบยืนยันรายงานตัวได้ 
+                <?php if($Ckeckstu == 1 && $OtherCkeck == 1): ?>
+                    <a target="_blank" href="<?=base_url('Confirm/Print');?>"
+                    class="btn btn-info">พิมพ์ใบยืนยันรายงานตัว</a>
+                    <?php else: ?>
+                        <a href="#" id="checkPirnt" class="btn btn-info checkPirnt">พิมพ์ใบยืนยันรายงานตัว</a>
+                        <?php endif; ?>
+
+                </li>
                 <li class="list-group-item">เป็นอันเสร็จสิ้นการรายงานตัวออนไลน์</li>
                 <li class="list-group-item">
                     <p>ตัวอย่างใบยืนยันการรายงานตัวออนไลน์ เมื่อกดพิมพ์ใบยืนยัน</p>
