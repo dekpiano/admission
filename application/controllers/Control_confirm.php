@@ -140,9 +140,16 @@ class Control_confirm extends CI_Controller {
 						'stu_createDate' => date("Y-m-d")
 					);
 
-		  // Get data
-		echo $this->Model_confirm->ConfirmStudentInsert($data);
-		//print_r($this->input->post());
+					$id = $this->input->post('stu_iden');
+					$CheckID = $this->Model_confirm->ConfirmStudentCheckID($id);
+					if($CheckID == 0){
+						echo $this->Model_confirm->ConfirmStudentInsert($data);
+					}else{
+						echo 0;
+					}
+		  //echo $CheckID;
+		//echo $this->Model_confirm->ConfirmStudentInsert($data);
+		
 	  }
 
 	  public function UpdateConfirmStudent(){
@@ -208,12 +215,14 @@ class Control_confirm extends CI_Controller {
 						'stu_active' => "กำลังศึกษา",
 						'stu_createDate' => date("Y-m-d")
 					);
-
 					$id = $this->input->post('stu_iden');
+					$CheckID = $this->Model_confirm->ConfirmStudentCheckID($id);
+					if($CheckID == 1){
+						echo $this->Model_confirm->ConfirmStudentUpdate($data,$id);
+					}else{
+						echo 0;
+					}
 
-		  // Get data
-		echo $this->Model_confirm->ConfirmStudentUpdate($data,$id);
-		//print_r($this->input->post());
 	  }
 
 	//   บิดดาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาา
@@ -254,8 +263,13 @@ class Control_confirm extends CI_Controller {
 						'par_claim' => $this->input->post('par_claim')
 					);
 
-					echo $this->Model_confirm->ConfirmFatherInsert($data);
-		//print_r($data);
+					$CheckID = $this->Model_confirm->ConfirmParentCheckID($this->input->post('par_stuID'),$this->input->post('par_relationKey'));
+					if($CheckID == 0){
+						echo $this->Model_confirm->ConfirmFatherInsert($data);
+					}else{
+						echo 0;
+					}
+		
 	}
 
 	public function UpdateConfirmFather(){
@@ -338,8 +352,13 @@ class Control_confirm extends CI_Controller {
 						'par_claim' => $this->input->post('par_claimM')
 					);
 
-					echo $this->Model_confirm->ConfirmMatherInsert($data);
-		//print_r($data);
+					$CheckID = $this->Model_confirm->ConfirmParentCheckID($this->input->post('par_stuIDM'),$this->input->post('par_relationKeyM'));
+					if($CheckID == 0){
+						echo $this->Model_confirm->ConfirmMatherInsert($data);
+					}else{
+						echo 0;
+					}
+
 	}
 
 	public function UpdateConfirmMather(){
@@ -419,7 +438,13 @@ class Control_confirm extends CI_Controller {
 							'par_claim' => $this->input->post('par_claimO')
 						);
 	
-						echo $this->Model_confirm->ConfirmOtherInsert($data);
+						$CheckID = $this->Model_confirm->ConfirmParentCheckID($this->input->post('par_stuIDO'),$this->input->post('par_relationKeyO'));
+						if($CheckID == 0){
+							echo $this->Model_confirm->ConfirmOtherInsert($data);
+						}else{
+							echo 0;
+						}
+						
 			//print_r($data);
 		}
 	

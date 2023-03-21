@@ -164,11 +164,6 @@ $(document).on('submit', '#FormConfirmStudentUpdate', function(e) {
                     }
                 })
             }
-            // $('form').trigger("reset");
-            // $('#response').fadeIn().html(data);
-            // setTimeout(function() {
-            //     $('#response').fadeOut("slow");
-            // }, 5000);
         }
     });
 });
@@ -237,11 +232,7 @@ $(document).on('submit', '#FormConfirmFather', function(e) {
                 })
 
             }
-            // $('form').trigger("reset");
-            // $('#response').fadeIn().html(data);
-            // setTimeout(function() {
-            //     $('#response').fadeOut("slow");
-            // }, 5000);
+
         }
     });
 });

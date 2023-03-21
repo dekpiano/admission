@@ -7,7 +7,18 @@ class Model_confirm extends CI_Model
 	
 	}
 
-	// นักเรียน
+	// เช็ดนักเรียนว่ามีข้อมูลหรือไม่
+	public function ConfirmStudentCheckID($ID){
+		$Conf = $this->load->database('skjpers', TRUE);
+		return $Conf->where('stu_iden',$ID)->get('tb_students')->num_rows();
+	}
+
+	// เช็ดบิดาว่ามีข้อมูลหรือไม่
+	public function ConfirmParentCheckID($idStu,$relationKey){
+		$Conf = $this->load->database('skjpers', TRUE);
+		return $Conf->where('par_stuID',$idStu)->where('par_relationKey',$relationKey)->get('tb_parent')->num_rows();
+	}
+
 	public function ConfirmStudentInsert($data)
 	{
 		$Conf = $this->load->database('skjpers', TRUE);
