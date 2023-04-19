@@ -58,11 +58,11 @@ class Control_admin_admission extends CI_Controller {
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();
 		$data = $this->report_student($year);
 		$data['title'] = $this->title;		
-		$this->db->select('*');
-		$this->db->from('tb_recruitstudent');
-		$this->db->where('recruit_year',$year);
-		$this->db->order_by('recruit_id','DESC');
-		$data['recruit'] =	$this->db->get()->result();
+		// $this->db->select('*');
+		// $this->db->from('tb_recruitstudent');
+		// $this->db->where('recruit_year',$year);
+		// $this->db->order_by('recruit_id','DESC');
+		// $data['recruit'] =	$this->db->get()->result();
 
 		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
 		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
@@ -72,6 +72,39 @@ class Control_admin_admission extends CI_Controller {
 			$this->load->view('admin/layout/menu_top_admin.php');
 			$this->load->view('admin/admin_admission_main.php');
 			$this->load->view('admin/layout/footer_admin.php');
+	}
+
+	public function DataRecruitment(){
+		$data = [];
+		$this->db->select('*');
+		$this->db->from('tb_recruitstudent');
+		$this->db->where('recruit_year',$this->input->post('keyYear'));
+		$this->db->order_by('recruit_id','DESC');
+		$recruit =	$this->db->get()->result();
+
+		foreach($recruit as $record){
+            
+            $data[] = array( 
+                "recruit_id" => $record->recruit_id,
+                "recruit_regLevel" => $record->recruit_regLevel,
+				"recruit_img" => $record->recruit_img,
+                "recruit_Fullname" => $record->recruit_prefix.$record->recruit_firstName.' '.$record->recruit_lastName,
+                "recruit_tpyeRoom" => $record->recruit_tpyeRoom,
+                "recruit_category" => $record->recruit_category,
+                "recruit_status" => $record->recruit_status,
+                "recruit_date" => $record->recruit_date,
+                "recruit_idCard" => $record->recruit_idCard,
+				"recruit_birthday" => $record->recruit_birthday,
+				"recruit_phone" => $record->recruit_phone,
+				"recruit_tpyeRoom" => $record->recruit_tpyeRoom,
+            );
+			
+           
+        }   
+        $output = array(
+            "data" =>  $data
+        );
+       echo json_encode($output);
 	}
 
 	public function switch_regis()
@@ -194,7 +227,8 @@ class Control_admin_admission extends CI_Controller {
 
 
 	public function delete_recruitstudent($id)
-	{
+	{	
+
 		$data = $this->db->where('recruit_id',$id)->get('tb_recruitstudent')->result();
 		//print_r($data[0]->recruit_id);
 		@unlink("./uploads/recruitstudent/m".$data[0]->recruit_regLevel.'/img/'.$data[0]->recruit_img);
@@ -205,7 +239,7 @@ class Control_admin_admission extends CI_Controller {
 
 		if($this->admin_model_admission->recruitstudent_delete($id) == 1){
 			$this->session->set_flashdata(array('msg'=> 'ok','messge' => 'ลบข้อมูลสำเร็จ'));
-			redirect('admin/admission/'.$this->session->userdata('year'), 'refresh');
+			redirect('admin/Recruitment/'.$this->session->userdata('year'), 'refresh');
 		}
 	}
 
@@ -321,7 +355,7 @@ class Control_admin_admission extends CI_Controller {
 			// }
 
 			
-		redirect('admin/checkData/'.$id);
+		redirect('admin/Recruitment/CheckData/'.$id);
 			
 		
 	}
@@ -409,6 +443,9 @@ class Control_admin_admission extends CI_Controller {
 
 	public function pdf($id)
     {
+
+		$path = dirname(dirname(dirname(dirname(dirname(__FILE__)))));
+		require $path . '/librarie_skj/mpdf/vendor/autoload.php';
 
 		$thai = $this->load->database('thailandpa', TRUE);
 		$thpa = $thai->database;
@@ -525,6 +562,9 @@ class Control_admin_admission extends CI_Controller {
 
 	public function pdf_all($year)
     {
+		$path = dirname(dirname(dirname(dirname(dirname(__FILE__)))));
+		require $path . '/librarie_skj/mpdf/vendor/autoload.php';
+		
 		$thai = $this->load->database('thailandpa', TRUE);
 		$thpa = $thai->database;
 		

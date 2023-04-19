@@ -12,8 +12,8 @@
     <span class="heading">ข้อมูลระบบ</span>
 
     <ul class="list-unstyled">
-        <li <?=$this->uri->segment('2') == "admission" ? 'class="active"' : ''?>>
-            <a href="<?=base_url('admin/admission/'.$this->session->userdata('year'));?>">
+        <li <?=$this->uri->segment('2') == "Recruitment" ? 'class="active"' : ''?>>
+            <a href="<?=base_url('admin/Recruitment/'.$this->session->userdata('year'));?>">
                 <i class="far fa-edit"></i>
                 ข้อมูลการรับสมัคร </a>
         </li>

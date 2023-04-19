@@ -53,6 +53,9 @@ class Control_admin_confirm extends CI_Controller {
 
 	public function pdfConfirm($Year,$id)
     {
+		$path = dirname(dirname(dirname(dirname(dirname(__FILE__)))));
+		require $path . '/librarie_skj/mpdf/vendor/autoload.php';
+
 		$Conf = $this->load->database('skjpers', TRUE);
 		$thai = $this->load->database('thailandpa', TRUE);
 		

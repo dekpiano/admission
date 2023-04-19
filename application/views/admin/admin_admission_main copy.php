@@ -52,6 +52,7 @@
                                         <th>ชื่อผู้<?=$title;?></th>
                                         <th>เลขประชาชน</th>
                                         <th>ระดับชั้นที่สมัคร</th>
+                                        <th>โรงเรียนเดิม</th>
                                         <th>วันเกิด</th>
                                         <th>เบอร์โทรศัพท์</th>
                                         <th>หลักสูตร</th>                                        
@@ -59,7 +60,49 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                               <tr></tr>
+                                <?php foreach ($recruit as $key => $v_recruit) : ?>
+                                <tr>
+                                    <td>
+                                    <?php 
+                                        if($v_recruit->recruit_status == "รอการตรวจสอบ"){
+                                            echo '<h4><span class=" badge badge-pill badge-warning">'.$v_recruit->recruit_status.'</span></h4>';
+                                        }elseif($v_recruit->recruit_status == "ผ่านการตรวจสอบ"){
+                                            echo '<h4><span class="badge badge-pill badge-success">'.$v_recruit->recruit_status.'</span></h4>';
+                                        }else{
+                                            echo '<h4><span class="badge badge-pill badge-danger">'.$v_recruit->recruit_status.'</span></h4>';
+                                        }
+                                        
+                                    ?>
+                                    </td>
+                                    <td><?=$v_recruit->recruit_category;?></td>
+                                    <td><?=date('d-m-Y',strtotime($v_recruit->recruit_date));?></td>
+                                    <td><?=sprintf("%04d",$v_recruit->recruit_id);?></td>
+                                    <td><img style="width: 100px"
+                                            src="<?=base_url('uploads/recruitstudent/m'.$v_recruit->recruit_regLevel.'/img/'.$v_recruit->recruit_img)?>">
+                                    </td>
+                                    <td><?=$v_recruit->recruit_prefix.$v_recruit->recruit_firstName.' '.$v_recruit->recruit_lastName;?>
+                                    </td>
+                                    <td><?=$v_recruit->recruit_idCard;?></td>
+                                    <td>ม.<?=$v_recruit->recruit_regLevel;?></td>
+                                    <td><?=$v_recruit->recruit_oldSchool;?></td>
+                                    <td><?=date('d-m',strtotime($v_recruit->recruit_birthday));?>-<?=date('Y',strtotime($v_recruit->recruit_birthday))+543;?>
+                                    </td>
+                                    <td><?=$v_recruit->recruit_phone;?></td>
+                                    <td><?=$v_recruit->recruit_tpyeRoom;?></td>
+                                   
+                                    <td>
+                                        <a target="_blank"
+                                            href="<?=base_url('admin/Control_admin_admission/pdf/'.$v_recruit->recruit_id);?>"
+                                            class="btn btn-primary btn-sm"><i class="fas fa-print"></i> พิมพ์ใบสมัคร</a>
+                                        <a href="<?=base_url('admin/checkData/').$v_recruit->recruit_id;?>"
+                                            class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> ตรวจสอบ</a>
+                                        <a href="<?=base_url('admin/Control_admin_admission/delete_recruitstudent/').$v_recruit->recruit_id;?>"
+                                            class="btn btn-danger btn-sm"
+                                            onClick="return confirm('ต้องการลบข้อมูลหรือไม่?')"><i
+                                                class="fas fa-trash-alt"></i> ลบ</a>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>

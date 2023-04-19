@@ -30,20 +30,24 @@
                                 <td>
                                     <?php if($v_DataStudents->recruit_status === "ผ่านการตรวจสอบ"): ?>
                                     <span class="badge badge-pill badge-success">
-                                        <h6 style="margin-bottom: 0rem;font-size: 14px;"><i class="fa fa-check" aria-hidden="true"></i> <?=$v_DataStudents->recruit_status?></h6>
+                                        <h6 style="margin-bottom: 0rem;font-size: 14px;"><i class="fa fa-check"
+                                                aria-hidden="true"></i> <?=$v_DataStudents->recruit_status?></h6>
                                     </span>
                                     <?php elseif($v_DataStudents->recruit_status === "รอการตรวจสอบ"): ?>
                                     <span class="badge badge-pill badge-danger">
-                                        <h6 style="margin-bottom: 0rem;font-size: 14px;"><i class="fa fa-times" aria-hidden="true"></i> <?=$v_DataStudents->recruit_status?></h6>
+                                        <h6 style="margin-bottom: 0rem;font-size: 14px;"><i class="fa fa-times"
+                                                aria-hidden="true"></i> <?=$v_DataStudents->recruit_status?></h6>
                                     </span>
                                     <?php else: ?>
                                     <span class="badge badge-pill badge-danger">
-                                        <h6 style="margin-bottom: 0rem;font-size: 14px;"><i class="fa fa-times" aria-hidden="true"></i> <?=$v_DataStudents->recruit_status?></h6>
+                                        <h6 style="margin-bottom: 0rem;font-size: 14px;"><i class="fa fa-times"
+                                                aria-hidden="true"></i> <?=$v_DataStudents->recruit_status?></h6>
                                     </span>
 
                                     <?php if($v_DataStudents->recruit_status != "ผ่านการตรวจสอบ"): ?>
                                     <br>
-                                    <a style="margin-bottom: 0rem;font-size: 14px;" href="<?=base_url('login'); ?>" class="btn btn-warning btn-sm mt-2"><i class="fas fa-edit"></i> แก้ไขการสมัคร
+                                    <a style="margin-bottom: 0rem;font-size: 14px;" href="<?=base_url('login'); ?>"
+                                        class="btn btn-warning btn-sm mt-2"><i class="fas fa-edit"></i> แก้ไขการสมัคร
                                         ที่นี่...</a>
                                     <?php endif; ?>
                                     <?php endif; ?>
@@ -52,29 +56,45 @@
                                     <?php if($v_DataStudents->recruit_status == "ผ่านการตรวจสอบ"): ?>
                                     <?php  if($switch[0]->onoff_report == "on"): ?>
                                     <?php if($v_DataStudents->stu_id != null &&  $v_DataStudents->stu_UpdateConfirm >= $checkYear[0]->openyear_year): ?>
-                                    <a style="margin-bottom: 0rem;font-size: 14px;" href="<?=base_url('Confirm')?>" class="btn btn-success">
-                                    <i class="fa fa-check" aria-hidden="true"></i> รายงานตัวแล้ว
+                                    <a style="margin-bottom: 0rem;font-size: 14px;" href="<?=base_url('Confirm')?>"
+                                        class="btn btn-success">
+                                        <i class="fa fa-check" aria-hidden="true"></i> รายงานตัวแล้ว
                                     </a>
                                     <?php else: ?>
-                                    <a style="margin-bottom: 0rem;font-size: 14px;" href="<?=base_url('Confirm')?>" class="btn btn-info">
-                                    <i class="fas fa-exclamation-circle"></i> รอรายงานตัว <br> (คลิกที่นี่)
+                                    <a style="margin-bottom: 0rem;font-size: 14px;" href="<?=base_url('Confirm')?>"
+                                        class="btn btn-info">
+                                        <i class="fas fa-exclamation-circle"></i> รอรายงานตัว <br> (คลิกที่นี่)
                                     </a>
                                     <?php endif; ?>
                                     <?php else : ?>
-                                    <a href="#" data-toggle="modal" data-target="#AlertConfirm" class="btn btn-info">
-                                    <i class="fas fa-exclamation-circle"></i> รอรายงานตัว
+                                        <?php if($v_DataStudents->stu_id != null &&  $v_DataStudents->stu_UpdateConfirm >= $checkYear[0]->openyear_year): ?>
+                                    <a style="margin-bottom: 0rem;font-size: 14px;" href="#" data-toggle="modal" data-target="#AlertConfirm"
+                                        class="btn btn-success">
+                                        <i class="fa fa-check" aria-hidden="true"></i> รายงานตัวแล้ว
                                     </a>
+                                    <?php else: ?>
+                                    <a style="margin-bottom: 0rem;font-size: 14px;" href="#"
+                                        class="btn btn-info" data-toggle="modal" data-target="#AlertConfirm">
+                                        <i class="fas fa-exclamation-circle"></i> รอรายงานตัว <br> (คลิกที่นี่)
+                                    </a>
+                                    <?php endif; ?>
+
+                                    <!-- <a href="#" data-toggle="modal" data-target="#AlertConfirm" class="btn btn-info">
+                                        <i class="fas fa-exclamation-circle"></i> รอรายงานตัว
+                                    </a> -->
                                     <?php endif; ?>
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                <?php if($v_DataStudents->recruit_statusSurrender === ""): ?>
-                                <span class="badge badge-pill badge-info">
-                                       <h6 style="margin-bottom: 0rem;font-size: 14px;"><i class="fas fa-exclamation-circle"></i> ยังไม่มอบตัว</h6> 
+                                    <?php if($v_DataStudents->recruit_statusSurrender === ""): ?>
+                                    <span class="badge badge-pill badge-info">
+                                        <h6 style="margin-bottom: 0rem;font-size: 14px;"><i
+                                                class="fas fa-exclamation-circle"></i> ยังไม่มอบตัว</h6>
                                     </span>
                                     <?php else: ?>
-                                        <span class="badge badge-pill badge-success">
-                                       <h6 style="margin-bottom: 0rem;font-size: 14px;"><i class="fa fa-check" aria-hidden="true"></i> มอบตัวแล้ว</h6> 
+                                    <span class="badge badge-pill badge-success">
+                                        <h6 style="margin-bottom: 0rem;font-size: 14px;"><i class="fa fa-check"
+                                                aria-hidden="true"></i> มอบตัวแล้ว</h6>
                                     </span>
                                     <?php endif; ?>
 
