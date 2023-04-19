@@ -1009,6 +1009,7 @@ class Control_admin_admission extends CI_Controller {
 
 	public function pdfConnfirm($id)
     {
+		
 		$Conf = $this->load->database('skjpers', TRUE);
 		$thai = $this->load->database('thailandpa', TRUE);
 		$thpa = $thai->database;

@@ -40,7 +40,7 @@ function ShowStudentRecruit(Year) {
             {
                 data: 'recruit_img',
                 render: function(data, type, row) {
-                    return "<img src='../../uploads/recruitstudent/m" + row.recruit_regLevel + "/img/" + data + "' >";
+                    return "<img class='img-fluid' src='../../uploads/recruitstudent/m" + row.recruit_regLevel + "/img/" + data + "' >";
                     //return row.recruit_regLevel;
                 }
             },
