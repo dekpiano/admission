@@ -170,16 +170,13 @@ label {
     animation-delay: 22s;
 }
 
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 568px) 
-and (orientation : portrait)  {
-      /* For landscape layouts only */
-      #header h1{
-        font-size:18px;
-      }
-    }
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait) {
 
+    /* For landscape layouts only */
+    #header h1 {
+        font-size: 18px;
+    }
+}
 </style>
 
 <ul class="background">
@@ -196,7 +193,7 @@ and (orientation : portrait)  {
 </ul>
 
 <!-- Page Header-->
-<header class="pt-3" >
+<header class="pt-3">
     <div class="container-fluid text-center">
         <img src="https://skj.ac.th/uploads/logo/LogoSKJ_4.png" alt="logoSKJ" class="img-fluid" style="width: 64px;">
         <h4 class="text-white">ระบบรับสมัครนักเรียน ส.ก.จ.</h4>
@@ -208,8 +205,8 @@ and (orientation : portrait)  {
     <div class="card shadow mt-4">
         <div class="card-body">
             <div id="header" class="d-sm-flex align-items-center justify-content-between ">
-                <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-user-graduate"></i> 
-                ข้อมูลการสมัครชั้นมัธยมศึกษาปีที่ <?=$this->uri->segment(2)?>
+                <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-user-graduate"></i>
+                    ข้อมูลการสมัครชั้นมัธยมศึกษาปีที่ <?=$this->uri->segment(2)?>
                 </h1>
             </div>
         </div>
@@ -494,8 +491,8 @@ and (orientation : portrait)  {
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
                                         <div class="dek-floating-label">
-                                            <select id="province" class="dek-floating-select" name="recruit_homeProvince"
-                                                required placeholder=" ">
+                                            <select id="province" class="dek-floating-select"
+                                                name="recruit_homeProvince" required placeholder=" ">
                                                 <option value=""></option>
                                             </select>
                                             <label for="recruit_homeProvince">จังหวัด <span class="text-red">*</span>
@@ -520,8 +517,8 @@ and (orientation : portrait)  {
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <div class="dek-floating-label">
-                                            <select id="district" class="dek-floating-select" name="recruit_homeSubdistrict"
-                                                placeholder=" " required>
+                                            <select id="district" class="dek-floating-select"
+                                                name="recruit_homeSubdistrict" placeholder=" " required>
                                                 <option value=""></option>
                                             </select>
                                             <label for="recruit_homeSubdistrict">ตำบล/แขวง <span
@@ -621,7 +618,15 @@ and (orientation : portrait)  {
                                 <div class="d-block my-3">
                                     <?php if($TypeQuota[0]->quota_key == "normal" || $TypeQuota[0]->quota_key == "quotaM1" || $TypeQuota[0]->quota_key == "quotaM4" || ($this->uri->segment(3) == "quotasport" && $this->uri->segment(2) >= 4)):
                                         ?>
-
+                                     <div class="custom-control custom-radio">
+                                        <input id="debit" name="recruit_tpyeRoom" type="radio"
+                                            class="custom-control-input"
+                                            value="ห้องเรียนความเป็นเลิศทางด้านภาษา (Chinese English Program)" required>
+                                        <label class="custom-control-label" for="debit">ห้องเรียนความเป็นเลิศทางด้านภาษา
+                                            (Chinese
+                                            English Program)</label>
+                                    </div>
+                                    <?php if($this->uri->segment(3) == "normal" && $this->uri->segment(2) != 4): ?>
                                     <div class="custom-control custom-radio">
                                         <input id="credit" name="recruit_tpyeRoom" type="radio"
                                             class="custom-control-input"
@@ -631,16 +636,8 @@ and (orientation : portrait)  {
                                             for="credit">ห้องเรียนความเป็นเลิศทางด้านวิชาการ
                                             (Science Match and Technology Program)</label>
                                     </div>
-                                    <?php if($this->uri->segment(3) == "normal" && $this->uri->segment(2) != 4): ?>
 
-                                    <div class="custom-control custom-radio">
-                                        <input id="debit" name="recruit_tpyeRoom" type="radio"
-                                            class="custom-control-input"
-                                            value="ห้องเรียนความเป็นเลิศทางด้านภาษา (Chinese English Program)" required>
-                                        <label class="custom-control-label" for="debit">ห้องเรียนความเป็นเลิศทางด้านภาษา
-                                            (Chinese
-                                            English Program)</label>
-                                    </div>
+                                   
                                     <div class="custom-control custom-radio">
                                         <input id="paypal" name="recruit_tpyeRoom" type="radio"
                                             class="custom-control-input"
