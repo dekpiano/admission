@@ -616,7 +616,7 @@ label {
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="d-block my-3">
-                                    <?php if($TypeQuota[0]->quota_key == "normal" || $TypeQuota[0]->quota_key == "quotaM1" || $TypeQuota[0]->quota_key == "quotaM4" || ($this->uri->segment(3) == "quotasport" && $this->uri->segment(2) >= 4)):
+                                    <?php if($TypeQuota[0]->quota_key == "normal" || $TypeQuota[0]->quota_key == "quotaM1" || $TypeQuota[0]->quota_key == "quotaM4" || ($this->uri->segment(3) == "quotasport" && $this->uri->segment(2) >= 4) || $this->uri->segment(3) == "normal-between"):
                                         ?>
                                      <div class="custom-control custom-radio">
                                         <input id="debit" name="recruit_tpyeRoom" type="radio"
@@ -626,7 +626,7 @@ label {
                                             (Chinese
                                             English Program)</label>
                                     </div>
-                                    <?php if($this->uri->segment(3) == "normal" && $this->uri->segment(2) != 4): ?>
+                                    <?php if($this->uri->segment(3) == "normal" && $this->uri->segment(2) != 4 || $this->uri->segment(3) == "normal-between"): ?>
                                     <div class="custom-control custom-radio">
                                         <input id="credit" name="recruit_tpyeRoom" type="radio"
                                             class="custom-control-input"
