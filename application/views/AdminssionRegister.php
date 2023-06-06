@@ -626,7 +626,7 @@ label {
                                             (Chinese
                                             English Program)</label>
                                     </div>
-                                    <?php if($this->uri->segment(3) == "normal" && $this->uri->segment(2) != 4 || $this->uri->segment(3) == "normal-between"): ?>
+                                    <?php if($this->uri->segment(3) == "normal" || $this->uri->segment(3) == "normal-between"): ?>
                                     <div class="custom-control custom-radio">
                                         <input id="credit" name="recruit_tpyeRoom" type="radio"
                                             class="custom-control-input"
