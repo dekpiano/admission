@@ -995,24 +995,7 @@ class Control_admin_admission extends CI_Controller {
 			return $data;
 	}
 
-	public function statistic_student($year){
-		$data = $this->report_student($year);
-		$data['switch'] = $this->db->get("tb_onoffsys")->result();
-		$data = $this->report_student($year);
-		$data['title'] = $this->title;		
-		$this->db->select('*');
-		$this->db->from('tb_recruitstudent');
-		$this->db->where('recruit_year',$year);
-		$this->db->order_by('recruit_id','DESC');
-		$data['recruit'] =	$this->db->get()->result();
-
-		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
-		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
-		$this->load->view('admin/layout/navber_admin.php',$data);
-		$this->load->view('admin/layout/menu_top_admin.php');
-		$this->load->view('admin/admin_admission_Statistic.php');
-		$this->load->view('admin/layout/footer_admin.php');
-	}
+	
 	
 
 	public function pdfConnfirm($id)

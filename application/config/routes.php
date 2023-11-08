@@ -96,7 +96,7 @@ $route['admin/Recruitment/CheckData/(:any)'] = 'admin/Control_admin_admission/ed
 
 $route['admin/admission/add'] = 'admin/control_admin_admission/add';
 
-$route['admin/Statistic/(:any)'] = 'admin/control_admin_admission/statistic_student/$1';
+$route['admin/Statistic/(:any)'] = 'admin/Control_admin_statistic/statistic_student/$1';
 
 $route['admin/news'] = 'admin/control_admin_news';
 $route['admin/news/add'] = 'admin/control_admin_news/add';
