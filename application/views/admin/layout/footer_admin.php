@@ -45,6 +45,9 @@
             <?php if($this->uri->segment(2) == "Recruitment") :?>
             <script src="<?=base_url()?>asset/js/Admin/AdminStudentRecruitment.js?v=8"></script>
             <?php endif; ?>
+            <?php if($this->uri->segment(2) == "Statistic") :?>
+            <script src="<?=base_url()?>asset/js/Admin/AdminStatistic.js"></script>
+            <?php endif; ?>
 
          <?php /*$this->load->view('admin/chart/report_bar.php');*/ ?>
          <?php  if($this->session->flashdata('msg') == 'NO' ):?>

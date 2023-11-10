@@ -64,19 +64,18 @@
                     </div>
                 </section>
                 <section class="">
-
                     <div class="container-fluid">
-                        <h3 class="text-center">ประเภท ทั่วไป</h3>
-                        <div class="row ">
+                    <input type="hidden" name="Year" id="Year" value="<?=$this->uri->segment('3')?>">
+                        <div class="row ">                           
                             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                 <div class="line-chart-example card">
                                     <div class="card-header d-flex align-items-center">
                                         <h3 class="h4">สมัครเรียนชั้นมัธยมศึกษาปีที่ 1</h3>
                                     </div>
                                     <div class="card-body">
-                                        <canvas id="barChart1" style="display: block; width: 344px; height: 172px;"
+                                        <canvas id="NomalM1" style="display: block; width: 344px; height: 172px;"
                                             width="1032" height="516" class="chartjs-render-monitor"></canvas>
-                                        <p class="text-center h5">รวม  คน</p>
+                                        <p class="text-center h5">รวม <?=$recruit[0]->NumAllM1?> คน</p>
                                     </div>
                                 </div>
                             </div>
@@ -86,28 +85,25 @@
                                         <h3 class="h4">สมัครเรียนชั้นมัธยมศึกษาปีที่ 4</h3>
                                     </div>
                                     <div class="card-body">
-                                        <canvas id="barChart4" style="display: block; width: 344px; height: 172px;"
+                                        <canvas id="NomalM4" style="display: block; width: 344px; height: 172px;"
                                             width="1032" height="516" class="chartjs-render-monitor"></canvas>
-                                        <p class="text-center h5">รวม  คน</p>
+                                        <p class="text-center h5">รวม <?=$recruit[0]->NumAllM4?> คน</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                 <div class="line-chart-example card">
                                     <div class="card-header d-flex align-items-center">
-                                        <h3 class="h4">รวมทุกประเภททั้งหมด</h3>
+                                        <h3 class="h4">สมัครเรียน ระหว่างปี</h3>
                                     </div>
                                     <div class="card-body">
-                                        <canvas id="barChartAll" style="display: block; width: 344px; height: 172px;"
+                                        <canvas id="Mother" style="display: block; width: 344px; height: 172px;"
                                             width="1032" height="516" class="chartjs-render-monitor"></canvas>
-                                        <p class="text-center h5">รวม  คน</p>
+                                        <p class="text-center h5">รวม <?=$recruit[0]->NumAllMother?> คน</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
-
                     </div>
                 </section>
 
