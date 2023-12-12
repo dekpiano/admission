@@ -444,23 +444,17 @@ class Control_admin_admission extends CI_Controller {
 	public function pdf($id)
     {
 
-		$path = dirname(dirname(dirname(dirname(dirname(__FILE__)))));
+		$path = dirname(dirname(dirname(dirname(dirname(dirname(dirname(__FILE__)))))));
 		require $path . '/librarie_skj/mpdf/vendor/autoload.php';
 
 		$thai = $this->load->database('thailandpa', TRUE);
 		$thpa = $thai->database;
 		
 		$datapdf = $this->db->select('skjacth_admission.tb_recruitstudent.*,
-									  skjacth_admission.tb_quota.quota_explain,
-										'.$thpa.'.province.PROVINCE_NAME,
-										'.$thpa.'.district.DISTRICT_NAME,
-										'.$thpa.'.amphur.AMPHUR_NAME')
-										->from('skjacth_admission.tb_recruitstudent')
-										->join($thpa.'.province','skjacth_admission.tb_recruitstudent.recruit_homeProvince = '.$thpa.'.province.PROVINCE_ID', 'INNER')
-										->join($thpa.'.district','skjacth_admission.tb_recruitstudent.recruit_homeSubdistrict = '.$thpa.'.district.DISTRICT_ID', 'INNER')
-										->join($thpa.'.amphur','skjacth_admission.tb_recruitstudent.recruit_homedistrict = '.$thpa.'.amphur.AMPHUR_ID', 'INNER')
-										->join('skjacth_admission.tb_quota','skjacth_admission.tb_quota.quota_key = skjacth_admission.tb_recruitstudent.recruit_category')
-		->where('skjacth_admission.tb_recruitstudent.recruit_id',$id)
+									  skjacth_admission.tb_quota.quota_explain')
+		->from('skjacth_admission.tb_recruitstudent')										
+		->join('skjacth_admission.tb_quota','skjacth_admission.tb_quota.quota_key = skjacth_admission.tb_recruitstudent.recruit_category','left')
+		->where('recruit_id',$id)
 		->get()->result();
 
 		// echo FCPATH.'uploads/recruitstudent/m'.$datapdf[0]->recruit_regLevel.'/img/'.$datapdf[0]->recruit_img; exit();
@@ -503,9 +497,9 @@ class Control_admin_admission extends CI_Controller {
 		$html .= '<div style="position:absolute;top:400px;left:270px; width:100%">'.$datapdf[0]->recruit_homeNumber.'</div>'; //บ้านเลขที่ //แก้*****
 		$html .= '<div style="position:absolute;top:400px;left:390px; width:100%">'.$datapdf[0]->recruit_homeGroup.'</div>'; //หมู่
 		$html .= '<div style="position:absolute;top:400px;left:430px; width:100%">'.$datapdf[0]->recruit_homeRoad.'</div>'; //ถนน
-		$html .= '<div style="position:absolute;top:400px;left:615px; width:100%">'.$datapdf[0]->DISTRICT_NAME.'</div>'; //ตำบล
-		$html .= '<div style="position:absolute;top:430px;left:180px; width:100%">'.$datapdf[0]->AMPHUR_NAME.'</div>'; //อำเภอ
-		$html .= '<div style="position:absolute;top:430px;left:400px; width:100%">'.$datapdf[0]->PROVINCE_NAME.'</div>'; //จังหวัด
+		$html .= '<div style="position:absolute;top:400px;left:615px; width:100%">'.$datapdf[0]->recruit_homeSubdistrict.'</div>'; //ตำบล
+		$html .= '<div style="position:absolute;top:430px;left:180px; width:100%">'.$datapdf[0]->recruit_homedistrict.'</div>'; //อำเภอ
+		$html .= '<div style="position:absolute;top:430px;left:400px; width:100%">'.$datapdf[0]->recruit_homeProvince.'</div>'; //จังหวัด
 		$html .= '<div style="position:absolute;top:430px;left:620px; width:100%">'.$datapdf[0]->recruit_homePostcode.'</div>'; //รหัสไปรษณีย์
 		// ส่วนที่ 2recruit_date
 		$html .= '<div style="position:absolute;top:850px;left:55px; width:100%"><img style="width:100px;hight:100px;" src='.FCPATH.'uploads/recruitstudent/m'.$datapdf[0]->recruit_regLevel.'/img/'.$datapdf[0]->recruit_img.'></div>'; 
@@ -542,7 +536,12 @@ class Control_admin_admission extends CI_Controller {
     	if($datapdf[0]->recruit_img != ''){
     		$html .= '<div style="position:absolute;top:680px;left:560px; width:100%"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></div>';
     	}
-		$mpdf->SetDocTemplate('uploads/recruitstudent/pdf_registudent'.$datapdf[0]->recruit_regLevel.'.pdf',true);
+		if($datapdf[0]->recruit_regLevel <= 3){
+			$regLevel = 1;
+		}else{
+			$regLevel = 4;
+		}
+		$mpdf->SetDocTemplate('uploads/recruitstudent/pdf_registudent'.$regLevel.'.pdf',true);
 		$filename = sprintf("%04d",$datapdf[0]->recruit_id).'-'.$datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.' '.$datapdf[0]->recruit_lastName;
         $mpdf->WriteHTML($html);
         $mpdf->Output('Reg_'.$filename.'.pdf','I'); // opens in browser
@@ -562,24 +561,20 @@ class Control_admin_admission extends CI_Controller {
 
 	public function pdf_all($year)
     {
-		$path = dirname(dirname(dirname(dirname(dirname(__FILE__)))));
+		$path = dirname(dirname(dirname(dirname(dirname(dirname(dirname(__FILE__)))))));
 		require $path . '/librarie_skj/mpdf/vendor/autoload.php';
 		
 		$thai = $this->load->database('thailandpa', TRUE);
 		$thpa = $thai->database;
 		
 		$datapdf_all = $this->db->select('skjacth_admission.tb_recruitstudent.*,
-									  skjacth_admission.tb_quota.quota_explain,
-										'.$thpa.'.province.PROVINCE_NAME,
-										'.$thpa.'.district.DISTRICT_NAME,
-										'.$thpa.'.amphur.AMPHUR_NAME')
-										->from('skjacth_admission.tb_recruitstudent')
-										->join($thpa.'.province','skjacth_admission.tb_recruitstudent.recruit_homeProvince = '.$thpa.'.province.PROVINCE_ID', 'INNER')
-										->join($thpa.'.district','skjacth_admission.tb_recruitstudent.recruit_homeSubdistrict = '.$thpa.'.district.DISTRICT_ID', 'INNER')
-										->join($thpa.'.amphur','skjacth_admission.tb_recruitstudent.recruit_homedistrict = '.$thpa.'.amphur.AMPHUR_ID', 'INNER')
-										->join('skjacth_admission.tb_quota','skjacth_admission.tb_quota.quota_key = skjacth_admission.tb_recruitstudent.recruit_category')
+		skjacth_admission.tb_quota.quota_explain')
+		->from('skjacth_admission.tb_recruitstudent')										
+		->join('skjacth_admission.tb_quota','skjacth_admission.tb_quota.quota_key = skjacth_admission.tb_recruitstudent.recruit_category','left')
 		->where('recruit_year',$year)
 		->get()->result();
+
+		//echo '<pre>'; print_r($datapdf_all); exit();
 
 		$mpdf = new \Mpdf\Mpdf([
 			'default_font_size' => 16,
@@ -620,9 +615,9 @@ class Control_admin_admission extends CI_Controller {
 		$html .= '<div style="position:absolute;top:400px;left:270px; width:100%">'.$datapdf->recruit_homeNumber.'</div>'; //บ้านเลขที่ //แก้*****
 		$html .= '<div style="position:absolute;top:400px;left:390px; width:100%">'.$datapdf->recruit_homeGroup.'</div>'; //หมู่
 		$html .= '<div style="position:absolute;top:400px;left:430px; width:100%">'.$datapdf->recruit_homeRoad.'</div>'; //ถนน
-		$html .= '<div style="position:absolute;top:400px;left:615px; width:100%">'.$datapdf->DISTRICT_NAME.'</div>'; //ตำบล
-		$html .= '<div style="position:absolute;top:430px;left:180px; width:100%">'.$datapdf->AMPHUR_NAME.'</div>'; //อำเภอ
-		$html .= '<div style="position:absolute;top:430px;left:400px; width:100%">'.$datapdf->PROVINCE_NAME.'</div>'; //จังหวัด
+		$html .= '<div style="position:absolute;top:400px;left:615px; width:100%">'.$datapdf->recruit_homeSubdistrict.'</div>'; //ตำบล
+		$html .= '<div style="position:absolute;top:430px;left:180px; width:100%">'.$datapdf->recruit_homedistrict.'</div>'; //อำเภอ
+		$html .= '<div style="position:absolute;top:430px;left:400px; width:100%">'.$datapdf->recruit_homeProvince.'</div>'; //จังหวัด
 		$html .= '<div style="position:absolute;top:430px;left:620px; width:100%">'.$datapdf->recruit_homePostcode.'</div>'; //รหัสไปรษณีย์
 		// ส่วนที่ 2recruit_date
 		$html .= '<div style="position:absolute;top:850px;left:55px; width:100%"><img style="width:100px;hight:100px;" src='.FCPATH.'uploads/recruitstudent/m'.$datapdf->recruit_regLevel.'/img/'.$datapdf->recruit_img.'></div>'; 

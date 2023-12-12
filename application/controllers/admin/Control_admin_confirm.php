@@ -53,7 +53,7 @@ class Control_admin_confirm extends CI_Controller {
 
 	public function pdfConfirm($Year,$id)
     {
-		$path = dirname(dirname(dirname(dirname(dirname(__FILE__)))));
+		$path = dirname(dirname(dirname(dirname(dirname(dirname(dirname(__FILE__)))))));
 		require $path . '/librarie_skj/mpdf/vendor/autoload.php';
 
 		$Conf = $this->load->database('skjpers', TRUE);
@@ -65,8 +65,7 @@ class Control_admin_confirm extends CI_Controller {
 		$confrim = $Conf->where('stu_iden',$id)->get('tb_students')->result();	
 		
 		$idstu = str_replace('-','', $confrim[0]->stu_iden); //แยกเลข 13 หลัก
-	    //print_r($Year);exit();	
-
+	   
 			$date_Y1 = date('Y',strtotime($confrim[0]->stu_createDate))+543;
 			$TH_Month = array("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฏาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
 			$date_D1 = date('d',strtotime($confrim[0]->stu_createDate));
@@ -80,7 +79,9 @@ class Control_admin_confirm extends CI_Controller {
 			$date_Y_birt = date('Y',strtotime($confrim[0]->stu_birthDay));
 			$date_D_birt = (int)date('d',strtotime($confrim[0]->stu_birthDay));
 			$date_M_birt = date('n',strtotime($confrim[0]->stu_birthDay));
-    	
+
+			//echo '<pre>'; print_r($recruit);exit();	
+
         $mpdf = new \Mpdf\Mpdf([
 					'default_font_size' => 16,
 					'default_font' => 'sarabun',
@@ -234,6 +235,13 @@ class Control_admin_confirm extends CI_Controller {
 
 		$mpdf->AddPage();	
 		$confrimFa = $Conf->where('par_stuID',$id)->where('par_relation',"บิดา")->get('tb_parent')->result();
+
+		if(@$confrimFa[0]->par_decease == '0000-00-00'){
+			$par_decease = "";
+		}else{
+			$par_decease = @$confrimFa[0]->par_decease;
+		}
+		// exit();
 	
 		// ดึงข้อมูลพ่อออออออออออออ--------------------
 		$html2 = '<div style="position:absolute;top:129px;left:195px; width:100%">'.@$confrimFa[0]->par_prefix.@$confrimFa[0]->par_firstName.' '.@$confrimFa[0]->par_lastName.'</div>';
@@ -247,7 +255,7 @@ class Control_admin_confirm extends CI_Controller {
 		$html2 .= '<div style="position:absolute;top:330px;left:197px; width:100%">'.@$confrimFa[0]->par_salary.'</div>';
 		$html2 .= '<div style="position:absolute;top:355px;left:197px; width:100%">'.@$confrimFa[0]->par_positionJob.'</div>';
 		$html2 .= '<div style="position:absolute;top:380px;left:197px; width:100%">'.@$confrimFa[0]->par_phone.'</div>';
-		$html2 .= '<div style="position:absolute;top:405px;left:197px; width:100%">'.@$confrimFa[0]->par_decease==0?"":$confrimFa[0]->par_decease.'</div>';
+		$html2 .= '<div style="position:absolute;top:405px;left:197px; width:100%">'.$par_decease.'</div>';
 
 		$html2 .= '<div style="position:absolute;top:430px;left:255px; width:100%">'.@$confrimFa[0]->par_hNumber.'</div>';
 		$html2 .= '<div style="position:absolute;top:430px;left:335px; width:100%">'.@$confrimFa[0]->par_hMoo.'</div>';
@@ -301,6 +309,12 @@ class Control_admin_confirm extends CI_Controller {
 		// ดึงข้อมูลแมมมมมมมมมมมมมมมมม่--------------------
 		$confrimMa= $Conf->where('par_stuID',$id)->where('par_relation',"มารดา")->get('tb_parent')->result();
 
+		if(@$confrimMa[0]->par_decease == '0000-00-00'){
+			$par_decease_Ma = "";
+		}else{
+			$par_decease_Ma = @$confrimMa[0]->par_decease;
+		}
+
 		$html2 .= '<div style="position:absolute;top:129px;left:400px; width:100%">'.@$confrimMa[0]->par_prefix.@$confrimMa[0]->par_firstName.' '.@$confrimMa[0]->par_lastName.'</div>';
 		$html2 .= '<div style="position:absolute;top:150px;left:475px; width:100%">'.@$confrimMa[0]->par_ago.'</div>';
 		$html2 .= '<div style="position:absolute;top:180px;left:400px; width:100%">'.@$confrimMa[0]->par_IdNumber.'</div>';
@@ -312,7 +326,7 @@ class Control_admin_confirm extends CI_Controller {
 		$html2 .= '<div style="position:absolute;top:330px;left:400px; width:100%">'.@$confrimMa[0]->par_salary.'</div>';
 		$html2 .= '<div style="position:absolute;top:355px;left:400px; width:100%">'.@$confrimMa[0]->par_positionJob.'</div>';
 		$html2 .= '<div style="position:absolute;top:380px;left:400px; width:100%">'.@$confrimMa[0]->par_phone.'</div>';
-		$html2 .= '<div style="position:absolute;top:405px;left:400px; width:100%">'.@$confrimMa[0]->par_decease==0?"":@$confrimMa[0]->par_decease.'</div>';
+		$html2 .= '<div style="position:absolute;top:405px;left:400px; width:100%">'.$par_decease_Ma.'</div>';
 
 		$html2 .= '<div style="position:absolute;top:430px;left:455px; width:100%">'.@$confrimMa[0]->par_hNumber.'</div>';
 		$html2 .= '<div style="position:absolute;top:430px;left:530px; width:100%">'.@$confrimMa[0]->par_hMoo.'</div>';
@@ -366,6 +380,13 @@ class Control_admin_confirm extends CI_Controller {
 		$confrimPu= $Conf->where('par_stuID',$id)
 						->where('par_relationKey',"ผู้ปกครอง")
 						->get('tb_parent')->result();
+
+						if(@$confrimPu[0]->par_decease == '0000-00-00'){
+							$par_decease_Pu = "";
+						}else{
+							$par_decease_Pu = @$confrimPu[0]->par_decease;
+						}
+
 		$html2 .= '<div style="position:absolute;top:115px;left:600px; width:100%">'.@$confrimPu[0]->par_prefix.@$confrimPu[0]->par_firstName.' '.@$confrimPu[0]->par_lastName.'</div>';
 		$html2 .= '<div style="position:absolute;top:133px;left:710px; width:100%">'.@$confrimPu[0]->par_relation.'</div>';
 		$html2 .= '<div style="position:absolute;top:155px;left:675px; width:100%">'.@$confrimPu[0]->par_ago.'</div>';
@@ -378,7 +399,7 @@ class Control_admin_confirm extends CI_Controller {
 		$html2 .= '<div style="position:absolute;top:330px;left:600px; width:100%">'.@$confrimPu[0]->par_salary.'</div>';
 		$html2 .= '<div style="position:absolute;top:355px;left:600px; width:100%">'.@$confrimPu[0]->par_positionJob.'</div>';
 		$html2 .= '<div style="position:absolute;top:380px;left:600px; width:100%">'.@$confrimPu[0]->par_phone.'</div>';
-		$html2 .= '<div style="position:absolute;top:405px;left:600px; width:100%">'.@$confrimPu[0]->par_decease==0?"":@$confrimPu[0]->par_decease.'</div>';
+		$html2 .= '<div style="position:absolute;top:405px;left:600px; width:100%">'.$par_decease_Pu.'</div>';
 
 		$html2 .= '<div style="position:absolute;top:428px;left:655px; width:100%">'.@$confrimPu[0]->par_hNumber.'</div>';
 		$html2 .= '<div style="position:absolute;top:428px;left:730px; width:100%">'.@$confrimPu[0]->par_hMoo.'</div>';

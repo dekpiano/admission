@@ -70,6 +70,6 @@
     </style>
 </head>
 
-<body style="font-family:Sarabun">
+<body style="font-family:Sarabun;background-color: #EEE;">
 
     <div class="">

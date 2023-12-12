@@ -491,7 +491,7 @@ class Control_confirm extends CI_Controller {
 
 		public function PDFForStudent()
 		{
-			$path = dirname(dirname(dirname(dirname(__FILE__))));
+			$path = dirname(dirname(dirname(dirname(dirname(dirname(dirname(__FILE__)))))));
 		require $path . '/librarie_skj/mpdf/vendor/autoload.php';
 
 			$Conf = $this->load->database('skjpers', TRUE);
