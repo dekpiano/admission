@@ -57,6 +57,58 @@
     color: #007bff;
 }
 
+.dek1-floating-input:focus~label,
+.dek1-floating-input:not(:placeholder-shown)~label {
+    top: -12px;
+    left: 30px;
+    font-size: 14px;
+    background: #fff;
+    color: #007bff;
+}
+
+.dek1-floating-select:focus~label,
+.dek1-floating-select:not([value=""]):valid~label {
+    top: -12px;
+    font-size: 14px;
+    background: #fff;
+    color: #007bff;
+}
+
+.dek1-floating-label label {
+    color: #999;
+    font-size: 16px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 30px;
+    top: -10px;
+    font-size: 14px;
+    background: #fff;
+    color: #007bff;
+}
+
+.dek1-floating-input,
+.dek1-floating-select {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 1.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.dek1-floating-input:focus,
+.dek1-floating-select:focus {
+    outline: none;
+    border-bottom: 2px solid #5264AE;
+}
+
 
 /* active state */
 

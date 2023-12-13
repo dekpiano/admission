@@ -239,12 +239,12 @@ label {
                                                 alt="">
 
                                         </div>
-                                        <span class="file-input btn btn-primary btn-file mt-2"> เลือกรูปภาพ
-                                            <input type="file" class="dek-floating-input" id="recruit_img"
-                                                name="recruit_img" required placeholder=" ">
-                                        </span>
-                                        <div class="invalid-feedback">
-                                            อัพโหลดรูปภาพ
+                                        
+
+                                        <div class="custom-file mt-3">
+                                            <input type="file" class="form-control" id="recruit_img"
+                                                name="recruit_img" required>
+                                            <div class="invalid-feedback">กรุณาอัพโหลดรูปภาพ</div>
                                         </div>
                                     </div>
                                     <div class="mb-3 col-md-4">
@@ -490,37 +490,9 @@ label {
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
-                                        <div class="dek-floating-label">
-                                            <select id="province" class="dek-floating-select"
-                                                name="recruit_homeProvince" required placeholder=" ">
-                                                <option value=""></option>
-                                            </select>
-                                            <label for="recruit_homeProvince">จังหวัด <span class="text-red">*</span>
-                                            </label>
-                                            <div class="invalid-feedback">
-                                                ระบุจังหวัด
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <div class="dek-floating-label">
-                                            <select id="amphur" class="dek-floating-select" name="recruit_homedistrict"
-                                                placeholder=" " required>
-                                                <option value=""></option>
-                                            </select>
-                                            <label for="recruit_homedistrict">อำเภอ/เขต <span class="text-red">*</span>
-                                            </label>
-                                            <div class="invalid-feedback">
-                                                ระบุอำเภอ/เขต
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <div class="dek-floating-label">
-                                            <select id="district" class="dek-floating-select"
-                                                name="recruit_homeSubdistrict" placeholder=" " required>
-                                                <option value=""></option>
-                                            </select>
+                                        <div class="dek1-floating-label">
+                                            <input type="text" class="dek1-floating-input" id="recruit_homeSubdistrict"
+                                                name="recruit_homeSubdistrict" placeholder=" ">
                                             <label for="recruit_homeSubdistrict">ตำบล/แขวง <span
                                                     class="text-red">*</span>
                                             </label>
@@ -530,8 +502,30 @@ label {
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <div class="dek-floating-label">
-                                            <input type="text" class="dek-floating-input" id="postcode"
+                                        <div class="dek1-floating-label">
+                                            <input type="text" class="dek1-floating-input" id="recruit_homedistrict"
+                                                name="recruit_homedistrict" placeholder=" ">
+                                            <label for="recruit_homedistrict">อำเภอ/เขต <span class="text-red">*</span>
+                                            </label>
+                                            <div class="invalid-feedback">
+                                                ระบุอำเภอ/เขต
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="dek1-floating-label">
+                                            <input type="text" class="dek1-floating-input" id="recruit_homeProvince"
+                                                name="recruit_homeProvince" placeholder=" ">
+                                            <label for="recruit_homeProvince">จังหวัด <span class="text-red">*</span>
+                                            </label>
+                                            <div class="invalid-feedback">
+                                                ระบุจังหวัด
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="dek1-floating-label">
+                                            <input type="text" class="dek1-floating-input" id="recruit_homePostcode"
                                                 name="recruit_homePostcode" required placeholder=" ">
                                             <label for="recruit_homePostcode">รหัสไปรษณีย์ <span
                                                     class="text-red">*</span></label>
@@ -618,7 +612,7 @@ label {
                                 <div class="d-block my-3">
                                     <?php if($TypeQuota[0]->quota_key == "normal" || $TypeQuota[0]->quota_key == "quotaM1" || $TypeQuota[0]->quota_key == "quotaM4" || ($this->uri->segment(3) == "quotasport" && $this->uri->segment(2) >= 4) || $this->uri->segment(3) == "normal-between"):
                                         ?>
-                                     <div class="custom-control custom-radio">
+                                    <div class="custom-control custom-radio">
                                         <input id="debit" name="recruit_tpyeRoom" type="radio"
                                             class="custom-control-input"
                                             value="ห้องเรียนความเป็นเลิศทางด้านภาษา (Chinese English Program)" required>
@@ -637,7 +631,7 @@ label {
                                             (Science Match and Technology Program)</label>
                                     </div>
 
-                                   
+
                                     <div class="custom-control custom-radio">
                                         <input id="paypal" name="recruit_tpyeRoom" type="radio"
                                             class="custom-control-input"

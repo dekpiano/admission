@@ -201,14 +201,14 @@ class Control_admission extends CI_Controller {
 				if($this->model_admission->student_insert($data_insert) == 1){
 				
 					$this->session->set_flashdata(array('msg'=> 'Yes','messge' => 'สมัครเรียนสำเร็จ สามารถตรวจสอบสถานะการสมัครเพื่อพิมพ์ใบสมัครจาก <a href='.base_url('login').'> คลิกที่นี่</a>','status'=>'success'));					
-						define('LINE_API',"https://notify-api.line.me/api/notify"); 
-						$token = "UGkW3d8OvtutARdXMWyKhEo7SCA366RR9CRXfyhuKCu"; 
-						$str = "มีนักเรียนสมัครเรียนใหม่\n";
-						$str .="ชื่อ ".$this->input->post('recruit_prefix').$this->input->post('recruit_firstName').' '.$this->input->post('recruit_lastName')."\n";
-						$str .= "สมัครเรียนชั้น ม.".$this->input->post('recruit_regLevel')."\n";
-						$str .= "รอบ ".$this->input->post('recruit_category')."\n";
-						$str .= "ตรวจสอบ https://admission.skj.ac.th/loginAdmin\n";
-						$res = $this->notify_message($str,$token);
+						// define('LINE_API',"https://notify-api.line.me/api/notify"); 
+						// $token = "UGkW3d8OvtutARdXMWyKhEo7SCA366RR9CRXfyhuKCu"; 
+						// $str = "มีนักเรียนสมัครเรียนใหม่\n";
+						// $str .="ชื่อ ".$this->input->post('recruit_prefix').$this->input->post('recruit_firstName').' '.$this->input->post('recruit_lastName')."\n";
+						// $str .= "สมัครเรียนชั้น ม.".$this->input->post('recruit_regLevel')."\n";
+						// $str .= "รอบ ".$this->input->post('recruit_category')."\n";
+						// $str .= "ตรวจสอบ https://admission.skj.ac.th/loginAdmin\n";
+						// $res = $this->notify_message($str,$token);
 						// $data = $this->dataAll();
 
 						redirect('welcome');
