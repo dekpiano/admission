@@ -34,6 +34,10 @@ class Control_confirm extends CI_Controller {
 		$data['stu'] = $this->db->select('*')->where('recruit_idCard',$this->session->userdata('idenStu'))->from('tb_recruitstudent')->order_by('recruit_year','DESC')->get()->result();
 
 		$data['stuConf'] = $Conf->select('*')->where('stu_iden',$this->session->userdata('idenStu'))->from('tb_students')->get()->result();
+		// echo '<pre>';print_r(($data['stuConf'][0]->stu_prefix));
+		// exit();
+
+
 		$data['Ckeckstu'] = $Conf->select('*')->where('stu_iden',$this->session->userdata('idenStu'))->from('tb_students')->get()->num_rows();
 
 		$data['FatherCkeck'] = $Conf->select('par_stuID,par_relationKey')

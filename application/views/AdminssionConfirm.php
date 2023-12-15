@@ -306,11 +306,12 @@ input {
                         aria-labelledby="v-pills-profile-tab">
                         <h4 class="font-italic mb-4">ข้อมูลนักเรียน</h4>
 
-                        <?php if(isset($stuConf[0]->stu_iden)){
+                        <?php 
+                        // if(!isset($stuConf[0]->stu_iden)){
                           $this->load->view('FormData/FormStudent/PageFormStudentEdit.php'); 
-                        }else{
-                          $this->load->view('FormData/FormStudent/PageFormStudent.php'); 
-                        }
+                        // }else{
+                        //   $this->load->view('FormData/FormStudent/PageFormStudent.php'); 
+                        // }
                         ?>
                     </div>
 

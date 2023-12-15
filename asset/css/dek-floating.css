@@ -42,7 +42,7 @@
 
 .dek-floating-input:focus~label,
 .dek-floating-input:not(:placeholder-shown)~label {
-    top: -12px;
+    top: -10px;
     left: 12px;
     font-size: 14px;
     background: #fff;
@@ -51,7 +51,7 @@
 
 .dek-floating-select:focus~label,
 .dek-floating-select:not([value=""]):valid~label {
-    top: -12px;
+    top: -10px;
     font-size: 14px;
     background: #fff;
     color: #007bff;

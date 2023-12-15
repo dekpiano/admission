@@ -146,21 +146,21 @@ $(document).on('submit', '#FormConfirmStudentUpdate', function(e) {
         method: "POST",
         data: $('#FormConfirmStudentUpdate').serialize(),
         beforeSend: function() {
-            $('#response').html('<span class="text-info">Loading response...</span>');
+            $('.ReLoading').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
         },
         success: function(data) {
             console.log(data);
             if (data == 1) {
                 Swal.fire({
                     title: 'แจ้งเตือน?',
-                    text: "บันทึกข้อมูลสำเร็จ!",
+                    text: "บันทึกข้อมูลสำเร็จ! <br> ไปบันทึกข้อมูล บิดา - มารดา และผู้ปกครองกันต่อเลย",
                     icon: 'success',
-                    showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     confirmButtonText: 'ตกลง'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         location.reload();
+                        $('.ReLoading').html('บันทึกข้อมูล');
                     }
                 })
             }
@@ -212,7 +212,7 @@ $(document).on('submit', '#FormConfirmFather', function(e) {
         method: "POST",
         data: $('#FormConfirmFather').serialize(),
         beforeSend: function() {
-            $('#response').html('<span class="text-info">Loading response...</span>');
+            $('.ReLoading').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
         },
         success: function(data) {
             //console.log(data);
@@ -244,7 +244,7 @@ $(document).on('submit', '#FormConfirmFatherUpdate', function(e) {
         method: "POST",
         data: $('#FormConfirmFatherUpdate').serialize(),
         beforeSend: function() {
-            $('#response').html('<span class="text-info">Loading response...</span>');
+            $('.ReLoading').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
         },
         success: function(data) {
             console.log(data);
