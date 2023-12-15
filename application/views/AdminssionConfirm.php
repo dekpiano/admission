@@ -319,11 +319,12 @@ input {
                         aria-labelledby="v-pills-messages-tab">
                         <h4 class="font-italic mb-4">ข้อมูลบิดา</h4>
 
-                        <?php if($FatherCkeck == 1){
+                        <?php 
+                        //if($FatherCkeck == 1){
                           $this->load->view('FormData/FormFather/PageFormFatherEdit.php');
-                        }else{
-                          $this->load->view('FormData/FormFather/PageFormFather.php');
-                        }
+                        // }else{
+                        //   $this->load->view('FormData/FormFather/PageFormFather.php');
+                        // }
                         ?>
                     </div>
 

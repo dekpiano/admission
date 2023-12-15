@@ -215,14 +215,13 @@ $(document).on('submit', '#FormConfirmFather', function(e) {
             $('.ReLoading').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
         },
         success: function(data) {
-            //console.log(data);
+            console.log(data);
             if (data == 1) {
 
                 Swal.fire({
                     title: 'แจ้งเตือน?',
                     text: "บันทึกข้อมูลสำเร็จ!",
                     icon: 'success',
-                    showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     confirmButtonText: 'ตกลง'
                 }).then((result) => {
@@ -301,16 +300,10 @@ $(document).on('change', '.par_service', function() {
 });
 
 $(document).on('change', '.par_rest', function() {
-    selected_value = $("input[name='par_rest']:checked").val();
-    $("#par_restOrthor0").hide();
-    $("#par_restOrthor1").hide();
-    $("#par_restOrthor2").hide();
-    $("#par_restOrthor3").hide();
-    $("#par_restOrthor4").hide();
+    let selected_value = $("input[name='par_rest']:checked").val();
     if (selected_value == "อื่นๆ") {
-        $("#par_restOrthor4").show();
+        $(".par_restOrthor").show();
     }
-    // console.log(selected_value);
 });
 
 

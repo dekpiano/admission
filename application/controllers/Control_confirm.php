@@ -34,8 +34,7 @@ class Control_confirm extends CI_Controller {
 		$data['stu'] = $this->db->select('*')->where('recruit_idCard',$this->session->userdata('idenStu'))->from('tb_recruitstudent')->order_by('recruit_year','DESC')->get()->result();
 
 		$data['stuConf'] = $Conf->select('*')->where('stu_iden',$this->session->userdata('idenStu'))->from('tb_students')->get()->result();
-		// echo '<pre>';print_r(($data['stuConf'][0]->stu_prefix));
-		// exit();
+		
 
 
 		$data['Ckeckstu'] = $Conf->select('*')->where('stu_iden',$this->session->userdata('idenStu'))->from('tb_students')->get()->num_rows();
@@ -48,6 +47,9 @@ class Control_confirm extends CI_Controller {
 							->where('par_stuID',$this->session->userdata('idenStu'))
 							->where('par_relationKey',"พ่อ")
 							->from('tb_parent')->get()->result();
+
+		// echo '<pre>';print_r(($data['FatherConf']));
+		// exit();
 
 		$data['MatherCkeck'] = $Conf->select('par_stuID,par_relationKey')
 							->where('par_stuID',$this->session->userdata('idenStu'))
@@ -231,6 +233,7 @@ class Control_confirm extends CI_Controller {
 
 	//   บิดดาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาา
 	public function InsertConfirmFather(){
+
 		$data = array('par_stuID' => $this->input->post('par_stuID'), 
 						'par_relation' => $this->input->post('par_relation'),
 						'par_relationKey' => $this->input->post('par_relationKey'),
@@ -273,7 +276,7 @@ class Control_confirm extends CI_Controller {
 					}else{
 						echo 0;
 					}
-		
+		//print_r($this->input->post('par_prefix'));
 	}
 
 	public function UpdateConfirmFather(){
