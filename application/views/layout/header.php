@@ -40,7 +40,7 @@
     <!-- DataTable -->
     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet"  href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="<?=base_url();?>asset/css/dek-floating.css?v=1.2">
+    <link rel="stylesheet" href="<?=base_url();?>asset/css/dek-floating.css?v=1.6">
 
     <!-- CSS -->
 <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css" />

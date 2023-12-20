@@ -48,13 +48,13 @@ class Control_confirm extends CI_Controller {
 							->where('par_relationKey',"พ่อ")
 							->from('tb_parent')->get()->result();
 
-		// echo '<pre>';print_r(($data['FatherConf']));
-		// exit();
-
 		$data['MatherCkeck'] = $Conf->select('par_stuID,par_relationKey')
 							->where('par_stuID',$this->session->userdata('idenStu'))
 							->where('par_relationKey',"แม่")
 							->from('tb_parent')->get()->num_rows();
+
+		// echo '<pre>';print_r(($data['MatherCkeck']));
+		// exit();
 		$data['MatherConf'] = $Conf->select('*')
 							->where('par_stuID',$this->session->userdata('idenStu'))
 							->where('par_relationKey',"แม่")

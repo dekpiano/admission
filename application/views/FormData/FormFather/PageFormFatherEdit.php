@@ -1,5 +1,5 @@
 <?php  
-        if(isset($FatherCkeck)){
+        if($FatherCkeck == 1){
             $Action = 'FormConfirmFatherUpdate';
         }else{
             $Action = 'FormConfirmFather';

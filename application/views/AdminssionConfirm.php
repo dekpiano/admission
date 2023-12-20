@@ -104,21 +104,23 @@ input {
                     </div>
 
                     <form id="loginConfirmStudent" class="needs-validation mt-5" novalidate>
-                        <div class="d-flex flex-column pb-3">
-                            <label for="email">เลขบัตรประจำตัวประชาชน</label>
-                            <input type="text" id="idenStu" name="idenStu" class="border-bottom border-primary"
-                                autocomplete="off" placeholder="หมายเลขบัตรประจำตัวประชาชน"
+                        <div class="d-flex flex-column pb-3 dek-floating-label">
+                            
+                            <input type="text" id="idenStu" name="idenStu" class="border-bottom border-primary dek-floating-input"
+                                autocomplete="off" placeholder=""
                                 data-inputmask="'mask': '9-9999-99999-99-9'" required>
+                                <label for="email">เลขบัตรประจำตัวประชาชน</label>
                             <div class="invalid-feedback">
                                 กรุณากรอกข้อมูลหมายเลขบัตรประจำตัวประชาชน
                             </div>
                         </div>
-                        <div class="d-flex flex-column pb-3">
-                            <label for="email">เบอร์โทรศัพท์</label>
+                        <div class="d-flex flex-column pb-3 dek-floating-label">
+                           
                             <input type="text" id="recruit_phone" name="recruit_phone"
-                                class="border-bottom border-primary" autocomplete="off"
-                                placeholder="กรอกเบอร์โทรศัพท์ที่ใช้สมัครเท่านั้น"
+                                class="border-bottom border-primary dek-floating-input" autocomplete="off"
+                                placeholder=""
                                 data-inputmask="'mask': '99-9999-9999'" required>
+                                <label for="email">เบอร์โทรศัพท์ <small>(กรอกเบอร์โทรศัพท์ที่ใช้สมัครเท่านั้น)</small></label>
                             <div class="invalid-feedback">
                                 กรุณากรอกเบอร์โทรศัพท์
                             </div>
@@ -302,7 +304,7 @@ input {
                         <?php $this->load->view('FormData/FormMain/PageFormMain.php'); ?>
                     </div>
 
-                    <div class="tab-pane fade shadow rounded bg-white p-3" id="v-pills-profile" role="tabpanel"
+                    <div class="tab-pane fade rounded  p-3" id="v-pills-profile" role="tabpanel"
                         aria-labelledby="v-pills-profile-tab">
                         <h4 class="font-italic mb-4">ข้อมูลนักเรียน</h4>
 
@@ -331,11 +333,11 @@ input {
                     <div class="tab-pane fade shadow rounded bg-white p-3" id="v-pills-settings" role="tabpanel"
                         aria-labelledby="v-pills-settings-tab">
                         <h4 class="font-italic mb-4">ข้อมูลมารดา</h4>
-                        <?php if($MatherCkeck == 1){
+                        <?php //if($MatherCkeck == 1){
                           $this->load->view('FormData/FormMather/PageFormMatherEdit.php');
-                        }else{
-                            $this->load->view('FormData/FormMather/PageFormMather.php');
-                        }
+                        // }else{
+                        //     $this->load->view('FormData/FormMather/PageFormMather.php');
+                        // }
                         ?>
                     </div>
                     <div class="tab-pane fade shadow rounded bg-white p-3" id="v-pills-other" role="tabpanel"
@@ -368,11 +370,11 @@ input {
                                 <label class="custom-control-label" for="par_rest90">ผู้ปกครองอื่น</label>
                             </div>
                         </div>
-                        <?php if($OtherCkeck == 1){
+                        <?php //if($OtherCkeck == 1){
                           $this->load->view('FormData/FormOther/PageFormOtherEdit.php');
-                        }else{
-                            $this->load->view('FormData/FormOther/PageFormOther.php');
-                        }
+                        // }else{
+                        //     $this->load->view('FormData/FormOther/PageFormOther.php');
+                        // }
                         ?>
                     </div>
                 </div>

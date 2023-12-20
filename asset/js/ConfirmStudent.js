@@ -248,7 +248,17 @@ $(document).on('submit', '#FormConfirmFatherUpdate', function(e) {
         success: function(data) {
             console.log(data);
             if (data == 1) {
-                Swal.fire("แจ้งเตือน", "บันทึกข้อมูลสำเร็จ! <br> สามารถแก้ไขข้อมูลได้จนกว่าระบบจะปิดให้แก้ไข", "success")
+                Swal.fire({
+                    title: 'แจ้งเตือน?',
+                    text: "บันทึกข้อมูลสำเร็จ! <br> สามารถแก้ไขข้อมูลได้จนกว่าระบบจะปิดให้แก้ไข้",
+                    icon: 'success',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'ตกลง'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        location.reload();
+                    }
+                })
             }
             // $('form').trigger("reset");
             // $('#response').fadeIn().html(data);
@@ -391,9 +401,8 @@ $(document).on('submit', '#FormConfirmMather', function(e) {
 
                 Swal.fire({
                     title: 'แจ้งเตือน?',
-                    text: "บันทึกข้อมูลสำเร็จ!",
+                    text: "บันทึกข้อมูลสำเร็จ! <br> สามารถแก้ไขข้อมูลได้จนกว่าระบบจะปิดให้แก้ไข้",
                     icon: 'success',
-                    showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     confirmButtonText: 'ตกลง'
                 }).then((result) => {
@@ -426,9 +435,8 @@ $(document).on('submit', '#FormConfirmMatherUpdate', function(e) {
             if (data == 1) {
                 Swal.fire({
                     title: 'แจ้งเตือน?',
-                    text: "บันทึกข้อมูลสำเร็จ!",
+                    text: "บันทึกข้อมูลสำเร็จ! <br> สามารถแก้ไขข้อมูลได้จนกว่าระบบจะปิดให้แก้ไข้",
                     icon: 'success',
-                    showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     confirmButtonText: 'ตกลง'
                 }).then((result) => {
