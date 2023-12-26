@@ -104,7 +104,7 @@ input {
                     </div>
 
                     <form id="loginConfirmStudent" class="needs-validation mt-5" novalidate>
-                        <div class="d-flex flex-column pb-3 dek-floating-label">
+                        <div class="d-flex flex-column dek-floating-label">
                             
                             <input type="text" id="idenStu" name="idenStu" class="border-bottom border-primary dek-floating-input"
                                 autocomplete="off" placeholder=""
@@ -114,7 +114,7 @@ input {
                                 กรุณากรอกข้อมูลหมายเลขบัตรประจำตัวประชาชน
                             </div>
                         </div>
-                        <div class="d-flex flex-column pb-3 dek-floating-label">
+                        <div class="d-flex flex-column dek-floating-label">
                            
                             <input type="text" id="recruit_phone" name="recruit_phone"
                                 class="border-bottom border-primary dek-floating-input" autocomplete="off"
@@ -317,7 +317,7 @@ input {
                         ?>
                     </div>
 
-                    <div class="tab-pane fade shadow rounded bg-white p-3" id="v-pills-messages" role="tabpanel"
+                    <div class="tab-pane fade rounded p-3" id="v-pills-messages" role="tabpanel"
                         aria-labelledby="v-pills-messages-tab">
                         <h4 class="font-italic mb-4">ข้อมูลบิดา</h4>
 
@@ -330,7 +330,7 @@ input {
                         ?>
                     </div>
 
-                    <div class="tab-pane fade shadow rounded bg-white p-3" id="v-pills-settings" role="tabpanel"
+                    <div class="tab-pane fade rounded p-3" id="v-pills-settings" role="tabpanel"
                         aria-labelledby="v-pills-settings-tab">
                         <h4 class="font-italic mb-4">ข้อมูลมารดา</h4>
                         <?php //if($MatherCkeck == 1){
@@ -340,7 +340,7 @@ input {
                         // }
                         ?>
                     </div>
-                    <div class="tab-pane fade shadow rounded bg-white p-3" id="v-pills-other" role="tabpanel"
+                    <div class="tab-pane fade rounded p-3" id="v-pills-other" role="tabpanel"
                         aria-labelledby="v-pills-other-tab">
                         <h4 class="font-italic mb-4">ข้อมูลผู้ปกครอง</h4>
                         <div class="alert alert-success">

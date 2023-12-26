@@ -306,6 +306,15 @@ $(document).on('change', '.par_service', function() {
         $("#par_serviceName2").show();
     } else if (selected_value == "ฝ่าย/แผนก") {
         $("#par_serviceName3").show();
+    }else{
+        $("#par_serviceName0").hide();
+        $("#par_serviceName1").hide();
+        $("#par_serviceName2").hide();
+        $("#par_serviceName3").hide();
+        $("#par_serviceName0").val("");
+        $("#par_serviceName1").val("");
+        $("#par_serviceName2").val("");
+        $("#par_serviceName3").val(""); 
     }
 });
 
@@ -313,6 +322,8 @@ $(document).on('change', '.par_rest', function() {
     let selected_value = $("input[name='par_rest']:checked").val();
     if (selected_value == "อื่นๆ") {
         $(".par_restOrthor").show();
+    }else{
+        $(".par_restOrthor").val('');
     }
 });
 
@@ -370,6 +381,15 @@ $(document).on('change', '.par_serviceM', function() {
         $("#par_serviceNameM2").show();
     } else if (selected_value == "ฝ่าย/แผนก") {
         $("#par_serviceNameM3").show();
+    }else{
+        $("#par_serviceNameM0").hide();
+        $("#par_serviceNameM1").hide();
+        $("#par_serviceNameM2").hide();
+        $("#par_serviceNameM3").hide();
+        $("#par_serviceNameM0").val("");
+        $("#par_serviceNameM1").val("");
+        $("#par_serviceNameM2").val("");
+        $("#par_serviceNameM3").val("");
     }
 });
 
@@ -491,6 +511,7 @@ $(document).on('change', '#checkPerO', function() {
 });
 
 $(document).on('change', '.par_serviceO', function() {
+    //alert($("input[name='par_serviceO']:checked").val());
     selected_value = $("input[name='par_serviceO']:checked").val();
     $("#par_serviceNameO0").hide();
     $("#par_serviceNameO1").hide();
@@ -508,6 +529,15 @@ $(document).on('change', '.par_serviceO', function() {
         $("#par_serviceNameO2").show();
     } else if (selected_value == "ฝ่าย/แผนก") {
         $("#par_serviceNameO3").show();
+    }else{
+        $("#par_serviceNameO0").hide();
+        $("#par_serviceNameO1").hide();
+        $("#par_serviceNameO2").hide();
+        $("#par_serviceNameO3").hide();
+        $("#par_serviceNameO0").val("");
+        $("#par_serviceNameO1").val("");
+        $("#par_serviceNameO2").val("");
+        $("#par_serviceNameO3").val("");
     }
 });
 
