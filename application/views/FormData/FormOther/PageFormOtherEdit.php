@@ -32,7 +32,7 @@
                             <div class="dek-floating-label">
                                 <input type="text" class="dek-floating-input" placeholder="" id="par_prefixO"
                                     name="par_prefixO" value="<?=$OtherConf[0]->par_prefix ?? ''?>" required11>
-                                <label for="">คำนำหน้ามารดา</label>
+                                <label for="">คำนำหน้าผู้ปกครอง</label>
                             </div>
 
                         </div>
@@ -40,7 +40,7 @@
                             <div class="dek-floating-label">
                                 <input type="text" class="dek-floating-input" placeholder="" id="par_firstNameO"
                                     name="par_firstNameO" required11 value="<?=$OtherConf[0]->par_firstName ?? ''?>">
-                                <label for="">ชื่อจริงมารดา</label>
+                                <label for="">ชื่อจริงผู้ปกครอง</label>
                             </div>
 
                         </div>
@@ -48,7 +48,7 @@
                             <div class="dek-floating-label">
                                 <input type="text" class="dek-floating-input" placeholder="" id="par_lastNameO"
                                     name="par_lastNameO" required11 value="<?=$OtherConf[0]->par_lastName ?? ''?>">
-                                <label for="">นามสกุลจริงมารดา</label>
+                                <label for="">นามสกุลจริงผู้ปกครอง</label>
                             </div>
                         </div>
                         <div class="col-12 col-md-3 ">
