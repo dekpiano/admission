@@ -122,6 +122,23 @@
         font-size: 14px;
     }
 
+    .banner-title h1 {
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    .banner-title hr {
+        color: #fff;
+        background-color: #fff;
+        width: 150px;
+    }
+
+    .main-banner {
+        padding: 0rem 0 0 0 !important;
+        color: #ffffff;
+        background-size: cover;
+    }
+
 }
 
 @media only screen and (max-width: 991px) {
@@ -153,6 +170,11 @@
     .home {
         padding-top: 50px !important;
     }
+
+    .banner-title hr {
+        color: #fff;
+        background-color: #fff;
+    }
 }
 
 
@@ -164,7 +186,7 @@ table thead tr th {
 
 .home {
     background: url(uploads/home/banner-bg.svg);
-    background-repeat-y: no-repeat;
+    background-repeat: repeat-x;
     background-position: 0 -50px;
     padding-top: 150px;
 }
@@ -179,27 +201,29 @@ table thead tr th {
 <div id="home" class="home">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-7">
                 <div class="main-banner">
                     <div class="d-sm-flex justify-content-between">
                         <div data-aos="zoom-in-up" class="aos-init aos-animate">
                             <div class="banner-title">
-                                <h1 class="font-weight-medium"> รับสมัครนักเรียน 2566
+                                <h1 class="font-weight-medium"> รับสมัครนักเรียนใหม่ ปีการศึกษา
+                                    <?=$checkYear[0]->openyear_year?>
                                 </h1>
+                                <hr>
                             </div>
 
                             <?php foreach ($quota as $key => $v_quota) :
                             if($v_quota->quota_status == "on"):
                                
-                            ?>                            
+                            ?>
                             <h3 class="mt-3">
-                               <u> <?=$v_quota->quota_explain;?></u>
+                                - <?=$v_quota->quota_explain;?>
                             </h3>
                             <?php 
                                 endif;
                              endforeach; ?>
 
-                            
+
 
                             <div class="text-center mt-5">
                                 <button type="button" class="btn btn-outline-light" data-toggle="modal"
@@ -224,7 +248,7 @@ table thead tr th {
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-5">
                 <div class="mt-5">
                     <img src="https://skj.ac.th/uploads/Admission/banner-main1.svg" alt="marsmello"
                         class="img-fluid aos-init aos-animate" data-aos="zoom-in-up" style="width:100%">
@@ -234,45 +258,53 @@ table thead tr th {
     </div>
 </div>
 
-
-<div class="p-5">
-    <div class="row  justify-content-center">
-        <div class="col-md-4  align-self-center">
+<section class="container-fluid mt-3">
+    <div class="card">
+        <div class="card-body">
+            <div class="p-3">
+                <div class="row  justify-content-center">
+                    <!-- <div class="col-md-4  align-self-center">
             <img src="https://img.freepik.com/free-vector/tiny-hr-manager-looking-candidate-job-interview-magnifier-computer-screen-flat-vector-illustration-career-employment_74855-8619.jpg?w=996&t=st=1675070479~exp=1675071079~hmac=896bbf82a8c06eab169bb4542c4005c8b0663176e08dc713312d58520ef2ac65"
                 alt="marsmello" class="img-fluid aos-init aos-animate" data-aos="zoom-in-up" style="width:100%">
-        </div>
-        <div class="col-md-4  align-self-center">
-            <h2>ตรวจสอบการสมัครเรียน</h2>
-            <h5>
-                นักเรียนสามารถตรวจสอบสถานะว่า ผ่านการตรวจสอบ หรือต้องแก้ไขข้อมูลหรือไม่ <br> เมื่อผ่านการตรวจสอบแล้ว
-                รอการรายงานตัวผ่านระบบออนไลน์ ในวันที่กำหนด
-            </h5>
-            <a href="<?=base_url('CheckRegister');?>" class="btn btn-outline-primary"
-                style="font-size:26px;">ตรวจสอบการสมัครเรียน</a>
-        </div>
-        <div class="col-md-4  align-self-center pt-3">
-            <h2>รายงานตัวออนไลน์</h2>
-            <h5>
-                เมื่อผ่านการตรวจสอบแล้ว นักเรียนสามารถรายงานตัว กรอกข้อมูลประวัติส่วนตัว ของนักเรียน และผู้ปกครอง
-                เพื่อเป็นการรายงานเข้าเรียน ณ โรงเรียนแห่งนี้
-            </h5>
-            <?php  if($switch[0]->onoff_report == "on"): ?>
-            <a href="<?=base_url('Confirm');?>" class="btn btn-outline-primary"
-                style="font-size:26px;">รายงานตัวออนไลน์</a>
-            <?php else : ?>
-            <a href="#" data-toggle="modal" data-target="#AlertConfirm" class="btn btn-outline-primary"
-                style="font-size:26px;">รายงานตัวออนไลน์</a>
-            <?php endif; ?>
+        </div> -->
+                    <div class="col-md-6  align-self-center">
+                        <h2>ตรวจสอบการสมัครเรียน</h2>
+                        <h5>
+                            นักเรียนสามารถตรวจสอบสถานะว่า ผ่านการตรวจสอบ หรือต้องแก้ไขข้อมูลหรือไม่ <br>
+                            เมื่อผ่านการตรวจสอบแล้ว
+                            รอการรายงานตัวผ่านระบบออนไลน์ ในวันที่กำหนด
+                        </h5>
+                        <a href="<?=base_url('CheckRegister');?>" class="btn btn-outline-primary"
+                            style="font-size:26px;">ตรวจสอบการสมัครเรียน</a>
+                    </div>
+                    <div class="col-md-6  align-self-center pt-3">
+                        <h2>รายงานตัวออนไลน์</h2>
+                        <h5>
+                            เมื่อผ่านการตรวจสอบแล้ว นักเรียนสามารถรายงานตัว กรอกข้อมูลประวัติส่วนตัว ของนักเรียน
+                            และผู้ปกครอง
+                            เพื่อเป็นการรายงานเข้าเรียน ณ โรงเรียนแห่งนี้
+                        </h5>
+                        <?php  if($switch[0]->onoff_report == "on"): ?>
+                        <a href="<?=base_url('Confirm');?>" class="btn btn-outline-primary"
+                            style="font-size:26px;">รายงานตัวออนไลน์</a>
+                        <?php else : ?>
+                        <a href="#" data-toggle="modal" data-target="#AlertConfirm" class="btn btn-outline-primary"
+                            style="font-size:26px;">รายงานตัวออนไลน์</a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+
+</section>
 
 
 <div class="page-content align-items-stretch">
     <!-- Side Navbar -->
     <div class="container-fluid py-5">
 
-        <h3 class="text-center">กำหนดการรับนักเรียน ปีการศึกษา 2566</h3>
+        <h3 class="text-center">กำหนดการรับนักเรียน ปีการศึกษา <?=$checkYear[0]->openyear_year?></h3>
         <div class="card">
             <div class="card-body">
                 <h5>ชั้นมัธยมศึกษาปีที่ 1</h5>
@@ -290,25 +322,26 @@ table thead tr th {
                         <tbody class="text-center">
                             <tr>
                                 <th scope="row">รอบโควตา (โรงเรียนในเขตพิ้นที่บริการ)</th>
-                                <td>1 - 30 มกราคม 2566</td>
+                                <td>1 - 31 มกราคม 2567</td>
                                 <td>-</td>
-                                <td>3 กุมภาพันธ์ 2566</td>
-                                <td>วันเสาร์ที่ 18 กุมภาพันธ์ 2566 (08.30 - 11.30 น.)</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">รอบปกติ</th>
-                                <td>11 - 15 มีนาคม 2566</td>
-                                <td>25 มีนาคม 2566</td>
-                                <td>29 มีนาคม 2566</td>
-                                <td>1 เมษายน 2566 (08.30 - 11.30 น.)</td>
+                                <td>7 กุมภาพันธ์ 2567</td>
+                                <td>วันเสาร์ที่ 18 กุมภาพันธ์ 2567 (08.30 - 12.00 น.)</td>
                             </tr>
                             <tr>
                                 <th scope="row">รอบความสามารถพิเศษด้านกีฬา</th>
-                                <td>คัดตัวนักกีฬา 18 - 19 กุมภาพันธ์ 2566</td>
+                                <td>คัดตัวนักกีฬา 17 - 18 กุมภาพันธ์ 2567</td>
                                 <td>-</td>
-                                <td>19 กุมภาพันธ์ 2566</td>
-                                <td>1 เมษายน 2566 (08.30 - 11.30 น.)</td>
+                                <td>18 กุมภาพันธ์ 2567</td>
+                                <td>18 กุมภาพันธ์ 2567 (08.30 - 12.00 น.)</td>
                             </tr>
+                            <tr>
+                                <th scope="row">รอบปกติ</th>
+                                <td>9 - 15 มีนาคม 2567</td>
+                                <td>30 มีนาคม 2567</td>
+                                <td>3 เมษายน 2567</td>
+                                <td>6 เมษายน 2567 (08.30 - 12.00 น.)</td>
+                            </tr>
+
 
                         </tbody>
                     </table>
@@ -333,24 +366,25 @@ table thead tr th {
                         <tbody class="text-center">
                             <tr>
                                 <th scope="row">รอบโควตา (ม.3 เดิม)</th>
-                                <td>1 - 30 มกราคม 2566</td>
+                                <td>1 - 31 มกราคม 2567</td>
                                 <td>-</td>
-                                <td>3 กุมภาพันธ์ 2566</td>
-                                <td>วันเสาร์ที่ 18 กุมภาพันธ์ 2566 (08.30 - 11.30 น.)</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">รอบปกติ</th>
-                                <td>11 - 15 มีนาคม 2566</td>
-                                <td>26 มีนาคม 2566</td>
-                                <td>30 มีนาคม 2566</td>
-                                <td>1 เมษายน 2566 (13.00 - 15.30 น.)</td>
+                                <td>7 กุมภาพันธ์ 2567</td>
+                                <td>วันเสาร์ที่ 18 กุมภาพันธ์ 2567 (08.30 - 12.00 น.)</td>
                             </tr>
                             <tr>
                                 <th scope="row">รอบความสามารถพิเศษด้านกีฬา</th>
-                                <td>คัดตัวนักกีฬา 18 - 19 กุมภาพันธ์ 2566</td>
+                                <td>คัดตัวนักกีฬา 17 - 18 กุมภาพันธ์ 2567</td>
                                 <td>-</td>
-                                <td>19 กุมภาพันธ์ 2566</td>
-                                <td>1 เมษายน 2566 (13.00 - 15.30 น.)</td>
+                                <td>18 กุมภาพันธ์ 2567</td>
+                                <td>18 กุมภาพันธ์ 2567 (08.30 - 120.00 น.)</td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">รอบปกติ</th>
+                                <td>9 - 15 มีนาคม 2567</td>
+                                <td>30 มีนาคม 2567</td>
+                                <td>3 เมษายน 2567</td>
+                                <td>6 เมษายน 2567 (08.30 - 12.00 น.)</td>
                             </tr>
 
                         </tbody>
