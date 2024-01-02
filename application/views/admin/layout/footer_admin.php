@@ -33,6 +33,17 @@
         <script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
         <script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
 
+        
+        <script type="text/javascript"
+             src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
+         <script type="text/javascript"
+             src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js">
+         </script>
+
+         <script type="text/javascript"
+             src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js">
+         </script>
+
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.5/dist/sweetalert2.all.min.js"></script>
          <script src="<?=base_url()?>asset/js/skj.js?v=1004"></script>
@@ -90,6 +101,14 @@ function readURL(input) {
 $("#recruit_img").change(function() {
     readURL(this);
 });
+
+$.Thailand({
+    $district: $('#recruit_homeSubdistrict'), // input ของตำบล
+    $amphoe: $('#recruit_homedistrict'), // input ของอำเภอ
+    $province: $('#recruit_homeProvince'), // input ของจังหวัด
+    $zipcode: $('#recruit_homePostcode'), // input ของรหัสไปรษณีย์
+});
+
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {

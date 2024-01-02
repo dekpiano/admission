@@ -31,42 +31,33 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 
-
+    <link rel="stylesheet"
+        href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css">
     <style>
     /* Extra small devices (portrait phones, less than 576px) */
     @media (max-width: 575.98px) {
-      .no-margin-bottom {
-    margin-bottom: 5px !important;
-    font-size: 1.3rem;
-    text-align: center;
-    line-height: 0px;
-}
+        .no-margin-bottom {
+            margin-bottom: 5px !important;
+            font-size: 1.3rem;
+            text-align: center;
+            line-height: 0px;
+        }
     }
 
     /* // Small devices (landscape phones, 576px and up) */
-    @media (min-width: 576px) and (max-width: 767.98px) {
-      
-    }
+    @media (min-width: 576px) and (max-width: 767.98px) {}
 
     /* // Medium devices (tablets, 768px and up) */
-    @media (min-width: 768px) and (max-width: 991.98px) {
-      
-    }
+    @media (min-width: 768px) and (max-width: 991.98px) {}
 
     /* // Large devices (desktops, 992px and up) */
-    @media (min-width: 992px) and (max-width: 1199.98px) {
-       
-    }
+    @media (min-width: 992px) and (max-width: 1199.98px) {}
 
     /* // Extra large devices (large desktops, 1200px and up) */
-    @media (min-width: 1200px) {
-       
-    }
+    @media (min-width: 1200px) {}
     </style>
 </head>
 
 <body style="font-family:Sarabun">
 
     <div class="page">
-
-    

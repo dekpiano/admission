@@ -212,11 +212,11 @@ class Control_admin_admission extends CI_Controller {
 		$data['recruit'] =	$this->db->get()->result();
 		$data['action'] = 'update_recruitstudent';
 
-		$th = $this->load->database('thailandpa', TRUE);
-		$data['province'] = $th->get('province')->result();
-		$sel_amphur = $th->where('PROVINCE_ID',@$data['recruit'][0]->recruit_homeProvince)->get('province')->result();
-		$data['amphur'] = $th->select('AMPHUR_ID,AMPHUR_NAME,PROVINCE_ID')->where('PROVINCE_ID',$data['recruit'][0]->recruit_homeProvince)->get('amphur')->result(); //เลือกอำเภอ
-		$data['district'] = $th->where('AMPHUR_ID',$data['recruit'][0]->recruit_homedistrict)->get('district')->result();
+		// $th = $this->load->database('thailandpa', TRUE);
+		// $data['province'] = $th->get('province')->result();
+		// $sel_amphur = $th->where('PROVINCE_ID',@$data['recruit'][0]->recruit_homeProvince)->get('province')->result();
+		// $data['amphur'] = $th->select('AMPHUR_ID,AMPHUR_NAME,PROVINCE_ID')->where('PROVINCE_ID',$data['recruit'][0]->recruit_homeProvince)->get('amphur')->result(); //เลือกอำเภอ
+		// $data['district'] = $th->where('AMPHUR_ID',$data['recruit'][0]->recruit_homedistrict)->get('district')->result();
 
 		//echo '<pre>'; print_r($data['district']); exit();
 		$this->load->view('admin/layout/navber_admin.php',$data);
