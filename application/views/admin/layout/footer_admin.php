@@ -43,7 +43,7 @@
             <?php endif; ?>
 
             <?php if($this->uri->segment(2) == "Recruitment") :?>
-            <script src="<?=base_url()?>asset/js/Admin/AdminStudentRecruitment.js?v=8"></script>
+            <script src="<?=base_url()?>asset/js/Admin/AdminStudentRecruitment.js?v=9"></script>
             <?php endif; ?>
             <?php if($this->uri->segment(2) == "Statistic") :?>
             <script src="<?=base_url()?>asset/js/Admin/AdminStatistic.js"></script>

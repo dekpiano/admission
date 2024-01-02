@@ -1,6 +1,6 @@
 let TBStudentRecruit;
 //alert($('#SelLern').attr('key_year'));
-ShowStudentRecruit('2566');
+ShowStudentRecruit('2567');
 $(document).on('change', '#select_year', function() {
     //alert($(this).val());
     ShowStudentRecruit($(this).val());

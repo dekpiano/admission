@@ -515,6 +515,32 @@ table thead tr th {
                                         <h6 class="card-title text-danger">(**เฉพาะนักเรียนที่ผ่านการคัดตัวเท่านั้น**)
                                         </h6>
                                         <?php endif; ?>
+                                        <?php if($v_quota->quota_key == "quotaM4"):?>
+                                        <h6 class="card-title text-danger">(**เฉพาะนักเรียน ม.3 โรงเรียนสวนกุหลาบ (จิรประวัติ) นครสวรรค์ เท่านั้น**)
+                                        </h6>
+                                        <?php endif; ?>
+                                        <?php if($v_quota->quota_key == "quotaM1"):?>
+                                        <h6 class="card-title text-danger">(**เฉพาะนักเรียน ในเขตพิ้นที่ 16 โรงเรียน เท่านั้น**) ได้แก่                                            
+                                        </h6>
+                                        <ul class="text-black">
+                                                <li>บ้านหนองเต่า</li>
+                                                <li>บ้านปากดง</li>
+                                                <li>บ้านซับฝักกาด</li>
+                                                <li>บ้านเขากะลา</li>
+                                                <li>บ้านเขาค้างคาว</li>
+                                                <li>วัดศรีสวรรค์สังฆาราม</li>
+                                                <li>วัดกลางแดด</li>
+                                                <li>ภาณุฑัตกรีฑาเวทย์</li>
+                                                <li>สายแยกเจ้าพระยา</li>
+                                                <li>บ้านบ่อดินสอพอง</li>
+                                                <li>สหวิทยาศึกษา</li>
+                                                <li>วัดสุบรรณาราม</li>
+                                                <li>บ้านช่อกระถินพัฒนา</li>
+                                                <li>วัดบ้านไร่</li>
+                                                <li>วัดพระนอน</li>
+                                                <li>ชุมชนวัดบ้านหว้า</li>
+                                            </ul>
+                                        <?php endif; ?>
                                         <h5 class="card-title"><?=$v_quota->quota_explain?></h5>
                                         <?php  $q = explode("|",$v_quota->quota_level);
                                         foreach ($q as $key => $v_q) : ?>
