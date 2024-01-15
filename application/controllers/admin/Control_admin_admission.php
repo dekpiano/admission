@@ -556,7 +556,7 @@ class Control_admin_admission extends CI_Controller {
 		$data = array('recruit_status' => $this->input->post('recruit_status'));
 		$update_comfrim = $this->db->update('tb_recruitstudent',$data,"recruit_id='".$id."'");
 		$this->session->set_flashdata(array('status'=>'success','msg'=> 'Yes','messge' => 'ยืนยันข้อมูล สำเร็จ'));
-		 redirect('admin/checkData/'.$id);
+		 redirect('admin/Recruitment/CheckData/'.$id);
 	}	
 
 	public function pdf_all($year)

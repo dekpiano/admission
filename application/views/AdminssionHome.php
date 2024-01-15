@@ -258,6 +258,94 @@ table thead tr th {
     </div>
 </div>
 
+<div class="container-fluid py-5">
+
+        <h3 class="text-center">กำหนดการรับนักเรียน ปีการศึกษา <?=$checkYear[0]->openyear_year?></h3>
+       
+                <h5>ชั้นมัธยมศึกษาปีที่ 1</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="bg-primary text-white">
+                            <tr>
+                                <th scope="col">รอบการสมัคร</th>
+                                <th scope="col">รับสมัคร</th>
+                                <th scope="col">สอบ</th>
+                                <th scope="col">ประกาศผล</th>
+                                <th scope="col">สัมภาษณ์ รายงานตัว มอบตัว</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center bg-white">
+                            <tr>
+                                <th scope="row">รอบโควตา (โรงเรียนในเขตพิ้นที่บริการ)</th>
+                                <td>1 - 31 มกราคม 2567</td>
+                                <td>-</td>
+                                <td>7 กุมภาพันธ์ 2567</td>
+                                <td>วันเสาร์ที่ 18 กุมภาพันธ์ 2567 (08.30 - 12.00 น.)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">รอบความสามารถพิเศษด้านกีฬา</th>
+                                <td>คัดตัวนักกีฬา 17 - 18 กุมภาพันธ์ 2567</td>
+                                <td>-</td>
+                                <td>18 กุมภาพันธ์ 2567</td>
+                                <td>18 กุมภาพันธ์ 2567 (08.30 - 12.00 น.)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">รอบปกติ</th>
+                                <td>9 - 15 มีนาคม 2567</td>
+                                <td>30 มีนาคม 2567</td>
+                                <td>3 เมษายน 2567</td>
+                                <td>6 เมษายน 2567 (08.30 - 12.00 น.)</td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+         
+
+                <h5>ชั้นมัธยมศึกษาปีที่ 4</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="bg-primary text-white">
+                            <tr>
+                                <th scope="col">รอบการสมัคร</th>
+                                <th scope="col">รับสมัคร</th>
+                                <th scope="col">สอบ</th>
+                                <th scope="col">ประกาศผล</th>
+                                <th scope="col">สัมภาษณ์ รายงานตัว มอบตัว</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center bg-white">
+                            <tr>
+                                <th scope="row">รอบโควตา (ม.3 เดิม)</th>
+                                <td>1 - 31 มกราคม 2567</td>
+                                <td>-</td>
+                                <td>7 กุมภาพันธ์ 2567</td>
+                                <td>วันเสาร์ที่ 18 กุมภาพันธ์ 2567 (08.30 - 12.00 น.)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">รอบความสามารถพิเศษด้านกีฬา</th>
+                                <td>คัดตัวนักกีฬา 17 - 18 กุมภาพันธ์ 2567</td>
+                                <td>-</td>
+                                <td>18 กุมภาพันธ์ 2567</td>
+                                <td>18 กุมภาพันธ์ 2567 (08.30 - 120.00 น.)</td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">รอบปกติ</th>
+                                <td>9 - 15 มีนาคม 2567</td>
+                                <td>30 มีนาคม 2567</td>
+                                <td>3 เมษายน 2567</td>
+                                <td>6 เมษายน 2567 (08.30 - 12.00 น.)</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+          
+
+    </div>
+
 <section class="container-fluid mt-3">
     <div class="card">
         <div class="card-body">
@@ -302,98 +390,7 @@ table thead tr th {
 
 <div class="page-content align-items-stretch">
     <!-- Side Navbar -->
-    <div class="container-fluid py-5">
-
-        <h3 class="text-center">กำหนดการรับนักเรียน ปีการศึกษา <?=$checkYear[0]->openyear_year?></h3>
-        <div class="card">
-            <div class="card-body">
-                <h5>ชั้นมัธยมศึกษาปีที่ 1</h5>
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
-                        <thead class="bg-primary text-white">
-                            <tr>
-                                <th scope="col">รอบการสมัคร</th>
-                                <th scope="col">รับสมัคร</th>
-                                <th scope="col">สอบ</th>
-                                <th scope="col">ประกาศผล</th>
-                                <th scope="col">สัมภาษณ์ รายงานตัว มอบตัว</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-center">
-                            <tr>
-                                <th scope="row">รอบโควตา (โรงเรียนในเขตพิ้นที่บริการ)</th>
-                                <td>1 - 31 มกราคม 2567</td>
-                                <td>-</td>
-                                <td>7 กุมภาพันธ์ 2567</td>
-                                <td>วันเสาร์ที่ 18 กุมภาพันธ์ 2567 (08.30 - 12.00 น.)</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">รอบความสามารถพิเศษด้านกีฬา</th>
-                                <td>คัดตัวนักกีฬา 17 - 18 กุมภาพันธ์ 2567</td>
-                                <td>-</td>
-                                <td>18 กุมภาพันธ์ 2567</td>
-                                <td>18 กุมภาพันธ์ 2567 (08.30 - 12.00 น.)</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">รอบปกติ</th>
-                                <td>9 - 15 มีนาคม 2567</td>
-                                <td>30 มีนาคม 2567</td>
-                                <td>3 เมษายน 2567</td>
-                                <td>6 เมษายน 2567 (08.30 - 12.00 น.)</td>
-                            </tr>
-
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-body">
-                <h5>ชั้นมัธยมศึกษาปีที่ 4</h5>
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
-                        <thead class="bg-primary text-white">
-                            <tr>
-                                <th scope="col">รอบการสมัคร</th>
-                                <th scope="col">รับสมัคร</th>
-                                <th scope="col">สอบ</th>
-                                <th scope="col">ประกาศผล</th>
-                                <th scope="col">สัมภาษณ์ รายงานตัว มอบตัว</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-center">
-                            <tr>
-                                <th scope="row">รอบโควตา (ม.3 เดิม)</th>
-                                <td>1 - 31 มกราคม 2567</td>
-                                <td>-</td>
-                                <td>7 กุมภาพันธ์ 2567</td>
-                                <td>วันเสาร์ที่ 18 กุมภาพันธ์ 2567 (08.30 - 12.00 น.)</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">รอบความสามารถพิเศษด้านกีฬา</th>
-                                <td>คัดตัวนักกีฬา 17 - 18 กุมภาพันธ์ 2567</td>
-                                <td>-</td>
-                                <td>18 กุมภาพันธ์ 2567</td>
-                                <td>18 กุมภาพันธ์ 2567 (08.30 - 120.00 น.)</td>
-                            </tr>
-
-                            <tr>
-                                <th scope="row">รอบปกติ</th>
-                                <td>9 - 15 มีนาคม 2567</td>
-                                <td>30 มีนาคม 2567</td>
-                                <td>3 เมษายน 2567</td>
-                                <td>6 เมษายน 2567 (08.30 - 12.00 น.)</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-    </div>
+    
 
     <div class="w-100">
         <!-- Page Header-->
@@ -516,30 +513,32 @@ table thead tr th {
                                         </h6>
                                         <?php endif; ?>
                                         <?php if($v_quota->quota_key == "quotaM4"):?>
-                                        <h6 class="card-title text-danger">(**เฉพาะนักเรียน ม.3 โรงเรียนสวนกุหลาบ (จิรประวัติ) นครสวรรค์ เท่านั้น**)
+                                        <h6 class="card-title text-danger">(**เฉพาะนักเรียน ม.3 โรงเรียนสวนกุหลาบ
+                                            (จิรประวัติ) นครสวรรค์ เท่านั้น**)
                                         </h6>
                                         <?php endif; ?>
                                         <?php if($v_quota->quota_key == "quotaM1"):?>
-                                        <h6 class="card-title text-danger">(**เฉพาะนักเรียน ในเขตพิ้นที่ 16 โรงเรียน เท่านั้น**) ได้แก่                                            
+                                        <h6 class="card-title text-danger">(**เฉพาะนักเรียน ในเขตพิ้นที่ 16 โรงเรียน
+                                            เท่านั้น**) ได้แก่
                                         </h6>
                                         <ul class="text-black">
-                                                <li>บ้านหนองเต่า</li>
-                                                <li>บ้านปากดง</li>
-                                                <li>บ้านซับฝักกาด</li>
-                                                <li>บ้านเขากะลา</li>
-                                                <li>บ้านเขาค้างคาว</li>
-                                                <li>วัดศรีสวรรค์สังฆาราม</li>
-                                                <li>วัดกลางแดด</li>
-                                                <li>ภาณุฑัตกรีฑาเวทย์</li>
-                                                <li>สายแยกเจ้าพระยา</li>
-                                                <li>บ้านบ่อดินสอพอง</li>
-                                                <li>สหวิทยาศึกษา</li>
-                                                <li>วัดสุบรรณาราม</li>
-                                                <li>บ้านช่อกระถินพัฒนา</li>
-                                                <li>วัดบ้านไร่</li>
-                                                <li>วัดพระนอน</li>
-                                                <li>ชุมชนวัดบ้านหว้า</li>
-                                            </ul>
+                                            <li>บ้านหนองเต่า</li>
+                                            <li>บ้านปากดง</li>
+                                            <li>บ้านซับฝักกาด</li>
+                                            <li>บ้านเขากะลา</li>
+                                            <li>บ้านเขาค้างคาว</li>
+                                            <li>วัดศรีสวรรค์สังฆาราม</li>
+                                            <li>วัดกลางแดด</li>
+                                            <li>ภาณุฑัตกรีฑาเวทย์</li>
+                                            <li>สายแยกเจ้าพระยา</li>
+                                            <li>บ้านบ่อดินสอพอง</li>
+                                            <li>สหวิทยาศึกษา</li>
+                                            <li>วัดสุบรรณาราม</li>
+                                            <li>บ้านช่อกระถินพัฒนา</li>
+                                            <li>วัดบ้านไร่</li>
+                                            <li>วัดพระนอน</li>
+                                            <li>ชุมชนวัดบ้านหว้า</li>
+                                        </ul>
                                         <?php endif; ?>
                                         <h5 class="card-title"><?=$v_quota->quota_explain?></h5>
                                         <?php  $q = explode("|",$v_quota->quota_level);
