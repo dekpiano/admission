@@ -90,3 +90,11 @@ function ShowStudentRecruit(Year) {
 		],
 	});
 }
+
+$(document).on('change', "#recruit_status2,#recruit_status1", function() {
+    if($(this).prop('checked') && $(this).val() === "ไม่ผ่านการตรวจสอบ"){
+        $("#AdminComment").show();
+    }else{
+        $("#AdminComment").hide();
+    }
+});

@@ -14,7 +14,7 @@ label {
         <!-- Page Header-->
         <header class="page-header">
             <div class="container-fluid">
-                <h2 class="no-margin-bottom">ประชาสัมพันธ์</h2>
+                <h2 class="no-margin-bottom">ตรวจสอบสถานะ / แก้ไขการรับสมัคร</h2>
             </div>
         </header>
         <!-- Dashboard Counts Section-->
@@ -255,7 +255,7 @@ label {
                                         <div class="col-md-3 mb-3">
                                             <label for="recruit_homedistrict">อำเภอ/เขต</label>
                                             <input type="text" id="recruit_homedistrict" name="recruit_homedistrict"
-                                            class="form-control" value="<?=$recruit[0]->recruit_homedistrict;?>">
+                                                class="form-control" value="<?=$recruit[0]->recruit_homedistrict;?>">
                                             <div class="invalid-feedback">
                                                 ระบุอำเภอ/เขต
                                             </div>
@@ -263,7 +263,7 @@ label {
                                         <div class="col-md-3 mb-3">
                                             <label for="recruit_homeProvince">จังหวัด</label>
                                             <input type="text" id="recruit_homeProvince" name="recruit_homeProvince"
-                                            class="form-control" value="<?=$recruit[0]->recruit_homeProvince;?>">
+                                                class="form-control" value="<?=$recruit[0]->recruit_homeProvince;?>">
                                             <div class="invalid-feedback">
                                                 ระบุจังหวัด
                                             </div>
@@ -389,18 +389,25 @@ label {
                                 <form method="post"
                                     action="<?=base_url('admin/Control_admin_admission/confrim_report/').$recruit[0]->recruit_id;?>">
                                     <div class="form-group">
-                                        <?php 
-   $confrim = array('ผ่านการตรวจสอบ','ไม่มีรูปภาพ หรือรูปภาพไม่ผ่านการตรวจสอบ','กรอกข้อมูลไม่ครบถ้วน','คุณสมบัติไม่ผ่านตามเงื่อนไข');
-   foreach ($confrim as $key => $value) : ?>
+                                        <div class="custom-control custom-radio">
+                                            <input <?=("ผ่านการตรวจสอบ" == $recruit[0]->recruit_status ? 'checked' : '')?>
+                                                type="radio" id="recruit_status1" name="recruit_status"
+                                                class="custom-control-input" value="ผ่านการตรวจสอบ">
+                                            <label class="custom-control-label"
+                                                for="recruit_status1">ผ่านการตรวจสอบ</label>
+                                        </div>
 
                                         <div class="custom-control custom-radio">
-                                            <input <?=$value == $recruit[0]->recruit_status ? 'checked' : ''?>
-                                                type="radio" id="recruit_status<?=$key;?>" name="recruit_status"
-                                                class="custom-control-input" value="<?=$value;?>">
+                                            <input <?=("ผ่านการตรวจสอบ" != $recruit[0]->recruit_status ? 'checked' : '')?>
+                                                type="radio" id="recruit_status2" name="recruit_status"
+                                                class="custom-control-input" value="ไม่ผ่านการตรวจสอบ">
                                             <label class="custom-control-label"
-                                                for="recruit_status<?=$key;?>"><?=$value;?></label>
+                                                for="recruit_status2">ไม่ผ่านการตรวจสอบ</label>
                                         </div>
-                                        <?php endforeach; ?>
+                                        <div <?=("ผ่านการตรวจสอบ" != $recruit[0]->recruit_status ? '':'style="display:none"') ?> id="AdminComment">
+                                            <input type="text" name="TextAdminComment" id="TextAdminComment" class="form-control" placeholder="เพราะ..." value="<?=("ผ่านการตรวจสอบ" != $recruit[0]->recruit_status ? $recruit[0]->recruit_status:'') ?>">
+                                        </div>
+
 
                                     </div>
                                     <button type="submit"

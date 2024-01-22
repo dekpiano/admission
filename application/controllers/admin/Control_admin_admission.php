@@ -554,10 +554,19 @@ class Control_admin_admission extends CI_Controller {
     public function confrim_report($id)
 	{	
 		//echo $this->input->post('recruit_status'); exit();
-		$data = array('recruit_status' => $this->input->post('recruit_status'));
-		$update_comfrim = $this->db->update('tb_recruitstudent',$data,"recruit_id='".$id."'");
-		$this->session->set_flashdata(array('status'=>'success','msg'=> 'Yes','messge' => 'ยืนยันข้อมูล สำเร็จ'));
-		 redirect('admin/Recruitment/CheckData/'.$id);
+		if($this->input->post('recruit_status') === "ผ่านการตรวจสอบ"){
+			$data = array('recruit_status' => $this->input->post('recruit_status'));
+			$update_comfrim = $this->db->update('tb_recruitstudent',$data,"recruit_id='".$id."'");
+			$this->session->set_flashdata(array('status'=>'success','msg'=> 'Yes','messge' => 'ยืนยันข้อมูล สำเร็จ'));
+			 redirect('admin/Recruitment/CheckData/'.$id);
+		}else{
+			$data = array('recruit_status' => $this->input->post('TextAdminComment'));
+			$update_comfrim = $this->db->update('tb_recruitstudent',$data,"recruit_id='".$id."'");
+			$this->session->set_flashdata(array('status'=>'success','msg'=> 'Yes','messge' => 'ยืนยันข้อมูล สำเร็จ'));
+			 redirect('admin/Recruitment/CheckData/'.$id);
+		}
+
+		
 	}	
 
 	public function pdf_all($year)
