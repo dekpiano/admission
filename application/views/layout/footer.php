@@ -165,7 +165,7 @@
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.5/dist/sweetalert2.all.min.js"></script>
          <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=2"></script>
-         <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=9"></script>
+         <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=13"></script>
          <script>
 $(document).ready(function() {
     $('#TB_CheckRegister').DataTable ({

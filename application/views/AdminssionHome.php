@@ -233,8 +233,8 @@ table thead tr th {
                                 </button>
                             </div>
 
-
-                            <!-- <div id="timer" class="flex-wrap d-flex justify-content-center">
+                            <?php if($switch[0]->onoff_regis != "on"): ?>
+                            <div id="timer" class="flex-wrap d-flex justify-content-center mt-3">
                                 <div id="days" class="align-items-center flex-column d-flex justify-content-center">
                                 </div>
                                 <div id="hours" class="align-items-center flex-column d-flex justify-content-center">
@@ -243,7 +243,9 @@ table thead tr th {
                                 </div>
                                 <div id="seconds" class="align-items-center flex-column d-flex justify-content-center">
                                 </div>
-                            </div> -->
+                            </div>
+                            <?php endif;?>
+
                         </div>
                     </div>
                 </div>
@@ -260,91 +262,91 @@ table thead tr th {
 
 <div class="container-fluid py-5">
 
-        <h3 class="text-center">กำหนดการรับนักเรียน ปีการศึกษา <?=$checkYear[0]->openyear_year?></h3>
-       
-                <h5>ชั้นมัธยมศึกษาปีที่ 1</h5>
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
-                        <thead class="bg-primary text-white">
-                            <tr>
-                                <th scope="col">รอบการสมัคร</th>
-                                <th scope="col">รับสมัคร</th>
-                                <th scope="col">สอบ</th>
-                                <th scope="col">ประกาศผล</th>
-                                <th scope="col">สัมภาษณ์ รายงานตัว มอบตัว</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-center bg-white">
-                            <tr>
-                                <th scope="row">รอบโควตา (โรงเรียนในเขตพิ้นที่บริการ)</th>
-                                <td>1 - 31 มกราคม 2567</td>
-                                <td>-</td>
-                                <td>7 กุมภาพันธ์ 2567</td>
-                                <td>วันเสาร์ที่ 18 กุมภาพันธ์ 2567 (08.30 - 12.00 น.)</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">รอบความสามารถพิเศษด้านกีฬา</th>
-                                <td>คัดตัวนักกีฬา 17 - 18 กุมภาพันธ์ 2567</td>
-                                <td>-</td>
-                                <td>18 กุมภาพันธ์ 2567</td>
-                                <td>18 กุมภาพันธ์ 2567 (08.30 - 12.00 น.)</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">รอบปกติ</th>
-                                <td>9 - 15 มีนาคม 2567</td>
-                                <td>30 มีนาคม 2567</td>
-                                <td>3 เมษายน 2567</td>
-                                <td>6 เมษายน 2567 (08.30 - 12.00 น.)</td>
-                            </tr>
+    <h3 class="text-center">กำหนดการรับนักเรียน ปีการศึกษา <?=$checkYear[0]->openyear_year?></h3>
+
+    <h5>ชั้นมัธยมศึกษาปีที่ 1</h5>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="bg-primary text-white">
+                <tr>
+                    <th scope="col">รอบการสมัคร</th>
+                    <th scope="col">รับสมัคร</th>
+                    <th scope="col">สอบ</th>
+                    <th scope="col">ประกาศผล</th>
+                    <th scope="col">สัมภาษณ์ รายงานตัว มอบตัว</th>
+                </tr>
+            </thead>
+            <tbody class="text-center bg-white">
+                <tr>
+                    <th scope="row">รอบโควตา (โรงเรียนในเขตพิ้นที่บริการ)</th>
+                    <td>1 - 31 มกราคม 2567</td>
+                    <td>-</td>
+                    <td>7 กุมภาพันธ์ 2567</td>
+                    <td>วันเสาร์ที่ 18 กุมภาพันธ์ 2567 (08.30 - 12.00 น.)</td>
+                </tr>
+                <tr>
+                    <th scope="row">รอบความสามารถพิเศษด้านกีฬา</th>
+                    <td>คัดตัวนักกีฬา 17 - 18 กุมภาพันธ์ 2567</td>
+                    <td>-</td>
+                    <td>18 กุมภาพันธ์ 2567</td>
+                    <td>18 กุมภาพันธ์ 2567 (08.30 - 12.00 น.)</td>
+                </tr>
+                <tr>
+                    <th scope="row">รอบปกติ</th>
+                    <td>9 - 15 มีนาคม 2567</td>
+                    <td>30 มีนาคม 2567</td>
+                    <td>3 เมษายน 2567</td>
+                    <td>6 เมษายน 2567 (08.30 - 12.00 น.)</td>
+                </tr>
 
 
-                        </tbody>
-                    </table>
-                </div>
-         
-
-                <h5>ชั้นมัธยมศึกษาปีที่ 4</h5>
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
-                        <thead class="bg-primary text-white">
-                            <tr>
-                                <th scope="col">รอบการสมัคร</th>
-                                <th scope="col">รับสมัคร</th>
-                                <th scope="col">สอบ</th>
-                                <th scope="col">ประกาศผล</th>
-                                <th scope="col">สัมภาษณ์ รายงานตัว มอบตัว</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-center bg-white">
-                            <tr>
-                                <th scope="row">รอบโควตา (ม.3 เดิม)</th>
-                                <td>1 - 31 มกราคม 2567</td>
-                                <td>-</td>
-                                <td>7 กุมภาพันธ์ 2567</td>
-                                <td>วันเสาร์ที่ 18 กุมภาพันธ์ 2567 (08.30 - 12.00 น.)</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">รอบความสามารถพิเศษด้านกีฬา</th>
-                                <td>คัดตัวนักกีฬา 17 - 18 กุมภาพันธ์ 2567</td>
-                                <td>-</td>
-                                <td>18 กุมภาพันธ์ 2567</td>
-                                <td>18 กุมภาพันธ์ 2567 (08.30 - 120.00 น.)</td>
-                            </tr>
-
-                            <tr>
-                                <th scope="row">รอบปกติ</th>
-                                <td>9 - 15 มีนาคม 2567</td>
-                                <td>30 มีนาคม 2567</td>
-                                <td>3 เมษายน 2567</td>
-                                <td>6 เมษายน 2567 (08.30 - 12.00 น.)</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-          
-
+            </tbody>
+        </table>
     </div>
+
+
+    <h5>ชั้นมัธยมศึกษาปีที่ 4</h5>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="bg-primary text-white">
+                <tr>
+                    <th scope="col">รอบการสมัคร</th>
+                    <th scope="col">รับสมัคร</th>
+                    <th scope="col">สอบ</th>
+                    <th scope="col">ประกาศผล</th>
+                    <th scope="col">สัมภาษณ์ รายงานตัว มอบตัว</th>
+                </tr>
+            </thead>
+            <tbody class="text-center bg-white">
+                <tr>
+                    <th scope="row">รอบโควตา (ม.3 เดิม)</th>
+                    <td>1 - 31 มกราคม 2567</td>
+                    <td>-</td>
+                    <td>7 กุมภาพันธ์ 2567</td>
+                    <td>วันเสาร์ที่ 18 กุมภาพันธ์ 2567 (08.30 - 12.00 น.)</td>
+                </tr>
+                <tr>
+                    <th scope="row">รอบความสามารถพิเศษด้านกีฬา</th>
+                    <td>คัดตัวนักกีฬา 17 - 18 กุมภาพันธ์ 2567</td>
+                    <td>-</td>
+                    <td>18 กุมภาพันธ์ 2567</td>
+                    <td>18 กุมภาพันธ์ 2567 (08.30 - 120.00 น.)</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">รอบปกติ</th>
+                    <td>9 - 15 มีนาคม 2567</td>
+                    <td>30 มีนาคม 2567</td>
+                    <td>3 เมษายน 2567</td>
+                    <td>6 เมษายน 2567 (08.30 - 12.00 น.)</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
 
 <section class="container-fluid mt-3">
     <div class="card">
@@ -390,7 +392,7 @@ table thead tr th {
 
 <div class="page-content align-items-stretch">
     <!-- Side Navbar -->
-    
+
 
     <div class="w-100">
         <!-- Page Header-->
