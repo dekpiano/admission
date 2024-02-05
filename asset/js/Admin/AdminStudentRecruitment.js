@@ -9,6 +9,12 @@ $(document).on("change", "#select_year", function () {
 function ShowStudentRecruit(Year) {
 	TBStudentRecruit = $("#TBStudentRecruit").DataTable({
 		destroy: true,
+		dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'pdfHtml5'
+        ],
 		order: [[0, "asc"]],
 		processing: true,
 		ajax: {
