@@ -28,7 +28,7 @@
 
 
         <?php 
-        if($stuConf[0]->stu_birthDay){
+        if(@$stuConf[0]->stu_birthDay){
             $birt =  explode("-",$stuConf[0]->stu_birthDay); 
             $stuYear = intval(@$birt[2]);$stuMount = intval(@$birt[1]);$stuDay = intval(@$birt[0]);
         }else{
@@ -134,7 +134,7 @@
                     <div class="dek-floating-label">
                         <input type="email" class="dek-floating-input" placeholder="" id="stu_email" name="stu_email"
                             required11 value="<?=$stuConf[0]->stu_email ?? ''?>">
-                        <label>อีเมล</label>
+                        <label>อีเมล (ถ้ามี...)</label>
                     </div>
                 </div>
 
@@ -188,17 +188,15 @@
 
                 <div class="col-sm-4 ">
                     <div class="dek-floating-label">
-                        <input type="text" class="dek-floating-input" id="stu_race" name="stu_race"
-                            placeholder="" required
-                            value="<?=$stuConf[0]->stu_race ?? $stu[0]->recruit_race?>">
+                        <input type="text" class="dek-floating-input" id="stu_race" name="stu_race" placeholder=""
+                            required value="<?=$stuConf[0]->stu_race ?? $stu[0]->recruit_race?>">
                         <label for="stu_race">สัญชาติ</label>
                     </div>
                 </div>
                 <div class="col-sm-4 ">
                     <div class="dek-floating-label">
                         <input type="text" class="dek-floating-input" id="stu_religion" name="stu_religion"
-                            placeholder="" required
-                            value="<?=$stuConf[0]->stu_religion ?? $stu[0]->recruit_religion?>">
+                            placeholder="" required value="<?=$stuConf[0]->stu_religion ?? $stu[0]->recruit_religion?>">
                         <label for="colFormLabelLg">ศาสนา</label>
                     </div>
                 </div>
@@ -208,7 +206,7 @@
                         <select class="dek-floating-input" id="stu_bloodType" name="stu_bloodType" required>
                             <option value="">เลือกกรุ๊ปเลือด</option>
                             <?php 
-                                $bloodType = array('A','B','AB','O');
+                                $bloodType = array('A','B','AB','O','ไม่ทราบกรุ๊ปเลือด');
                                 foreach ($bloodType as $key => $value):
                             ?>
                             <option <?=($stuConf[0]->stu_bloodType ?? '') == $value?"selected":"" ?>
@@ -221,8 +219,8 @@
                 </div>
                 <div class="col-sm-8 ">
                     <div class="dek-floating-label">
-                        <input type="text" class="dek-floating-input" id="stu_diseaes" name="stu_diseaes"
-                            placeholder="" required11 value="<?=$stuConf[0]->stu_diseaes ?? ''?>">
+                        <input type="text" class="dek-floating-input" id="stu_diseaes" name="stu_diseaes" placeholder=""
+                            required11 value="<?=$stuConf[0]->stu_diseaes ?? ''?>">
                         <label for="stu_diseaes">โรคประจำตัว (ระบุถ้ามี..)</label>
                     </div>
                 </div>
@@ -236,22 +234,22 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="dek-floating-label">
-                        <input type="number" class="dek-floating-input" id="stu_wieght" name="stu_wieght"
-                            placeholder="" required value="<?=$stuConf[0]->stu_wieght ?? ''?>">
+                        <input type="number" class="dek-floating-input" id="stu_wieght" name="stu_wieght" placeholder=""
+                            required value="<?=$stuConf[0]->stu_wieght ?? ''?>">
                         <label for="stu_wieght">น้ำหนัก (ระบุเป็นกิโลกรัม)</label>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="dek-floating-label">
-                        <input type="number" class="dek-floating-input" id="stu_hieght" name="stu_hieght"
-                            placeholder="" required value="<?=$stuConf[0]->stu_hieght ?? ''?>">
+                        <input type="number" class="dek-floating-input" id="stu_hieght" name="stu_hieght" placeholder=""
+                            required value="<?=$stuConf[0]->stu_hieght ?? ''?>">
                         <label for="stu_hieght">ส่วนสูง (ระบุเป็น ซม.)</label>
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="dek-floating-label">
-                        <input type="text" class="dek-floating-input" id="stu_talent" name="stu_talent"
-                            placeholder="" required value="<?=$stuConf[0]->stu_talent ?? ''?>">
+                        <input type="text" class="dek-floating-input" id="stu_talent" name="stu_talent" placeholder=""
+                            required value="<?=$stuConf[0]->stu_talent ?? ''?>">
                         <label for="stu_talent">ความสามารถพิเศษ</label>
                     </div>
                 </div>
@@ -265,8 +263,7 @@
                 <div class="col-sm-4 ">
                     <div class="dek-floating-label">
                         <input type="number" class="dek-floating-input" id="stu_numberSibling" name="stu_numberSibling"
-                            placeholder="" required
-                            value="<?=$stuConf[0]->stu_numberSibling ?? ''?>">
+                            placeholder="" required value="<?=$stuConf[0]->stu_numberSibling ?? ''?>">
                         <label for="stu_numberSibling">จำนวนพี่น้องทั้งหมด <small> (รวมทั้งตัวนักเรียนเองด้วย)</small>
                         </label>
                     </div>
@@ -327,12 +324,10 @@
                     <?php endforeach; ?>
                     <?php if(($stuConf[0]->stu_presentLife ?? '') == "บุคคลอื่น"):?>
                     <input type="text" id="stu_personOther" name="stu_personOther" class="ml-2 textbox form-control"
-                        value="<?=($stuConf[0]->stu_personOther ?? '')?>"
-                        placeholder="">
+                        value="<?=($stuConf[0]->stu_personOther ?? '')?>" placeholder="">
                     <?php else :?>
                     <input type="text" id="stu_personOther" name="stu_personOther" class="ml-2 textbox form-control"
-                        value="<?=($stuConf[0]->stu_personOther ?? '')?>" style="display:none;"
-                        placeholder="">
+                        value="<?=($stuConf[0]->stu_personOther ?? '')?>" style="display:none;" placeholder="">
                     <?php endif; ?>
                 </div>
             </div>
@@ -496,8 +491,8 @@
                 </div>
                 <div class="col-sm-8">
                     <div class="dek-floating-label">
-                        <input type="text" class="dek-floating-input" id="stu_travel" name="stu_travel"
-                            placeholder="" required value="<?=$stuConf[0]->stu_travel ?? ''?>">
+                        <input type="text" class="dek-floating-input" id="stu_travel" name="stu_travel" placeholder=""
+                            required value="<?=$stuConf[0]->stu_travel ?? ''?>">
                         <label for="stu_travel">เดินทางมาโรงเรียน สกจ. โดย</label>
                     </div>
                 </div>
@@ -571,12 +566,8 @@
                         <label class="custom-control-label align-self-center" for="stu_usedStudent2"> เคย
                         </label>
 
-                        <?php if($stuConf[0]->stu_usedStudent ?? ''=="เคย"){
-                        $display = "";
-                    }else{
-                        $display = "display:none;";
-                    }?>
-                        <div class="dek-floating-label" style="<?=$display ?? '';?>">
+                       
+                        <div class="dek-floating-label">
                             <select class="dek-floating-input ml-3" id="stu_inputLevel" name="stu_inputLevel">
                                 <option value="">เลือกระดับชั้น</option>
                                 <?php for ($i=1; $i <= 6 ; $i++) : ?>
@@ -585,7 +576,7 @@
                                 </option>
                                 <?php endfor; ?>
                             </select>
-                            <label>ระดับชั้น</label>
+                            <!-- <label>ระดับชั้น</label> -->
                         </div>
                     </div>
 
@@ -598,16 +589,16 @@
                 <div class="col-sm-3">
                     <div class="dek-floating-label">
                         <input type="text" class="dek-floating-input" id="stu_phoneUrgent" name="stu_phoneUrgent"
-                            value="<?php echo $stuConf[0]->stu_phoneUrgent ?? '';?>" placeholder=""
-                            required data-inputmask="'mask': '999-999-9999'">
+                            value="<?php echo $stuConf[0]->stu_phoneUrgent ?? '';?>" placeholder="" required
+                            data-inputmask="'mask': '999-999-9999'">
                         <label for="stu_phoneUrgent">โทรศัพท์ติดต่อฉุกเฉิน</label>
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="dek-floating-label">
                         <input type="text" class="dek-floating-input" id="stu_phoneFriend" name="stu_phoneFriend"
-                            value="<?php echo $stuConf[0]->stu_phoneFriend ?? '';?>" placeholder=""
-                            required11 data-inputmask="'mask': '999-999-9999'">
+                            value="<?php echo $stuConf[0]->stu_phoneFriend ?? '';?>" placeholder="" required11
+                            data-inputmask="'mask': '999-999-9999'">
                         <label for="stu_phoneFriend">โทรศัพท์เพื่อนบ้านใกล้เคียง</label>
                     </div>
                 </div>
