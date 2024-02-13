@@ -239,11 +239,11 @@ label {
                                                 alt="">
 
                                         </div>
-                                        
+
 
                                         <div class="custom-file mt-3">
-                                            <input type="file" class="form-control" id="recruit_img"
-                                                name="recruit_img" required>
+                                            <input type="file" class="form-control" id="recruit_img" name="recruit_img"
+                                                required>
                                             <div class="invalid-feedback">กรุณาอัพโหลดรูปภาพ</div>
                                         </div>
                                     </div>
@@ -610,7 +610,7 @@ label {
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="d-block my-3">
-                                    <?php if($TypeQuota[0]->quota_key == "normal" || $TypeQuota[0]->quota_key == "quotaM1" || $TypeQuota[0]->quota_key == "quotaM4" || ($this->uri->segment(3) == "quotasport" && $this->uri->segment(2) >= 4) || $this->uri->segment(3) == "normal-between"):
+                                    <?php if($TypeQuota[0]->quota_key == "normal" || $TypeQuota[0]->quota_key == "quotaM1" || $TypeQuota[0]->quota_key == "quotaM4" || $this->uri->segment(3) == "normal-between"):
                                         ?>
                                     <div class="custom-control custom-radio">
                                         <input id="debit" name="recruit_tpyeRoom" type="radio"
@@ -620,6 +620,25 @@ label {
                                             (Chinese
                                             English Program)</label>
                                     </div>
+
+                                    <div id="hidden-Language" style="display:none;margin: 0px 25px 10px;">
+                                        <?php 
+                                            $TypeLanguage = array('ภาษา');
+                                            foreach ($TypeLanguage as $key => $v_TypeLanguage) :
+                                        ?>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="recruit_major"
+                                                id="recruit_majorCEP<?=$key?>" value="<?=$v_TypeLanguage;?>" required>
+                                            <label class="form-check-label" for="recruit_majorCEP<?=$key?>">
+                                                <?=$v_TypeLanguage;?>
+                                            </label>
+                                        </div>
+                                        <?php endforeach; ?>
+                                        <div class="invalid-feedback">
+                                            กรุณาเลือกวิชาเอก
+                                        </div>
+                                    </div>
+
                                     <?php if($TypeQuota[0]->quota_key == "quotaM1" || $TypeQuota[0]->quota_key == "quotaM4" || $this->uri->segment(3) == "normal" || $this->uri->segment(3) == "normal-between"): ?>
                                     <div class="custom-control custom-radio">
                                         <input id="credit" name="recruit_tpyeRoom" type="radio"
@@ -630,7 +649,23 @@ label {
                                             for="credit">ห้องเรียนความเป็นเลิศทางด้านวิชาการ
                                             (Science Match and Technology Program)</label>
                                     </div>
-
+                                    <div id="hidden-SciTech" style="display:none;margin: 0px 25px 10px;">
+                                        <?php 
+                                            $TypeSciTech = array('วิทย์ - คณิต','วิทย์ - เทคโน');
+                                            foreach ($TypeSciTech as $key => $v_TypeSciTech) :
+                                        ?>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="recruit_major"
+                                                id="recruit_major<?=$key?>" value="<?=$v_TypeSciTech;?>" required>
+                                            <label class="form-check-label" for="recruit_major<?=$key?>">
+                                                <?=$v_TypeSciTech;?>
+                                            </label>
+                                        </div>
+                                        <?php endforeach; ?>
+                                        <div class="invalid-feedback">
+                                            กรุณาเลือกวิชาเอก
+                                        </div>
+                                    </div>
 
                                     <div class="custom-control custom-radio">
                                         <input id="paypal" name="recruit_tpyeRoom" type="radio"
@@ -641,6 +676,24 @@ label {
                                             for="paypal">ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ
                                             การแสดง (Performing Arts Program)</label>
                                     </div>
+                                    <div id="hidden-Arts" style="display:none;margin: 0px 25px 10px;">
+                                        <?php 
+                                            $TypeArts = array('ดนตรี','ศิลปะ','การแสดง');
+                                            foreach ($TypeArts as $key => $v_TypeArts) :
+                                        ?>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="recruit_major"
+                                                id="recruit_major<?=$key?>" value="<?=$v_TypeArts;?>" required>
+                                            <label class="form-check-label" for="recruit_major<?=$key?>">
+                                                <?=$v_TypeArts;?>
+                                            </label>
+                                        </div>
+                                        <?php endforeach; ?>
+                                        <div class="invalid-feedback">
+                                            กรุณาเลือกวิชาเอก
+                                        </div>
+                                    </div>
+
                                     <div class="custom-control custom-radio">
                                         <input id="paypal1" name="recruit_tpyeRoom" type="radio"
                                             class="custom-control-input"
@@ -649,6 +702,24 @@ label {
                                             for="paypal1">ห้องเรียนความเป็นเลิศด้านการงานอาชีพ
                                             (Career Program) </label>
                                     </div>
+                                    <div id="hidden-CP" style="display:none;margin: 0px 25px 10px;">
+                                        <?php 
+                                            $TypeCP = array('การงานอาชีพ');
+                                            foreach ($TypeCP as $key => $v_TypeCP) :
+                                        ?>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="recruit_major"
+                                                id="recruit_majorCP<?=$key?>" value="<?=$v_TypeCP;?>" required>
+                                            <label class="form-check-label" for="recruit_majorCP<?=$key?>">
+                                                <?=$v_TypeCP;?>
+                                            </label>
+                                        </div>
+                                        <?php endforeach; ?>
+                                        <div class="invalid-feedback">
+                                            กรุณาเลือกวิชาเอก
+                                        </div>
+                                    </div>
+
                                     <?php endif; ?>
                                     <?php endif; ?>
                                     <?php if($TypeQuota[0]->quota_key == "quotasport"):?>
@@ -658,6 +729,24 @@ label {
                                             value="ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program)" required>
                                         <label class="custom-control-label" for="sport">ห้องเรียนความเป็นเลิศด้านกีฬา
                                             (Sport Program)</label>
+                                    </div>
+
+                                    <div id="hidden-Sport" style="display:none;margin-left: 25px;">
+                                        <?php 
+                                            $TypeSport = array('ฟุตบอล','ฟุตซอล','บาสเกตบอล','วอลเลย์บอล');
+                                            foreach ($TypeSport as $key => $v_TypeSport) :
+                                        ?>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="recruit_major"
+                                                id="recruit_major<?=$key?>" value="<?=$v_TypeSport;?>" required>
+                                            <label class="form-check-label" for="recruit_major<?=$key?>">
+                                                <?=$v_TypeSport;?>
+                                            </label>
+                                        </div>
+                                        <?php endforeach; ?>
+                                        <div class="invalid-feedback">
+                                            กรุณาเลือกประเภทกีฬา
+                                        </div>
                                     </div>
                                     <?php endif; ?>
 

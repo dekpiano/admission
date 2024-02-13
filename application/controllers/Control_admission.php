@@ -140,6 +140,7 @@ class Control_admission extends CI_Controller {
 			'recruit_homeProvince' => $this->input->post('recruit_homeProvince'),
 			'recruit_homePostcode' => $this->input->post('recruit_homePostcode'),
 			'recruit_tpyeRoom' => $this->input->post('recruit_tpyeRoom'),
+			'recruit_major' => $this->input->post('recruit_major'),
 			'recruit_date'	=> date('Y-m-d'), 						
 			'recruit_year' => $data['checkYear'][0]->openyear_year,
 			'recruit_status' => "รอการตรวจสอบ",
