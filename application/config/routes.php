@@ -102,3 +102,6 @@ $route['admin/news'] = 'admin/control_admin_news';
 $route['admin/news/add'] = 'admin/control_admin_news/add';
 
 $route['admin/logout'] = 'admin/Control_admin_admission/logout';
+
+$route['loginGoogle'] = 'Control_login/login_admin';
+$route['loginAdmin'] = 'Control_login/login_main';

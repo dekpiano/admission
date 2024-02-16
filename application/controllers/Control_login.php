@@ -2,26 +2,66 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Control_login extends CI_Controller {
-
+	private $GoogleButton = "";
 
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->helper('url');
 		$this->load->model('Model_login');
+
+		$path = ((dirname(dirname(dirname(dirname((dirname(__FILE__))))))));
+		require $path . '/librarie_skj/google_sheet/vendor/autoload.php';
+
+        $redirect_uri = base_url('loginGoogle');
+        
+        $this->googleClient = new Google_Client();
+        $this->googleClient->setClientId('112583025699-4qiv5d413kebk4s53cc1450fopts7n3m.apps.googleusercontent.com');
+		$this->googleClient->setClientSecret('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');
+        $this->googleClient->setRedirectUri($redirect_uri);
+        $this->googleClient->addScope('email');
+        $this->googleClient->addScope('profile');
+
+        $this->GoogleButton = '<a href="'.$this->googleClient->createAuthUrl().'" class="btn btn-primary me-3 w-auto"><i class="fa fa-google-plus-official" aria-hidden="true"></i> Login by Google </a>';
 	}
 
 	public function login_main()
 	{
 		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
-		$this->load->view('login/login_main.php',$data);
+		$data['GoogleButton'] = $this->GoogleButton;
+		$this->load->view('login/login_admin.php',$data);
 		
 	}
 
 	public function login_admin()
 	{
+
 		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
-		$this->load->view('login/login_admin.php',$data);
+		$year = $this->db->get('tb_openyear')->row();
+		
+		if (isset($_GET['code'])) {
+			$token =  $this->googleClient->fetchAccessTokenWithAuthCode($_GET['code']);
+			 $this->googleClient->setAccessToken($token);
+	
+			$google_oauth = new Google_Service_Oauth2($this->googleClient);
+			$google_account_info = $google_oauth->userinfo->get();
+
+			$DBpers = $this->load->database('skjpers', TRUE);
+			$result = $DBpers->where('pers_username',$google_account_info->email)->get('tb_personnel')->row();
+			$this->session->set_userdata(array('login_id' => $result->pers_id,'fullname'=> $result->pers_prefix.$result->pers_firstname.' '.$result->pers_lastname,'status'=> 'user','permission_menu' => $result->pers_workother_id ,'user_img' => $result->pers_img,'year'=>$year->openyear_year));
+			// Here you can store the user information in your database
+			// $google_account_info->email, $google_account_info->name
+			
+			// Redirect to the profile page or wherever you want
+			redirect('admin/Recruitment/'.$data['checkYear'][0]->openyear_year);
+		} else {
+			// If we don't have an authorization code then get one
+			$auth_url =  $this->googleClient->createAuthUrl();
+			header('Location: ' . filter_var($auth_url, FILTER_SANITIZE_URL));
+			exit();
+		}
+
+		//$this->load->view('login/login_admin.php',$data);
 		
 	}
 

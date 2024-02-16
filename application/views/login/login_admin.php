@@ -51,28 +51,33 @@
                     <div class="col-lg-5 bg-white">
                         <div class="form d-flex align-items-center">
                             <div class="content">
-                                <h2 class="mb-3">เข้าสู่ระบบ สำหรับผู้ดูแลระบบ</h2>
+                                <h2 class="mb-3 text-center">เข้าสู่ระบบ สำหรับผู้ดูแลระบบ</h2>
                                 <form method="post" class="form-validate needs-validation" novalidate=""
                                     action="<?=base_url('Control_login/validlogin')?>">
-                                    <div class="form-group">
-                                    <input type="text" class="d-none" name="openyear_year"
-                                 value="<?=$checkYear[0]->openyear_year;?>">
+                                    <!-- <div class="form-group">
+                                        <input type="text" class="d-none" name="openyear_year"
+                                            value="<?=$checkYear[0]->openyear_year;?>">
                                         <input id="username" type="text" required class="input-material"
-                                          name="username">
-                                        <label for="username"
-                                            class="label-material">ชื่อผู้ใช้งาน</label>
+                                            name="username">
+                                        <label for="username" class="label-material">ชื่อผู้ใช้งาน</label>
                                     </div>
                                     <div class="form-group">
-                                        <input id="password" type="password" name="password"
-                                           required  class="input-material" >
+                                        <input id="password" type="password" name="password" required
+                                            class="input-material">
                                         <label for="password" class="label-material">รหัสผ่าน</label>
-                                       
-                                    </div><button id="login" type="submit" class="btn btn-primary">เข้าสู่ระบบ</button>                              
+
+                                    </div><button id="login" type="submit" class="btn btn-primary">เข้าสู่ระบบ</button> -->
+                                    <br>
+                                    <div class="text-center">
+                                        <?php echo $GoogleButton; ?>
+                                    </div>
+
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
+
             </div>
         </div>
 
