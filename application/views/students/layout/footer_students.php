@@ -23,11 +23,21 @@
          <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
          </script>
 
+         <script type="text/javascript"
+             src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
+         <script type="text/javascript"
+             src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js">
+         </script>
+
+         <script type="text/javascript"
+             src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js">
+         </script>
+
          <!-- <script src="<?=base_url()?>asset/js/AutoProvince-students.js"></script> -->
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.5/dist/sweetalert2.all.min.js"></script>
          <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=2"></script>
-         
+
          <?php  if($this->session->flashdata('msg') == 'NO' ):?>
          <script>
 Swal.fire("แจ้งเตือน", "<?=$this->session->flashdata('messge');?>", "<?=$this->session->flashdata('status');?>");
@@ -47,6 +57,13 @@ var onloadCallback = function() {
         'sitekey': '6LdZePgUAAAAAA5sewT1jFoUrRv7E7TGBg6fN6Zs'
     });
 };
+
+$.Thailand({
+    $district: $('#stu_hTambon'), // input ของตำบล
+    $amphoe: $('#stu_hDistrict'), // input ของอำเภอ
+    $province: $('#stu_hProvince'), // input ของจังหวัด
+    $zipcode: $('#stu_hPostCode'), // input ของรหัสไปรษณีย์
+});
 
 $(document).ready(function() {
     // Initialize 
