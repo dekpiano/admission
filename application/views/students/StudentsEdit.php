@@ -28,7 +28,7 @@ label {
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                             <h6 class="m-0 font-weight-bold text-primary"><?=$title?></h6>
                         </div>
-                        
+
                         <div class="card-body ">
                             <?php $stu = @$chk_stu[0]; ?>
                             <div class="col-md-12 order-md-1">
@@ -119,7 +119,7 @@ label {
                                         <div class="col-md-3 mb-3">
                                             <label for="recruit_grade">เกรดเฉลี่ย</label>
                                             <input type="text" class="form-control" id="recruit_grade"
-                                                name="recruit_grade" value="<?=$stu->recruit_grade?>" >
+                                                name="recruit_grade" value="<?=$stu->recruit_grade?>">
                                             <div class="invalid-feedback">
                                                 ระบุเกรดเฉลี่ย
                                             </div>
@@ -234,53 +234,34 @@ label {
 
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-3 mb-3">
-                                            <label for="recruit_homeProvince">จังหวัด</label>
-                                            <select id="province" class="custom-select" name="recruit_homeProvince"
-                                                required>
-                                                <?php foreach ($province as $key => $value) : ?>
-                                                <option
-                                                    <?php echo $value->PROVINCE_ID == $stu->recruit_homeProvince ? 'selected' : ''  ?>
-                                                    value="<?=$value->PROVINCE_ID?>"><?=$value->PROVINCE_NAME?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                ระบุจังหวัด
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 mb-3">
-                                            <label for="recruit_homedistrict">อำเภอ/เขต</label>
-                                            <select id="amphur" class="custom-select" name="recruit_homedistrict"
-                                                required>
-                                                <?php foreach ($amphur as $key => $value) :?>
-                                                <option
-                                                    <?=$stu->recruit_homedistrict == $value->AMPHUR_ID ? 'selected' : '';?>
-                                                    value="<?=$value->AMPHUR_ID;?>"><?=$value->AMPHUR_NAME?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                ระบุอำเภอ/เขต
-                                            </div>
-                                        </div>
 
                                         <div class="col-md-3 mb-3">
                                             <label for="recruit_homeSubdistrict">ตำบล/แขวง</label>
-                                            <select id="district" class="custom-select " name="recruit_homeSubdistrict"
-                                                required>
-                                                <?php foreach ($district as $key => $value) :?>
-                                                <option
-                                                    <?=$stu->recruit_homeSubdistrict == $value->DISTRICT_ID ? 'selected' : '';?>
-                                                    value="<?=$value->DISTRICT_ID;?>"><?=$value->DISTRICT_NAME?>
-                                                </option>
-                                                <?php endforeach; ?>
-                                            </select>
+                                            <input type="text" class="form-control" placeholder="" id="stu_hTambon"
+                                                name="stu_hTambon" required value="<?=$stu->recruit_homeSubdistrict?>">
                                             <div class="invalid-feedback">
                                                 ระบุตำบล/แขวง
                                             </div>
                                         </div>
                                         <div class="col-md-3 mb-3">
+                                            <label for="recruit_homedistrict">อำเภอ/เขต</label>
+                                            <input type="text" class="form-control" placeholder="" id="stu_hDistrict"
+                                                name="stu_hDistrict" required value="<?=$stu->recruit_homedistrict?>">
+                                            <div class="invalid-feedback">
+                                                ระบุอำเภอ/เขต
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label for="recruit_homeProvince">จังหวัด</label>
+                                            <input type="text" class="form-control" placeholder="" id="stu_hProvince"
+                                                name="stu_hProvince" required value="<?=$stu->recruit_homeProvince?>">
+                                            <div class="invalid-feedback">
+                                                ระบุจังหวัด
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
                                             <label for="recruit_homePostcode">รหัสไปรษณีย์</label>
-                                            <input type="text" class="form-control" id="postcode"
+                                            <input type="text" class="form-control" id="stu_hPostCode"
                                                 name="recruit_homePostcode" value="<?=$stu->recruit_homePostcode?>"
                                                 required>
                                             <div class="invalid-feedback">
@@ -347,9 +328,9 @@ label {
                                         <div class="row">
                                             <div class="col-md-4 mb-3">
                                                 <label for="recruit_certificateEdu">ใบรับรองผลการเรียน (ปพ.1)
-                                                    ด้านหน้า <a href="#" 
-                                            data-toggle="tooltip" data-placement="top" data-html="true"
-                                            title="<img class='img-fluid' src=&quot;<?=base_url('asset/img/p1.jpg')?>&quot;>">ตัวอย่างรูปที่ถูกต้อง</a></label>
+                                                    ด้านหน้า <a href="#" data-toggle="tooltip" data-placement="top"
+                                                        data-html="true"
+                                                        title="<img class='img-fluid' src=&quot;<?=base_url('asset/img/p1.jpg')?>&quot;>">ตัวอย่างรูปที่ถูกต้อง</a></label>
                                                 <input type="file" class="form-control" id="recruit_certificateEdu"
                                                     name="recruit_certificateEdu" placeholder="">
                                                 <div class="invalid-feedback">
@@ -361,9 +342,9 @@ label {
                                             </div>
                                             <div class="col-md-4 mb-3">
                                                 <label for="recruit_certificateEduB">ใบรับรองผลการเรียน (ปพ.1)
-                                                    ด้านหลัง <a href="#"
-                                            data-toggle="tooltip" data-placement="top" data-html="true"
-                                            title="<img class='img-fluid' src=&quot;<?=base_url('asset/img/p2.jpg')?>&quot;>">ตัวอย่างรูปที่ถูกต้อง</a></label>
+                                                    ด้านหลัง <a href="#" data-toggle="tooltip" data-placement="top"
+                                                        data-html="true"
+                                                        title="<img class='img-fluid' src=&quot;<?=base_url('asset/img/p2.jpg')?>&quot;>">ตัวอย่างรูปที่ถูกต้อง</a></label>
                                                 <input type="file" class="form-control" id="recruit_certificateEduB"
                                                     name="recruit_certificateEduB" placeholder="">
                                                 <div class="invalid-feedback">
@@ -377,8 +358,8 @@ label {
                                         <div class="row">
                                             <div class="col-md-4 mb-3">
                                                 <label for="recruit_copyidCard">สำเนาบัตรปะชาชน <a href="#"
-                                            data-toggle="tooltip" data-placement="top" data-html="true"
-                                            title="<img class='img-fluid' src=&quot;<?=base_url('asset/img/idcard.jpg')?>&quot;>">ตัวอย่างรูปที่ถูกต้อง</a></label>
+                                                        data-toggle="tooltip" data-placement="top" data-html="true"
+                                                        title="<img class='img-fluid' src=&quot;<?=base_url('asset/img/idcard.jpg')?>&quot;>">ตัวอย่างรูปที่ถูกต้อง</a></label>
                                                 <input type="file" class="form-control" id="recruit_copyidCard"
                                                     name="recruit_copyidCard" placeholder="">
                                                 <div class="invalid-feedback">
@@ -417,8 +398,9 @@ label {
                                         </div>
                                     </center>
                                     <?php if($stu->recruit_status == 'ผ่านการตรวจสอบ'): ?>
-                                    <a class="mt-3 btn btn-primary btn-lg btn-block disabled"  role="button" aria-disabled="true"
-                                        >คุณผ่านการตรวจสอบแล้ว ไม่สามารถแก้ไขได้ ถ้าจะแก้ไขติดต่อผู้ดูแลระบบได้ที่ เพจ Facebook โรงเรียน</a>
+                                    <a class="mt-3 btn btn-primary btn-lg btn-block disabled" role="button"
+                                        aria-disabled="true">คุณผ่านการตรวจสอบแล้ว ไม่สามารถแก้ไขได้
+                                        ถ้าจะแก้ไขติดต่อผู้ดูแลระบบได้ที่ เพจ Facebook โรงเรียน</a>
                                     <?php else : ?>
                                     <button class="mt-3 btn btn-primary btn-lg btn-block"
                                         type="submit">ยืนยันการแก้ไขสมัครเรียน</button>
