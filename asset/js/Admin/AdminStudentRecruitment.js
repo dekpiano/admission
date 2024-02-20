@@ -51,6 +51,7 @@ function ShowStudentRecruit(Year) {
 					}
 				},
 			},
+			{ data: "recruit_Fullname" },
 			{ data: "recruit_category" },
 			{ data: "recruit_date" },
 			{ data: "recruit_id" },
@@ -66,8 +67,7 @@ function ShowStudentRecruit(Year) {
 					);
 					//return row.recruit_regLevel;
 				},
-			},
-			{ data: "recruit_Fullname" },
+			},			
 			{ data: "recruit_idCard" },
 			{
 				data: "recruit_regLevel",

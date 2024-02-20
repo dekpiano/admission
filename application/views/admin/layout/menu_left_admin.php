@@ -44,5 +44,9 @@
         <li <?=$this->uri->segment('2') == "system" ? 'class="active"' : ''?>> <a
                 href="<?=base_url('admin/system/'.$this->session->userdata('year'));?>"> <i class="fas fa-stream"></i>
                 ตั้งค่าระบบ </a></li>
+        <li <?=$this->uri->segment('2') == "AdminRloes" ? 'class="active"' : ''?>> <a
+                href="<?=base_url('admin/system/'.$this->session->userdata('year'));?>"> <i class="fas fa-stream"></i>
+                ตั้งค่าสิทธ์การใช้งาน </a></li>
     </ul>
+
 </nav>
