@@ -73,7 +73,7 @@
                                     </td>
                                     <td>
                                         <?php
-                                            if($v_recruit->stu_id != null && $v_recruit->stu_UpdateConfirm == $this->uri->segment('3')){
+                                            if($v_recruit->stu_id != null){
                                                 echo '<h4><span class="badge badge-pill badge-success">รายงานตัวแล้ว</span></h4>';
                                             }else{                                              
                                                 echo '<h4><span class=" badge badge-pill badge-danger">ยังไม่ได้รายงานตัว</span></h4>';
@@ -83,7 +83,7 @@
                                 
 
                                     <td>
-                                        <?php if($v_recruit->stu_id != null && $this->uri->segment('3')): ?>
+                                        <?php if($v_recruit->stu_id != null): ?>
                                             <a target="_blank"
                                             href="<?=base_url('admin/Control_admin_confirm/pdfConfirm/'.$this->uri->segment(3).'/'.$v_recruit->recruit_idCard);?>"
                                             class="btn btn-primary btn-sm"><i class="fas fa-print"></i>

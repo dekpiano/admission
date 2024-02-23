@@ -74,8 +74,17 @@ class Control_admission extends CI_Controller {
 		$data['url'] = "welcome";
 		$data['TypeQuota'] = $this->db->where('quota_key',$quota)->get("tb_quota")->result();
 
+		if($id <= 3){
+			$data['Course'] = $this->db->select('course_id,course_initials')
+			->where('course_gradelevel','ม.ต้น')
+			->get("tb_course")->result();
+		}else{
+			$data['Course'] = $this->db->select('course_id,course_initials')
+			->where('course_gradelevel','ม.ปลาย')
+			->get("tb_course")->result();
+		}
 		
-		//
+		//echo '<pre>';print_r($data['Course']); exit();
 		if ($id > 0) {
 			$this->load->view('layout/header.php',$data);
 			$this->load->view('AdminssionRegister.php');
@@ -103,7 +112,15 @@ class Control_admission extends CI_Controller {
 	{	
 		$data = $this->dataAll();
 		$status = $this->recaptcha_google($this->input->post('captcha')); 
-		//print_r($status); exit();
+
+		//รับรอบปกติ
+		if($this->input->post('recruit_category') == "normal"){
+			$SelImpo = implode('|',$this->input->post('recruit_majorOrder'));		
+			$CheckCourse = $this->db->select('course_fullname,course_branch')->where('course_id',$SelImpo[0])->get('tb_course')->Row();
+			$Course_fullname = $CheckCourse->course_fullname;
+			$Course_branch = $CheckCourse->course_branch;
+		}
+		
         if ($status['success']) {
 			$openyear = $this->db->get('tb_openyear')->result();
 		//print_r($this->input->post('recruit_idCard'));
@@ -139,8 +156,9 @@ class Control_admission extends CI_Controller {
 			'recruit_homedistrict' => $this->input->post('recruit_homedistrict'),
 			'recruit_homeProvince' => $this->input->post('recruit_homeProvince'),
 			'recruit_homePostcode' => $this->input->post('recruit_homePostcode'),
-			'recruit_tpyeRoom' => $this->input->post('recruit_tpyeRoom'),
-			'recruit_major' => $this->input->post('recruit_major'),
+			'recruit_tpyeRoom' => $Course_fullname,
+			'recruit_major' => $Course_branch,
+			'recruit_majorOrder' => $SelImpo,
 			'recruit_date'	=> date('Y-m-d'), 						
 			'recruit_year' => $data['checkYear'][0]->openyear_year,
 			'recruit_status' => "รอการตรวจสอบ",

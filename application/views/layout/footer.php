@@ -159,7 +159,7 @@
 
          <?php if($this->uri->segment(1) == "RegStudent"):?>
          <script src="<?=base_url()?>asset/js/AutoProvince.js?v=7.2"></script>
-         <script src="<?=base_url()?>asset/js/RegStudent.js?v=1.2"></script>
+         <script src="<?=base_url()?>asset/js/RegStudent.js?v=2"></script>
          <?php elseif($this->uri->segment(1) == "Confirm"):?>
          <script src="<?=base_url()?>asset/js/ConfirmStudent.js?v=21.1"></script>
          <script src="<?=base_url()?>asset/js/login.js?v=7"></script>
@@ -167,7 +167,7 @@
 
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=2"></script>
-         <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=13"></script>
+         <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=14"></script>
          <script>
 $(document).ready(function() {
     $('#TB_CheckRegister').DataTable ({

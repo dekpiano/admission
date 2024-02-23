@@ -71,3 +71,34 @@ $(document).on('click','#paypal1',function() {
         
 //     })
 // });
+
+// ฟังก์ชั่นเพื่ออัปเดตการแสดงผลของ options ในทุก <select> เมื่อมีการเปลี่ยนแปลง
+function updateSelectOptions() {
+  let selectedValues = [];
+  // รวบรวมค่าที่เลือกจากทุก <select>
+  for (let i = 1; i <= 7; i++) {
+    const select = document.getElementById('select' + i);
+    if (select.value !== "") {
+      selectedValues.push(select.value);
+    }
+  }
+
+  // อัปเดตการแสดงผลของ options ในทุก <select>
+  for (let i = 1; i <= 7; i++) {
+    const select = document.getElementById('select' + i);
+    const selectedValue = select.value;
+    for (let option of select.options) {
+      // ซ่อน option ที่เลือกไปแล้วใน <select> อื่น แต่เว้น option ที่เลือกใน <select> นี้
+      if (selectedValues.includes(option.value) && selectedValue !== option.value) {
+        option.hidden = true;
+      } else {
+        option.hidden = false;
+      }
+    }
+  }
+}
+
+// เพิ่ม event listener ให้กับทุก <select>
+for (let i = 1; i <= 7; i++) {
+  document.getElementById('select' + i).addEventListener('change', updateSelectOptions);
+}

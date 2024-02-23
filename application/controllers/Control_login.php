@@ -10,7 +10,7 @@ class Control_login extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->model('Model_login');
 
-		$path = (((dirname(dirname(dirname((dirname(__FILE__))))))));
+		$path = ((dirname(dirname(dirname(dirname((dirname(__FILE__))))))));
 		require $path . '/librarie_skj/google_sheet/vendor/autoload.php';
 
         $redirect_uri = base_url('loginGoogle');

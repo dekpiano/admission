@@ -609,180 +609,148 @@ label {
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
-                                <?php if($TypeQuota[0]->quota_key == "quotaM1" || $TypeQuota[0]->quota_key == "quotaM4" || $this->uri->segment(3) == "normal-between"):
+                                <div class="d-block my-3">
+                                    <?php if($TypeQuota[0]->quota_key == "normal" || $TypeQuota[0]->quota_key == "quotaM1" || $TypeQuota[0]->quota_key == "quotaM4" || $this->uri->segment(3) == "normal-between"):
                                         ?>
-                                <!-- วิทยาศาสตร์ -->
-                                <div class="custom-control custom-radio">
-                                    <input id="credit" name="recruit_tpyeRoom" type="radio" class="custom-control-input"
-                                        value="ห้องเรียนความเป็นเลิศทางด้านวิชาการ (Science Match and Technology Program)"
-                                        required>
-                                    <label class="custom-control-label" for="credit">ห้องเรียนความเป็นเลิศทางด้านวิชาการ
-                                        (Science Match and Technology Program)</label>
-                                </div>
-                                <div id="hidden-SciTech" style="display:none;margin: 0px 25px 10px;">
-                                    <?php 
-                                            $TypeSciTech = array('วิทย์ - คณิต','วิทย์ - เทคโน');
-                                            foreach ($TypeSciTech as $key => $v_TypeSciTech) :
-                                        ?>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="recruit_major"
-                                            id="recruit_major<?=$key?>" value="<?=$v_TypeSciTech;?>" required>
-                                        <label class="form-check-label" for="recruit_major<?=$key?>">
-                                            <?=$v_TypeSciTech;?>
-                                        </label>
+                                    <div class="custom-control custom-radio">
+                                        <input id="debit" name="recruit_tpyeRoom" type="radio"
+                                            class="custom-control-input"
+                                            value="ห้องเรียนความเป็นเลิศทางด้านภาษา (Chinese English Program)" required>
+                                        <label class="custom-control-label" for="debit">ห้องเรียนความเป็นเลิศทางด้านภาษา
+                                            (Chinese
+                                            English Program)</label>
                                     </div>
-                                    <?php endforeach; ?>
-                                    <div class="invalid-feedback">
-                                        กรุณาเลือกวิชาเอก
-                                    </div>
-                                </div>
-                                <!-- ภาษา -->
-                                <div class="custom-control custom-radio">
-                                    <input id="debit" name="recruit_tpyeRoom" type="radio" class="custom-control-input"
-                                        value="ห้องเรียนความเป็นเลิศทางด้านภาษา (Chinese English Program)" required>
-                                    <label class="custom-control-label" for="debit">ห้องเรียนความเป็นเลิศทางด้านภาษา
-                                        (Chinese
-                                        English Program)</label>
-                                </div>
 
-                                <div id="hidden-Language" style="display:none;margin: 0px 25px 10px;">
-                                    <?php 
+                                    <div id="hidden-Language" style="display:none;margin: 0px 25px 10px;">
+                                        <?php 
                                             $TypeLanguage = array('ภาษา');
                                             foreach ($TypeLanguage as $key => $v_TypeLanguage) :
                                         ?>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="recruit_major"
-                                            id="recruit_majorCEP<?=$key?>" value="<?=$v_TypeLanguage;?>" required>
-                                        <label class="form-check-label" for="recruit_majorCEP<?=$key?>">
-                                            <?=$v_TypeLanguage;?>
-                                        </label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="recruit_major"
+                                                id="recruit_majorCEP<?=$key?>" value="<?=$v_TypeLanguage;?>" required>
+                                            <label class="form-check-label" for="recruit_majorCEP<?=$key?>">
+                                                <?=$v_TypeLanguage;?>
+                                            </label>
+                                        </div>
+                                        <?php endforeach; ?>
+                                        <div class="invalid-feedback">
+                                            กรุณาเลือกวิชาเอก
+                                        </div>
                                     </div>
-                                    <?php endforeach; ?>
-                                    <div class="invalid-feedback">
-                                        กรุณาเลือกวิชาเอก
-                                    </div>
-                                </div>
 
-                                <!-- ศิลปะ -->
-                                <div class="custom-control custom-radio">
-                                    <input id="paypal" name="recruit_tpyeRoom" type="radio" class="custom-control-input"
-                                        value="ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ การแสดง (Performing Arts Program)"
-                                        required>
-                                    <label class="custom-control-label" for="paypal">ห้องเรียนความเป็นเลิศทางด้านดนตรี
-                                        ศิลปะ
-                                        การแสดง (Performing Arts Program)</label>
-                                </div>
-                                <div id="hidden-Arts" style="display:none;margin: 0px 25px 10px;">
-                                    <?php 
+                                    <?php if($TypeQuota[0]->quota_key == "quotaM1" || $TypeQuota[0]->quota_key == "quotaM4" || $this->uri->segment(3) == "normal" || $this->uri->segment(3) == "normal-between"): ?>
+                                    <div class="custom-control custom-radio">
+                                        <input id="credit" name="recruit_tpyeRoom" type="radio"
+                                            class="custom-control-input"
+                                            value="ห้องเรียนความเป็นเลิศทางด้านวิชาการ (Science Match and Technology Program)"
+                                            required>
+                                        <label class="custom-control-label"
+                                            for="credit">ห้องเรียนความเป็นเลิศทางด้านวิชาการ
+                                            (Science Match and Technology Program)</label>
+                                    </div>
+                                    <div id="hidden-SciTech" style="display:none;margin: 0px 25px 10px;">
+                                        <?php 
+                                            $TypeSciTech = array('วิทย์ - คณิต','วิทย์ - เทคโน');
+                                            foreach ($TypeSciTech as $key => $v_TypeSciTech) :
+                                        ?>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="recruit_major"
+                                                id="recruit_major<?=$key?>" value="<?=$v_TypeSciTech;?>" required>
+                                            <label class="form-check-label" for="recruit_major<?=$key?>">
+                                                <?=$v_TypeSciTech;?>
+                                            </label>
+                                        </div>
+                                        <?php endforeach; ?>
+                                        <div class="invalid-feedback">
+                                            กรุณาเลือกวิชาเอก
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-control custom-radio">
+                                        <input id="paypal" name="recruit_tpyeRoom" type="radio"
+                                            class="custom-control-input"
+                                            value="ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ การแสดง (Performing Arts Program)"
+                                            required>
+                                        <label class="custom-control-label"
+                                            for="paypal">ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ
+                                            การแสดง (Performing Arts Program)</label>
+                                    </div>
+                                    <div id="hidden-Arts" style="display:none;margin: 0px 25px 10px;">
+                                        <?php 
                                             $TypeArts = array('ดนตรี','ศิลปะ','การแสดง');
                                             foreach ($TypeArts as $key => $v_TypeArts) :
                                         ?>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="recruit_major"
-                                            id="recruit_major<?=$key?>" value="<?=$v_TypeArts;?>" required>
-                                        <label class="form-check-label" for="recruit_major<?=$key?>">
-                                            <?=$v_TypeArts;?>
-                                        </label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="recruit_major"
+                                                id="recruit_major<?=$key?>" value="<?=$v_TypeArts;?>" required>
+                                            <label class="form-check-label" for="recruit_major<?=$key?>">
+                                                <?=$v_TypeArts;?>
+                                            </label>
+                                        </div>
+                                        <?php endforeach; ?>
+                                        <div class="invalid-feedback">
+                                            กรุณาเลือกวิชาเอก
+                                        </div>
                                     </div>
-                                    <?php endforeach; ?>
-                                    <div class="invalid-feedback">
-                                        กรุณาเลือกวิชาเอก
-                                    </div>
-                                </div>
 
-                                <!-- การงานอาชีพ -->
-                                <div class="custom-control custom-radio">
-                                    <input id="paypal1" name="recruit_tpyeRoom" type="radio"
-                                        class="custom-control-input"
-                                        value="ห้องเรียนความเป็นเลิศด้านการงานอาชีพ (Career Program)" required>
-                                    <label class="custom-control-label"
-                                        for="paypal1">ห้องเรียนความเป็นเลิศด้านการงานอาชีพ
-                                        (Career Program) </label>
-                                </div>
-                                <div id="hidden-CP" style="display:none;margin: 0px 25px 10px;">
-                                    <?php 
+                                    <div class="custom-control custom-radio">
+                                        <input id="paypal1" name="recruit_tpyeRoom" type="radio"
+                                            class="custom-control-input"
+                                            value="ห้องเรียนความเป็นเลิศด้านการงานอาชีพ (Career Program)" required>
+                                        <label class="custom-control-label"
+                                            for="paypal1">ห้องเรียนความเป็นเลิศด้านการงานอาชีพ
+                                            (Career Program) </label>
+                                    </div>
+                                    <div id="hidden-CP" style="display:none;margin: 0px 25px 10px;">
+                                        <?php 
                                             $TypeCP = array('การงานอาชีพ');
                                             foreach ($TypeCP as $key => $v_TypeCP) :
                                         ?>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="recruit_major"
-                                            id="recruit_majorCP<?=$key?>" value="<?=$v_TypeCP;?>" required>
-                                        <label class="form-check-label" for="recruit_majorCP<?=$key?>">
-                                            <?=$v_TypeCP;?>
-                                        </label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="recruit_major"
+                                                id="recruit_majorCP<?=$key?>" value="<?=$v_TypeCP;?>" required>
+                                            <label class="form-check-label" for="recruit_majorCP<?=$key?>">
+                                                <?=$v_TypeCP;?>
+                                            </label>
+                                        </div>
+                                        <?php endforeach; ?>
+                                        <div class="invalid-feedback">
+                                            กรุณาเลือกวิชาเอก
+                                        </div>
                                     </div>
-                                    <?php endforeach; ?>
-                                    <div class="invalid-feedback">
-                                        กรุณาเลือกวิชาเอก
+
+                                    <?php endif; ?>
+                                    <?php endif; ?>
+                                    <?php if($TypeQuota[0]->quota_key == "quotasport"):?>
+                                    <div class="custom-control custom-radio">
+                                        <input id="sport" name="recruit_tpyeRoom" type="radio"
+                                            class="custom-control-input"
+                                            value="ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program)" required>
+                                        <label class="custom-control-label" for="sport">ห้องเรียนความเป็นเลิศด้านกีฬา
+                                            (Sport Program)</label>
                                     </div>
-                                </div>
-                                <?php endif; ?>
 
-                                <?php if($TypeQuota[0]->quota_key == "quotasport"):?>
-                                <div class="custom-control custom-radio">
-                                    <input id="sport" name="recruit_tpyeRoom" type="radio" class="custom-control-input"
-                                        value="ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program)" required>
-                                    <label class="custom-control-label" for="sport">ห้องเรียนความเป็นเลิศด้านกีฬา
-                                        (Sport Program)</label>
-                                </div>
-
-                                <div id="hidden-Sport" style="display:none;margin-left: 25px;">
-                                    <?php 
+                                    <div id="hidden-Sport" style="display:none;margin-left: 25px;">
+                                        <?php 
                                             $TypeSport = array('ฟุตบอล','ฟุตซอล','บาสเกตบอล','วอลเลย์บอล');
                                             foreach ($TypeSport as $key => $v_TypeSport) :
                                         ?>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="recruit_major"
-                                            id="recruit_major<?=$key?>" value="<?=$v_TypeSport;?>" required>
-                                        <label class="form-check-label" for="recruit_major<?=$key?>">
-                                            <?=$v_TypeSport;?>
-                                        </label>
-                                    </div>
-                                    <?php endforeach; ?>
-                                    <div class="invalid-feedback">
-                                        กรุณาเลือกประเภทกีฬา
-                                    </div>
-                                </div>
-                                <?php endif; ?>
-
-                                <?php if($TypeQuota[0]->quota_key == "normal") : ?>
-                                <!-- สำหรับรอบปกติ -->
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <p><b>อ่านฉันก่อนนะ!</b></p>
-                                        การสมัครรอบปกติ
-                                        จะเป็นการสอบเพื่อคัดเลือกนักเรียนเข้าเรียนตามหลักสูตรความเป็นเลิศ
-                                        โดยเรียงลำดับคะแนนนักเรียนและเลือก
-                                        ตามลำดับ <br>
-                                        กรณี ที่สอบได้ลำดับที่ห้องเรียนเต็มหรือจำนวนนักเรียนในแต่ละห้องเกินโควตา
-                                        นักเรียนจะต้องถูกเลือกเข้าเรียนตามหลักสูตรความเป็นเลิศในลำดับถัดไป
-                                        <br>ดังนั้น กรุณาเลือกลำดับตามที่ต้องการเรียนก่อน
-                                    </div>
-                                    <div class="col-md-6">
-                                        ลำดับการเลือก
-                                        <hr>
-
-                                        <?php foreach ($Course as $key => $v_CourseS) :?>
-                                        <div class="d-flex align-items-center">
-                                            <div class="mr-2">
-                                                ลำดับที่ <?=$key+1;?>
-                                            </div>
-                                            <div>
-                                                <select name="recruit_majorOrder[]" id="select<?=$key+1;?>"
-                                                    class="form-control mb-2" required>
-                                                    <option value="">เลือกหลักสูตรลำดับที่ <?=$key+1;?></option>
-                                                    <?php foreach ($Course as $key => $v_CourseS) :?>
-                                                    <option value="<?=$v_CourseS->course_id?>">
-                                                        <?=$v_CourseS->course_initials?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
-                                            </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="recruit_major"
+                                                id="recruit_major<?=$key?>" value="<?=$v_TypeSport;?>" required>
+                                            <label class="form-check-label" for="recruit_major<?=$key?>">
+                                                <?=$v_TypeSport;?>
+                                            </label>
                                         </div>
                                         <?php endforeach; ?>
-
+                                        <div class="invalid-feedback">
+                                            กรุณาเลือกประเภทกีฬา
+                                        </div>
                                     </div>
+                                    <?php endif; ?>
+
                                 </div>
-                                <?php endif; ?>
                             </div>
                         </div>
 
