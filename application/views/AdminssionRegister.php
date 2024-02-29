@@ -849,6 +849,34 @@ label {
                             </div>
                         </div>
 
+
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h5 class="m-0 font-weight-bold text-primary">เกียรติบัตรด้านความสามารถที่ใช้สมัครเรียน
+                               
+                                </h5>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="recruit_certificateEdu">เกียรติบัตรใบที่ 1 </label>
+                                        <input type="file" class="form-control" id="recruit_certificateEdu"
+                                            name="recruit_certificateEdu" placeholder="">
+                                        <img id="show_certificateEdu" class="img-fluid" src="# " alt="">
+                                        <div class="invalid-feedback">
+                                            กรุณาเลือกไฟล์ ใบรับรองผลการเรียน (ปพ.1) <u>ด้านหน้า</u>
+                                        </div>
+                                    </div>
+                                </div>
+                              
+                                   
+                                </div>
+                            </div>
+                        </div>
+
+
                         <div class=" mb-4" style="">
                             <div class="card-body bg-danger text-white">
                                 <h5 class="card-title  text-center">ข้อตกลงในการสมัครออนไลน์</h5>

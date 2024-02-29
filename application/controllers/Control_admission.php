@@ -119,6 +119,10 @@ class Control_admission extends CI_Controller {
 			$CheckCourse = $this->db->select('course_fullname,course_branch')->where('course_id',$SelImpo[0])->get('tb_course')->Row();
 			$Course_fullname = $CheckCourse->course_fullname;
 			$Course_branch = $CheckCourse->course_branch;
+		}else{
+			$SelImpo = "";
+			$Course_fullname = $this->input->post('recruit_tpyeRoom');
+			$Course_branch = $this->input->post('recruit_major');
 		}
 		
         if ($status['success']) {
