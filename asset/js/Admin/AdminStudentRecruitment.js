@@ -79,6 +79,17 @@ function ShowStudentRecruit(Year) {
 			{ data: "recruit_birthday" },
 			{ data: "recruit_phone" },
 			{ data: "recruit_tpyeRoom" },
+			{ data: "recruit_certificateAbility",
+				render: function (data, type, row) {
+					var Ability = data.split("|");
+					// วนลูปผ่านอาร์เรย์เพื่อสร้างสตริง HTML ของแท็ก <img>
+					var imageTags = Ability.map(function(imageUrl) {
+						return "<img class='' src='../../uploads/recruitstudent/m" +row.recruit_regLevel +"/certificateAbility/" + imageUrl.trim() + "' style='width: 200px; height: auto;'>"; // ตั้งค่าขนาดรูปภาพตามต้องการ
+					  }).join(' '); // ใช้ว่างเป็นตัวคั่นระหว่างแท็ก <img>
+			  
+					  return imageTags;
+				}, 
+			},
 			{
 				data: "recruit_id",
 				render: function (data, type, row) {
