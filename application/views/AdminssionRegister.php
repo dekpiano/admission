@@ -849,81 +849,80 @@ label {
                             </div>
                         </div>
 
-
+                        <?php if($TypeQuota[0]->quota_key == "normal") : ?>
                         <div class="card shadow mb-4">
                             <!-- Card Header - Dropdown -->
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                 <h5 class="m-0 font-weight-bold text-primary">เกียรติบัตรด้านความสามารถที่ใช้สมัครเรียน
-                               
+
                                 </h5>
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="row">
+                                    <?php for ($i=1; $i <=3 ; $i++):?>
                                     <div class="col-md-4 mb-3">
-                                        <label for="recruit_certificateEdu">เกียรติบัตรใบที่ 1 </label>
-                                        <input type="file" class="form-control" id="recruit_certificateEdu"
-                                            name="recruit_certificateEdu" placeholder="">
-                                        <img id="show_certificateEdu" class="img-fluid" src="# " alt="">
-                                        <div class="invalid-feedback">
-                                            กรุณาเลือกไฟล์ ใบรับรองผลการเรียน (ปพ.1) <u>ด้านหน้า</u>
-                                        </div>
+                                        <label for="recruit_certificateAbility">เกียรติบัตรใบที่ <?=$i;?> </label>
+                                        <input type="file" class="form-control" id="recruit_certificateAbility<?=$i;?>"
+                                            name="recruit_certificateAbility[]" placeholder=""
+                                            onchange="showPreview(event,'preview<?=$i;?>')">
+                                        <div id="preview<?=$i;?>"></div>
+
                                     </div>
-                                </div>
-                              
-                                   
+                                    <?php endfor; ?>
                                 </div>
                             </div>
                         </div>
+                        <?php endif; ?>
+                    </div>
 
 
-                        <div class=" mb-4" style="">
-                            <div class="card-body bg-danger text-white">
-                                <h5 class="card-title  text-center">ข้อตกลงในการสมัครออนไลน์</h5>
-                                <p class="card-text">1.ผู้สมัครเข้าศึกษาสามารถสมัคร ONLINE</p>
-                                <p class="card-text">2.รับสมัครผู้สำเร็จการศึกษา
-                                    หรือกำลังศึกษาชั้นประถมศึกษา
-                                    (ป.6) หรือ
-                                    กำลังศึกษาชั้นมัธยมศึกษา (ม.3) ที่จบการศึกษา</p>
-                                <p class="card-text">
-                                    3.ผู้สมัครเข้าศึกษาต้องเป็นผู้มีคุณสมบัติครบถ้วนตามที่กำหนดไว้ในคุณสมบัติของผู้สมัครเข้าศึกษาต่อ
-                                </p>
-                                <p class="card-text">4.ข้อความที่กรอกข้อมูลต้องเป็นความจริงทุกประการ
-                                    หากผู้สมัครขาดคุณสมบัติอย่างใดอย่างหนึ่ง หรือฝ่าฝืน ระเบียบการคัดเลือก
-                                    หรือการกรอกข้อความไม่เป็นความจริง
-                                    ผู้สมัครยินยอมให้ตัดสิทธิ์การเข้าศึกษาโดยไม่มี
-                                    ข้อโต้แย้งใด ๆ ทั้งสิ้น</p>
-                                <h4 class="text-center">**ห้ามใช้วุฒิการศึกษาปลอมในการสมัคร
-                                    หากตรวจพบจะถูกดำเนินคดีตามกฎหมาย**</h4>
-                            </div>
+                    <div class=" mb-4" style="">
+                        <div class="card-body bg-danger text-white">
+                            <h5 class="card-title  text-center">ข้อตกลงในการสมัครออนไลน์</h5>
+                            <p class="card-text">1.ผู้สมัครเข้าศึกษาสามารถสมัคร ONLINE</p>
+                            <p class="card-text">2.รับสมัครผู้สำเร็จการศึกษา
+                                หรือกำลังศึกษาชั้นประถมศึกษา
+                                (ป.6) หรือ
+                                กำลังศึกษาชั้นมัธยมศึกษา (ม.3) ที่จบการศึกษา</p>
+                            <p class="card-text">
+                                3.ผู้สมัครเข้าศึกษาต้องเป็นผู้มีคุณสมบัติครบถ้วนตามที่กำหนดไว้ในคุณสมบัติของผู้สมัครเข้าศึกษาต่อ
+                            </p>
+                            <p class="card-text">4.ข้อความที่กรอกข้อมูลต้องเป็นความจริงทุกประการ
+                                หากผู้สมัครขาดคุณสมบัติอย่างใดอย่างหนึ่ง หรือฝ่าฝืน ระเบียบการคัดเลือก
+                                หรือการกรอกข้อความไม่เป็นความจริง
+                                ผู้สมัครยินยอมให้ตัดสิทธิ์การเข้าศึกษาโดยไม่มี
+                                ข้อโต้แย้งใด ๆ ทั้งสิ้น</p>
+                            <h4 class="text-center">**ห้ามใช้วุฒิการศึกษาปลอมในการสมัคร
+                                หากตรวจพบจะถูกดำเนินคดีตามกฎหมาย**</h4>
                         </div>
+                    </div>
 
-                        <div class="form-check text-center">
-                            <input class="form-check-input " type="checkbox" id="check_proviso" name="check_proviso"
-                                value="1" required>
-                            <label class="form-check-label" for="check_proviso">
-                                ยอมรับเงื่อนไขในการสมัคร
-                                <span class="text-red">*</span> </label>
-                            <div class="invalid-feedback">
-                                ยอมรับในเงื่อนไข
-                            </div>
+                    <div class="form-check text-center">
+                        <input class="form-check-input " type="checkbox" id="check_proviso" name="check_proviso"
+                            value="1" required>
+                        <label class="form-check-label" for="check_proviso">
+                            ยอมรับเงื่อนไขในการสมัคร
+                            <span class="text-red">*</span> </label>
+                        <div class="invalid-feedback">
+                            ยอมรับในเงื่อนไข
                         </div>
-                        <hr class="mb-4">
-                        <center>
+                    </div>
+                    <hr class="mb-4">
+                    <center>
 
-                            <div id="html_element" data-callback="onHuman"></div>
-                            <input type="text" id="captcha" name="captcha" required style="display:none">
-                            <div class="invalid-feedback">
-                                ยืนยันฉันไม่ใช่โปรแกรมอัตโนมัติ
-                            </div>
-                        </center>
-
-                        <div class="row justify-content-center">
-                            <div class="col-md-3">
-                                <button class="btn btn-light btn-lg btn-block mt-3 mb-5"
-                                    type="submit">สมัครเรียน</button>
-                            </div>
+                        <div id="html_element" data-callback="onHuman"></div>
+                        <input type="text" id="captcha" name="captcha" required style="display:none">
+                        <div class="invalid-feedback">
+                            ยืนยันฉันไม่ใช่โปรแกรมอัตโนมัติ
                         </div>
+                    </center>
+
+                    <div class="row justify-content-center">
+                        <div class="col-md-3">
+                            <button class="btn btn-light btn-lg btn-block mt-3 mb-5" type="submit">สมัครเรียน</button>
+                        </div>
+                    </div>
 
                 </form>
 

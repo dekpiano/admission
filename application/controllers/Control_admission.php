@@ -109,7 +109,7 @@ class Control_admission extends CI_Controller {
 
 
 	public function reg_insert()
-	{	
+	{		
 		$data = $this->dataAll();
 		$status = $this->recaptcha_google($this->input->post('captcha')); 
 
@@ -167,7 +167,8 @@ class Control_admission extends CI_Controller {
 			'recruit_year' => $data['checkYear'][0]->openyear_year,
 			'recruit_status' => "รอการตรวจสอบ",
 			'recruit_category' => $this->input->post('recruit_category'),
-			'recruit_grade' => $this->input->post('recruit_grade')
+			'recruit_grade' => $this->input->post('recruit_grade'),
+			'recruit_certificateAbility' => $this->UploadCertificateAbility()
 			);
 
 
@@ -224,15 +225,15 @@ class Control_admission extends CI_Controller {
 				if($this->model_admission->student_insert($data_insert) == 1){
 				
 					$this->session->set_flashdata(array('msg'=> 'Yes','messge' => 'สมัครเรียนสำเร็จ สามารถตรวจสอบสถานะการสมัครเพื่อพิมพ์ใบสมัครจาก <a href='.base_url('login').'> คลิกที่นี่</a>','status'=>'success'));					
-						define('LINE_API',"https://notify-api.line.me/api/notify"); 
-						$token = "UGkW3d8OvtutARdXMWyKhEo7SCA366RR9CRXfyhuKCu"; 
-						$str = "มีนักเรียนสมัครเรียนใหม่\n";
-						$str .="ชื่อ ".$this->input->post('recruit_prefix').$this->input->post('recruit_firstName').' '.$this->input->post('recruit_lastName')."\n";
-						$str .= "สมัครเรียนชั้น ม.".$this->input->post('recruit_regLevel')."\n";
-						$str .= "รอบ ".$this->input->post('recruit_category')."\n";
-						$str .= "ตรวจสอบ https://admission.skj.ac.th/loginAdmin\n";
-						$res = $this->notify_message($str,$token);
-						$data = $this->dataAll();
+						// define('LINE_API',"https://notify-api.line.me/api/notify"); 
+						// $token = "UGkW3d8OvtutARdXMWyKhEo7SCA366RR9CRXfyhuKCu"; 
+						// $str = "มีนักเรียนสมัครเรียนใหม่\n";
+						// $str .="ชื่อ ".$this->input->post('recruit_prefix').$this->input->post('recruit_firstName').' '.$this->input->post('recruit_lastName')."\n";
+						// $str .= "สมัครเรียนชั้น ม.".$this->input->post('recruit_regLevel')."\n";
+						// $str .= "รอบ ".$this->input->post('recruit_category')."\n";
+						// $str .= "ตรวจสอบ https://admission.skj.ac.th/loginAdmin\n";
+						// $res = $this->notify_message($str,$token);
+						// $data = $this->dataAll();
 
 						redirect('welcome');
 				}
@@ -307,6 +308,49 @@ class Control_admission extends CI_Controller {
 				print_r($error['error']);
 				
 			}
+	}
+
+	public function UploadCertificateAbility(){
+		$count = count($_FILES['recruit_certificateAbility']['name']);		
+		$files = $_FILES;
+		$SetName = array();
+
+		
+		for ($i = 0; $i < $count; $i++) {			
+
+				$_FILES['recruit_certificateAbility']['name'] = $files['recruit_certificateAbility']['name'][$i];
+				$_FILES['recruit_certificateAbility']['type'] = $files['recruit_certificateAbility']['type'][$i];
+				$_FILES['recruit_certificateAbility']['tmp_name'] = $files['recruit_certificateAbility']['tmp_name'][$i];
+				$_FILES['recruit_certificateAbility']['error'] = $files['recruit_certificateAbility']['error'][$i];
+				$_FILES['recruit_certificateAbility']['size'] = $files['recruit_certificateAbility']['size'][$i];
+			if($_FILES['recruit_certificateAbility']['error'] == 0){
+
+				$config['upload_path'] = 'uploads/recruitstudent/m'.$this->input->post('recruit_regLevel').'/certificateAbility/';
+				$config['allowed_types'] = 'jpg|jpeg|png';
+				$config['encrypt_name'] = TRUE; // ใช้เพื่อเปลี่ยนชื่อไฟล์โดยอัตโนมัติเพื่อความปลอดภัย
+		
+				$this->upload->initialize($config);
+		
+				if ($this->upload->do_upload('recruit_certificateAbility')) {
+					$data = $this->upload->data();
+		
+					// Resize image
+					$resize_config['image_library'] = 'gd2';
+					$resize_config['source_image'] = $data['full_path'];
+					$resize_config['maintain_ratio'] = TRUE;
+					$resize_config['width'] = 1024;
+		
+					$this->image_lib->clear();
+					$this->image_lib->initialize($resize_config);
+					$this->image_lib->resize();
+		
+					$SetName[] = $data['file_name'];
+				} else {
+					echo $this->upload->display_errors();
+				}
+			}
+		}		
+		return $SetNameFull = implode('|',$SetName);
 	}
 
 	
