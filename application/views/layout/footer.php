@@ -142,8 +142,16 @@
          <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
          </script>
          <!-- DataTable-->
-         <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-         <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+         <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+         <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+         <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
+         <script src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script>
+         <script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+         <script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+         <script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
 
          <script type="text/javascript"
              src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
@@ -154,7 +162,7 @@
          <script type="text/javascript"
              src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js">
          </script>
-         
+
          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.5/dist/sweetalert2.all.min.js"></script>
 
          <?php if($this->uri->segment(1) == "RegStudent"):?>
@@ -170,10 +178,28 @@
          <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=14"></script>
          <script>
 $(document).ready(function() {
-    $('#TB_CheckRegister').DataTable ({
+    $('#TB_CheckRegister').DataTable({
         order: [
             [0, 'desc']
         ],
+        autoWidth: false,
+        responsive: true,
+        columnDefs: [{
+            width: '3%',
+            targets: 0
+        }, {
+            width: '20%',
+            targets: 1
+        }, {
+            width: '5%',
+            targets: 2
+        }, {
+            width: '22%',
+            targets: 5
+        }, {
+            width: '12%',
+            targets: 6
+        }]
     });
 });
          </script>
@@ -329,10 +355,10 @@ $('.T_m1_N tr,.T_m4_N tr').each(function() {
 
 $(document).ready(function() {
     $('.example').DataTable({
-        "columnDefs": [
-            {
-                targets: [0], type: "date"
-            }],
+        "columnDefs": [{
+            targets: [0],
+            type: "date"
+        }],
         "order": [
             [0, "desc"]
         ]

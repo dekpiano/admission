@@ -352,17 +352,15 @@ class Control_students extends CI_Controller {
 	public function PDFForStudent()
     {
 
+		$path = dirname(dirname(dirname(dirname(dirname(dirname(dirname(__FILE__)))))));
+		require $path . '/librarie_skj/mpdf/vendor/autoload.php';
+
 		$thai = $this->load->database('thailandpa', TRUE);
 		$thpa = $thai->database;
 		
-		$datapdf = $this->db->select('skjacth_admission.tb_recruitstudent.*,
-										'.$thpa.'.province.PROVINCE_NAME,
-										'.$thpa.'.district.DISTRICT_NAME,
-										'.$thpa.'.amphur.AMPHUR_NAME')
+		$datapdf = $this->db->select('skjacth_admission.tb_recruitstudent.*')
 										->from('skjacth_admission.tb_recruitstudent')
-										->join($thpa.'.province','skjacth_admission.tb_recruitstudent.recruit_homeProvince = '.$thpa.'.province.PROVINCE_ID', 'INNER')
-										->join($thpa.'.district','skjacth_admission.tb_recruitstudent.recruit_homeSubdistrict = '.$thpa.'.district.DISTRICT_ID', 'INNER')
-										->join($thpa.'.amphur','skjacth_admission.tb_recruitstudent.recruit_homedistrict = '.$thpa.'.amphur.AMPHUR_ID', 'INNER')
+										
 		->where('skjacth_admission.tb_recruitstudent.recruit_id',$this->session->userdata('loginStudentID'))
 		->get()->result();
 		//echo '<pre>'; print_r($datapdf); exit();
@@ -406,6 +404,8 @@ class Control_students extends CI_Controller {
 
 	public function pdf()
     {
+		$path = dirname(dirname(dirname(dirname(dirname(dirname(dirname(__FILE__)))))));
+		require $path . '/librarie_skj/mpdf/vendor/autoload.php';
 
 		$thai = $this->load->database('thailandpa', TRUE);
 		$thpa = $thai->database;

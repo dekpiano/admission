@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover" id="TB_CheckRegister">
+                    <table class="table table-bordered table-hover" id="TB_CheckRegister" cellspacing="0">
                         <thead class="bg-primary text-white">
                             <tr class="text-center">
                                 <th scope="col">ลำดับ</th>
@@ -18,21 +18,26 @@
                                 <th scope="col">สถานะมอบตัว</th>
                             </tr>
                         </thead>
-                        <tbody class="text-center">
+                        <tbody class="">
                             <?php foreach ($DataStudents as $key => $v_DataStudents): ?>
                             <tr>
                                 <th scope="row"><?=$v_DataStudents->recruit_id?></th>
                                 <td><?=$v_DataStudents->recruit_prefix.$v_DataStudents->recruit_firstName.' '.$v_DataStudents->recruit_lastName?>
                                 </td>
-                                <td>ม.<?=$v_DataStudents->recruit_regLevel?></td>
-                                <td><?=$v_DataStudents->recruit_category?></td>
+                                <td class="text-center">ม.<?=$v_DataStudents->recruit_regLevel?></td>
+                                <td class="text-center"><?=$v_DataStudents->recruit_category?></td>
                                 <td><?=$v_DataStudents->recruit_tpyeRoom?></td>
-                                <td>
+                                <td class="text-center">
                                     <?php if($v_DataStudents->recruit_status === "ผ่านการตรวจสอบ"): ?>
+
                                     <span class="badge badge-pill badge-success">
                                         <h6 style="margin-bottom: 0rem;font-size: 14px;"><i class="fa fa-check"
                                                 aria-hidden="true"></i> <?=$v_DataStudents->recruit_status?></h6>
                                     </span>
+                                    <a style="margin-bottom: 0rem;font-size: 14px;" href="<?=base_url('login'); ?>"
+                                        class="btn btn-primary btn-sm mt-2"><i class="fas fa-print"></i> พิมพ์ใบสมัคร</a>
+
+
                                     <?php elseif($v_DataStudents->recruit_status === "รอการตรวจสอบ"): ?>
                                     <span class="badge badge-pill badge-danger">
                                         <h6 style="margin-bottom: 0rem;font-size: 14px;"><i class="fa fa-times"
@@ -45,36 +50,36 @@
                                     </span>
 
                                     <?php if($v_DataStudents->recruit_status != "ผ่านการตรวจสอบ"): ?>
-                                    <br>
+                                    
                                     <a style="margin-bottom: 0rem;font-size: 14px;" href="<?=base_url('login'); ?>"
                                         class="btn btn-warning btn-sm mt-2"><i class="fas fa-edit"></i> แก้ไขการสมัคร
                                         ที่นี่...</a>
                                     <?php endif; ?>
                                     <?php endif; ?>
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <?php if($v_DataStudents->recruit_status == "ผ่านการตรวจสอบ"): ?>
                                     <?php  if($switch[0]->onoff_report == "on"): ?>
                                     <?php if($v_DataStudents->stu_id != null &&  $v_DataStudents->stu_UpdateConfirm >= $checkYear[0]->openyear_year): ?>
                                     <a style="margin-bottom: 0rem;font-size: 14px;" href="<?=base_url('Confirm')?>"
-                                        class="btn btn-success">
+                                        class="btn btn-success btn-sm">
                                         <i class="fa fa-check" aria-hidden="true"></i> รายงานตัวแล้ว
                                     </a>
                                     <?php else: ?>
                                     <a style="margin-bottom: 0rem;font-size: 14px;" href="<?=base_url('Confirm')?>"
-                                        class="btn btn-info">
+                                        class="btn btn-info btn-sm">
                                         <i class="fas fa-exclamation-circle"></i> รอรายงานตัว <br> (คลิกที่นี่)
                                     </a>
                                     <?php endif; ?>
                                     <?php else : ?>
-                                        <?php if($v_DataStudents->stu_id != null &&  $v_DataStudents->stu_UpdateConfirm >= $checkYear[0]->openyear_year): ?>
-                                    <a style="margin-bottom: 0rem;font-size: 14px;" href="#" data-toggle="modal" data-target="#AlertConfirm"
-                                        class="btn btn-success">
+                                    <?php if($v_DataStudents->stu_id != null &&  $v_DataStudents->stu_UpdateConfirm >= $checkYear[0]->openyear_year): ?>
+                                    <a style="margin-bottom: 0rem;font-size: 14px;" href="#" data-toggle="modal"
+                                        data-target="#AlertConfirm" class="btn btn-success btn-sm">
                                         <i class="fa fa-check" aria-hidden="true"></i> รายงานตัวแล้ว
                                     </a>
                                     <?php else: ?>
-                                    <a style="margin-bottom: 0rem;font-size: 14px;" href="#"
-                                        class="btn btn-info" data-toggle="modal" data-target="#AlertConfirm">
+                                    <a style="margin-bottom: 0rem;font-size: 14px;" href="#" class="btn btn-info btn-sm"
+                                        data-toggle="modal" data-target="#AlertConfirm">
                                         <i class="fas fa-exclamation-circle"></i> รอรายงานตัว <br> (คลิกที่นี่)
                                     </a>
                                     <?php endif; ?>
