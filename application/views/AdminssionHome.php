@@ -260,6 +260,37 @@ table thead tr th {
     </div>
 </div>
 
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="row">
+        <div class="col-md-4 p-lg-3 mx-auto order-lg-0 order-1 mt-3">
+            <img src="https://zakreeya.files.wordpress.com/2012/04/1722092.jpg" class="img-fluid" alt="" srcset="">
+        </div>
+        <div class="col-md-8 p-lg-5 mx-auto order-0 mb-3 align-self-center">
+            <h1 class="display-5 font-weight-normal">ข้อปฏิบัติการเตรียมตัวเข้าสอบและการสอบ</h1>
+            <p class="lead font-weight-normal">อ่านฉันก่อน!</p>
+            <a class="btn btn-primary"
+                href="https://drive.google.com/file/d/1BN-k53usmAKM2njS5lyP_aI6yePCrCU9/view?usp=sharing"
+                target="_blank">อ่านฉันสิ คลิกเลย...</a>
+        </div>
+    </div>
+</div>
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="row">
+        <div class="col-md-4 p-lg-3 mx-auto order-lg-0 order-1 mt-3">
+            <img src="https://hr.rmutr.ac.th/wp-content/uploads/2020/02/aHR0cHM6Ly9zLmlzYW5vb2suY29tL2hvLzAvdWQvMTcvODUwMjMvYmIuanBn.jpg" class="img-fluid" alt="" srcset="">
+        </div>
+        <div class="col-md-8 p-lg-5 mx-auto order-0 mb-3 align-self-center">
+            <h1 class="display-5 font-weight-normal">วิธีตรวจสอบการสมัครและพิมพ์บัตรประจำตัวสอบ</h1>
+            <p class="lead font-weight-normal">เพื่อใช้ยืนยันตัวในการสอบรอบปกติ จะพิมพ์ออกมาหรือจะแคปจอ ก็ได้ ไปดูวิธีกัน</p>
+            <a class="btn btn-primary"
+                href="https://www.canva.com/design/DAF-0Dmo0J8/tyheWTsb30Z_zh1WnQT-zg/view?utm_content=DAF-0Dmo0J8&utm_campaign=designshare&utm_medium=link&utm_source=editor"
+                target="_blank">คลิกฉันเลย</a>
+        </div>
+    </div>
+</div>
+
+
 <div class="container-fluid py-5">
 
     <h3 class="text-center">กำหนดการรับนักเรียน ปีการศึกษา <?=$checkYear[0]->openyear_year?></h3>
