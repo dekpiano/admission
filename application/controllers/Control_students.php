@@ -352,7 +352,7 @@ class Control_students extends CI_Controller {
 	public function PDFForStudent()
     {
 
-		$path = dirname(dirname(dirname(dirname(dirname(dirname(dirname(__FILE__)))))));
+		$path = (dirname(dirname(dirname(dirname(dirname(dirname(__FILE__)))))));
 		require $path . '/librarie_skj/mpdf/vendor/autoload.php';
 
 		$thai = $this->load->database('thailandpa', TRUE);
