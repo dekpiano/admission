@@ -112,6 +112,8 @@ class Welcome extends CI_Controller {
 
 				$data['StatisticAll'] = $this->db->select('
 					COUNT(tb_recruitstudent.recruit_category) AS num,
+					SUM(CASE WHEN recruit_prefix = "เด็กหญิง" or recruit_prefix = "นางสาว" THEN 1 END) AS Girl,
+					SUM(CASE WHEN recruit_prefix = "เด็กชาย" or recruit_prefix = "นาย" THEN 1 END) AS Man,
 					tb_quota.quota_explain				
 					')
 				->from('tb_recruitstudent')
@@ -121,6 +123,8 @@ class Welcome extends CI_Controller {
 				->order_by('recruit_date','ASC')
 				->get()->result();
 
+				//echo '<pre>'; print_r($data['StatisticAll']); exit();
+
 			$data['RegisterAll'] = $this->db->select("
 			COUNT(recruit_year) AS RegAll,
 			SUM(CASE WHEN recruit_status = 'ผ่านการตรวจสอบ' THEN 1 END) AS Pass,
@@ -129,7 +133,7 @@ class Welcome extends CI_Controller {
 			->where('recruit_year',$year)
 			->get('tb_recruitstudent')->result();
 
-			//echo '<pre>'; print_r($data['StatisticCroTar']); exit();
+			
 			return $data;
 	}
 

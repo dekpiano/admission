@@ -201,12 +201,15 @@ body {
 
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="mt-3">
                                     <p>
                                         <?=$value->quota_explain?>
                                     </p>
+                                </div>
+
+                                <div class="h3">
+                                <i class="fa fa-male" aria-hidden="true"></i> <?=$value->Man?> | <i class="fa fa-female" aria-hidden="true"></i> <?=$value->Girl?>
                                 </div>
                             </a>
                         </div>
@@ -220,85 +223,7 @@ body {
         </section>
 
 
-
-
-
-        <!-- <section class="">
-            <div class="container-fluid">
-                <div class="text-center">
-                    <h2>รอบโควตา</h2>
-                </div>
-                <div class="row ">
-                    <?php $round = array('1','4'); ?>
-                    <?php foreach ($round as $key => $value) : ?>
-
-                    <div class="col-lg-6 col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4>สถิติรายวัน ม.<?=$value?></h4>
-                                <div class="table-responsive">
-                                    <table id="" class="table table-bordered T_m<?=$value?>_N">
-                                        <thead class="bg-primary text-white">
-                                            <tr class="text-center">
-                                                <th>วันที่</th>
-                                                <th>ด้านวิชาการ</th>
-                                                <th>ด้านภาษา</th>
-                                                <th>ด้านดนตรี ศิลปะ การแสดง</th>
-                                                <th>ด้านกีฬา</th>
-                                                <th>ด้านการงานอาชีพ</th>
-                                                <th class="bg-warning">รวม</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php 
-                                                     foreach($StatisticCroTar as $v_StatisticCroTar) : 
-                                                        if($v_StatisticCroTar->recruit_regLevel == $value):
-                                                        ?>
-                                            <tr class="text-center">
-                                                <td style="width:150px">
-                                                    <?=$this->datethai->thai_date_fullmonth(strtotime($v_StatisticCroTar->recruit_date))?>
-                                                </td>
-                                                <td class="numN"><?=$v_StatisticCroTar->SMT?></td>
-                                                <td class="numN"><?=$v_StatisticCroTar->CEP?></td>
-                                                <td class="numN"><?=$v_StatisticCroTar->PAP?></td>
-                                                <td class="numN"><?=$v_StatisticCroTar->SP?></td>
-                                                <td class="numN"><?=$v_StatisticCroTar->CP?></td>
-                                                <td class="total-numN bg-light"></td>
-                                            </tr>
-                                            <?php endif; ?>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                        <tfoot class="bg-light">
-                                            <tr class="font-weight-bold text-center">
-                                                <td>รวม</td>
-                                                <td class="numN"></td>
-                                                <td class="numN"></td>
-                                                <td class="numN"></td>
-                                                <td class="numN"></td>
-                                                <td class="numN"></td>
-                                                <td class="total-numN"></td>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <?php endforeach; ?>
-
-
-
-                </div>
-
-
-
-
-
-
-            </div>
-        </section> -->
-
+<!-- 
         <div class="container">
             <div class="col-lg-12 col-md-12">
                 <div class="card">
@@ -352,4 +277,4 @@ body {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
