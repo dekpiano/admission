@@ -75,7 +75,14 @@
                                         <label for="login-password" class="label-material">วันเดือนปี เกิด (Ex. 09-07-2534)</label>
                                         <small class="text-muted">ตัวอย่าง เกิดวันที่ 9 กรกฏาคม 2534 กรอกดังนี้
                                             09-07-2534 <br> <b>(อย่าลืมใส่เครื่องหมายขีด (-) ระหว่างวันเกิด)</b></small>
-                                    </div><button id="login" type="submit" class="btn btn-primary">เข้าสู่ระบบ</button>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                    <button id="" type="submit" class="btn btn-primary">เข้าสู่ระบบ</button>
+                                    <a class="btn btn-secondary"
+                href="https://www.canva.com/design/DAF-0Dmo0J8/tyheWTsb30Z_zh1WnQT-zg/view?utm_content=DAF-0Dmo0J8&utm_campaign=designshare&utm_medium=link&utm_source=editor"
+                target="_blank">คู่มือการพิมพ์ใบสมัคร</a>
+                                    </div>
+                                    
                                     <hr>
                                     <div class=" text-center">
                                         <a href="<?=base_url('welcome');?>" class="btn btn-outline-primary">

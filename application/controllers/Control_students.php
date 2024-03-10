@@ -91,11 +91,11 @@ class Control_students extends CI_Controller {
 		$data['stu'] = $this->db->select('recruit_id,recruit_prefix,recruit_firstName,recruit_lastName,recruit_status,recruit_tpyeRoom,recruit_status')->where('recruit_id',$this->session->userdata('loginStudentID'))->get('tb_recruitstudent')->row();
 		$data['chk_stu'] = $this->db->where('recruit_id',$this->session->userdata('loginStudentID'))->get('tb_recruitstudent')->result();
 
-		$th = $this->load->database('thailandpa', TRUE);
-		$data['province'] = $th->get('province')->result();
-		$sel_amphur = $th->where('PROVINCE_ID',@$data['chk_stu'][0]->recruit_homeProvince)->get('province')->result();
-		$data['amphur'] = $th->select('AMPHUR_ID,AMPHUR_NAME,PROVINCE_ID')->where('PROVINCE_ID',$data['chk_stu'][0]->recruit_homeProvince)->get('amphur')->result(); //เลือกอำเภอ
-		$data['district'] = $th->where('AMPHUR_ID',$data['chk_stu'][0]->recruit_homedistrict)->get('district')->result();
+		// $th = $this->load->database('thailandpa', TRUE);
+		// $data['province'] = $th->get('province')->result();
+		// $sel_amphur = $th->where('PROVINCE_ID',@$data['chk_stu'][0]->recruit_homeProvince)->get('province')->result();
+		// $data['amphur'] = $th->select('AMPHUR_ID,AMPHUR_NAME,PROVINCE_ID')->where('PROVINCE_ID',$data['chk_stu'][0]->recruit_homeProvince)->get('amphur')->result(); //เลือกอำเภอ
+		// $data['district'] = $th->where('AMPHUR_ID',$data['chk_stu'][0]->recruit_homedistrict)->get('district')->result();
 
 		// $th = $this->load->database('thailandpa', TRUE);
 		// $data['province'] = $th->get('province')->result();
@@ -112,6 +112,7 @@ class Control_students extends CI_Controller {
 
 	public function reg_update($id)
 	{	
+	
 		$status = $this->recaptcha_google($this->input->post('captcha')); 
         if ($status['success']) {
 			$data_update = array();
@@ -149,7 +150,7 @@ class Control_students extends CI_Controller {
 			'recruit_grade' => $this->input->post('recruit_grade'),
 			'recruit_status' => "รอการตรวจสอบ"
 		);
-	
+		//echo '<pre>';print_r($data_update); exit();
 			if($file[0] == 0){
 				$imageFileType = strtolower(pathinfo($_FILES['recruit_img']['name'],PATHINFO_EXTENSION));						
 				$file_check = $_FILES['recruit_img']['error'];
@@ -220,6 +221,10 @@ class Control_students extends CI_Controller {
 				
 			// }
 
+			  
+			if($this->model_admission->student_update($data_update,$id) == 1){
+				$this->session->set_flashdata(array('status'=>'success','msg'=> 'Yes','messge' => 'แก้ไขข้อมูลสำเร็จ รอการตรวจสอบอีกครั้ง!'));
+		}
 				
 			redirect('StudentsEdit');			 	
 			
@@ -301,10 +306,7 @@ class Control_students extends CI_Controller {
 				
 				   @unlink("./uploads/recruitstudent/m".$this->input->post('recruit_regLevel').'/'.$foder.'/'.$img);
 				   
-				   
-				   if($this->model_admission->student_update($data_update,$id) == 1){
-							$this->session->set_flashdata(array('status'=>'success','msg'=> 'Yes','messge' => 'แก้ไขข้อมูลสำเร็จ'));
-					}
+				 
 			   }
 			   else
 			   {

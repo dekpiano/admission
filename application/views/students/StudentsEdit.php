@@ -238,7 +238,7 @@ label {
                                         <div class="col-md-3 mb-3">
                                             <label for="recruit_homeSubdistrict">ตำบล/แขวง</label>
                                             <input type="text" class="form-control" placeholder="" id="stu_hTambon"
-                                                name="stu_hTambon" required value="<?=$stu->recruit_homeSubdistrict?>">
+                                                name="recruit_homeSubdistrict" required value="<?=$stu->recruit_homeSubdistrict?>">
                                             <div class="invalid-feedback">
                                                 ระบุตำบล/แขวง
                                             </div>
@@ -246,7 +246,7 @@ label {
                                         <div class="col-md-3 mb-3">
                                             <label for="recruit_homedistrict">อำเภอ/เขต</label>
                                             <input type="text" class="form-control" placeholder="" id="stu_hDistrict"
-                                                name="stu_hDistrict" required value="<?=$stu->recruit_homedistrict?>">
+                                                name="recruit_homedistrict" required value="<?=$stu->recruit_homedistrict?>">
                                             <div class="invalid-feedback">
                                                 ระบุอำเภอ/เขต
                                             </div>
@@ -254,7 +254,7 @@ label {
                                         <div class="col-md-3 mb-3">
                                             <label for="recruit_homeProvince">จังหวัด</label>
                                             <input type="text" class="form-control" placeholder="" id="stu_hProvince"
-                                                name="stu_hProvince" required value="<?=$stu->recruit_homeProvince?>">
+                                                name="recruit_homeProvince" required value="<?=$stu->recruit_homeProvince?>">
                                             <div class="invalid-feedback">
                                                 ระบุจังหวัด
                                             </div>
