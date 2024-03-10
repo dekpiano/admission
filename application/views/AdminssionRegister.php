@@ -920,7 +920,7 @@ label {
 
                     <div class="row justify-content-center">
                         <div class="col-md-3">
-                            <button class="btn btn-light btn-lg btn-block mt-3 mb-5" type="submit">สมัครเรียน</button>
+                            <button id="BtnSubmitRegister" class="btn btn-light btn-lg btn-block mt-3 mb-5" type="submit">สมัครเรียน</button>
                         </div>
                     </div>
 

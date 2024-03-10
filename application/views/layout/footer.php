@@ -270,7 +270,10 @@ $("#par_IdNumberO").inputmask("9-9999-99999-99-9", {
 });
 
 
-
+$(document).on('click','#BtnSubmitRegister',function(){
+    $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> กำลังบันทึกข้อมูล...');
+       // $(this).prop('disabled', true); // Disable button to prevent multiple clicks
+});
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
@@ -286,7 +289,8 @@ $("#par_IdNumberO").inputmask("9-9999-99999-99-9", {
                 if (form.checkValidity() === false) {
                     event.preventDefault();
                     event.stopPropagation();
-                    Swal.fire("แจ้งเตือน", "กรุณากรอกข้อมูลให้ครบ!", "warning")
+                    Swal.fire("แจ้งเตือน", "กรุณากรอกข้อมูลให้ครบ!", "warning");
+                    $('#BtnSubmitRegister').html('สมัครเรียน');
                 }
                 form.classList.add('was-validated');
             }, false);
