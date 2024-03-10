@@ -178,8 +178,82 @@ body {
             </div>
         </section>
 
+        <div class="mt-5">
 
-        <section class="section services-section" id="services">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        สถิติการรับสมัครนักเรียน รอบปกติ 2567
+                    </div>
+                    <div class="card-body">
+                        <?php $Day = array('2024-03-09','2024-03-10','2024-03-11','2024-03-12','2024-03-13','2024-03-14','2024-03-15') ?>
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr class="text-center">
+                                    <th rowspan="2">วันที่</th>
+                                    <th colspan="2" class="text-center">มัธยมศึกษาปีที่ 1</th>
+                                    <th colspan="2" class="text-center">มัธยมศึกษาปีที่ 4</th>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">ชาย</th>
+                                    <th class="text-center">หญิง</th>
+                                    <th class="text-center">ชาย</th>
+                                    <th class="text-center">หญิง</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <?php
+                                $today = date('Y-m-d'); 
+                                // บวกไป 1 วัน
+                                $tomorrow = date('Y-m-d', strtotime($today . ' +1 day'));
+                                ?>
+
+                                <?php foreach ($Day as $key => $v_Day) : ?>
+                                    <?php if($tomorrow > $v_Day) :?>
+                                <tr>
+                                    <td><?php echo $this->datethai->thai_date_fullmonth(strtotime($v_Day));?> </td>                                    
+                                    <?php foreach ($StatisticNormal as $key => $v_cNormal) :?>
+                                    <?php if($v_Day == $v_cNormal->recruit_date): ?>
+                                    <td class="text-center"><?=$v_cNormal->Man1?></td>
+                                    <td class="text-center"><?=$v_cNormal->Girl1?></td>
+                                    <td class="text-center"><?=$v_cNormal->Man4?></td>
+                                    <td class="text-center"><?=$v_cNormal->Girl4?></td>
+                                    <?php endif; ?>                                    
+                                    <?php endforeach; ?>                                    
+                                </tr>
+                                <?php endif; ?>       
+                                <?php endforeach; ?>
+
+                              
+                                <?php foreach ($Day as $key => $v_Day) : ?>
+                                    <?php if($tomorrow <= $v_Day) :?>
+                                <tr>
+                                    <td><?php echo $this->datethai->thai_date_fullmonth(strtotime($v_Day));?> </td>                                    
+                                  
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">0</td>
+                                                                  
+                                </tr>
+                                <?php endif; ?>
+                                <?php endforeach; ?>
+
+
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <section class="services-section" id="">
             <div class="container">
 
                 <div class="row">
@@ -209,7 +283,8 @@ body {
                                 </div>
 
                                 <div class="h3">
-                                <i class="fa fa-male" aria-hidden="true"></i> <?=$value->Man?> | <i class="fa fa-female" aria-hidden="true"></i> <?=$value->Girl?>
+                                    <i class="fa fa-male" aria-hidden="true"></i> <?=$value->Man?> | <i
+                                        class="fa fa-female" aria-hidden="true"></i> <?=$value->Girl?>
                                 </div>
                             </a>
                         </div>
@@ -223,7 +298,7 @@ body {
         </section>
 
 
-<!-- 
+        <!-- 
         <div class="container">
             <div class="col-lg-12 col-md-12">
                 <div class="card">
