@@ -365,7 +365,10 @@ class Control_students extends CI_Controller {
 										
 		->where('skjacth_admission.tb_recruitstudent.recruit_id',$this->session->userdata('loginStudentID'))
 		->get()->result();
-		//echo '<pre>'; print_r($datapdf); exit();
+
+	 	$majorOrder = explode("|",$datapdf[0]->recruit_majorOrder);	
+		$majorOrderFull = $this->db->select("course_initials")->where('course_id',$majorOrder[0])->get('tb_course')->row();
+		//echo '<pre>'; print_r($majorOrderFull ); exit();
 		
 
     	$date_Y = date('Y',strtotime($datapdf[0]->recruit_birthday))+543;
@@ -377,7 +380,6 @@ class Control_students extends CI_Controller {
     	$date_D_regis = date('d',strtotime($datapdf[0]->recruit_date));
     	$date_M_regis = date('n',strtotime($datapdf[0]->recruit_date));
 
-		//print_r($date_M_regis); exit();
     	$sch = explode("โรงเรียน", $datapdf[0]->recruit_oldSchool); //แยกคำว่าโรงเรียน
     	
         $mpdf = new \Mpdf\Mpdf([
@@ -393,7 +395,7 @@ class Control_students extends CI_Controller {
 		$html .= '<div style="position:absolute;top:100px;left:250px; width:100%">'.$datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.'</div>'; //ชื่อผู้สมัคร
 		$html .= '<div style="position:absolute;top:100px;left:480px; width:100%">'.$datapdf[0]->recruit_lastName.'</div>'; //นามสกุลผู้สมัคร
 		$html .= '<div style="position:absolute;top:127;left:400px; width:100%">'.$datapdf[0]->recruit_idCard.'</div>';	
-		$html .= '<div style="position:absolute;top:155;left:270px; width:100%">'.$datapdf[0]->recruit_tpyeRoom.'</div>';	
+		$html .= '<div style="position:absolute;top:155;left:270px; width:100%"> ลำดับ 1 '.$majorOrderFull->course_initials.'</div>';	
 		$html .= '<div style="position:absolute;top:200px;left:340px; width:100%"><img style="width:120px;hight:100px;" src='.FCPATH.'asset/img/license.png'.'></div>';
 		$html .= '<div style="position:absolute;top:255x;left:360px; width:100%">'.$date_D_regis.' '.$TH_Month[$date_M_regis-1].' '.$date_Y_regis.'</div>'; // วันที่สมัครตอนที่ 2
 

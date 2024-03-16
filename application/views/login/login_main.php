@@ -71,7 +71,7 @@
                                     <div class="form-group">
                                         <input id="login-password" type="password" name="recruit_birthday"
                                             id="recruit_birthday" required data-msg=" ระบุวัน-เดือน-ปีเกิด"
-                                            class="input-material" >
+                                            class="input-material" ata-inputmask="'mask': '99-99-9999'">
                                         <label for="login-password" class="label-material">วันเดือนปี เกิด (Ex. 09-07-2534)</label>
                                         <small class="text-muted">ตัวอย่าง เกิดวันที่ 9 กรกฏาคม 2534 กรอกดังนี้
                                             09-07-2534 <br> <b>(อย่าลืมใส่เครื่องหมายขีด (-) ระหว่างวันเกิด)</b></small>
