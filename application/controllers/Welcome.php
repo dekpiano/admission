@@ -5,6 +5,7 @@ class Welcome extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		$this->load->library('datethai');
 		$this->load->library('timeago');
 		$switch = $this->db->get("tb_onoffsys")->result();
 		if($switch[0]->onoff_system == 'off'){
@@ -123,7 +124,25 @@ class Welcome extends CI_Controller {
 				->order_by('recruit_date','ASC')
 				->get()->result();
 
-				//echo '<pre>'; print_r($data['StatisticAll']); exit();
+				$data['StatisticNormal'] = $this->db->select('
+					recruit_date,
+					SUM(CASE WHEN recruit_prefix = "เด็กหญิง"  AND recruit_regLevel = 1 THEN 1 END) AS Girl1,
+					SUM(CASE WHEN recruit_prefix = "เด็กชาย"  AND recruit_regLevel = 1 THEN 1 END) AS Man1,					
+					SUM(CASE WHEN recruit_prefix = "นางสาว" or recruit_prefix = "เด็กหญิง" AND recruit_regLevel = 4 THEN 1 END) AS Girl4,
+					SUM(CASE WHEN recruit_prefix = "นาย" or recruit_prefix = "เด็กชาย" AND recruit_regLevel = 4 THEN 1 END) AS Man4,
+					tb_quota.quota_explain			
+					')
+				->from('tb_recruitstudent')
+				->join('tb_quota','tb_quota.quota_key = tb_recruitstudent.recruit_category')
+				->where('recruit_year',$year)
+				->where('recruit_category',"normal")
+				->where('recruit_date BETWEEN "2024-03-09" AND "2024-03-15"')
+				//->group_by('tb_recruitstudent.recruit_regLevel')
+				->group_by('tb_recruitstudent.recruit_date')
+				->order_by('recruit_date','ASC')
+				->get()->result();
+
+				//echo '<pre>'; print_r($data['StatisticNormal']); exit();
 
 			$data['RegisterAll'] = $this->db->select("
 			COUNT(recruit_year) AS RegAll,
