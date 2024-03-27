@@ -84,19 +84,26 @@ class Control_admin_admission extends CI_Controller {
 
 		foreach($recruit as $record){
             
+			$Sub = explode('|',$record->recruit_majorOrder);
+			$recruit_tpyeRoom = $this->db->select('course_initials')->where('course_id',$Sub[0])->get('tb_course')->row();
+			if($recruit_tpyeRoom){
+				$tpyeRoom = $recruit_tpyeRoom->course_initials;				
+			}else{
+				$tpyeRoom = $record->recruit_tpyeRoom;
+			}
+
             $data[] = array( 
                 "recruit_id" => $record->recruit_id,
                 "recruit_regLevel" => $record->recruit_regLevel,
 				"recruit_img" => $record->recruit_img,
                 "recruit_Fullname" => $record->recruit_prefix.$record->recruit_firstName.' '.$record->recruit_lastName,
-                "recruit_tpyeRoom" => $record->recruit_tpyeRoom,
+                "recruit_tpyeRoom" => $tpyeRoom,
                 "recruit_category" => $record->recruit_category,
                 "recruit_status" => $record->recruit_status,
                 "recruit_date" => $record->recruit_date,
                 "recruit_idCard" => $record->recruit_idCard,
 				"recruit_birthday" => $record->recruit_birthday,
 				"recruit_phone" => $record->recruit_phone,
-				"recruit_tpyeRoom" => $record->recruit_tpyeRoom,
 				"recruit_oldSchool" => $record->recruit_oldSchool,
 				"recruit_certificateAbility" => $record->recruit_certificateAbility
             );
