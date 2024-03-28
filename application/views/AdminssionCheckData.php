@@ -35,7 +35,7 @@
                                                 aria-hidden="true"></i> <?=$v_DataStudents->recruit_status?></h6>
                                     </span>
                                     <a style="margin-bottom: 0rem;font-size: 14px;" href="<?=base_url('login'); ?>"
-                                        class="btn btn-primary btn-sm mt-2"><i class="fas fa-print"></i> พิมพ์ใบสมัคร</a>
+                                        class="btn btn-primary btn-sm mt-2"><i class="fas fa-print"></i> พิมพ์บัตรประจำตัวสอบ</a>
 
 
                                     <?php elseif($v_DataStudents->recruit_status === "รอการตรวจสอบ"): ?>

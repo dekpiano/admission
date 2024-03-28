@@ -351,6 +351,8 @@ class Control_students extends CI_Controller {
 		redirect('welcome');
 	}
 
+	
+
 	public function PDFForStudent()
     {
 

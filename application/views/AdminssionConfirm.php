@@ -211,7 +211,7 @@ input {
 }
 </style>
 <section class="py-5 header">
-    <div class="container">
+    <!-- <div class="container">
         <div class="alert alert-success" role="alert">
             <h4 class="alert-heading">อ่านฉันก่อน!</h4>
             <p>
@@ -232,12 +232,12 @@ input {
                 <b> <a href="https://m.me/SKJNS160">แจ้งปัญหาที่นี่</a> </b>
             </p>
         </div>
-    </div>
+    </div> -->
 
     <div class="container-fluid py-4">
 
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 order-1 order-md-0">
                 <!-- Tabs nav -->
                 <div class="nav flex-column nav-pills nav-pills-custom" id="v-pills-tab" role="tablist"
                     aria-orientation="vertical">
@@ -292,6 +292,10 @@ input {
                 <?php endif; ?>
                 <hr>
                 <a href="<?=base_url('Confirm/Logout');?>" class="btn btn-danger w-100 mb-5">ออกจากระบบ</a>
+                <p class="mb-0">เมื่อนักเรียนมีปัญหาในการกรอกข้อมูล ในติดต่อช่องแชท ในเพจ Facebook โรงเรียนสวนกุหลาบวิทยาลัย
+                (จิรประวัติ) นครสวรรค์
+                <b> <a href="https://m.me/SKJNS160">แจ้งปัญหาที่นี่</a> </b>
+            </p>
             </div>
 
 
