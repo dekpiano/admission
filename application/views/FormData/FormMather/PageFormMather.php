@@ -81,7 +81,7 @@
     <div class="form-group row">
         <label for="par_salaryM" class="col-sm-3 col-form-label col-form-label">เงินเดือน/รายได้</label>
         <div class="col-sm-3">
-            <input type="text" class="form-control form-control" id="par_salaryM" name="par_salaryM"
+            <input type="number" class="form-control form-control" id="par_salaryM" name="par_salaryM"
                 placeholder="ระบุเงินเดือน/รายได้" required>
         </div>
     </div>

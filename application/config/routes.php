@@ -92,6 +92,8 @@ $route['admin/PrintConfirm/(:any)'] = 'admin/Control_admin_confirm/PagePrintConn
 
 $route['admin/Surrender/(:any)'] = 'admin/Control_admin_surrender/PageSurrenderMain/$1';
 
+$route['admin/Quiz/(:any)'] = 'admin/Control_admin_quiz/PageQuizMain/$1';
+
 $route['admin/Recruitment/(:num)'] = 'admin/control_admin_admission/index/$1';
 $route['admin/Recruitment/CheckData/(:any)'] = 'admin/Control_admin_admission/edit_recruitstudent/$1';
 

@@ -122,7 +122,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="dek-floating-label">
-                        <input type="text" class="dek-floating-input" id="par_salaryO" name="par_salaryO" placeholder=""
+                        <input type="number" class="dek-floating-input" id="par_salaryO" name="par_salaryO" placeholder=""
                             required11 value="<?=$OtherConf[0]->par_salary ?? ''?>">
                         <label for="par_career">เงินเดือน/รายได้</label>
                     </div>

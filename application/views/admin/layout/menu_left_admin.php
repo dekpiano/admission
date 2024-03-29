@@ -22,15 +22,18 @@
                 <i class="fas fa-print"></i>
                 ข้อมูลการรายงานตัว </a>
         </li>
+        <li <?=$this->uri->segment('2') == "Quiz" ? 'class="active"' : ''?>>
+            <a href="<?=base_url('admin/Quiz/'.$this->session->userdata('year'));?>">
+                <i class="fas fa-print"></i>
+                ข้อมูลการสอบ </a>
+        </li>
         <li <?=$this->uri->segment('2') == "Surrender" ? 'class="active"' : ''?>>
             <a href="<?=base_url('admin/Surrender/'.$this->session->userdata('year'));?>">
                 <i class="fas fa-print"></i>
                 ข้อมูลการมอบตัว </a>
         </li>
-
-
-
     </ul>
+
     <ul class="list-unstyled">
         <li <?=$this->uri->segment('2') == "Statistic" ? 'class="active"' : ''?>> <a
                 href="<?=base_url('admin/Statistic/'.$this->session->userdata('year'));?>"> <i

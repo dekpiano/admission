@@ -121,7 +121,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="dek-floating-label">
-                        <input type="text" class="dek-floating-input" id="par_salaryM" name="par_salaryM" placeholder=""
+                        <input type="number" class="dek-floating-input" id="par_salaryM" name="par_salaryM" placeholder=""
                             required11 value="<?=$MatherConf[0]->par_salary ?? ''?>">
                         <label for="par_career">เงินเดือน/รายได้</label>
                     </div>
