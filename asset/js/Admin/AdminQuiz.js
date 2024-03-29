@@ -4,11 +4,26 @@ $(document).on('click', ".CheckRecruitID", function() {
     let IDrecruit = $(this).attr('key_recruitID');
 });
 
+$(document).on('change', '#select_year_Quiz', function() {
+    var dataYear = $(this).val();
+
+    Swal.fire({
+            title: "แจ้งเตือน",
+            text: "คุณได้ทำการเปลี่ยนปีการศึกษาสำเร็จ",
+            icon: "warning"
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                window.location = dataYear;
+            }
+        });
+});
+
 $(document).on('submit', "#FormCheckQuiz", function(e) {
     e.preventDefault();
 
     $.ajax({
-        url: "../../admin/Control_admin_Quiz/UpdateStatusQuiz",
+        url: "../../admin/Control_admin_quiz/UpdateStatusQuiz",
         type: 'post',
         data: $(this).serialize(),
         success: function(response) {

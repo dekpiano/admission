@@ -21,7 +21,7 @@
                         </h6>
                         <div>
                             <span class="mx-2">เลือกดู</span>
-                            <select id="select_year_confrim" name="select_year_confrim"
+                            <select id="select_year_Quiz" name="select_year_Quiz"
                                 class="custom-select custom-select-sm float-right" style="width: 75px;">
                                 <option <?=$this->uri->segment('3') == ($year[0]->recruit_year)+1 ? 'selected' : '' ;?>
                                     value="<?=($year[0]->recruit_year)+1?>"><?=($year[0]->recruit_year)+1?></option>
@@ -44,7 +44,7 @@
                                 <thead>
                                     <tr>
                                         <th>สถานะการสมัคร</th>
-                                        <th>สถานะมอบตัว</th>
+                                        <th>สถานะการสอบ</th>
                                         <th>สมัครรอบ</th>
                                         <th>เลขที่สมัคร</th>
                                         <th>รูปภาพ</th>

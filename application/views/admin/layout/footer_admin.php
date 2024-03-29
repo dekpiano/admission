@@ -61,7 +61,7 @@
             <?php endif; ?>
 
             <?php if($this->uri->segment(2) == "Quiz") :?>
-            <script src="<?=base_url()?>asset/js/Admin/AdminQuiz.js?v=2"></script>
+            <script src="<?=base_url()?>asset/js/Admin/AdminQuiz.js?v=4"></script>
             <?php endif; ?>
 
          <?php /*$this->load->view('admin/chart/report_bar.php');*/ ?>
