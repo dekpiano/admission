@@ -54,7 +54,20 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 form-control-label">หลักสูตร</label>
                                 <div class="col-sm-9">
-                                    <div class=" text-primary"><?=$stu->recruit_tpyeRoom?></div>
+                                    <div class=" text-primary">
+                                        <?php 
+                                        $sub = explode('|',$stu->recruit_majorOrder);
+                                        foreach ($sub as $keym => $v_sub) {
+                                            foreach ($course as $keyc => $v_course) {
+                                                if($v_course->course_id ==  $v_sub){
+                                                    echo "ลำดับที่ ".($keym+1).' '.$v_course->course_initials."<br>"; 
+                                                }
+                                            }
+                                        }
+                                       
+                                        
+                                        ?>
+                                    </div>
                                 </div>
                             </div>
                             <hr>

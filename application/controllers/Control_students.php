@@ -40,8 +40,8 @@ class Control_students extends CI_Controller {
 	public function StudentsHome(){
 		$data['title'] = 'หน้าแรก';
 		$data['description'] = 'ตรวจสอบและแก้ไขการสมัคร';
-		$data['stu'] = $this->db->select('recruit_id,recruit_prefix,recruit_firstName,recruit_lastName,recruit_status,recruit_tpyeRoom,recruit_status')->where('recruit_id',$this->session->userdata('loginStudentID'))->get('tb_recruitstudent')->row();
-		$data['chk_stu'] = $this->db->where('recruit_id',$this->session->userdata('loginStudentID'))->get('tb_recruitstudent')->result();
+		$data['stu'] = $this->db->select('recruit_id,recruit_prefix,recruit_firstName,recruit_lastName,recruit_status,recruit_tpyeRoom,recruit_status')->where('recruit_idCard',$this->session->userdata('StudentIDCrad'))->order_by('recruit_id','DESC')->get('tb_recruitstudent')->row();
+		$data['chk_stu'] = $this->db->where('recruit_idCard',$this->session->userdata('StudentIDCrad'))->order_by('recruit_id','DESC')->get('tb_recruitstudent')->result();
 		$this->load->view('students/layout/navber_students.php',$data);
 		$this->load->view('students/layout/menu_top_students.php');
 		$this->load->view('students/StudentsHome.php');
@@ -51,8 +51,9 @@ class Control_students extends CI_Controller {
 	public function StudentsStatus(){
 		$data['title'] = 'ตรวจสอบสถานะการสมัคร';
 		$data['description'] = 'ตรวจสอบและแก้ไขการสมัคร';
-		$data['stu'] = $this->db->select('recruit_id,recruit_prefix,recruit_firstName,recruit_lastName,recruit_status,recruit_tpyeRoom,recruit_status,recruit_category')->where('recruit_id',$this->session->userdata('loginStudentID'))->get('tb_recruitstudent')->row();
-		$data['chk_stu'] = $this->db->where('recruit_id',$this->session->userdata('loginStudentID'))->get('tb_recruitstudent')->result();
+		$data['stu'] = $this->db->select('recruit_id,recruit_prefix,recruit_firstName,recruit_lastName,recruit_status,recruit_tpyeRoom,recruit_status,recruit_category,recruit_majorOrder')->where('recruit_idCard',$this->session->userdata('StudentIDCrad'))->order_by('recruit_id','DESC')->get('tb_recruitstudent')->row();
+		$data['course'] = $this->db->get('tb_course')->result();
+		$data['chk_stu'] = $this->db->where('recruit_idCard',$this->session->userdata('StudentIDCrad'))->order_by('recruit_id','DESC')->get('tb_recruitstudent')->result();
 		$this->load->view('students/layout/navber_students.php',$data);
 		$this->load->view('students/layout/menu_top_students.php');
 		$this->load->view('students/StudentsStatus.php');
