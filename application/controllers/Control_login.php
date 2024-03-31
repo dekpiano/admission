@@ -10,7 +10,7 @@ class Control_login extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->model('Model_login');
 
-		$path = ((dirname(dirname(dirname(dirname((dirname(__FILE__))))))));
+		$path = (dirname(dirname(dirname(dirname(dirname((dirname(__FILE__))))))));
 		require $path . '/librarie_skj/google_sheet/vendor/autoload.php';
 
         $redirect_uri = base_url('loginGoogle');
@@ -121,7 +121,7 @@ class Control_login extends CI_Controller {
 					$this->session->set_flashdata(array('status' => 'error','msg'=> 'NO','messge' => 'เลขบัตรประชาชนหรือวันเกิดไม่ถูกต้อง หรือ ยังไม่ได้ลงทะเบียนเรียน'));	
 					redirect('login');
 					}else{	
-						$this->session->set_userdata(array('loginStudentID' => $result[0]->recruit_id,'fullname'=> $result[0]->recruit_prefix.$result[0]->recruit_firstName.' '.$result[0]->recruit_lastName));
+						$this->session->set_userdata(array('loginStudentID' => $result[0]->recruit_id,'fullname'=> $result[0]->recruit_prefix.$result[0]->recruit_firstName.' '.$result[0]->recruit_lastName,'StudentIDCrad'=>$result[0]->recruit_idCard));
 						//print_r($this->session->userdata()); exit();		
 						redirect('StudentHome');
 						

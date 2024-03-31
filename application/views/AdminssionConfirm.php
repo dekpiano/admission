@@ -133,7 +133,7 @@ input {
                                     <span class="fas fa-phone"></span> 056-009-667 </span></p>
                         </div>
                         <p class="mb-0">
-                            <a href="https://www.canva.com/design/DAE8dEvbv_0/0BOZnsblL5N2guiWoMXeng/view?utm_content=DAE8dEvbv_0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+                            <a href="https://www.canva.com/design/DAE8dEvbv_0/sdFvsyMrdXQL1cZI26iDZQ/view?utm_content=DAE8dEvbv_0&utm_campaign=designshare&utm_medium=link&utm_source=editor"
                                 target="_blank" class="text-center">คู่มือการใช้งานระบบรายงานตัวออนไลน์</a>
 
                         </p>

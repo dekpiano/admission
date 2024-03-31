@@ -88,9 +88,10 @@ class Control_students extends CI_Controller {
 	public function StudentsEdit(){
 		$data['title'] = 'แก้ไขข้อมูลการสมัคร';
 		$data['description'] = 'ตรวจสอบและแก้ไขการสมัคร';
-		$data['stu'] = $this->db->select('recruit_id,recruit_prefix,recruit_firstName,recruit_lastName,recruit_status,recruit_tpyeRoom,recruit_status')->where('recruit_id',$this->session->userdata('loginStudentID'))->get('tb_recruitstudent')->row();
-		$data['chk_stu'] = $this->db->where('recruit_id',$this->session->userdata('loginStudentID'))->get('tb_recruitstudent')->result();
+		$data['stu'] = $this->db->select('recruit_id,recruit_prefix,recruit_firstName,recruit_lastName,recruit_status,recruit_tpyeRoom,recruit_status')->where('recruit_idCard',$this->session->userdata('StudentIDCrad'))->order_by('recruit_id','DESC')->get('tb_recruitstudent')->row();
+		$data['chk_stu'] = $this->db->where('recruit_idCard',$this->session->userdata('StudentIDCrad'))->order_by('recruit_id','DESC')->get('tb_recruitstudent')->result();
 
+		//echo '<pre>';print_r($data['chk_stu']);exit();
 		// $th = $this->load->database('thailandpa', TRUE);
 		// $data['province'] = $th->get('province')->result();
 		// $sel_amphur = $th->where('PROVINCE_ID',@$data['chk_stu'][0]->recruit_homeProvince)->get('province')->result();
@@ -365,12 +366,12 @@ class Control_students extends CI_Controller {
 		$datapdf = $this->db->select('skjacth_admission.tb_recruitstudent.*')
 										->from('skjacth_admission.tb_recruitstudent')
 										
-		->where('skjacth_admission.tb_recruitstudent.recruit_id',$this->session->userdata('loginStudentID'))
-		->get()->result();
-
+		->where('skjacth_admission.tb_recruitstudent.recruit_idCard',$this->session->userdata('StudentIDCrad'))
+		->order_by('recruit_id','DESC')
+		->get()->result();		
 	 	$majorOrder = explode("|",$datapdf[0]->recruit_majorOrder);	
 		$majorOrderFull = $this->db->select("course_initials")->where('course_id',$majorOrder[0])->get('tb_course')->row();
-		//echo '<pre>'; print_r($majorOrderFull ); exit();
+		//echo '<pre>'; print_r($datapdf); exit();
 		
 
     	$date_Y = date('Y',strtotime($datapdf[0]->recruit_birthday))+543;
