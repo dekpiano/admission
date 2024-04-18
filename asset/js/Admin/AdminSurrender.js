@@ -5,7 +5,7 @@ $(document).on('click', ".CheckRecruitID", function() {
 
 $(document).on('submit', "#FormSurrender", function(e) {
     e.preventDefault();
-
+        let recruit_id = $('#recruit_id').val();
     $.ajax({
         url: "../../admin/Control_admin_surrender/UpdateSurrender",
         type: 'post',
@@ -20,6 +20,9 @@ $(document).on('submit', "#FormSurrender", function(e) {
                     'คุณยืนยันการมอบตัวสำเร็จ!',
                     'success'
                 )
+                $('.NoStatusSurrender_'+recruit_id).empty();
+                $('.NoStatusSurrender_'+recruit_id).html('<h4><span class=" badge badge-pill badge-success">มอบตัวแล้ว</span></h4>');
+              
             }
             $('#ConfrimSurrender').modal('hide');
 

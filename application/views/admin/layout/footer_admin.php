@@ -50,7 +50,7 @@
          <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=2"></script>
 
             <?php if($this->uri->segment(2) == "Surrender") :?>
-            <script src="<?=base_url()?>asset/js/Admin/AdminSurrender.js"></script>
+            <script src="<?=base_url()?>asset/js/Admin/AdminSurrender.js?v=1"></script>
             <?php endif; ?>
 
             <?php if($this->uri->segment(2) == "Recruitment") :?>

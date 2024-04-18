@@ -72,7 +72,7 @@
                                     </td>
                                     <td>
                                         <?php
-                                            if($v_recruit->stu_id != null && $v_recruit->stu_UpdateConfirm >= $checkYear[0]->openyear_year){
+                                            if($v_recruit->stu_id != null){
                                                 echo '<h4><span class="badge badge-pill badge-success">รายงานตัวแล้ว</span></h4>';
                                             }else{                                              
                                                 echo '<h4><span class=" badge badge-pill badge-danger">รอรายงานตัวในระบบ</span></h4>';
@@ -82,14 +82,17 @@
                                     
 
                                     <td>
-                                        <?php if($v_recruit->recruit_statusSurrender != "" && $v_recruit->stu_UpdateConfirm >= $checkYear[0]->openyear_year): ?>
-                                            
+                                        <?php if($v_recruit->recruit_statusSurrender != ""): ?>
+                                            <div class="StatusSurrender_<?=$v_recruit->recruit_id?>">
                                             <h4><span class=" badge badge-pill badge-success">มอบตัวแล้ว</span></h4>
+                                            </div>
+                                            
                                            
                                         <?php else : ?>
+                                            <div class="NoStatusSurrender_<?=$v_recruit->recruit_id?>">
                                             <button type="button" class="btn btn-sm btn-primary CheckRecruitID" data-toggle="modal" data-target="#ConfrimSurrender" key_recruitID="<?=$v_recruit->recruit_id?>">รอ...ยืนยันการมอบตัว</button>
                                             <!-- <h4><span class=" badge badge-pill badge-danger">รอมอบตัว</span></h4> -->
-                                           
+                                            </div>
                                        
                                         <?php endif; ?>
 
