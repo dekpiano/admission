@@ -74,17 +74,30 @@ class Control_admission extends CI_Controller {
 		$data['url'] = "welcome";
 		$data['TypeQuota'] = $this->db->where('quota_key',$quota)->get("tb_quota")->result();
 
-		if($id <= 3){
-			$data['Course'] = $this->db->select('course_id,course_initials')
-			->where('course_gradelevel','ม.ต้น')
-			->get("tb_course")->result();
-		}else{
-			$data['Course'] = $this->db->select('course_id,course_initials')
-			->where('course_gradelevel','ม.ปลาย')
-			->get("tb_course")->result();
-		}
+		$CheckQuota = $this->db->select('quota_course')->where('quota_key',$quota)->get("tb_quota")->result();
+		$SubQuota = explode('|',$CheckQuota[0]->quota_course);
 		
-		//echo '<pre>';print_r($data['Course']); exit();
+		$data['Course'] = array();
+		foreach ($SubQuota as $key => $v_SubQuota) {
+			if($id <= 3){
+			$SelCourse = $this->db->select('course_id,course_initials')
+			->where('course_gradelevel','ม.ต้น')
+			->where('course_id',$v_SubQuota)
+			->get("tb_course")->row();
+			}else{
+				$SelCourse = $this->db->select('course_id,course_initials')
+				->where('course_gradelevel','ม.ปลาย')
+				->where('course_id',$v_SubQuota)
+				->get("tb_course")->row();
+			}
+
+			if($SelCourse){
+				$data['Course'][] = $SelCourse;
+			}
+		}
+
+		//echo '<pre>';print_r($Course); exit();
+		
 		if ($id > 0) {
 			$this->load->view('layout/header.php',$data);
 			$this->load->view('AdminssionRegister.php');

@@ -14,22 +14,22 @@
     <ul class="list-unstyled">
         <li <?=$this->uri->segment('2') == "Recruitment" ? 'class="active"' : ''?>>
             <a href="<?=base_url('admin/Recruitment/'.$this->session->userdata('year'));?>">
-                <i class="far fa-edit"></i>
+            <i class="fas fa-database"></i>
                 ข้อมูลการรับสมัคร </a>
         </li>
         <li <?=$this->uri->segment('2') == "PrintConfirm" ? 'class="active"' : ''?>>
             <a href="<?=base_url('admin/PrintConfirm/'.$this->session->userdata('year'));?>">
-                <i class="fas fa-print"></i>
+            <i class="fas fa-database"></i>
                 ข้อมูลการรายงานตัว </a>
         </li>
         <li <?=$this->uri->segment('2') == "Quiz" ? 'class="active"' : ''?>>
             <a href="<?=base_url('admin/Quiz/'.$this->session->userdata('year'));?>">
-                <i class="fas fa-print"></i>
+            <i class="fas fa-database"></i>
                 ข้อมูลการสอบ </a>
         </li>
         <li <?=$this->uri->segment('2') == "Surrender" ? 'class="active"' : ''?>>
             <a href="<?=base_url('admin/Surrender/'.$this->session->userdata('year'));?>">
-                <i class="fas fa-print"></i>
+            <i class="fas fa-database"></i>
                 ข้อมูลการมอบตัว </a>
         </li>
     </ul>
@@ -45,10 +45,12 @@
     </ul>
     <ul class="list-unstyled">
         <li <?=$this->uri->segment('2') == "system" ? 'class="active"' : ''?>> <a
-                href="<?=base_url('admin/system/'.$this->session->userdata('year'));?>"> <i class="fas fa-stream"></i>
+                href="<?=base_url('admin/system/'.$this->session->userdata('year'));?>">
+                <i class="fas fa-cog"></i>
                 ตั้งค่าระบบ </a></li>
         <li <?=$this->uri->segment('2') == "AdminRloes" ? 'class="active"' : ''?>> <a
-                href="<?=base_url('admin/system/'.$this->session->userdata('year'));?>"> <i class="fas fa-stream"></i>
+                href="<?=base_url('admin/system/'.$this->session->userdata('year'));?>">
+                <i class="fas fa-user-cog"></i>
                 ตั้งค่าสิทธ์การใช้งาน </a></li>
     </ul>
 

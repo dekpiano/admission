@@ -23,18 +23,66 @@
                     </div>
 
                     <?php  foreach ($switch_quota as $key => $v_quota) :  ?>
-                    <div class="left-col p-2 d-flex align-items-center justify-content-between">
+                    <div class="left-col p-2 row align-items-center justify-content-between">
 
-                        <div class="project-title d-flex align-items-center">
+                        <div class="project-title align-items-center col-md-4">
                             <?=$v_quota->quota_explain?>
+
+                            <div class="project-date">
+                                <input type="checkbox" id="<?=$v_quota->quota_key?>"
+                                    valun="<?=$switch_quota[0]->quota_key?>"
+                                    <?=$v_quota->quota_status == "on" ? 'checked' : '' ?> data-toggle="toggle"
+                                    data-on="เปิด" data-off="ปิด">
+                                <label for="category"></label>
+                            </div>
                         </div>
-                        <div class="project-date">
-                            <input type="checkbox" id="<?=$v_quota->quota_key?>"
-                                valun="<?=$switch_quota[0]->quota_key?>"
-                                <?=$v_quota->quota_status == "on" ? 'checked' : '' ?> data-toggle="toggle"
-                                data-on="เปิด" data-off="ปิด">
-                            <label for="category"></label>
+
+                        <div class="col-md-8">
+                            <?php if($v_quota->quota_key != "quotasport"): ?>
+                           
+                                <div class="i-checks">
+                                <?php if($v_quota->quota_key != "quotaM4"): ?>
+                                    <div class="row m-0 p-0">
+                                        <div class="col-md-2">
+                                            <span>ม.ต้น</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <?php $SubCourse = explode("|",$v_quota->quota_course);?>
+                                            <?php  foreach ($switch_course as $key => $v_course) : ?>
+                                            <?php if($v_course->course_gradelevel == "ม.ต้น"): ?>
+                                            <input id="ckeck_<?=$v_quota->quota_key;?>" type="checkbox" value="<?=$v_course->course_id?>" <?php echo in_array($v_course->course_id, $SubCourse) ? 'checked' : '';?>
+                                                class="checkbox-template check_course course<?=$v_quota->quota_id?>" name="ckeck_<?=$v_quota->quota_key;?>[]" course_id="<?=$v_quota->quota_id?>">
+                                            <label class="m-0 pr-3"
+                                                for="ckeck_<?=$v_quota->quota_key;?>"><?=$v_course->course_branch?></label>
+                                            <?php endif; ?>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    </div>
+                                    <?php endif; ?>
+                                    <?php if($v_quota->quota_key != "quotaM1"): ?>
+                                        <?php $SubCourse = explode("|",$v_quota->quota_course);?>
+                                    <div class="row m-0 p-0">
+                                        <div class="col-md-2">
+                                            <span>ม.ปลาย</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <?php  foreach ($switch_course as $key => $v_course) :  ?>
+                                            <?php if($v_course->course_gradelevel == "ม.ปลาย"): ?>
+                                            <input id="ckeck_<?=$v_quota->quota_key;?>" type="checkbox" value="<?=$v_course->course_id?>" <?php echo in_array($v_course->course_id, $SubCourse) ? 'checked' : '';?>
+                                                class="checkbox-template check_course course<?=$v_quota->quota_id?>" name="ckeck_<?=$v_quota->quota_key;?>[]" course_id="<?=$v_quota->quota_id?>">
+                                            <label class="m-0 pr-3"
+                                                for="ckeck_<?=$v_quota->quota_key;?>"><?=$v_course->course_branch?></label>
+                                            <?php endif; ?>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    </div>
+                                    <?php endif; ?>
+                                </div>
+
+                            <?php endif; ?>
                         </div>
+
+
                     </div>
                     <?php endforeach; ?>
 
@@ -105,7 +153,7 @@
                     </div>
                 </div>
             </div>
-          
+
             <hr>
             <div class="project mb-2">
                 <div class=" bg-white has-shadow col-lg-12">

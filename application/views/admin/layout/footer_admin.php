@@ -68,6 +68,10 @@
             <script src="<?=base_url()?>asset/js/Admin/AdminPrint.js?v=3"></script>
             <?php endif; ?>
 
+            <?php if($this->uri->segment(2) == "system") :?>
+            <script src="<?=base_url()?>asset/js/Admin/AdminSetting.js?v=1"></script>
+            <?php endif; ?>
+
          <?php /*$this->load->view('admin/chart/report_bar.php');*/ ?>
          <?php  if($this->session->flashdata('msg') == 'NO' ):?>
          <script>

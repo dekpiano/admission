@@ -763,21 +763,25 @@ label {
                                         <hr>
 
                                         <?php foreach ($Course as $key => $v_CourseS) :?>
+                                        <?php if($v_CourseS) :?>
                                         <div class="d-flex align-items-center">
                                             <div class="mr-2">
                                                 ลำดับที่ <?=$key+1;?>
                                             </div>
                                             <div>
                                                 <select name="recruit_majorOrder[]" id="select<?=$key+1;?>"
-                                                    class="form-control mb-2" required>
+                                                    class="form-control mb-2 SelectCourse" required>
                                                     <option value="">เลือกหลักสูตรลำดับที่ <?=$key+1;?></option>
                                                     <?php foreach ($Course as $key => $v_CourseS) :?>
+                                                    <?php if($v_CourseS) :?>
                                                     <option value="<?=$v_CourseS->course_id?>">
                                                         <?=$v_CourseS->course_initials?></option>
+                                                    <?php endif; ?>
                                                     <?php endforeach; ?>
                                                 </select>
                                             </div>
                                         </div>
+                                        <?php endif; ?>
                                         <?php endforeach; ?>
 
                                     </div>
@@ -920,7 +924,8 @@ label {
 
                     <div class="row justify-content-center">
                         <div class="col-md-3">
-                            <button id="BtnSubmitRegister" class="btn btn-light btn-lg btn-block mt-3 mb-5" type="submit">สมัครเรียน</button>
+                            <button id="BtnSubmitRegister" class="btn btn-light btn-lg btn-block mt-3 mb-5"
+                                type="submit">สมัครเรียน</button>
                         </div>
                     </div>
 

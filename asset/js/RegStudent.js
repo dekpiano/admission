@@ -76,7 +76,7 @@ $(document).on('click','#paypal1',function() {
 function updateSelectOptions() {
   let selectedValues = [];
   // รวบรวมค่าที่เลือกจากทุก <select>
-  for (let i = 1; i <= 7; i++) {
+  for (let i = 1; i <= $('.SelectCourse').length; i++) {
     const select = document.getElementById('select' + i);
     if (select.value !== "") {
       selectedValues.push(select.value);
@@ -84,7 +84,7 @@ function updateSelectOptions() {
   }
 
   // อัปเดตการแสดงผลของ options ในทุก <select>
-  for (let i = 1; i <= 7; i++) {
+  for (let i = 1; i <= $('.SelectCourse').length; i++) {
     const select = document.getElementById('select' + i);
     const selectedValue = select.value;
     for (let option of select.options) {
@@ -98,8 +98,9 @@ function updateSelectOptions() {
   }
 }
 
+
 // เพิ่ม event listener ให้กับทุก <select>
-for (let i = 1; i <= 7; i++) {
+for (let i = 1; i <= $('.SelectCourse').length; i++) {
   document.getElementById('select' + i).addEventListener('change', updateSelectOptions);
 }
 
