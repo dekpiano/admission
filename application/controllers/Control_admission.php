@@ -120,6 +120,16 @@ class Control_admission extends CI_Controller {
 		}
 	}
 
+	public function CheckStudentRegister(){
+		$data = $this->dataAll();
+
+		$dchk_stu = $this->db->where('recruit_idCard',$this->input->post('Idcard'))
+		->where('recruit_year',$data['checkYear'][0]->openyear_year)
+		->get('tb_recruitstudent')->result();
+
+		echo count($dchk_stu);
+	}
+
 
 	public function reg_insert()
 	{		
@@ -146,7 +156,7 @@ class Control_admission extends CI_Controller {
 		->where('recruit_category',$this->input->post('recruit_category'))
 		->get('tb_recruitstudent')->result();
 		if (count($data['chk_stu']) > 0) {
-			$this->session->set_flashdata(array('msg'=> 'NO','messge' => 'คุณได้ลงทะเบียนแล้ว กรุณาตรวจสอบการสมัคร ปีการศึกษานี้แล้ว','status'=>'error'));
+			$this->session->set_flashdata(array('msg'=> 'NO','messge' => 'คุณได้ลงทะเบียนแล้ว กรุณาตรวจสอบการสมัครปีการศึกษานี้แล้ว','status'=>'error'));
 			redirect('welcome');
 		}else{
 		$data_insert = array();

@@ -1,7 +1,8 @@
 
+
 $(document).on('click','#sport',function() {
     // ถ้า Option 2 ถูกเลือก
-    console.log($(this).is(':checked'));
+    //console.log($(this).is(':checked'));
     if($(this).is(':checked')) {
       // แสดงกลุ่ม radio button ที่ซ่อนอยู่
       $('#hidden-Sport').show();
@@ -113,4 +114,80 @@ for (let i = 1; i <= $('.SelectCourse').length; i++) {
     }
   }
 
+
+
+   // ฟังก์ชันตรวจสอบความถูกต้องของเลขบัตรประชาชนแบบรวมขีด
+   function checkThaiID(id) {
+
+      id = id.replace(/-/g, '');
+
+      if (id.length !== 13) {
+          return { valid: false, message: 'กรุณากรอกเลขบัตรประชาชนให้ครบ 13 หลัก' };
+      }
+
+      // ตรวจสอบว่าเป็นเลขบัตรคนไทย (1, 2, 3, 4, 5) หรือคนต่างด้าว (6, 7, 8, 9)
+      let firstDigit = id.charAt(0);
+      if (!['1', '2', '3', '4', '5', '6', '7', '8'].includes(firstDigit)) {
+          return { valid: false, message: 'เลขบัตรประชาชนไทย หรือ ต่างด้าวไม่ถูกต้อง <br> กรุณากรอกใหม่อีกรอบ' };
+      }
+
+      // คำนวณผลรวมเพื่อตรวจสอบ Check Digit
+      let sum = 0;
+      for (let i = 0; i < 12; i++) {
+          sum += parseInt(id.charAt(i)) * (13 - i);
+      }
+
+      // คำนวณ Check Digit
+      let checkDigit = (11 - (sum % 11)) % 10;
+      if (checkDigit === parseInt(id.charAt(12))) {
+          return { valid: true, message: 'เลขบัตรประชาชนถูกต้อง <br> กรอกข้อมูลการสมัครด้านล่างได้เลย' };
+      } else {
+          return { valid: false, message: 'เลขบัตรประชาชนไม่ถูกต้อง <br> กรุณากรอกใหม่อีกรอบ' };
+      }
+    }
+
+
+
+  $(document).on('submit','#FormCheckIdStudent',function(e) {
+    e.preventDefault();
+    
+    let id = $('#CheckIdStudent').val();
+    //console.log(id);
+    
+    let result = checkThaiID(id);
+    if (!result.valid) {
+      Swal.fire({
+        title: "แจ้งเตือน!",
+        html: result.message+"!",
+        icon: "error"
+      });
+      $('#CheckIdStudent').val("");
+      $('#SectionFormRegisterStudents').hide();
+    } else {      
+
+      $.post('../../CheckStudentRegister',{Idcard:id},function(data) {
+          //console.log(data);
+          if(data > 0){
+               Swal.fire({
+              title: "แจ้งเตือน!",
+              html: "คุณได้ลงทะเบียนแล้วในปีนี้ ไม่สามารถลงทะเบียนได้อีก!",
+              icon: "warning"
+            });
+            $('#CheckIdStudent').val("");
+            $('#SectionFormRegisterStudents').hide();
+          }else{
+            Swal.fire({
+              title: "แจ้งเตือน!",
+              html: result.message+"! <br> และสามารถลงทะเบียนเรียนในปีนี้ได้",
+              icon: "success"
+            });
+            $('#recruit_idCard').val(id); 
+            $('#SectionFormRegisterStudents').show();
+          }
+      });
+
+     
+    }
+    
+  });
 

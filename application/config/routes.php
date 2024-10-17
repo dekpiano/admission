@@ -63,6 +63,8 @@ $route['CloseSystem'] = 'control_login/CloseSystem';
 $route['Statistic/(:any)'] = 'welcome/AllStatistic/$1';
 $route['RegStudent/(:num)/(:any)'] = 'control_admission/reg_student/$1/$2';
 $route['CheckRegister'] = 'Welcome/CheckRegister';
+$route['CheckStudentRegister'] = 'control_admission/CheckStudentRegister';
+
 
 //นักเรียน
 $route['StudentLogin'] = 'Control_students/StudentLogin';

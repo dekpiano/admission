@@ -1,4 +1,5 @@
          <!-- Page Footer-->
+          <?php if($this->uri->segment(1) !== "RegStudent") :?>
          <footer class="main-footer" style="position: static;">
              <div class="container-fluid">
                  <div class="row">
@@ -6,7 +7,6 @@
                          <p>โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์ © 2020</p>
                      </div>
                      <div class="col-sm-4">
-                         <!-- Histats.com  (div with counter) -->
                          <div id="histats_counter"></div>
 
                      </div>
@@ -15,11 +15,11 @@
                          <p>Design by <a href="<?=base_url('loginAdmin');?>" class="" data-toggle1="modal"
                                  data-target1="#LoginAdmin">Dekpiano</a>
                          </p>
-                         <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
                      </div>
                  </div>
              </div>
          </footer>
+         <?php endif; ?>
          </div>
 
          </div>
@@ -167,7 +167,7 @@
 
          <?php if($this->uri->segment(1) == "RegStudent"):?>
          <script src="<?=base_url()?>asset/js/AutoProvince.js?v=7.2"></script>
-         <script src="<?=base_url()?>asset/js/RegStudent.js?v=4"></script>
+         <script src="<?=base_url()?>asset/js/RegStudent.js?v=5"></script>
          <?php elseif($this->uri->segment(1) == "Confirm"):?>
          <script src="<?=base_url()?>asset/js/ConfirmStudent.js?v=21.1"></script>
          <script src="<?=base_url()?>asset/js/login.js?v=7"></script>
@@ -246,6 +246,12 @@ var onloadCallback = function() {
     });
 };
 // รูปแบบการกรอก
+$('#CheckIdStudent').inputmask({
+    mask: "9-9999-99999-99-9", // กำหนดรูปแบบ 9-9999-99999-99-9
+    placeholder: "", // ไม่แสดง placeholder
+    showMaskOnHover: false // ไม่แสดงขณะ hover
+});
+
 $(":input").inputmask();
 
 $("#idenStu").inputmask("9-9999-99999-99-9", {
@@ -270,9 +276,11 @@ $("#par_IdNumberO").inputmask("9-9999-99999-99-9", {
 });
 
 
-$(document).on('click','#BtnSubmitRegister',function(){
-    $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> กำลังบันทึกข้อมูล...');
-       // $(this).prop('disabled', true); // Disable button to prevent multiple clicks
+$(document).on('click', '#BtnSubmitRegister', function() {
+    $(this).html(
+        '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> กำลังบันทึกข้อมูล...'
+        );
+    // $(this).prop('disabled', true); // Disable button to prevent multiple clicks
 });
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
