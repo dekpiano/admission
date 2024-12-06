@@ -260,37 +260,6 @@ table thead tr th {
     </div>
 </div>
 
-<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-    <div class="row">
-        <div class="col-md-4 p-lg-3 mx-auto order-lg-0 order-1 mt-3">
-            <img src="https://zakreeya.files.wordpress.com/2012/04/1722092.jpg" class="img-fluid" alt="" srcset="">
-        </div>
-        <div class="col-md-8 p-lg-5 mx-auto order-0 mb-3 align-self-center">
-            <h1 class="display-5 font-weight-normal">ข้อปฏิบัติการเตรียมตัวเข้าสอบและการสอบ</h1>
-            <p class="lead font-weight-normal">อ่านฉันก่อน!</p>
-            <a class="btn btn-primary"
-                href="https://drive.google.com/file/d/1BN-k53usmAKM2njS5lyP_aI6yePCrCU9/view?usp=sharing"
-                target="_blank">อ่านฉันสิ คลิกเลย...</a>
-        </div>
-    </div>
-</div>
-
-<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-    <div class="row">
-        <div class="col-md-4 p-lg-3 mx-auto order-lg-0 order-1 mt-3">
-            <img src="https://hr.rmutr.ac.th/wp-content/uploads/2020/02/aHR0cHM6Ly9zLmlzYW5vb2suY29tL2hvLzAvdWQvMTcvODUwMjMvYmIuanBn.jpg" class="img-fluid" alt="" srcset="">
-        </div>
-        <div class="col-md-8 p-lg-5 mx-auto order-0 mb-3 align-self-center">
-            <h1 class="display-5 font-weight-normal">วิธีตรวจสอบการสมัครและพิมพ์บัตรประจำตัวสอบ</h1>
-            <p class="lead font-weight-normal">เพื่อใช้ยืนยันตัวในการสอบรอบปกติ จะพิมพ์ออกมาหรือจะแคปจอ ก็ได้ ไปดูวิธีกัน</p>
-            <a class="btn btn-primary"
-                href="https://www.canva.com/design/DAF-0Dmo0J8/tyheWTsb30Z_zh1WnQT-zg/view?utm_content=DAF-0Dmo0J8&utm_campaign=designshare&utm_medium=link&utm_source=editor"
-                target="_blank">คลิกฉันเลย</a>
-        </div>
-    </div>
-</div>
-
-
 <div class="container-fluid py-5">
 
     <h3 class="text-center">กำหนดการรับนักเรียน ปีการศึกษา <?=$checkYear[0]->openyear_year?></h3>
@@ -310,24 +279,40 @@ table thead tr th {
             <tbody class="text-center bg-white">
                 <tr>
                     <th scope="row">รอบโควตา (โรงเรียนในเขตพิ้นที่บริการ)</th>
-                    <td>1 - 31 มกราคม 2567</td>
+                    <td>1 - 31 มกราคม 2568</td>
                     <td>-</td>
-                    <td>7 กุมภาพันธ์ 2567</td>
-                    <td>วันอาทิตย์ที่ 18 กุมภาพันธ์ 2567 (08.30 - 12.00 น.)</td>
+                    <td>7 กุมภาพันธ์ 2568</td>
+                    <td>วันเสาร์ที่ 15 กุมภาพันธ์ 2568 (07.30 - 12.00 น.)</td>
                 </tr>
                 <tr>
                     <th scope="row">รอบความสามารถพิเศษด้านกีฬา</th>
-                    <td>คัดตัวนักกีฬา 17 - 18 กุมภาพันธ์ 2567</td>
+                    <td>
+                        1 - 31 มกราคม 2568 (ยื่นเกียรติบัตรผลงาน)
+                    </td>
                     <td>-</td>
-                    <td>18 กุมภาพันธ์ 2567</td>
-                    <td>18 กุมภาพันธ์ 2567 (08.30 - 12.00 น.)</td>
+                    <td>7 กุมภาพันธ์ 2568</td>
+                    <td>15 กุมภาพันธ์ 2568 (07.30 - 12.00 น.)</td>
+                </tr>
+                <tr>
+                    <th scope="row">รอบความสามารถพิเศษด้านกีฬา</th>
+                    <td>
+
+                        คัดตัวนักกีฬา ครั้งที่ 1 วันที่ 29 มีนาคม 2568
+                    </td>
+                    <td>-</td>
+                    <td>4 เมษายน 2568</td>
+                    <td>5 เมษายน 2568 (07.30 - 12.00 น.)</td>
                 </tr>
                 <tr>
                     <th scope="row">รอบปกติ</th>
-                    <td>9 - 15 มีนาคม 2567</td>
-                    <td>30 มีนาคม 2567</td>
-                    <td>3 เมษายน 2567</td>
-                    <td>6 เมษายน 2567 (08.30 - 12.00 น.)</td>
+                    <td>
+                        25 - 31 มีนาคม 2568 <br>
+                        เปิดระบบ 08.30 น. และปิดระบบ 31 มีนาคม 2567 เวลา 16.30 น.
+
+                    </td>
+                    <td>2 เมษายน 2568</td>
+                    <td>4 เมษายน 2568</td>
+                    <td>5 เมษายน 2568 (07.30 - 12.00 น.)</td>
                 </tr>
 
 
@@ -351,26 +336,42 @@ table thead tr th {
             <tbody class="text-center bg-white">
                 <tr>
                     <th scope="row">รอบโควตา (ม.3 เดิม)</th>
-                    <td>1 - 31 มกราคม 2567</td>
+                    <td>1 - 31 มกราคม 2568</td>
                     <td>-</td>
-                    <td>7 กุมภาพันธ์ 2567</td>
-                    <td>วันอาทิตย์ที่ 18 กุมภาพันธ์ 2567 (08.30 - 12.00 น.)</td>
+                    <td>7 กุมภาพันธ์ 2568</td>
+                    <td>วันเสาร์ที่ 15 กุมภาพันธ์ 2568 (07.30 - 12.00 น.)</td>
                 </tr>
                 <tr>
                     <th scope="row">รอบความสามารถพิเศษด้านกีฬา</th>
-                    <td>คัดตัวนักกีฬา 17 - 18 กุมภาพันธ์ 2567</td>
+                    <td>
+                        1 - 31 มกราคม 2568 (ยื่นเกียรติบัตรผลงาน)
+                    </td>
                     <td>-</td>
-                    <td>18 กุมภาพันธ์ 2567</td>
-                    <td>18 กุมภาพันธ์ 2567 (08.30 - 120.00 น.)</td>
+                    <td>7 กุมภาพันธ์ 2568</td>
+                    <td>15 กุมภาพันธ์ 2568 (07.30 - 12.00 น.)</td>
                 </tr>
+                <tr>
+                    <th scope="row">รอบความสามารถพิเศษด้านกีฬา</th>
+                    <td>
 
+                        คัดตัวนักกีฬา ครั้งที่ 1 วันที่ 29 มีนาคม 2568
+                    </td>
+                    <td>-</td>
+                    <td>4 เมษายน 2568</td>
+                    <td>5 เมษายน 2568 (07.30 - 12.00 น.)</td>
+                </tr>
                 <tr>
                     <th scope="row">รอบปกติ</th>
-                    <td>9 - 15 มีนาคม 2567</td>
-                    <td>30 มีนาคม 2567</td>
-                    <td>3 เมษายน 2567</td>
-                    <td>6 เมษายน 2567 (08.30 - 12.00 น.)</td>
+                    <td>
+                        25 - 31 มีนาคม 2568 <br>
+                        เปิดระบบ 08.30 น. และปิดระบบ 31 มีนาคม 2567 เวลา 16.30 น.
+
+                    </td>
+                    <td>2 เมษายน 2568</td>
+                    <td>4 เมษายน 2568</td>
+                    <td>5 เมษายน 2568 (07.30 - 12.00 น.)</td>
                 </tr>
+
 
             </tbody>
         </table>
@@ -378,6 +379,41 @@ table thead tr th {
 
 
 </div>
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="row">
+        <div class="col-md-4 p-lg-3 mx-auto order-lg-0 order-1 mt-3">
+            <img src="https://zakreeya.files.wordpress.com/2012/04/1722092.jpg" class="img-fluid" alt="" srcset="">
+        </div>
+        <div class="col-md-8 p-lg-5 mx-auto order-0 mb-3 align-self-center">
+            <h1 class="display-5 font-weight-normal">ข้อปฏิบัติการเตรียมตัวเข้าสอบและการสอบ</h1>
+            <p class="lead font-weight-normal">อ่านฉันก่อน!</p>
+            <a class="btn btn-primary"
+                href="https://drive.google.com/file/d/1BN-k53usmAKM2njS5lyP_aI6yePCrCU9/view?usp=sharing"
+                target="_blank">อ่านฉันสิ คลิกเลย...</a>
+        </div>
+    </div>
+</div>
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="row">
+        <div class="col-md-4 p-lg-3 mx-auto order-lg-0 order-1 mt-3">
+            <img src="https://hr.rmutr.ac.th/wp-content/uploads/2020/02/aHR0cHM6Ly9zLmlzYW5vb2suY29tL2hvLzAvdWQvMTcvODUwMjMvYmIuanBn.jpg"
+                class="img-fluid" alt="" srcset="">
+        </div>
+        <div class="col-md-8 p-lg-5 mx-auto order-0 mb-3 align-self-center">
+            <h1 class="display-5 font-weight-normal">วิธีตรวจสอบการสมัครและพิมพ์บัตรประจำตัวสอบ</h1>
+            <p class="lead font-weight-normal">เพื่อใช้ยืนยันตัวในการสอบรอบปกติ จะพิมพ์ออกมาหรือจะแคปจอ ก็ได้
+                ไปดูวิธีกัน</p>
+            <a class="btn btn-primary"
+                href="https://www.canva.com/design/DAF-0Dmo0J8/tyheWTsb30Z_zh1WnQT-zg/view?utm_content=DAF-0Dmo0J8&utm_campaign=designshare&utm_medium=link&utm_source=editor"
+                target="_blank">คลิกฉันเลย</a>
+        </div>
+    </div>
+</div>
+
+
+
 
 <section class="container-fluid mt-3">
     <div class="card">
