@@ -1,4 +1,4 @@
-// countDow("2022/03/07 14:00:00","CountOn","show-3t1400");
+
 
 function makeTimer() {
     var endTime = new Date("2025/01/01 00:00:00");
@@ -28,4 +28,5 @@ function makeTimer() {
     
 }
 setInterval(function() { makeTimer(); }, 1000);
+
 

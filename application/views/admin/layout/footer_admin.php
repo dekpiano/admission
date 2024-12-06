@@ -43,11 +43,13 @@
          <script type="text/javascript"
              src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js">
          </script>
-
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/th.js"></script>
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.5/dist/sweetalert2.all.min.js"></script>
          <script src="<?=base_url()?>asset/js/skj.js?v=1004"></script>
          <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=2"></script>
+
 
             <?php if($this->uri->segment(2) == "Surrender") :?>
             <script src="<?=base_url()?>asset/js/Admin/AdminSurrender.js?v=1"></script>
@@ -69,7 +71,8 @@
             <?php endif; ?>
 
             <?php if($this->uri->segment(2) == "system") :?>
-            <script src="<?=base_url()?>asset/js/Admin/AdminSetting.js?v=1"></script>
+            <script src="<?=base_url()?>asset/js/Admin/AdminSetting.js?v=1.1"></script>
+
             <?php endif; ?>
 
          <?php /*$this->load->view('admin/chart/report_bar.php');*/ ?>
@@ -98,6 +101,40 @@ function StatusWait(){
 // รูปแบบการกรอก
 $(":input").inputmask();
 
+flatpickr("#onoff_datetime_regis", {
+      dateFormat: "d-m-Y H:i:S",
+      defaultDate: "<?php echo date('d-m-Y H:i:s', strtotime($switch[0]->onoff_datetime_regis)); ?>",
+      enableTime: true,
+      time_24hr: true,
+      locale: "th",
+      onChange: function(selectedDates, dateStr, instance) {
+          // เมื่อเปลี่ยนวันที่
+          let id = $(instance.input).data('id'); // ดึง ID จาก data-id
+          
+          // ส่งค่าไปยังเซิร์ฟเวอร์ด้วย AJAX
+          $.ajax({
+            url: '<?= base_url('admin/Control_admin_setting/UpdateDatatimeOnoffRegis') ?>',
+            type: 'POST',
+            data: { 
+              id: id, 
+              date: dateStr 
+            },
+            dataType: 'json',
+            success: function(response) {
+                //console.log(response);
+                
+              if (response.status === 'success') {
+                //$('#result').html('<p style="color:green;">' + response.message + '</p>');
+              } else {
+                //$('#result').html('<p style="color:red;">' + response.message + '</p>');
+              }
+            },
+            error: function() {
+              $('#result').html('<p style="color:red;">เกิดข้อผิดพลาดในการส่งข้อมูล</p>');
+            }
+          });
+        }        
+    });
 
 function readURL(input) {
     if (input.files && input.files[0]) {

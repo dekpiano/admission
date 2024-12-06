@@ -33,6 +33,7 @@
 
     <link rel="stylesheet"
         href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
     /* Extra small devices (portrait phones, less than 576px) */
     @media (max-width: 575.98px) {

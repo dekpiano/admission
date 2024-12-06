@@ -486,8 +486,12 @@ class Control_admission extends CI_Controller {
 		echo json_encode($data);
 	  }
 
+	  public function CheckOnoff(){
 
-	  
+		// $data = $this->db->where('onoff_id',1)->get('tb_onoffsys')->result_array();
+		echo json_encode(['status' => 'success', 'message' => 'อัปเดตสำเร็จ']);
+		}
+  
 
 
 }

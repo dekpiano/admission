@@ -111,13 +111,16 @@
                 <div class=" bg-white has-shadow col-lg-12">
                     <div class="left-col p-3 d-flex align-items-center justify-content-between">
                         <div class="project-title d-flex align-items-center">
-
                             <div class="text">
                                 <h3 class="h4">เปิด - ปิดการรับสมัครนักเรียน</h3><small>ใช้แจ้งเตือนในการปิดระบบ</small>
                                 <input type="text" value="<?=$switch[0]->onoff_comment?>" id="onoff_comment"
                                     name="onoff_comment" class="form-control"
                                     placeholder="ใส่แจ้งเตือนเฉพาะปิดรับสมัคร">
                             </div>
+                        </div>
+                        <div>
+                            <label for="onoff_datetime_regis">วันที่เปิดรับสมัครวันแรก</label>
+                            <input type="text" class="form-control" name="onoff_datetime_regis" id="onoff_datetime_regis" data-id="<?=$switch[0]->onoff_id?>" value="<?=$switch[0]->onoff_datetime_regis?>">
                         </div>
                         <div class="project-date">
                             <input type="checkbox" id="switch" valun="<?=$switch[0]->onoff_regis?>"

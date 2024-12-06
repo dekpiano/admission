@@ -129,7 +129,7 @@
          </html>
 
          <!-- JavaScript files-->
-         <script src="<?=base_url();?>asset/vendor/jquery/jquery.min.js"></script>
+         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
          <!-- jQuery UI -->
          <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
          <script src="<?=base_url();?>asset/vendor/popper.js/umd/popper.min.js"> </script>
@@ -175,8 +175,9 @@
 
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=2"></script>
-         <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=16"></script>
+         <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=16.5"></script>
          <script>
+            
 $(document).ready(function() {
     $('#TB_CheckRegister').DataTable({
         order: [
@@ -218,8 +219,7 @@ _Hasync.push(['Histats.track_hits', '']);
     .appendChild(hs);
 })();
          </script>
-         <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4498483&101" alt=""
-                     border="0"></a></noscript>
+         <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4498483&101" alt="" border="0"></a></noscript>
 
          <?php  if($this->session->flashdata('msg') == 'NO' ):?>
          <script>

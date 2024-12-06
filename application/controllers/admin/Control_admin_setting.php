@@ -39,6 +39,25 @@ class Control_admin_setting extends CI_Controller {
 		echo $this->db->update('tb_quota',$data,$Where);
 	}
 
+	public function UpdateDatatimeOnoffRegis(){
+		$id = $this->input->post('id'); // ID ของข้อมูลที่จะแก้ไข
+        $date = $this->input->post('date'); // วันที่ที่ส่งมา
+		$SetDatetime = date('Y-m-d H:i:s',strtotime($date));
+
+		$data = ['onoff_datetime_regis' => $SetDatetime]; // ฟิลด์ที่ต้องการอัปเดต
+        $this->db->where('onoff_id', $id);
+		$result = $this->db->update('tb_onoffsys', $data); // ชื่อ table ของคุณ
+
+		if ($result) {
+			echo json_encode(['status' => 'success', 'message' => 'อัปเดตสำเร็จ']);
+		} else {
+			echo json_encode(['status' => 'error', 'message' => 'ไม่สามารถอัปเดตได้']);
+		}
+	}
+
+	
+	
+
 }
 
 ?>
