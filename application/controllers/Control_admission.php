@@ -1,4 +1,7 @@
 <?php
+error_reporting(0);
+ini_set('display_errors', 0);
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Control_admission extends CI_Controller {
@@ -8,9 +11,9 @@ class Control_admission extends CI_Controller {
 		$this->load->library('timeago');
 		$this->load->model('model_admission');
 		$switch = $this->db->get("tb_onoffsys")->result();
-		if($switch[0]->onoff_system == 'off' || $switch[0]->onoff_regis == 'off'){
-			redirect('welcome');
-		}
+		// if($switch[0]->onoff_system == 'off' || $switch[0]->onoff_regis == 'off'){
+		// 	redirect('welcome');
+		// }
 		
 	}
 	public function recaptcha_google($captcha)
@@ -488,8 +491,9 @@ class Control_admission extends CI_Controller {
 
 	  public function CheckOnoff(){
 
-		// $data = $this->db->where('onoff_id',1)->get('tb_onoffsys')->result_array();
-		echo json_encode(['status' => 'success', 'message' => 'อัปเดตสำเร็จ']);
+		$data = $this->db->select('onoff_datetime_regis')->where('onoff_id',1)->get('tb_onoffsys')->row();
+		header('Content-Type: application/json');
+		echo json_encode($data);
 		}
   
 

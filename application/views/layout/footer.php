@@ -175,7 +175,7 @@
 
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=2"></script>
-         <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=16.5"></script>
+         <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=16.6"></script>
          <script>
             
 $(document).ready(function() {

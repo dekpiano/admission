@@ -1,7 +1,7 @@
 
-
+let Time;
 function makeTimer() {
-    var endTime = new Date("2025/01/01 00:00:00");
+    var endTime = new Date(Time);
     var endTime = (Date.parse(endTime)) / 1000;
     var now = new Date();
     var now = (Date.parse(now) / 1000);
@@ -30,3 +30,18 @@ function makeTimer() {
 setInterval(function() { makeTimer(); }, 1000);
 
 
+function CheckOnoff(){
+    $.ajax({
+        url: 'CheckOnoff',
+        method: 'GET',
+        dataType: 'json',
+        success: function (response) {
+            //console.log(response.onoff_datetime_regis);
+            Time = response.onoff_datetime_regis;
+        },
+        error: function (xhr, status, error) {
+            console.error('Error:', xhr.responseText);
+        },
+    });
+}
+CheckOnoff();
