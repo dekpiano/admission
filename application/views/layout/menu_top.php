@@ -9,7 +9,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary static-top p-2">
         <div class="container-fluid">
             <a class="navbar-brand" href="<?=base_url('welcome');?>">
-                <img src="https://skj.ac.th/uploads/logo/LogoSKJ_4.png" alt="logoSKJ" class="img-fluid mx-2"  style="width: 48px;">
+                <img src="<?=base_url('uploads/logo/logoSKJadmission.png')?>" alt="logoSKJ" class="img-fluid mx-2"  style="width: 50px;">
                 ระบบรับสมัครนักเรียน
                 <?=$checkYear[0]->openyear_year;?>
             </a>

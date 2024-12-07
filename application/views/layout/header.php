@@ -76,6 +76,6 @@
     </style>
 </head>
 
-<body style="font-family:K2D;background-color: #EEE;">
+<body style="font-family:K2D;">
 
     <div class="">
