@@ -40,7 +40,7 @@ function CheckOnoff(){
             Time = response.onoff_datetime_regis;
         },
         error: function (xhr, status, error) {
-            console.error('Error:', xhr.responseText);
+            //console.error('Error:', xhr.responseText);
         },
     });
 }

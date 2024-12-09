@@ -24,6 +24,10 @@ label {
     display: block;
 }
 
+.croppie-container {
+    width: 100%;
+    height: auto;
+}
 
 @keyframes animate {
     0% {
@@ -205,23 +209,23 @@ label {
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                <form action="" method="post" id="FormCheckIdStudent">
-                    <div class="dek-floating-label mb-0">
-                     
-                            <input type="text" class="dek-floating-input" id="CheckIdStudent"
-                                name="CheckIdStudent" placeholder=" " required="" data-toggle="tooltip" 
-                                data-placement="top" title="" data-original-title="เลขบัตรประชาชน 13 หลัก">
+                    <form action="" method="post" id="FormCheckIdStudent">
+                        <div class="dek-floating-label mb-0">
+
+                            <input type="text" class="dek-floating-input" id="CheckIdStudent" name="CheckIdStudent"
+                                placeholder=" " required="" data-toggle="tooltip" data-placement="top" title=""
+                                data-original-title="เลขบัตรประชาชน 13 หลัก">
                             <div class="mt-2">
                                 <button type="submit" class="btn btn-primary w-100">ตรวจสอบ</button>
                             </div>
                             <p id="result" class="mt-3"></p>
-                       
 
-                        <label for="CheckIdStudent">ตรวจสอบเลขบัตรประชาชน <span class="text-red">*</span> </label>
-                        <div class="invalid-feedback">
-                            ระบุเลขบัตรประชาชน 13 หลัก
+
+                            <label for="CheckIdStudent">ตรวจสอบเลขบัตรประชาชน <span class="text-red">*</span> </label>
+                            <div class="invalid-feedback">
+                                ระบุเลขบัตรประชาชน 13 หลัก
+                            </div>
                         </div>
-                    </div>
                     </form>
                 </div>
             </div>
@@ -263,21 +267,21 @@ label {
                                 <div class="card-body">
                                     <div class="row justify-content-center">
                                         <div class="mb-3 col-md-4" style="text-align: -webkit-center;">
-                                            <div class="fileinput-new img-thumbnail"
-                                                style="width: 180px; height: 200px;overflow: hidden;">
-
-                                                <img id="blah" class="img-fluid"
-                                                    src="https://us.123rf.com/450wm/happyvector071/happyvector0711904/happyvector071190415714/121105442-creative-illustration-of-default-avatar-profile-placeholder-isolated-on-background-art-design-grey-p.jpg?ver=6"
-                                                    alt="">
-
+                                            <div class="fileinput-new img-thumbnail " id="selectedImage"
+                                                style="width:200px;height: 250px;">
+                                                <img src="" alt="">
                                             </div>
 
+                                            <button type="button" class="btn btn-primary mt-3" data-toggle="modal"
+                                                data-target="#cropModal">
+                                                เลือกรูป
+                                            </button>
 
-                                            <div class="custom-file mt-3">
+                                            <!-- <div class="custom-file mt-3">
                                                 <input type="file" class="form-control" id="recruit_img"
                                                     name="recruit_img" required>
                                                 <div class="invalid-feedback">กรุณาอัพโหลดรูปภาพ</div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <div class="mb-3 col-md-4">
                                             <h2>ลักษณะของรูปถ่ายที่จะนำมาใช้งาน</h2>
@@ -320,8 +324,8 @@ label {
 
                                         <div class="col-md-8 mb-3 col-lg-4 ">
                                             <div class="dek-floating-label">
-                                                <input type="text" class="dek-floating-input" readonly  id="recruit_idCard"
-                                                    name="recruit_idCard" required placeholder=" "
+                                                <input type="text" class="dek-floating-input" readonly
+                                                    id="recruit_idCard" name="recruit_idCard" required placeholder=" "
                                                     data-inputmask="'mask': '9-9999-99999-99-9'" data-toggle="tooltip"
                                                     data-placement="top" title="หมายเลขประชาชนของนักเรียน">
                                                 <label for="recruit_idCard">เลขประจำตัวประชาชน 13 หลัก <span
@@ -1005,4 +1009,30 @@ label {
 </div>
 <!-- End of Main Content -->
 
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="cropModal" tabindex="-1" role="dialog" aria-labelledby="cropModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cropModalLabel">เลือกและตัดรูป</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="croppieContainer"></div> <!-- Croppie จะถูกแสดงที่นี่ -->
+                <input type="file" id="uploadImage" accept="image/*"> <!-- เลือกรูป -->
+                <button type="button" class="btn btn-outline-secondary" id="rotateRight">
+                    <i class="fas fa-redo"></i> หมุนขวา
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                <button type="button" class="btn btn-primary" id="cropImageBtn">ตกลง</button>
+            </div>
+        </div>
+    </div>
 </div>

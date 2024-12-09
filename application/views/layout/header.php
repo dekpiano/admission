@@ -51,6 +51,8 @@
     <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet"
         type="text/css" />
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css">
+
     <style>
     /* Extra small devices (portrait phones, less than 576px) */
     @media (max-width: 575.98px) {

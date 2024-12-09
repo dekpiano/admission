@@ -194,18 +194,20 @@
          </script>
 
          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.5/dist/sweetalert2.all.min.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.min.js"></script>
 
          <?php if($this->uri->segment(1) == "RegStudent"):?>
          <script src="<?=base_url()?>asset/js/AutoProvince.js?v=7.2"></script>
-         <script src="<?=base_url()?>asset/js/RegStudent.js?v=5"></script>
+         <script src="<?=base_url()?>asset/js/RegStudent.js?v=6.3"></script>
          <?php elseif($this->uri->segment(1) == "Confirm"):?>
          <script src="<?=base_url()?>asset/js/ConfirmStudent.js?v=21.1"></script>
          <script src="<?=base_url()?>asset/js/login.js?v=7"></script>
          <?php endif; ?>
 
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
-         <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=2"></script>
-         <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=16.6"></script>
+         <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=3"></script>
+         <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=16.7"></script>
          <script>
             
 $(document).ready(function() {
