@@ -277,11 +277,11 @@ label {
                                                 เลือกรูป
                                             </button>
 
-                                            <!-- <div class="custom-file mt-3">
-                                                <input type="file" class="form-control" id="recruit_img"
+                                            <div class="custom-file mt-3">
+                                                <input type="hidden" class="form-control" id="recruit_img"
                                                     name="recruit_img" required>
                                                 <div class="invalid-feedback">กรุณาอัพโหลดรูปภาพ</div>
-                                            </div> -->
+                                            </div>
                                         </div>
                                         <div class="mb-3 col-md-4">
                                             <h2>ลักษณะของรูปถ่ายที่จะนำมาใช้งาน</h2>
@@ -775,7 +775,7 @@ label {
                                     </div>
                                     <?php endif; ?>
 
-                                    <?php if($TypeQuota[0]->quota_key == "quotasport"):?>
+                                    <?php if($TypeQuota[0]->quota_key == "quotasport" || $TypeQuota[0]->quota_key == "quotaM1" || $TypeQuota[0]->quota_key == "quotaM4"):?>
                                     <div class="custom-control custom-radio">
                                         <input id="sport" name="recruit_tpyeRoom" type="radio"
                                             class="custom-control-input"
@@ -817,11 +817,11 @@ label {
                                             <br>ดังนั้น กรุณาเลือกลำดับตามที่ต้องการเรียนก่อน
                                         </div>
                                         <div class="col-md-6">
-                                            ลำดับการเลือก
+                                            ลำดับการเลือก ได้แค่ 3 ลำดับ
                                             <hr>
 
                                             <?php foreach ($Course as $key => $v_CourseS) :?>
-                                            <?php if($v_CourseS) :?>
+                                            <?php if($key < 3) :?>
                                             <div class="d-flex align-items-center">
                                                 <div class="mr-2">
                                                     ลำดับที่ <?=$key+1;?>
@@ -979,8 +979,7 @@ label {
                         <hr class="mb-4">
                         <center>
 
-                            <div id="html_element" data-callback="onHuman"></div>
-                            <input type="text" id="captcha" name="captcha" required style="display:none">
+                        <div class="h-captcha" data-sitekey="d81a802c-de6b-4de5-8a61-a87205c2de0a"></div>
                             <div class="invalid-feedback">
                                 ยืนยันฉันไม่ใช่โปรแกรมอัตโนมัติ
                             </div>

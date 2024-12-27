@@ -183,6 +183,7 @@
          <script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
          <script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
 
+
          <script type="text/javascript"
              src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
          <script type="text/javascript"
@@ -199,7 +200,9 @@
 
          <?php if($this->uri->segment(1) == "RegStudent"):?>
          <script src="<?=base_url()?>asset/js/AutoProvince.js?v=7.2"></script>
-         <script src="<?=base_url()?>asset/js/RegStudent.js?v=6.3"></script>
+         <script src="<?=base_url()?>asset/js/RegStudent.js?v=6.4"></script>
+         <!-- Include hCaptcha JS -->
+         <script src="https://hcaptcha.com/1/api.js" async defer></script>
          <?php elseif($this->uri->segment(1) == "Confirm"):?>
          <script src="<?=base_url()?>asset/js/ConfirmStudent.js?v=21.1"></script>
          <script src="<?=base_url()?>asset/js/login.js?v=7"></script>
@@ -208,6 +211,7 @@
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=3"></script>
          <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=16.7"></script>
+        
          <script>
             
 $(document).ready(function() {

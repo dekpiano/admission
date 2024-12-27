@@ -184,6 +184,7 @@
 @media only screen and (max-width: 1920px) {
     .home {
         padding-top: 0px !important;
+        background-position: center !important;
     }
     .banner-title .logo{
         width: 350px;

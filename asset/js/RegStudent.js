@@ -243,8 +243,10 @@ $('#cropImageBtn').on('click', function (ev) {
     type: 'canvas',
     size: 'viewport'
   }).then(function (resp) {
-    $('#userprofile-avatar').val(resp);
+    $('#recruit_img').val(resp);
     $('#selectedImage img').attr('src', resp);
+
+   
   });
   $('#cropModal').modal('hide');
 });    

@@ -16,23 +16,7 @@ class Control_admission extends CI_Controller {
 		// }
 		
 	}
-	public function recaptcha_google($captcha)
-	{
-		$recaptchaResponse = $captcha;
-		$userIp=$this->input->ip_address();
-     
-        $secret = "6LdZePgUAAAAANhhOGZi6JGWmQcETK7bkT7E0edR";
-   
-        $url="https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$recaptchaResponse."&remoteip=".$userIp;
- 
-        $ch = curl_init(); 
-        curl_setopt($ch, CURLOPT_URL, $url); 
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-        $output = curl_exec($ch); 
-        curl_close($ch);      
-         
-        return $status= json_decode($output, true);
-	}
+	
 
 	public function dataAll()
 	{		
@@ -83,12 +67,12 @@ class Control_admission extends CI_Controller {
 		$data['Course'] = array();
 		foreach ($SubQuota as $key => $v_SubQuota) {
 			if($id <= 3){
-			$SelCourse = $this->db->select('course_id,course_initials')
+			$SelCourse = $this->db->select('*')
 			->where('course_gradelevel','ม.ต้น')
 			->where('course_id',$v_SubQuota)
 			->get("tb_course")->row();
 			}else{
-				$SelCourse = $this->db->select('course_id,course_initials')
+				$SelCourse = $this->db->select('*')
 				->where('course_gradelevel','ม.ปลาย')
 				->where('course_id',$v_SubQuota)
 				->get("tb_course")->row();
@@ -99,7 +83,7 @@ class Control_admission extends CI_Controller {
 			}
 		}
 
-		//echo '<pre>';print_r($Course); exit();
+		//echo '<pre>';print_r($data['Course']); exit();
 		
 		if ($id > 0) {
 			$this->load->view('layout/header.php',$data);
@@ -137,7 +121,6 @@ class Control_admission extends CI_Controller {
 	public function reg_insert()
 	{		
 		$data = $this->dataAll();
-		$status = $this->recaptcha_google($this->input->post('captcha')); 
 
 		//รับรอบปกติ
 		if($this->input->post('recruit_category') == "normal"){
@@ -150,8 +133,22 @@ class Control_admission extends CI_Controller {
 			$Course_fullname = $this->input->post('recruit_tpyeRoom');
 			$Course_branch = $this->input->post('recruit_major');
 		}
+
+		// รับค่าจาก hCaptcha
+		$hcaptchaResponse = $this->input->post('h-captcha-response');
+	
+		// Secret Key ของคุณ
+		$secretKey = 'ES_47c9a8452c844bf6b5bf834237aacb8d';
+	
+		$url = 'https://hcaptcha.com/siteverify?secret=' . $secretKey . '&response=' . $hcaptchaResponse;
+
+		// ส่งคำขอไปยัง hCaptcha
+		$response = file_get_contents($url);
+
+		// แปลง JSON เป็นอาร์เรย์หรือออบเจ็กต์
+		$responseData = json_decode($response);
 		
-        if ($status['success']) {
+        if ($responseData && $responseData->success) {
 			$openyear = $this->db->get('tb_openyear')->result();
 		//print_r($this->input->post('recruit_idCard'));
 		$data['chk_stu'] = $this->db->where('recruit_idCard',$this->input->post('recruit_idCard'))
@@ -162,8 +159,15 @@ class Control_admission extends CI_Controller {
 			$this->session->set_flashdata(array('msg'=> 'NO','messge' => 'คุณได้ลงทะเบียนแล้ว กรุณาตรวจสอบการสมัครปีการศึกษานี้แล้ว','status'=>'error'));
 			redirect('welcome');
 		}else{
+			$image = $this->input->post('recruit_img');
+			$imageData = base64_decode(preg_replace('/^data:image\/\w+;base64,/', '', $image));
+			$fileName = $openyear[0]->openyear_year.'-'.$this->input->post('recruit_idCard').rand() . '.png'; // สร้างชื่อไฟล์			
+			file_put_contents('uploads/recruitstudent/m'.$this->input->post('recruit_regLevel').'/img/' . $fileName, $imageData); // บันทึกไฟล์
+
 		$data_insert = array();
 		$recruit_birthday = ($this->input->post('recruit_birthdayY')-543).'-'.$this->input->post('recruit_birthdayM').'-'.$this->input->post('recruit_birthdayD');
+		
+
 		$data_insert += array(
 			'recruit_id'  => $this->NumberID(),
 			'recruit_regLevel' => $this->input->post('recruit_regLevel'),
@@ -193,22 +197,15 @@ class Control_admission extends CI_Controller {
 			'recruit_year' => $data['checkYear'][0]->openyear_year,
 			'recruit_status' => "รอการตรวจสอบ",
 			'recruit_category' => $this->input->post('recruit_category'),
-			'recruit_grade' => $this->input->post('recruit_grade'),
-			'recruit_certificateAbility' => $this->UploadCertificateAbility()
+			'recruit_grade' => $this->input->post('recruit_grade'),			
+			'recruit_img' => $fileName
 			);
 
+			// if($_FILES['recruit_certificateAbility']['error'] == 0){
+			// 	$data_insert += array('recruit_certificateAbility' => $this->UploadCertificateAbility());
+			// }
 
-			if($_FILES['recruit_img']['error']==0){
-				$imageFileType = strtolower(pathinfo($_FILES['recruit_img']['name'],PATHINFO_EXTENSION));						
-				$file_check = $_FILES['recruit_img']['error'];
-				$foder = 'img';
-				$do_upload = 'recruit_img';
-				$rand_name = $openyear[0]->openyear_year.'-'.$this->input->post('recruit_idCard').rand();				
-					$data_insert += array('recruit_img' => $rand_name.'.'.$imageFileType);	
-					$this->reg_img($foder,$do_upload,$imageFileType,$rand_name,$data_insert);
-				
-
-			}if($_FILES['recruit_certificateEdu']['error']==0){
+			if($_FILES['recruit_certificateEdu']['error']==0){
 				$imageFileType = strtolower(pathinfo($_FILES['recruit_certificateEdu']['name'],PATHINFO_EXTENSION));						
 				$file_check = $_FILES['recruit_certificateEdu']['error'];
 				$foder = 'certificate';
@@ -375,8 +372,10 @@ class Control_admission extends CI_Controller {
 					echo $this->upload->display_errors();
 				}
 			}
-		}		
-		return $SetNameFull = implode('|',$SetName);
+		}	
+		$result = !empty($SetName) ? implode('|', $SetName) : 0;
+
+		return $result;
 	}
 
 	
