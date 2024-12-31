@@ -123,7 +123,7 @@
     }
 
     .banner-title h1 {
-        font-size: 3rem;
+        font-size: 2.7rem;
         text-align: center;
     }
 
@@ -242,8 +242,8 @@ table thead tr th {
 
 
 
-                            <div class="text-center mt-5">
-                                <button type="button" class="btn btn-outline-light" data-toggle="modal"
+                            <div class="text-center mt-5 mt-4">
+                                <button type="button" class="btn btn-danger" data-toggle="modal"
                                     data-target="#myModal" style="font-size:34px;">
                                     <?=$switch[0]->onoff_regis == "on"?"สมัครเรียนเลย ที่นี่...": $switch[0]->onoff_comment?>
 

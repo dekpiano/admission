@@ -979,7 +979,7 @@ label {
                         <hr class="mb-4">
                         <center>
 
-                        <div class="h-captcha" data-sitekey="d81a802c-de6b-4de5-8a61-a87205c2de0a"></div>
+                            <div class="h-captcha" data-sitekey="d81a802c-de6b-4de5-8a61-a87205c2de0a"></div>
                             <div class="invalid-feedback">
                                 ยืนยันฉันไม่ใช่โปรแกรมอัตโนมัติ
                             </div>
@@ -1023,10 +1023,17 @@ label {
             </div>
             <div class="modal-body">
                 <div id="croppieContainer"></div> <!-- Croppie จะถูกแสดงที่นี่ -->
-                <input type="file" id="uploadImage" accept="image/*"> <!-- เลือกรูป -->
-                <button type="button" class="btn btn-outline-secondary" id="rotateRight">
-                    <i class="fas fa-redo"></i> หมุนขวา
-                </button>
+                <div class="row">
+                    <div class="col-6" style="overflow: hidden;">
+                        <input type="file" id="uploadImage" accept="image/*"> <!-- เลือกรูป -->
+                    </div>
+                    <div class="col-6 text-right">
+                        <button type="button" class="btn btn-outline-secondary" id="rotateRight">
+                            <i class="fas fa-redo"></i> หมุนขวา
+                        </button>
+                    </div>
+                </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>

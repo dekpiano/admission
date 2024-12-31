@@ -210,8 +210,9 @@
 
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=3"></script>
-         <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=16.7"></script>
-        
+         <?php if($this->uri->segment(1) == "welcome" || $this->uri->segment(1) == ""):?>
+         <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=17"></script>
+         <?php endif; ?>
          <script>
             
 $(document).ready(function() {
