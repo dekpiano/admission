@@ -1,6 +1,45 @@
+function formatThaiDate(dateInput) {
+	// ชื่อวันภาษาไทย
+	const thaiDays = [
+	  "อาทิตย์", "จันทร์", "อังคาร", 
+	  "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์"
+	];
+  
+	// ชื่อเดือนภาษาไทย
+	const thaiMonths = [
+	  "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", 
+	  "พฤษภาคม", "มิถุนายน", "กรกฎาคม", 
+	  "สิงหาคม", "กันยายน", "ตุลาคม", 
+	  "พฤศจิกายน", "ธันวาคม"
+	];
+  
+	// แปลงวันที่เป็น Date Object
+	const date = new Date(dateInput);
+  
+	if (isNaN(date)) {
+	  return "วันที่ไม่ถูกต้อง";
+	}
+  
+	// ดึงข้อมูลวัน เดือน ปี
+	const dayOfWeek = thaiDays[date.getDay()];
+	const day = date.getDate();
+	const month = thaiMonths[date.getMonth()];
+	const year = date.getFullYear() + 543; // แปลงปี ค.ศ. เป็น พ.ศ.
+  
+	// คืนค่าข้อความวันที่ในรูปแบบภาษาไทย
+	//return `วัน${dayOfWeek} ที่ ${day} ${month} ${year}`;
+	return `${day} ${month} ${year}`;
+  }
+
+  
 let TBStudentRecruit;
-//alert($('#SelLern').attr('key_year'));
-ShowStudentRecruit("2567");
+const url = window.location.href;
+// แยก URL ด้วย '/' และดึงค่าที่ต้องการ
+const parts = url.split('/');
+const year = parts[parts.length - 1];
+
+//alert(year);
+ShowStudentRecruit(year);
 $(document).on("change", "#select_year", function () {
 	//alert($(this).val());
 	ShowStudentRecruit($(this).val());
@@ -53,7 +92,11 @@ function ShowStudentRecruit(Year) {
 			},
 			{ data: "recruit_Fullname" },
 			{ data: "recruit_category" },
-			{ data: "recruit_date" },
+			{ data: "recruit_date",
+				render: function(data, type, row){
+					return formatThaiDate(data);
+				}
+			 },
 			{ data: "recruit_id" },
 			{
 				data: "recruit_img",
@@ -76,7 +119,11 @@ function ShowStudentRecruit(Year) {
 				},
 			},
             { data: "recruit_oldSchool" },
-			{ data: "recruit_birthday" },
+			{ data: "recruit_birthday",
+				render: function(data, type, row){
+					return formatThaiDate(data);
+				}
+			 },
 			{ data: "recruit_phone" },
 			{ data: "recruit_tpyeRoom" },
 			{ data: "recruit_certificateAbility",
