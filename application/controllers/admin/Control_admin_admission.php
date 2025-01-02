@@ -531,7 +531,7 @@ class Control_admin_admission extends CI_Controller {
 			
 			$html .= '<div style="position:absolute;top:570px;left:200px; width:100%">';
 			
-				$html .= "ลำดับที่ 1 ".$CheckStu->recruit_tpyeRoom. ' สาขา '.$CheckStu->recruit_major;
+				$html .= "ลำดับที่ 1 ".$CheckStu->recruit_tpyeRoom. ' <Br>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; สาขา '.$CheckStu->recruit_major;
 				
 			$html .= '</div>';
 		}
