@@ -122,6 +122,7 @@ class Control_admission extends CI_Controller {
 	{		
 		$data = $this->dataAll();
 
+		//print_r($_FILES['recruit_certificateAbility']['error']); exit();
 		//รับรอบปกติ
 		if($this->input->post('recruit_category') == "normal"){
 			$SelImpo = implode('|',$this->input->post('recruit_majorOrder'));		
@@ -201,9 +202,9 @@ class Control_admission extends CI_Controller {
 			'recruit_img' => $fileName
 			);
 
-			// if($_FILES['recruit_certificateAbility']['error'] == 0){
-			// 	$data_insert += array('recruit_certificateAbility' => $this->UploadCertificateAbility());
-			// }
+			if($_FILES['recruit_certificateAbility']['error'][0] == 0){
+				$data_insert += array('recruit_certificateAbility' => $this->UploadCertificateAbility());
+			}
 
 			if($_FILES['recruit_certificateEdu']['error']==0){
 				$imageFileType = strtolower(pathinfo($_FILES['recruit_certificateEdu']['name'],PATHINFO_EXTENSION));						
