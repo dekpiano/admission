@@ -183,4 +183,13 @@ $(document).on('change', '#amphur', function() {
         }
     });
 });
+
+function showPreview(event, previewId) {
+  if (event.target.files.length > 0) {
+    var src = URL.createObjectURL(event.target.files[0]);
+    var preview = document.getElementById(previewId);
+    preview.innerHTML = '<img src="' + src + '"class="img-fluid" />';
+  }
+}
+
          </script>

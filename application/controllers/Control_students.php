@@ -152,7 +152,13 @@ class Control_students extends CI_Controller {
 			'recruit_grade' => $this->input->post('recruit_grade'),
 			'recruit_status' => "รอการตรวจสอบ"
 		);
-		//echo '<pre>';print_r($data_update); exit();
+		
+	
+			$data_update += array('recruit_certificateAbility' => $this->UploadCertificateAbility($data_R[0]->recruit_certificateAbility));
+		
+
+		//echo '<pre>';print_r($this->UploadCertificateAbility($data_R[0]->recruit_certificateAbility)); exit();
+
 			if($file[0] == 0){
 				$imageFileType = strtolower(pathinfo($_FILES['recruit_img']['name'],PATHINFO_EXTENSION));						
 				$file_check = $_FILES['recruit_img']['error'];
@@ -324,6 +330,61 @@ class Control_students extends CI_Controller {
 			   
 			   }
 		   }
+	}
+
+	public function UploadCertificateAbility($NameOld){
+		
+		$files = $_FILES['recruit_certificateAbility'];	
+			
+		$existing_files = explode('|',$NameOld);
+        
+		$file_names = $existing_files; // เริ่มต้นด้วยชื่อไฟล์เดิม
+		$config['upload_path'] = 'uploads/recruitstudent/m'.$this->input->post('recruit_regLevel').'/certificateAbility/';
+		$config['allowed_types'] = 'jpg|jpeg|png';
+		$config['encrypt_name'] = TRUE; // ใช้เพื่อเปลี่ยนชื่อไฟล์โดยอัตโนมัติเพื่อความปลอดภัย
+
+		
+		if (is_array($files['name'])) {
+			foreach ($files['name'] as $index => $file_name){
+				if (!empty($file_name)){
+					//echo '<pre>'; print_r($file_name); exit();
+					$_FILES['recruit_certificateAbility']['name'] = $files['name'][$index];
+					$_FILES['recruit_certificateAbility']['type'] = $files['type'][$index];
+					$_FILES['recruit_certificateAbility']['tmp_name'] = $files['tmp_name'][$index];
+					$_FILES['recruit_certificateAbility']['error'] = $files['error'][$index];
+					$_FILES['recruit_certificateAbility']['size'] = $files['size'][$index];
+
+					$this->upload->initialize($config);
+
+					if ($this->upload->do_upload('recruit_certificateAbility')) {
+						$data = $this->upload->data();
+						$file_names[$index] = $data['file_name'];
+						
+						// Resize image
+						$resize_config['image_library'] = 'gd2';
+						$resize_config['source_image'] = $data['full_path'];
+						$resize_config['maintain_ratio'] = TRUE;
+						$resize_config['width'] = 1024;
+			
+						$this->image_lib->clear();
+						$this->image_lib->initialize($resize_config);
+						$this->image_lib->resize();
+			
+						$upload_path = "./uploads/recruitstudent/m".$this->input->post('recruit_regLevel')."/certificateAbility/";
+						if (!empty($existing_files[$index]) && file_exists($upload_path.$existing_files[$index])) {
+							unlink($upload_path.$existing_files[$index]);
+						}
+
+					} else {
+						echo $this->upload->display_errors();
+					}
+				}
+			}
+		}
+			// รวมชื่อไฟล์ใหม่
+			$file_names_string = implode('|', $file_names);
+
+		return $file_names_string;
 	}
 
 	function notify_message($message,$token){

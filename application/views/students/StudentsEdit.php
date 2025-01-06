@@ -238,7 +238,8 @@ label {
                                         <div class="col-md-3 mb-3">
                                             <label for="recruit_homeSubdistrict">ตำบล/แขวง</label>
                                             <input type="text" class="form-control" placeholder="" id="stu_hTambon"
-                                                name="recruit_homeSubdistrict" required value="<?=$stu->recruit_homeSubdistrict?>">
+                                                name="recruit_homeSubdistrict" required
+                                                value="<?=$stu->recruit_homeSubdistrict?>">
                                             <div class="invalid-feedback">
                                                 ระบุตำบล/แขวง
                                             </div>
@@ -246,7 +247,8 @@ label {
                                         <div class="col-md-3 mb-3">
                                             <label for="recruit_homedistrict">อำเภอ/เขต</label>
                                             <input type="text" class="form-control" placeholder="" id="stu_hDistrict"
-                                                name="recruit_homedistrict" required value="<?=$stu->recruit_homedistrict?>">
+                                                name="recruit_homedistrict" required
+                                                value="<?=$stu->recruit_homedistrict?>">
                                             <div class="invalid-feedback">
                                                 ระบุอำเภอ/เขต
                                             </div>
@@ -254,7 +256,8 @@ label {
                                         <div class="col-md-3 mb-3">
                                             <label for="recruit_homeProvince">จังหวัด</label>
                                             <input type="text" class="form-control" placeholder="" id="stu_hProvince"
-                                                name="recruit_homeProvince" required value="<?=$stu->recruit_homeProvince?>">
+                                                name="recruit_homeProvince" required
+                                                value="<?=$stu->recruit_homeProvince?>">
                                             <div class="invalid-feedback">
                                                 ระบุจังหวัด
                                             </div>
@@ -384,6 +387,26 @@ label {
                                             </div> -->
                                         </div>
 
+                                        <h4 class="mb-3"><u>หลักฐานเกียรติบัตร</u></h4>
+
+                                        <?php
+                                        $DataCertificate = explode("|",@$stu->recruit_certificateAbility);                                        
+                                        ?>
+                                        <div class="row">
+                                            <?php for ($j=0; $j < 3; $j++) : ?>
+                                            <div class="col-md-4 mb-3">
+                                                <label for="recruit_certificateAbility">เกียรติบัตรใบที่ <?=$j+1;?>
+                                                </label>
+                                                <input type="file" class="form-control"
+                                                    id="recruit_certificateAbility<?=$j+1;?>"
+                                                    name="recruit_certificateAbility[]" placeholder=""
+                                                    onchange="showPreview(event,'preview<?=$j+1;?>')">
+                                                <div id="preview<?=$j+1;?>">
+                                                    <img src="<?=base_url('uploads/recruitstudent/m'.$stu->recruit_regLevel.'/certificateAbility/').@$DataCertificate[$j]?>"class="img-fluid" />
+                                                </div>
+                                            </div>
+                                            <?php endfor; ?>
+                                        </div>
 
 
                                     </div>
