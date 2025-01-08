@@ -95,21 +95,6 @@ class Welcome extends CI_Controller {
 	{
 		$type_quota = $this->db->get('tb_quota')->result();
 
-			$data['StatisticCroTar'] = $this->db->select('
-					SUM(CASE WHEN recruit_tpyeRoom = "ห้องเรียนความเป็นเลิศทางด้านวิชาการ (Science Match and Technology Program)" THEN 1 END) AS SMT,
-					SUM(CASE WHEN recruit_tpyeRoom = "ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program)" THEN 1 END) AS SP,
-					SUM(CASE WHEN recruit_tpyeRoom = "ห้องเรียนความเป็นเลิศด้านการงานอาชีพ (Career Program)" THEN 1 END) AS CP,
-					SUM(CASE WHEN recruit_tpyeRoom = "ห้องเรียนความเป็นเลิศทางด้านภาษา (Chinese English Program)" THEN 1 END) AS CEP,
-					SUM(CASE WHEN recruit_tpyeRoom = "ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ การแสดง (Performing Arts Program)" THEN 1 END) AS PAP,
-					tb_recruitstudent.recruit_regLevel
-					,tb_recruitstudent.recruit_year
-					,tb_recruitstudent.recruit_date,
-					tb_recruitstudent.recruit_category')
-				->from('tb_recruitstudent')
-				->where('recruit_year',$year)
-				->group_by('recruit_date')
-				->order_by('recruit_date','ASC')
-				->get()->result();
 
 				$data['StatisticAll'] = $this->db->select('
 					COUNT(tb_recruitstudent.recruit_category) AS num,

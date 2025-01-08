@@ -165,7 +165,7 @@
          <script src="<?=base_url();?>asset/vendor/popper.js/umd/popper.min.js"> </script>
          <script src="<?=base_url();?>asset/vendor/bootstrap/js/bootstrap.min.js"></script>
          <script src="<?=base_url();?>asset/vendor/jquery.cookie/jquery.cookie.js"> </script>
-         <script src="<?=base_url();?>asset/vendor/chart.js/Chart.min.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
          <script src="<?=base_url();?>asset/vendor/jquery-validation/jquery.validate.min.js"></script>
          <!-- Main File-->
          <script src="<?=base_url();?>asset/js/front.js"></script>
@@ -206,6 +206,9 @@
          <?php elseif($this->uri->segment(1) == "Confirm"):?>
          <script src="<?=base_url()?>asset/js/ConfirmStudent.js?v=21.1"></script>
          <script src="<?=base_url()?>asset/js/login.js?v=7"></script>
+         <?php elseif($this->uri->segment(1) == "Statistic"):?>
+            <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+            <script src="<?=base_url()?>asset/js/Statistic.js?v=2"></script>
          <?php endif; ?>
 
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
@@ -213,6 +216,8 @@
          <?php if($this->uri->segment(1) == "welcome" || $this->uri->segment(1) == ""):?>
          <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=17"></script>
          <?php endif; ?>
+
+         
          <script>
             
 $(document).ready(function() {
