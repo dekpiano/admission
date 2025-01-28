@@ -200,7 +200,7 @@
 
          <?php if($this->uri->segment(1) == "RegStudent"):?>
          <script src="<?=base_url()?>asset/js/AutoProvince.js?v=7.2"></script>
-         <script src="<?=base_url()?>asset/js/RegStudent.js?v=6.4"></script>
+         <script src="<?=base_url()?>asset/js/RegStudent.js?v=6.5"></script>
          <!-- Include hCaptcha JS -->
          <script src="https://hcaptcha.com/1/api.js" async defer></script>
          <?php elseif($this->uri->segment(1) == "Confirm"):?>

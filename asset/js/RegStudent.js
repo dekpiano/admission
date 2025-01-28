@@ -114,24 +114,33 @@ function showPreview(event, previewId) {
   }
 }
 
-
-
 // ฟังก์ชันตรวจสอบความถูกต้องของเลขบัตรประชาชนแบบรวมขีด
 function checkThaiID(id) {
-
+  // ลบขีดออกจากเลขบัตร
   id = id.replace(/-/g, '');
 
+  // ตรวจสอบความยาว 13 หลัก
   if (id.length !== 13) {
     return { valid: false, message: 'กรุณากรอกเลขบัตรประชาชนให้ครบ 13 หลัก' };
   }
 
   // ตรวจสอบว่าเป็นเลขบัตรคนไทย (1, 2, 3, 4, 5) หรือคนต่างด้าว (6, 7, 8, 9)
   let firstDigit = id.charAt(0);
-  if (!['1', '2', '3', '4', '5', '6', '7', '8'].includes(firstDigit)) {
+  if (!['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].includes(firstDigit)) {
     return { valid: false, message: 'เลขบัตรประชาชนไทย หรือ ต่างด้าวไม่ถูกต้อง <br> กรุณากรอกใหม่อีกรอบ' };
   }
 
-  // คำนวณผลรวมเพื่อตรวจสอบ Check Digit
+  // เงื่อนไขเฉพาะสำหรับเลขบัตรชาวต่างด้าว (ขึ้นต้นด้วย 00)
+  if (id.startsWith('00')) {
+    // ตรวจสอบ Check Digit สำหรับเลขบัตรชาวต่างด้าว (หากมีเงื่อนไขเฉพาะ)
+    let lastDigit = parseInt(id.charAt(12));
+    if (lastDigit % 2 !== 0) {
+      return { valid: false, message: 'เลขบัตรชาวต่างด้าวไม่ถูกต้อง <br> กรุณากรอกใหม่อีกรอบ' };
+    }
+    return { valid: true, message: 'เลขบัตรชาวต่างด้าวถูกต้อง <br> กรอกข้อมูลการสมัครด้านล่างได้เลย' };
+  }
+
+  // คำนวณผลรวมเพื่อตรวจสอบ Check Digit สำหรับเลขบัตรไทย
   let sum = 0;
   for (let i = 0; i < 12; i++) {
     sum += parseInt(id.charAt(i)) * (13 - i);
