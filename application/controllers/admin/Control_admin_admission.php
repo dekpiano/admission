@@ -105,7 +105,8 @@ class Control_admin_admission extends CI_Controller {
 				"recruit_birthday" => $record->recruit_birthday,
 				"recruit_phone" => $record->recruit_phone,
 				"recruit_oldSchool" => $record->recruit_oldSchool,
-				"recruit_certificateAbility" => $record->recruit_certificateAbility
+				"recruit_certificateAbility" => $record->recruit_certificateAbility,
+				"recruit_major" => $record->recruit_major
             );
 			
            

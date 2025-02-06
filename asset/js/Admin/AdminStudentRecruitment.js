@@ -126,6 +126,7 @@ function ShowStudentRecruit(Year) {
 			 },
 			{ data: "recruit_phone" },
 			{ data: "recruit_tpyeRoom" },
+			{ data: "recruit_major" },
 			{ data: "recruit_certificateAbility",
 				render: function (data, type, row) {
 					var Ability = data.split("|");
