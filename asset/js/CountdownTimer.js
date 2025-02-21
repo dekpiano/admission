@@ -38,6 +38,7 @@ function CheckOnoff(){
         success: function (response) {
             //console.log(response.onoff_datetime_regis);
             Time = response.onoff_datetime_regis;
+            
         },
         error: function (xhr, status, error) {
             //console.error('Error:', xhr.responseText);
@@ -45,3 +46,4 @@ function CheckOnoff(){
     });
 }
 CheckOnoff();
+

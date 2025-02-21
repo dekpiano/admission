@@ -31,7 +31,7 @@ class Welcome extends CI_Controller {
 
 		$data['title'] = "ระบบรับสมัครนักเรียนปีการศึกษา ".$data['checkYear'][0]->openyear_year;
 		$data['description'] = "รับสมัครนักเรียน ม.1 และ ม.4 และนักกีฬาใหม่ ปีการศึกษา ".$data['checkYear'][0]->openyear_year;
-		$data['banner'] = base_url()."uploads/bannerMain.png";
+		$data['banner'] = base_url()."uploads/bannerMain.svg";
 		$data['url'] = "welcome";
 
 		// $data['regis'] = $this->db->select('recruit_id,recruit_prefix,recruit_firstName,recruit_lastName,recruit_regLevel,recruit_tpyeRoom,recruit_date,recruit_year,recruit_category,recruit_status')->from('tb_recruitstudent')->where('recruit_year',$data['checkYear'][0]->openyear_year)->order_by('recruit_id','DESC')->get()->result();
