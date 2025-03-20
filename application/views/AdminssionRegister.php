@@ -786,13 +786,13 @@ label {
 
                                     <div id="hidden-Sport" style="display:none;margin-left: 25px;">
                                         <?php 
-                                            $TypeSport = array('ฟุตบอล','ฟุตซอล','บาสเกตบอล','วอลเลย์บอล');
+                                            $TypeSport = array('ฟุตบอล','ฟุตซอล','บาสเกตบอล','วอลเลย์บอล','กรีฑา','มวย','เทเบิลเทนนิส','เปตอง');
                                             foreach ($TypeSport as $key => $v_TypeSport) :
                                         ?>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="recruit_major"
+                                        <div class="custom-control custom-radio">
+                                            <input class="custom-control-input" type="radio" name="recruit_major"
                                                 id="recruit_major<?=$key?>" value="<?=$v_TypeSport;?>" required>
-                                            <label class="form-check-label" for="recruit_major<?=$key?>">
+                                            <label class="custom-control-label" for="recruit_major<?=$key?>">
                                                 <?=$v_TypeSport;?>
                                             </label>
                                         </div>
@@ -800,7 +800,29 @@ label {
                                         <div class="invalid-feedback">
                                             กรุณาเลือกประเภทกีฬา
                                         </div>
+                                        รุ่นอายุ
+
+                                        <div id="hidden-sportAge" style="display:none1;margin-left: 25px;">
+                                            <?php 
+                                            $sportAge = array('13'=>'รุ่นอายุ 13 ปี เกิดพ.ศ.2555','14'=>'️รุ่นอายุ 14 ปี เกิดพ.ศ.2554','15'=>'️รุ่นอายุ 15 ปี เกิดพ.ศ.2553','16'=>'️รุ่นอายุ 16 ปี เกิดพ.ศ.2552','17'=>'️รุ่นอายุ 17 ปี เกิดพ.ศ.2551','18'=>'️รุ่นอายุ 18 ปี เกิดพ.ศ.2550');
+                                            foreach ($sportAge as $key => $v_sportAge) :
+                                        ?>
+                                            <div class="custom-control custom-radio">
+                                                <input class="custom-control-input" type="radio" name="recruit_agegroup"
+                                                    id="recruit_agegroup<?=$key?>" value="<?=$key;?>" required>
+                                                <label class="custom-control-label" for="recruit_agegroup<?=$key?>">
+                                                    <?=$v_sportAge;?>
+                                                </label>
+                                            </div>
+                                            <?php endforeach; ?>
+                                            <div class="invalid-feedback">
+                                                กรุณาเลือกประเภทกีฬา
+                                            </div>
+                                        </div>
                                     </div>
+
+
+
                                     <?php endif; ?>
 
                                     <?php if($TypeQuota[0]->quota_key == "normal") : ?>
@@ -886,8 +908,6 @@ label {
                                                 กรุณาเลือกไฟล์ ใบรับรองผลการเรียน (ปพ.1) <u>ด้านหลัง</u>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-md-4 mb-3">
                                             <label for="recruit_copyidCard">สำเนาบัตรปะชาชน <a href="#"
                                                     data-toggle="tooltip" data-placement="top" data-html="true"
@@ -899,6 +919,9 @@ label {
                                                 กรุณาเลือกไฟล์ สำเนาบัตรปะชาชน
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="row">
+                                       
                                         <!-- <div class="col-md-4 mb-3">
                                         <label for="recruit_copyAddress">สำเนาทะเบียนบ้าน <a href="#"
                                                 data-toggle="tooltip" data-placement="top" data-html="true"
@@ -914,7 +937,7 @@ label {
                                 </div>
                             </div>
 
-                            <?php if($TypeQuota[0]->quota_key) : // == "normal" ?> 
+                            <?php if($TypeQuota[0]->quota_key) : // == "normal" ?>
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div

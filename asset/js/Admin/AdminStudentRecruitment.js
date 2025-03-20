@@ -126,7 +126,16 @@ function ShowStudentRecruit(Year) {
 			 },
 			{ data: "recruit_phone" },
 			{ data: "recruit_tpyeRoom" },
-			{ data: "recruit_major" },
+			{ data: "recruit_major",
+				render:function(data, type, row){
+					if(row.recruit_agegroup == 0){
+						return row.recruit_major;
+					}else{
+						return row.recruit_major + ' รุ่นอายุ '+row.recruit_agegroup+' ปี';
+					}
+					
+				}
+			 },
 			{ data: "recruit_certificateAbility",
 				render: function (data, type, row) {
 					var Ability = data.split("|");
