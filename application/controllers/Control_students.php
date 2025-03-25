@@ -460,7 +460,7 @@ class Control_students extends CI_Controller {
 		$html .= '<div style="position:absolute;top:100px;left:250px; width:100%">'.$datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.'</div>'; //ชื่อผู้สมัคร
 		$html .= '<div style="position:absolute;top:100px;left:480px; width:100%">'.$datapdf[0]->recruit_lastName.'</div>'; //นามสกุลผู้สมัคร
 		$html .= '<div style="position:absolute;top:127;left:400px; width:100%">'.$datapdf[0]->recruit_idCard.'</div>';	
-		$html .= '<div style="position:absolute;top:155;left:270px; width:100%"> ลำดับ 1 '.$majorOrderFull->course_initials.'</div>';	
+		$html .= '<div style="position:absolute;top:155;left:270px; width:100%"> '.$datapdf[0]->recruit_tpyeRoom.'</div>';	
 		$html .= '<div style="position:absolute;top:200px;left:340px; width:100%"><img style="width:120px;hight:100px;" src='.FCPATH.'asset/img/license.png'.'></div>';
 		$html .= '<div style="position:absolute;top:255x;left:360px; width:100%">'.$date_D_regis.' '.$TH_Month[$date_M_regis-1].' '.$date_Y_regis.'</div>'; // วันที่สมัครตอนที่ 2
 
