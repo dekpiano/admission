@@ -178,68 +178,86 @@ body {
             </div>
         </section>
 
-        <div class="mt-5">
+        <div class="container mt-4">
+            <h4>ข้อมูลการรับสมัคร</h4>
 
-            <div class="container">
-            <div class="card">
-                <div class="card-header">
-                สถิติการรับสมัครนักเรียน <?=$checkYear[0]->openyear_year;?>  รอบโควตา
-                </div>
-                <div class="card-body">
-                <canvas id="registrationChart" width="800" height="400"></canvas>
-                </div>
-           
-            </div>
-            
-            </div>
-        </div>
-
-
-        <div class="" id="">
-            <div class="container">
-
-                <div class="row">
-                    <!-- feaure box -->
-                    <?php foreach ($StatisticAll as $key => $value):?>
-                    <div class="col-sm-6 col-lg-6 ">
-
-                        <div class="feature-box-1 ">
-                            <a href="#" style="display: inline;color: #858585;">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="s-left mr-3">
-                                        <div class="icon">
-                                            <i class="fa fa-user"></i>
-                                        </div>
-                                    </div>
-                                    <div class="s-right">
-                                        <div class="feature-contentb">
-                                            <h1><?=$value->num?></h1>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mt-3">
-                                    <p>
-                                        <?=$value->quota_explain?>
-                                    </p>
-                                </div>
-
-                                <div class="h3">
-                                    <i class="fa fa-male" aria-hidden="true"></i> <?=$value->Man?> | <i
-                                        class="fa fa-female" aria-hidden="true"></i> <?=$value->Girl?>
-                                </div>
-                            </a>
-                        </div>
-
-
+            <div id="accordion">
+                <!-- รอบทั่วไป -->
+                <div class="card">
+                    <div class="card-header">
+                        <a class="btn btn-link" data-toggle="collapse" href="#collapseGeneral">
+                            สถิติการรับสมัครนักเรียน <?=$checkYear[0]->openyear_year;?> รอบทั่วไป
+                        </a>
                     </div>
-                    <?php endforeach; ?>
-                    <!-- / -->
+                    <div id="collapseGeneral" class="collapse show" data-parent="#accordion">
+                        <div class="card-body">
+                            <canvas id="ChartGeneral" width="800" height="400"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- รอบโควตา -->
+                <div class="card">
+                    <div class="card-header">
+                        <a class="btn btn-link collapsed" data-toggle="collapse" href="#collapseQuota">
+                            สถิติการรับสมัครนักเรียน <?=$checkYear[0]->openyear_year;?> รอบโควตา
+                        </a>
+                    </div>
+                    <div id="collapseQuota" class="collapse" data-parent="#accordion">
+                        <div class="card-body">
+
+                            <canvas id="registrationChart" width="800" height="400"></canvas>
+
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <div class="" id="">
+                <div class="container">
+
+                    <div class="row">
+                        <!-- feaure box -->
+                        <?php foreach ($StatisticAll as $key => $value):?>
+                        <div class="col-sm-6 col-lg-6 ">
+
+                            <div class="feature-box-1 ">
+                                <a href="#" style="display: inline;color: #858585;">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="s-left mr-3">
+                                            <div class="icon">
+                                                <i class="fa fa-user"></i>
+                                            </div>
+                                        </div>
+                                        <div class="s-right">
+                                            <div class="feature-contentb">
+                                                <h1><?=$value->num?></h1>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <p>
+                                            <?=$value->quota_explain?>
+                                        </p>
+                                    </div>
+
+                                    <div class="h3">
+                                        <i class="fa fa-male" aria-hidden="true"></i> <?=$value->Man?> | <i
+                                            class="fa fa-female" aria-hidden="true"></i> <?=$value->Girl?>
+                                    </div>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <?php endforeach; ?>
+                        <!-- / -->
+                    </div>
+                </div>
+            </div>
+
         </div>
-
-
         <!-- 
         <div class="container">
             <div class="col-lg-12 col-md-12">

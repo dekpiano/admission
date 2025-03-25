@@ -33,6 +33,7 @@ class Control_Statistic extends CI_Controller {
 					,tb_recruitstudent.recruit_date')
 				->from('tb_recruitstudent')
 				->where('recruit_year','2568')
+				->where("recruit_date BETWEEN '2025-01-01' AND '2025-01-31'", NULL, FALSE)
 				->group_by('recruit_date')
 				->order_by('recruit_date','ASC')
 				->get()->result_array();
@@ -40,7 +41,25 @@ class Control_Statistic extends CI_Controller {
         echo json_encode($data['StatisticCroTar']);
     }
 
+	public function StatisticViewGeneral(){
+        
 
+
+                $data['StatisticCroTar'] = $this->db->select('
+					SUM(CASE WHEN recruit_prefix = "เด็กหญิง" or recruit_prefix = "นางสาว" THEN 1 END) AS female,
+					SUM(CASE WHEN recruit_prefix = "เด็กชาย" or recruit_prefix = "นาย" THEN 1 END) AS male,
+					tb_recruitstudent.recruit_regLevel
+					,tb_recruitstudent.recruit_year
+					,tb_recruitstudent.recruit_date')
+				->from('tb_recruitstudent')
+				->where('recruit_year','2568')
+				->where("recruit_date BETWEEN '2025-03-25' AND '2025-03-31'", NULL, FALSE)
+				->group_by('recruit_date')
+				->order_by('recruit_date','ASC')
+				->get()->result_array();
+
+        echo json_encode($data['StatisticCroTar']);
+    }
 
 
 
