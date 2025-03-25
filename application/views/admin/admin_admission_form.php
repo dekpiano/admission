@@ -311,19 +311,48 @@ label {
                                     <hr class="mb-4">
                                     <h4>หลักสูตรที่ต้องการศึกษาต่อ </h4>
 
-                                    <div class="d-block my-3">
-                                        <?php $AtpyeRoom = array('ห้องเรียนความเป็นเลิศทางด้านวิชาการ (Science Match and Technology Program)','ห้องเรียนความเป็นเลิศทางด้านภาษา (Chinese English Program)','ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ การแสดง (Preforming Art Program)','ห้องเรียนความเป็นเลิศด้านการงานอาชีพ (Career Program)' ,'ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program)' ); 
-                 foreach ($AtpyeRoom as $key => $v_AtpyeRoom) : ?>
-                                        <div class="custom-control custom-radio">
-                                            <input <?=$v_AtpyeRoom == $recruit[0]->recruit_tpyeRoom ? 'checked' : ''?>
-                                                id="recruit_tpyeRoom<?=$key?>" name="recruit_tpyeRoom" type="radio"
-                                                class="custom-control-input" value="<?=$v_AtpyeRoom;?>">
-                                            <label class="custom-control-label"
-                                                for="recruit_tpyeRoom<?=$key?>"><?=$v_AtpyeRoom;?></label>
-                                        </div>
-                                        <?php endforeach; ?>
+                                    <?php if(@$recruit[0]->recruit_category != "normal"): ?>
+                                        <div class="d-block my-3">
+                                            <?php $AtpyeRoom = array('ห้องเรียนความเป็นเลิศทางด้านวิชาการ (Science Match and Technology Program)','ห้องเรียนความเป็นเลิศทางด้านภาษา (Chinese English Program)','ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ การแสดง (Performing Arts Program)','ห้องเรียนความเป็นเลิศด้านการงานอาชีพ (Career Program)','ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program)'); //,'ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program)' 
+                                            foreach ($AtpyeRoom as $key => $v_AtpyeRoom) : ?>
+                                            <div class="custom-control custom-radio">
+                                                <input <?=$v_AtpyeRoom == $stu->recruit_tpyeRoom ? 'checked' : ''?>
+                                                    id="recruit_tpyeRoom<?=$key?>" name="recruit_tpyeRoom" type="radio"
+                                                    class="custom-control-input" value="<?=$v_AtpyeRoom;?>">
+                                                <label class="custom-control-label"
+                                                    for="recruit_tpyeRoom<?=$key?>"><?=$v_AtpyeRoom;?></label>
+                                            </div>
+                                            <?php endforeach; ?>
 
-                                    </div>
+                                        </div>
+                                        <?php else : ?>
+                                        <?php foreach ($course as $key_CourseS => $v_CourseS) :?>
+                                        <?php if($key_CourseS < 3) :
+                                            if(@$recruit[0]->recruit_majorOrder != ""){
+                                               $SubMajorOrder = explode("|",@$recruit[0]->recruit_majorOrder);
+                                            } ?>
+                                        <div class="d-flex align-items-center">
+                                            <div class="mr-2">
+                                                ลำดับที่ <?=$key_CourseS+1;?>
+                                            </div>
+                                            <div>
+                                                <select name="recruit_majorOrder[]" id="select<?=$key+1;?>"
+                                                    class="form-control mb-2 SelectCourse" required>
+                                                    <option value="">เลือกหลักสูตรลำดับที่ <?=$key_CourseS+1;?></option>
+                                                    <?php foreach ($course as $key => $v_CourseS) :?>
+                                                    <?php if($v_CourseS) :?>
+                                                    <option
+                                                        <?=$SubMajorOrder[$key_CourseS] == $v_CourseS->course_id ?"selected":""?>
+                                                        value="<?=$v_CourseS->course_id?>">
+                                                        <?=$v_CourseS->course_initials?></option>
+                                                    <?php endif; ?>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <?php endif; ?>
+                                        <?php endforeach; ?>
+                                        <?php endif; ?>
                                     <hr class="mb-4">
 
                                     <h4 class="mb-3"><u>หลักฐานการสมัคร</u> <small>(กรณียังไม่มีเอกสารตามที่ระบุ
@@ -390,7 +419,8 @@ label {
                                     action="<?=base_url('admin/Control_admin_admission/confrim_report/').$recruit[0]->recruit_id;?>">
                                     <div class="form-group">
                                         <div class="custom-control custom-radio">
-                                            <input <?=("ผ่านการตรวจสอบ" == $recruit[0]->recruit_status ? 'checked' : '')?>
+                                            <input
+                                                <?=("ผ่านการตรวจสอบ" == $recruit[0]->recruit_status ? 'checked' : '')?>
                                                 type="radio" id="recruit_status1" name="recruit_status"
                                                 class="custom-control-input" value="ผ่านการตรวจสอบ">
                                             <label class="custom-control-label"
@@ -398,14 +428,18 @@ label {
                                         </div>
 
                                         <div class="custom-control custom-radio">
-                                            <input <?=("ผ่านการตรวจสอบ" != $recruit[0]->recruit_status ? 'checked' : '')?>
+                                            <input
+                                                <?=("ผ่านการตรวจสอบ" != $recruit[0]->recruit_status ? 'checked' : '')?>
                                                 type="radio" id="recruit_status2" name="recruit_status"
                                                 class="custom-control-input" value="ไม่ผ่านการตรวจสอบ">
                                             <label class="custom-control-label"
                                                 for="recruit_status2">ไม่ผ่านการตรวจสอบ</label>
                                         </div>
-                                        <div <?=("ผ่านการตรวจสอบ" != $recruit[0]->recruit_status ? '':'style="display:none"') ?> id="AdminComment">
-                                            <input type="text" name="TextAdminComment" id="TextAdminComment" class="form-control" placeholder="เพราะ..." value="<?=("ผ่านการตรวจสอบ" != $recruit[0]->recruit_status ? $recruit[0]->recruit_status:'') ?>">
+                                        <div <?=("ผ่านการตรวจสอบ" != $recruit[0]->recruit_status ? '':'style="display:none"') ?>
+                                            id="AdminComment">
+                                            <input type="text" name="TextAdminComment" id="TextAdminComment"
+                                                class="form-control" placeholder="เพราะ..."
+                                                value="<?=("ผ่านการตรวจสอบ" != $recruit[0]->recruit_status ? $recruit[0]->recruit_status:'') ?>">
                                         </div>
 
 

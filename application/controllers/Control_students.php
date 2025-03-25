@@ -93,18 +93,11 @@ class Control_students extends CI_Controller {
 		$data['chk_stu'] = $this->db->where('recruit_idCard',$this->session->userdata('StudentIDCrad'))->order_by('recruit_id','DESC')->get('tb_recruitstudent')->result();
 
 		//echo '<pre>';print_r($data['chk_stu']);exit();
-		// $th = $this->load->database('thailandpa', TRUE);
-		// $data['province'] = $th->get('province')->result();
-		// $sel_amphur = $th->where('PROVINCE_ID',@$data['chk_stu'][0]->recruit_homeProvince)->get('province')->result();
-		// $data['amphur'] = $th->select('AMPHUR_ID,AMPHUR_NAME,PROVINCE_ID')->where('PROVINCE_ID',$data['chk_stu'][0]->recruit_homeProvince)->get('amphur')->result(); //เลือกอำเภอ
-		// $data['district'] = $th->where('AMPHUR_ID',$data['chk_stu'][0]->recruit_homedistrict)->get('district')->result();
-
-		// $th = $this->load->database('thailandpa', TRUE);
-		// $data['province'] = $th->get('province')->result();
-		// $sel_amphur = $th->where('PROVINCE_ID',@$data['chk_stu'][0]->recruit_homeProvince)->get('province')->result();
-		// $data['amphur'] = $th->select('AMPHUR_ID,AMPHUR_NAME,PROVINCE_ID')->where('PROVINCE_ID',@$sel_amphur[0]->PROVINCE_ID)->get('amphur')->result(); //เลือกอำเภอ
-		// $data['district'] = $th->where('AMPHUR_ID',@$data['amphur'][0]->AMPHUR_ID)->get('district')->result();
-
+		if($data['chk_stu'][0]->recruit_regLevel <= 3){
+			$data['Course'] = $this->db->where('course_gradelevel','ม.ต้น')->get("tb_course")->result();
+		}else{
+			$data['Course'] = $this->db->where('course_gradelevel','ม.ปลาย')->get("tb_course")->result();
+		}
 		$this->load->view('students/layout/navber_students.php',$data);
 		$this->load->view('students/layout/menu_top_students.php');
 		$this->load->view('students/StudentsEdit.php');
@@ -125,7 +118,8 @@ class Control_students extends CI_Controller {
 							$_FILES['recruit_certificateEdu']['error'],
 							$_FILES['recruit_certificateEduB']['error'],
 							$_FILES['recruit_copyidCard']['error']);
-		//print_r($file); exit();
+		$CheckCourse = $this->db->where('course_id',$this->input->post('recruit_majorOrder')[0])->get('tb_course')->row();
+		$majorOrder = implode("|",$this->input->post('recruit_majorOrder'));
 		$recruit_birthday = ($this->input->post('recruit_birthdayY')-543).'-'.$this->input->post('recruit_birthdayM').'-'.$this->input->post('recruit_birthdayD');
 		$data_update += array(
 			'recruit_regLevel' => $this->input->post('recruit_regLevel'),
@@ -148,9 +142,11 @@ class Control_students extends CI_Controller {
 			'recruit_homedistrict' => $this->input->post('recruit_homedistrict'),
 			'recruit_homeProvince' => $this->input->post('recruit_homeProvince'),
 			'recruit_homePostcode' => $this->input->post('recruit_homePostcode'),
-			'recruit_tpyeRoom' => $this->input->post('recruit_tpyeRoom'),
+			'recruit_tpyeRoom' => $CheckCourse->course_fullname,
+			'recruit_major' => $CheckCourse->course_branch,
 			'recruit_grade' => $this->input->post('recruit_grade'),
-			'recruit_status' => "รอการตรวจสอบ"
+			'recruit_status' => "รอการตรวจสอบ",
+			'recruit_majorOrder' => ($majorOrder ? $majorOrder : "")
 		);
 		
 	

@@ -216,20 +216,21 @@ class Control_admin_admission extends CI_Controller {
 		$data['icon'] = '<i class="fas fa-edit"></i>';
 		$data['color'] = 'warning';
 		$data['breadcrumbs'] = array(base_url('admin/recruitstudent') => 'จัดการ'.$this->title,'#' =>'แก้ไข'.$this->title );
-
+		
 		$this->db->select('*');
 		$this->db->from('tb_recruitstudent');
 		$this->db->where('recruit_id',$id);
 		$data['recruit'] =	$this->db->get()->result();
 		$data['action'] = 'update_recruitstudent';
 
-		// $th = $this->load->database('thailandpa', TRUE);
-		// $data['province'] = $th->get('province')->result();
-		// $sel_amphur = $th->where('PROVINCE_ID',@$data['recruit'][0]->recruit_homeProvince)->get('province')->result();
-		// $data['amphur'] = $th->select('AMPHUR_ID,AMPHUR_NAME,PROVINCE_ID')->where('PROVINCE_ID',$data['recruit'][0]->recruit_homeProvince)->get('amphur')->result(); //เลือกอำเภอ
-		// $data['district'] = $th->where('AMPHUR_ID',$data['recruit'][0]->recruit_homedistrict)->get('district')->result();
+		if($data['recruit'][0]->recruit_regLevel <= 3){
+			$data['course'] = $this->db->where('course_gradelevel','ม.ต้น')->get("tb_course")->result();
+		}else{
+			$data['course'] = $this->db->where('course_gradelevel','ม.ปลาย')->get("tb_course")->result();
+		}
+		
 
-		//echo '<pre>'; print_r($data['district']); exit();
+		//echo '<pre>'; print_r($data['course']); exit();
 		$this->load->view('admin/layout/navber_admin.php',$data);
 		$this->load->view('admin/layout/menu_top_admin.php');
 			$this->load->view('admin/admin_admission_form.php');
@@ -266,7 +267,9 @@ class Control_admin_admission extends CI_Controller {
 							$_FILES['recruit_certificateEduB']['error'],
 							$_FILES['recruit_copyidCard']['error'],
 							$_FILES['recruit_copyAddress']['error']);
-		//print_r($file);
+	
+		$CheckCourse = $this->db->where('course_id',$this->input->post('recruit_majorOrder')[0])->get('tb_course')->row();
+		$majorOrder = implode("|",$this->input->post('recruit_majorOrder'));
 		$recruit_birthday = ($this->input->post('recruit_birthdayY')-543).'-'.$this->input->post('recruit_birthdayM').'-'.$this->input->post('recruit_birthdayD');
 		$data_update = array(
 			'recruit_regLevel' => $this->input->post('recruit_regLevel'),
@@ -289,9 +292,11 @@ class Control_admin_admission extends CI_Controller {
 			'recruit_homedistrict' => $this->input->post('recruit_homedistrict'),
 			'recruit_homeProvince' => $this->input->post('recruit_homeProvince'),
 			'recruit_homePostcode' => $this->input->post('recruit_homePostcode'),
-			'recruit_tpyeRoom' => $this->input->post('recruit_tpyeRoom'),
+			'recruit_tpyeRoom' => $CheckCourse->course_fullname,
+			'recruit_major' => $CheckCourse->course_branch,
 			'recruit_grade' => $this->input->post('recruit_grade'),
-			'recruit_year' => $this->input->post('recruit_year')
+			'recruit_year' => $this->input->post('recruit_year'),
+			'recruit_majorOrder' => ($majorOrder ? $majorOrder : "")
 		);
 	
 			if(in_array($_FILES['recruit_img']['error'],$file)){

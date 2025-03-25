@@ -199,7 +199,7 @@ class Control_admission extends CI_Controller {
 			'recruit_status' => "รอการตรวจสอบ",
 			'recruit_category' => $this->input->post('recruit_category'),
 			'recruit_grade' => $this->input->post('recruit_grade'),			
-			'recruit_agegroup' => $this->input->post('recruit_agegroup'),
+			'recruit_agegroup' => $this->input->post('recruit_agegroup') ? $this->input->post('recruit_agegroup') : 0,
 			'recruit_img' => $fileName
 			);
 

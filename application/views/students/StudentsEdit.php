@@ -309,7 +309,7 @@ label {
                                     <div <?=@$none;?>>
                                         <hr class="mb-4">
                                         <h4>หลักสูตรที่ต้องการศึกษาต่อ </h4>
-
+                                        <?php if($chk_stu[0]->recruit_category != "normal"): ?>
                                         <div class="d-block my-3">
                                             <?php $AtpyeRoom = array('ห้องเรียนความเป็นเลิศทางด้านวิชาการ (Science Match and Technology Program)','ห้องเรียนความเป็นเลิศทางด้านภาษา (Chinese English Program)','ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ การแสดง (Performing Arts Program)','ห้องเรียนความเป็นเลิศด้านการงานอาชีพ (Career Program)','ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program)'); //,'ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program)' 
                                             foreach ($AtpyeRoom as $key => $v_AtpyeRoom) : ?>
@@ -323,6 +323,34 @@ label {
                                             <?php endforeach; ?>
 
                                         </div>
+                                        <?php else : ?>
+                                        <?php foreach ($Course as $key_CourseS => $v_CourseS) :?>
+                                        <?php if($key_CourseS < 3) :
+                                            if($chk_stu[0]->recruit_majorOrder != ""){
+                                               $SubMajorOrder = explode("|",$chk_stu[0]->recruit_majorOrder);
+                                            } ?>
+                                        <div class="d-flex align-items-center">
+                                            <div class="mr-2">
+                                                ลำดับที่ <?=$key_CourseS+1;?>
+                                            </div>
+                                            <div>
+                                                <select name="recruit_majorOrder[]" id="select<?=$key+1;?>"
+                                                    class="form-control mb-2 SelectCourse" required>
+                                                    <option value="">เลือกหลักสูตรลำดับที่ <?=$key_CourseS+1;?></option>
+                                                    <?php foreach ($Course as $key => $v_CourseS) :?>
+                                                    <?php if($v_CourseS) :?>
+                                                    <option
+                                                        <?=$SubMajorOrder[$key_CourseS] == $v_CourseS->course_id ?"selected":""?>
+                                                        value="<?=$v_CourseS->course_id?>">
+                                                        <?=$v_CourseS->course_initials?></option>
+                                                    <?php endif; ?>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <?php endif; ?>
+                                        <?php endforeach; ?>
+                                        <?php endif; ?>
                                         <hr class="mb-4">
 
                                         <h4 class="mb-3"><u>หลักฐานการสมัคร</u> <small>(กรณียังไม่มีเอกสารตามที่ระบุ
@@ -387,6 +415,8 @@ label {
                                             </div> -->
                                         </div>
 
+
+                                        <?php if($chk_stu[0]->recruit_certificateAbility != 0 && $chk_stu[0]->recruit_certificateAbility == ""): ?>
                                         <h4 class="mb-3"><u>หลักฐานเกียรติบัตร</u></h4>
 
                                         <?php
@@ -402,12 +432,13 @@ label {
                                                     name="recruit_certificateAbility[]" placeholder=""
                                                     onchange="showPreview(event,'preview<?=$j+1;?>')">
                                                 <div id="preview<?=$j+1;?>">
-                                                    <img src="<?=base_url('uploads/recruitstudent/m'.$stu->recruit_regLevel.'/certificateAbility/').@$DataCertificate[$j]?>"class="img-fluid" />
+                                                    <img src="<?=base_url('uploads/recruitstudent/m'.$stu->recruit_regLevel.'/certificateAbility/').@$DataCertificate[$j]?>"
+                                                        class="img-fluid" />
                                                 </div>
                                             </div>
                                             <?php endfor; ?>
                                         </div>
-
+                                        <?php endif; ?>
 
                                     </div>
                                     <hr class="mb-4">

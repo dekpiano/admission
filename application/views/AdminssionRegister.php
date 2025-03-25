@@ -937,7 +937,7 @@ label {
                                 </div>
                             </div>
 
-                            <?php if($TypeQuota[0]->quota_key) : // == "normal" ?>
+                            <?php if($TypeQuota[0]->quota_key != "normal" ) : ?>
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div
