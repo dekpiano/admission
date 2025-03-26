@@ -190,9 +190,41 @@ body {
                         </a>
                     </div>
                     <div id="collapseGeneral" class="collapse show" data-parent="#accordion">
-                        <div class="card-body">
-                            <canvas id="ChartGeneral" width="800" height="400"></canvas>
+
+                        <div class="row">
+                            <div class="col-md-8 p-3">
+                                <canvas id="ChartGeneral" width="800" height="400"></canvas>
+                            </div>
+                            <div class="col-md-4 p-3">
+                                <canvas id="genderPieChart"></canvas>
+                            </div>
                         </div>
+
+                        <div class="p-3">
+                            <table class="table table-bordered">
+                                <thead class="table-primary">
+                                    <tr class="text-center">
+                                        <th>วันที่สมัคร</th>
+                                        <th>ผู้ชาย ม.1</th>
+                                        <th>ผู้หญิง ม.1</th>
+                                        <th>ผู้ชาย ม.4</th>
+                                        <th>ผู้หญิง ม.4</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($StatisticTableNormal as $key => $v_Statis) :?>
+                                    <tr class="text-center">
+                                        <td><?=$v_Statis->recruit_date?></td>
+                                        <td><?=$v_Statis->M1?></td>
+                                        <td><?=$v_Statis->F1?></td>
+                                        <td><?=$v_Statis->M4?></td>
+                                        <td><?=$v_Statis->F4?></td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
                 </div>
 
@@ -200,7 +232,8 @@ body {
                 <div class="card">
                     <div class="card-header">
                         <a class="btn btn-link collapsed" data-toggle="collapse" href="#collapseQuota">
-                            สถิติการรับสมัครนักเรียน <?=$checkYear[0]->openyear_year;?> รอบโควตา
+                            สถิติการรับสมัครนักเรียน <?=$checkYear[0]->openyear_year;?>
+                            รอบโควตาโรงเรียนในเขตพื้นที่บริการ
                         </a>
                     </div>
                     <div id="collapseQuota" class="collapse" data-parent="#accordion">

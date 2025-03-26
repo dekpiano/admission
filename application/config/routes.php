@@ -60,7 +60,7 @@ $route['loginGoogle'] = 'Control_login/login_admin';
 $route['CloseSystem'] = 'control_login/CloseSystem';
 
 // Main
-$route['Statistic/(:any)'] = 'welcome/AllStatistic/$1';
+$route['Statistic/(:any)'] = 'Control_Statistic/AllStatistic/$1';
 $route['RegStudent/(:num)/(:any)'] = 'control_admission/reg_student/$1/$2';
 $route['CheckRegister'] = 'Welcome/CheckRegister';
 $route['CheckStudentRegister'] = 'control_admission/CheckStudentRegister';
