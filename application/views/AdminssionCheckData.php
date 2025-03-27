@@ -1,32 +1,29 @@
-<div class="page-content align-items-stretch">
+<div class="page-content align-items-stretch" style="    background-color: #e9e9e9;">
     <!-- Side Navbar -->
     <div class="container-fluid py-5">
-        <h2>ตรวจสอบข้อมูลการสมัครเรียน และ แก้ไขการสมัคร</h2>
-        <div class="card">
-            <div class="card-body">
+        <h2 class="text-center">ตรวจสอบข้อมูลการสมัครเรียน และ แก้ไขการสมัคร</h2>
+        <div class="">
+            <div class="">
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover" id="TB_CheckRegister" cellspacing="0">
                         <thead class="bg-primary text-white">
                             <tr class="text-center">
                                 <th scope="col">ลำดับ</th>
                                 <th scope="col">ชื่อ - นามสกุล</th>
-                                <th scope="col">ระดับที่สมัคร</th>
+                                <th scope="col">สถานะการสมัคร</th>
                                 <th scope="col">รอบสมัคร</th>
                                 <th scope="col">สายการเรียน</th>
-                                <th scope="col">สถานะการสมัคร</th>
+                                <th scope="col">ระดับที่สมัคร</th>                                
                                 <th scope="col">สถานะรายงานตัว</th>
                                 <th scope="col">สถานะมอบตัว</th>
                             </tr>
                         </thead>
-                        <tbody class="">
+                        <tbody class=" bg-white">
                             <?php foreach ($DataStudents as $key => $v_DataStudents): ?>
                             <tr>
                                 <th scope="row"><?=$v_DataStudents->recruit_id?></th>
                                 <td><?=$v_DataStudents->recruit_prefix.$v_DataStudents->recruit_firstName.' '.$v_DataStudents->recruit_lastName?>
                                 </td>
-                                <td class="text-center">ม.<?=$v_DataStudents->recruit_regLevel?></td>
-                                <td class="text-center"><?=$v_DataStudents->recruit_category?></td>
-                                <td><?=$v_DataStudents->recruit_tpyeRoom?></td>
                                 <td class="text-center">
                                     <?php if($v_DataStudents->recruit_status === "ผ่านการตรวจสอบ"): ?>
 
@@ -39,8 +36,8 @@
 
 
                                     <?php elseif($v_DataStudents->recruit_status === "รอการตรวจสอบ"): ?>
-                                    <span class="badge badge-pill badge-danger">
-                                        <h6 style="margin-bottom: 0rem;font-size: 14px;"><i class="fa fa-times"
+                                    <span class="badge badge-pill badge-warning">
+                                        <h6 style="margin-bottom: 0rem;font-size: 14px;"><i class="fa fa-info-circle"
                                                 aria-hidden="true"></i> <?=$v_DataStudents->recruit_status?></h6>
                                     </span>
                                     <?php else: ?>
@@ -57,6 +54,10 @@
                                     <?php endif; ?>
                                     <?php endif; ?>
                                 </td>
+                               
+                                <td class="text-center"><?=$v_DataStudents->recruit_category?></td>
+                                <td><?=$v_DataStudents->recruit_tpyeRoom?></td>
+                                <td class="text-center">ม.<?=$v_DataStudents->recruit_regLevel?></td>
                                 <td class="text-center">
                                     <?php if($v_DataStudents->recruit_status == "ผ่านการตรวจสอบ"): ?>
                                     <?php  if($switch[0]->onoff_report == "on"): ?>

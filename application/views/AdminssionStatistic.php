@@ -242,25 +242,29 @@ body {
                             </div>
                         </div>
 
-                        <div class="p-3">
+                        <div class="p-3 table-responsive">
                             <table class="table table-bordered">
                                 <thead class="table-primary">
                                     <tr class="text-center">
                                         <th>วันที่สมัคร</th>
-                                        <th>ผู้ชาย ม.1</th>
-                                        <th>ผู้หญิง ม.1</th>
-                                        <th>ผู้ชาย ม.4</th>
-                                        <th>ผู้หญิง ม.4</th>
+                                        <th>ชาย ม.1</th>
+                                        <th>หญิง ม.1</th>
+                                        <th>รวม ม.ต้น</th>
+                                        <th>ชาย ม.4</th>
+                                        <th>หญิง ม.4</th>
+                                        <th>รวม ม.ปลาย</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach ($StatisticTableNormal as $key => $v_Statis) :?>
                                     <tr class="text-center">
-                                        <td><?=$v_Statis->recruit_date?></td>
+                                        <td><?=$this->datethai->thai_date_short(strtotime($v_Statis->recruit_date))?></td>
                                         <td><?=$v_Statis->M1?></td>
                                         <td><?=$v_Statis->F1?></td>
+                                        <td class="font-weight-bold"><?=(int)$v_Statis->M1+$v_Statis->F1?></td>
                                         <td><?=$v_Statis->M4?></td>
                                         <td><?=$v_Statis->F4?></td>
+                                        <td class="font-weight-bold"><?=(int)$v_Statis->M4+$v_Statis->F4?></td>
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>

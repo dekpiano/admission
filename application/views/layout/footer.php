@@ -234,12 +234,9 @@ $(document).ready(function() {
             width: '20%',
             targets: 1
         }, {
-            width: '5%',
+            width: '10%',
             targets: 2
-        }, {
-            width: '22%',
-            targets: 5
-        }, {
+        },  {
             width: '12%',
             targets: 6
         }]
