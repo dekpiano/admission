@@ -123,7 +123,7 @@
     }
 
     .banner-title h1 {
-        font-size: 2.7rem;
+        font-size: 2.4rem;
         text-align: center;
     }
 
@@ -138,9 +138,13 @@
         color: #ffffff;
         background-size: cover;
     }
+}
 
-    
-
+@media (max-width: 600px){
+    .banner-title h1 {
+        font-size: 2.7rem;
+        text-align: center;
+    }
 }
 
 @media only screen and (max-width: 991px) {
@@ -178,23 +182,22 @@
         background-color: #fff;
     }
 
-   
-}
-
-@media only screen and (max-width: 1920px) {
     .home {
         padding-top: 0px !important;
         background-position: center !important;
+        height: 620px;
     }
     .banner-title .logo{
         width: 350px;
     }
 }
 
-
-
-
-table thead tr th {
+@media only screen and (max-width: 1920px) {
+    .banner-title .logo{
+        width: 260px;
+    }
+}
+ thead tr th {
     text-align: center;
 }
 
@@ -202,7 +205,7 @@ table thead tr th {
     background: url(uploads/bg/hero-bg.svg);
     background-repeat: repeat-x;
     background-position: 0 -50px;
-    padding-top: 150px;
+    /* padding-top: 100px; */
     
 }
 

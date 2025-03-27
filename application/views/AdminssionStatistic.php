@@ -94,18 +94,61 @@ body {
     padding: 100px 0;
     position: relative;
 }
+.accordion .card-header:after {
+    font-family: 'FontAwesome';  
+    content: "\f068";
+    float: right; 
+}
+.accordion .card-header.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\f067"; 
+}
+</style>
+<style>
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .section-title {
+        padding-bottom: 0px;
+        text-align: center;
+    }
 
-.section-title {
-    padding-bottom: 45px;
+    .section-title h2 {
+        font-weight: 700;
+        color: #007bff;
+        font-size: 30px;
+        margin: 0 0 15px;
+        border-left: 5px solid #fc5356;
+        padding-left: 15px;
+    }
+
+    .section-title h3 {       
+        font-size: 24px;
+    }
 }
 
-.section-title h2 {
-    font-weight: 700;
-    color: #007bff;
-    font-size: 45px;
-    margin: 0 0 15px;
-    border-left: 5px solid #fc5356;
-    padding-left: 15px;
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .section-title {
+        padding-bottom: 45px;
+    }
+
+    .section-title h2 {
+        font-weight: 700;
+        color: #007bff;
+        font-size: 45px;
+        margin: 0 0 15px;
+        border-left: 5px solid #fc5356;
+        padding-left: 15px;
+    }
 }
 </style>
 <div class="page-content align-items-stretch">
@@ -178,14 +221,13 @@ body {
             </div>
         </section>
 
-        <div class="container mt-4">
-            <h4>ข้อมูลการรับสมัคร</h4>
+        <div class="container mt-4">       
 
             <div id="accordion">
                 <!-- รอบทั่วไป -->
                 <div class="card">
-                    <div class="card-header">
-                        <a class="btn btn-link" data-toggle="collapse" href="#collapseGeneral">
+                    <div class="card-header bg-primary ">
+                        <a class="btn btn-link text-white" data-toggle="collapse" href="#collapseGeneral">
                             สถิติการรับสมัครนักเรียน <?=$checkYear[0]->openyear_year;?> รอบทั่วไป
                         </a>
                     </div>
@@ -230,8 +272,8 @@ body {
 
                 <!-- รอบโควตา -->
                 <div class="card">
-                    <div class="card-header">
-                        <a class="btn btn-link collapsed" data-toggle="collapse" href="#collapseQuota">
+                    <div class="card-header  bg-primary">
+                        <a class="btn btn-link collapsed text-white" data-toggle="collapse" href="#collapseQuota">
                             สถิติการรับสมัครนักเรียน <?=$checkYear[0]->openyear_year;?>
                             รอบโควตาโรงเรียนในเขตพื้นที่บริการ
                         </a>

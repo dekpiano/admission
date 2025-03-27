@@ -9,7 +9,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary static-top p-2">
         <div class="container-fluid">
             <a class="navbar-brand" href="<?=base_url('welcome');?>">
-                <img src="<?=base_url('uploads/logo/logoSKJadmission.png')?>" alt="logoSKJ" class="img-fluid mx-2"  style="width: 50px;">
+                <img src="<?=base_url('uploads/logo/logoSKJadmission.png')?>" alt="logoSKJ" class="img-fluid mx-2"  style="width: 40px;">
                 ระบบรับสมัครนักเรียน
                 <?=$checkYear[0]->openyear_year;?>
             </a>
@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="nav navbar-nav mx-auto text-center">
                 <li class="nav-item">
-                     <a class=" btn btn-outline-light" href="<?=base_url('uploads/recruitstudent/คู่มือการเข้าใช้งานระบบรับสมัครนักเรียน.pdf');?>" target="_blabk" >คู่มือการสมัคร</a>
+                     <a class=" btn btn-outline-light" href="https://www.canva.com/design/DAEzzISa8Cs/eJDS15S74QtLw2u7BOB1Vg/view?utm_content=DAEzzISa8Cs&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h5a8efe804f" target="_blabk" >คู่มือการสมัคร</a>
                 </li>
             </ul>
                 <ul class="navbar-nav ml-auto">
