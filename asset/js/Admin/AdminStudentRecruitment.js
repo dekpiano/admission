@@ -172,3 +172,31 @@ $(document).on('change', "#recruit_status2,#recruit_status1", function() {
         $("#AdminComment").hide();
     }
 });
+
+function showMajorOptions() {
+	// ซ่อนตัวเลือกทั้งหมดก่อน
+	document.querySelectorAll('.major-options').forEach(function(element) {
+		element.style.display = 'none';
+	});
+
+	// ค้นหา radio ที่ถูกเลือก
+	let selectedRoom = document.querySelector('input[name="recruit_tpyeRoom"]:checked');
+	if (selectedRoom) {
+		let index = Array.from(document.querySelectorAll('input[name="recruit_tpyeRoom"]')).indexOf(selectedRoom);
+		let targetDiv = document.getElementById('major-options-' + index);
+		if (targetDiv) {
+			targetDiv.style.display = 'block';
+		}
+	}
+}
+
+// ทำงานเมื่อหน้าเว็บโหลดเสร็จ
+document.addEventListener("DOMContentLoaded", function() {
+	// ตรวจสอบค่าที่เลือกอยู่ตอนโหลดหน้า
+	showMajorOptions();
+
+	// เพิ่ม event ให้ radio ทุกตัว
+	document.querySelectorAll('input[name="recruit_tpyeRoom"]').forEach(function(radio) {
+		radio.addEventListener('change', showMajorOptions);
+	});
+});

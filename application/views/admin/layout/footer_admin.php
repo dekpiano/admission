@@ -56,7 +56,7 @@
             <?php endif; ?>
 
             <?php if($this->uri->segment(2) == "Recruitment") :?>
-            <script src="<?=base_url()?>asset/js/Admin/AdminStudentRecruitment.js?v=16"></script>
+            <script src="<?=base_url()?>asset/js/Admin/AdminStudentRecruitment.js?v=18"></script>
             <?php endif; ?>
             <?php if($this->uri->segment(2) == "Statistic") :?>
             <script src="<?=base_url()?>asset/js/Admin/AdminStatistic.js"></script>

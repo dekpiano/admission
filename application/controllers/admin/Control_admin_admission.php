@@ -268,8 +268,21 @@ class Control_admin_admission extends CI_Controller {
 							$_FILES['recruit_copyidCard']['error'],
 							$_FILES['recruit_copyAddress']['error']);
 	
-		$CheckCourse = $this->db->where('course_id',$this->input->post('recruit_majorOrder')[0])->get('tb_course')->row();
-		$majorOrder = implode("|",$this->input->post('recruit_majorOrder'));
+						
+		if($this->input->post('recruit_majorOrder') != ""){
+			$CheckCourse = $this->db->where('course_id',$this->input->post('recruit_majorOrder')[0])->get('tb_course')->row();
+			$majorOrder = implode("|",$this->input->post('recruit_majorOrder'));
+
+			$recruit_tpyeRoom = $CheckCourse->course_fullname;
+			$recruit_major = $CheckCourse->course_branch;
+		}else{
+			$recruit_tpyeRoom = $this->input->post('recruit_tpyeRoom');
+			$recruit_major = $this->input->post('recruit_major');
+			
+		}
+		
+
+		
 		$recruit_birthday = ($this->input->post('recruit_birthdayY')-543).'-'.$this->input->post('recruit_birthdayM').'-'.$this->input->post('recruit_birthdayD');
 		$data_update = array(
 			'recruit_regLevel' => $this->input->post('recruit_regLevel'),
@@ -292,11 +305,12 @@ class Control_admin_admission extends CI_Controller {
 			'recruit_homedistrict' => $this->input->post('recruit_homedistrict'),
 			'recruit_homeProvince' => $this->input->post('recruit_homeProvince'),
 			'recruit_homePostcode' => $this->input->post('recruit_homePostcode'),
-			'recruit_tpyeRoom' => $CheckCourse->course_fullname,
-			'recruit_major' => $CheckCourse->course_branch,
+			'recruit_tpyeRoom' => $recruit_tpyeRoom,
+			'recruit_major' => $recruit_major,
 			'recruit_grade' => $this->input->post('recruit_grade'),
 			'recruit_year' => $this->input->post('recruit_year'),
-			'recruit_majorOrder' => ($majorOrder ? $majorOrder : "")
+			'recruit_majorOrder' => ($majorOrder ? $majorOrder : ""),
+			'recruit_agegroup' => $this->input->post('recruit_agegroup')
 		);
 	
 			if(in_array($_FILES['recruit_img']['error'],$file)){
