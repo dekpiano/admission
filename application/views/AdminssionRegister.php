@@ -943,7 +943,7 @@ label {
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h5 class="m-0 font-weight-bold text-primary">
-                                        เกียรติบัตรด้านความสามารถที่ใช้สมัครเรียน
+                                        เกียรติบัตรด้านความสามารถที่ใช้สมัครเรียน <small>(กรณี คัดตัวนักกีฬา ไม่ต้องใช้)</small> 
 
                                     </h5>
                                 </div>
@@ -1002,7 +1002,7 @@ label {
                         <hr class="mb-4">
                         <center>
 
-                            <div class="h-captcha" data-sitekey="d81a802c-de6b-4de5-8a61-a87205c2de0a"></div>
+                            <div class="h-captcha" data-sitekey="d81a802c-de6b-4de5-8a61-a87205c2de0a" data-callback="onloadCaptcha"></div>
                             <div class="invalid-feedback">
                                 ยืนยันฉันไม่ใช่โปรแกรมอัตโนมัติ
                             </div>
@@ -1011,7 +1011,7 @@ label {
                         <div class="row justify-content-center">
                             <div class="col-md-3">
                                 <button id="BtnSubmitRegister" class="btn btn-light btn-lg btn-block mt-3 mb-5"
-                                    type="submit">สมัครเรียน</button>
+                                    type="submit" disabled>สมัครเรียน</button>
                             </div>
                         </div>
 

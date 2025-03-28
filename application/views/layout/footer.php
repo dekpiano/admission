@@ -200,7 +200,7 @@
 
          <?php if($this->uri->segment(1) == "RegStudent"):?>
          <script src="<?=base_url()?>asset/js/AutoProvince.js?v=7.2"></script>
-         <script src="<?=base_url()?>asset/js/RegStudent.js?v=6.5"></script>
+         <script src="<?=base_url()?>asset/js/RegStudent.js?v=7"></script>
          <!-- Include hCaptcha JS -->
          <script src="https://hcaptcha.com/1/api.js" async defer></script>
          <?php elseif($this->uri->segment(1) == "Confirm"):?>
@@ -321,6 +321,15 @@ $(document).on('click', '#BtnSubmitRegister', function() {
         );
     // $(this).prop('disabled', true); // Disable button to prevent multiple clicks
 });
+
+
+let submitBtn = document.getElementById("BtnSubmitRegister");
+    
+  window.onloadCaptcha = function () {
+      submitBtn.disabled = false; // ปลดล็อกปุ่มเมื่อ hCaptcha ผ่าน
+      submitBtn.classList.add('btn-success');
+      submitBtn.classList.remove('btn-light');
+  };
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
