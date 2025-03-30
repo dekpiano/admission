@@ -208,7 +208,7 @@
          <script src="<?=base_url()?>asset/js/login.js?v=7"></script>
          <?php elseif($this->uri->segment(1) == "Statistic"):?>
             <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-            <script src="<?=base_url()?>asset/js/Statistic.js?v=3.3"></script>
+            <script src="<?=base_url()?>asset/js/Statistic.js?v=4"></script>
          <?php endif; ?>
 
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>

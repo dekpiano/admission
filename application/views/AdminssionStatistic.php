@@ -243,7 +243,7 @@ body {
                         </div>
 
                         <div class="p-3 table-responsive">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered"  id="CalculateTableNormal">
                                 <thead class="table-primary">
                                     <tr class="text-center">
                                         <th>วันที่สมัคร</th>
@@ -253,20 +253,35 @@ body {
                                         <th>ชาย ม.4</th>
                                         <th>หญิง ม.4</th>
                                         <th>รวม ม.ปลาย</th>
+                                        <th>รวมทั้งหมด</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach ($StatisticTableNormal as $key => $v_Statis) :?>
                                     <tr class="text-center">
                                         <td><?=$this->datethai->thai_date_short(strtotime($v_Statis->recruit_date))?></td>
-                                        <td><?=$v_Statis->M1?></td>
-                                        <td><?=$v_Statis->F1?></td>
-                                        <td class="font-weight-bold"><?=(int)$v_Statis->M1+$v_Statis->F1?></td>
-                                        <td><?=$v_Statis->M4?></td>
-                                        <td><?=$v_Statis->F4?></td>
-                                        <td class="font-weight-bold"><?=(int)$v_Statis->M4+$v_Statis->F4?></td>
-                                    </tr>
+                                        <td class="num"><?=$v_Statis->M1?></td>
+                                        <td class="num"><?=$v_Statis->F1?></td>
+                                        <td class="num font-weight-bold"><?=(int)$v_Statis->M1+$v_Statis->F1?></td>
+                                        <td class="num"><?=$v_Statis->M4?></td>
+                                        <td class="num"><?=$v_Statis->F4?></td>
+                                        <td class="num font-weight-bold"><?=(int)$v_Statis->M4+$v_Statis->F4?></td>
+                                        <td class="text-danger font-weight-bold">
+                                        <?=(int)$v_Statis->M1+$v_Statis->F1+(int)$v_Statis->M4+$v_Statis->F4?>
+                                        </td>
+                                    </tr>                                    
                                     <?php endforeach; ?>
+
+                                    <tr class="text-center text-danger font-weight-bold">
+                                     <td>รวม</td>
+                                     <td class="col-total total"></td>
+                                     <td class="col-total total"></td>
+                                     <td class="col-total totalAll"></td>
+                                     <td class="col-total total"></td>
+                                     <td class="col-total total"></td>
+                                     <td class="col-total totalAll"></td>
+                                     <td class="col-total total"></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

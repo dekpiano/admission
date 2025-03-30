@@ -85,7 +85,7 @@ function ViewStatisticsGeneral() {
             const maleData = response.map(item => item.male);
             const femaleData = response.map(item => item.female);
 
-            console.log(femaleData);
+            //console.log(femaleData);
             
 
             if (labels.length === 1) {
@@ -213,3 +213,32 @@ var ctx = document.getElementById('genderPieChart').getContext('2d');
     });
 }
 genderChart();
+
+
+function calculateSum() {
+    $("#CalculateTableNormal tbody tr").each(function () {
+        let rowSum = 0;
+
+        $(this)
+            .find("td.num")
+            .each(function (index) {
+                let value = parseInt($(this).text()) || 0;
+                rowSum += value;
+                let totalCell = $(".col-total").eq(index);
+                totalCell.text((parseInt(totalCell.text()) || 0) + value);
+            });
+
+       // $(this).find("td:last").text(rowSum); // อัปเดตผลรวมของแถว
+    });
+
+    let grandTotal = 0;
+    $(".totalAll").each(function () {
+        grandTotal += parseInt($(this).text()) || 0;        
+        
+    });
+
+    $(".col-total:last").text(grandTotal); // อัปเดตผลรวมทั้งหมด
+    
+}
+
+calculateSum();
