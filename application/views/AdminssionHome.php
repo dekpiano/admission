@@ -140,7 +140,7 @@
     }
 }
 
-@media (max-width: 600px){
+@media (max-width: 600px) {
     .banner-title h1 {
         font-size: 2.7rem;
         text-align: center;
@@ -187,17 +187,19 @@
         background-position: center !important;
         height: 620px;
     }
-    .banner-title .logo{
+
+    .banner-title .logo {
         width: 350px;
     }
 }
 
 @media only screen and (max-width: 1920px) {
-    .banner-title .logo{
+    .banner-title .logo {
         width: 260px;
     }
 }
- thead tr th {
+
+thead tr th {
     text-align: center;
 }
 
@@ -206,7 +208,7 @@
     background-repeat: repeat-x;
     background-position: 0 -50px;
     /* padding-top: 100px; */
-    
+
 }
 
 .main-banner {
@@ -224,8 +226,8 @@
                     <div class="d-sm-flex justify-content-center">
                         <div data-aos="zoom-in-up" class="aos-init aos-animate">
                             <div class="banner-title text-center">
-                            <img  src="<?=base_url('uploads/logo/logoSKJadmission.png')?>" alt="marsmello"
-                            class="img-fluid aos-init aos-animate logo" data-aos="zoom-in-up" >
+                                <img src="<?=base_url('uploads/logo/logoSKJadmission.png')?>" alt="marsmello"
+                                    class="img-fluid aos-init aos-animate logo" data-aos="zoom-in-up">
                                 <h1 class="font-weight-medium"> รับสมัครนักเรียนใหม่ ปีการศึกษา
                                     <?=$checkYear[0]->openyear_year?>
                                 </h1>
@@ -246,8 +248,8 @@
 
 
                             <div class="text-center mt-5 mt-4">
-                                <button type="button" class="btn btn-danger" data-toggle="modal"
-                                    data-target="#myModal" style="font-size:34px;">
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal"
+                                    style="font-size:34px;">
                                     <?=$switch[0]->onoff_regis == "on"?"สมัครเรียนเลย ที่นี่...": $switch[0]->onoff_comment?>
 
                                 </button>
@@ -270,14 +272,45 @@
                     </div>
                 </div>
             </div>
-         
+
         </div>
     </div>
+
+
+
 </div>
+
+
+
+
 
 <div class="container-fluid py-5">
 
-    <h3 class="text-center">กำหนดการรับนักเรียน ปีการศึกษา <?=$checkYear[0]->openyear_year?></h3>
+    
+<div class="row">
+    <div class="col-md-6">
+        <div class="position-relative overflow-hidden p-3  text-center bg-light">
+            <h2 class="font-weight-normal">ข้อปฏิบัติการเตรียมตัวเข้าสอบและการสอบ</h2>
+            <p class="lead font-weight-normal">อ่านฉันก่อน!</p>
+            <a class="btn btn-primary"
+                href="https://drive.google.com/file/d/1BN-k53usmAKM2njS5lyP_aI6yePCrCU9/view?usp=sharing"
+                target="_blank">อ่านฉันสิ คลิกเลย...</a>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="position-relative overflow-hidden p-3 text-center bg-light">
+            <h2 class="font-weight-normal">วิธีตรวจสอบการสมัครและพิมพ์บัตรประจำตัวสอบ</h2>
+            <p class="lead font-weight-normal">เพื่อใช้ยืนยันตัวในการสอบรอบปกติ จะพิมพ์ออกมาหรือจะแคปจอ ก็ได้
+                ไปดูวิธีกัน</p>
+            <a class="btn btn-primary"
+                href="https://www.canva.com/design/DAF-0Dmo0J8/tyheWTsb30Z_zh1WnQT-zg/view?utm_content=DAF-0Dmo0J8&utm_campaign=designshare&utm_medium=link&utm_source=editor"
+                target="_blank">คลิกฉันเลย</a>
+        </div>
+
+    </div>
+</div>
+
+    <h3 class="text-center mt-5">กำหนดการรับนักเรียน ปีการศึกษา <?=$checkYear[0]->openyear_year?></h3>
 
     <h5>ชั้นมัธยมศึกษาปีที่ 1</h5>
     <div class="table-responsive">
@@ -395,37 +428,7 @@
 
 </div>
 
-<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-    <div class="row">
-        <div class="col-md-4 p-lg-3 mx-auto order-lg-0 order-1 mt-3">
-            <img src="https://zakreeya.files.wordpress.com/2012/04/1722092.jpg" class="img-fluid" alt="" srcset="">
-        </div>
-        <div class="col-md-8 p-lg-5 mx-auto order-0 mb-3 align-self-center">
-            <h1 class="display-5 font-weight-normal">ข้อปฏิบัติการเตรียมตัวเข้าสอบและการสอบ</h1>
-            <p class="lead font-weight-normal">อ่านฉันก่อน!</p>
-            <a class="btn btn-primary"
-                href="https://drive.google.com/file/d/1BN-k53usmAKM2njS5lyP_aI6yePCrCU9/view?usp=sharing"
-                target="_blank">อ่านฉันสิ คลิกเลย...</a>
-        </div>
-    </div>
-</div>
 
-<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-    <div class="row">
-        <div class="col-md-4 p-lg-3 mx-auto order-lg-0 order-1 mt-3">
-            <img src="https://hr.rmutr.ac.th/wp-content/uploads/2020/02/aHR0cHM6Ly9zLmlzYW5vb2suY29tL2hvLzAvdWQvMTcvODUwMjMvYmIuanBn.jpg"
-                class="img-fluid" alt="" srcset="">
-        </div>
-        <div class="col-md-8 p-lg-5 mx-auto order-0 mb-3 align-self-center">
-            <h1 class="display-5 font-weight-normal">วิธีตรวจสอบการสมัครและพิมพ์บัตรประจำตัวสอบ</h1>
-            <p class="lead font-weight-normal">เพื่อใช้ยืนยันตัวในการสอบรอบปกติ จะพิมพ์ออกมาหรือจะแคปจอ ก็ได้
-                ไปดูวิธีกัน</p>
-            <a class="btn btn-primary"
-                href="https://www.canva.com/design/DAF-0Dmo0J8/tyheWTsb30Z_zh1WnQT-zg/view?utm_content=DAF-0Dmo0J8&utm_campaign=designshare&utm_medium=link&utm_source=editor"
-                target="_blank">คลิกฉันเลย</a>
-        </div>
-    </div>
-</div>
 
 
 
@@ -571,7 +574,7 @@
             </div>
         </div>
 
-     
+
         <!-- <?php if($switch[0]->onoff_regis == "off") :?>
         <div class="text-success">
             <?php echo $switch[0]->onoff_comment; ?>

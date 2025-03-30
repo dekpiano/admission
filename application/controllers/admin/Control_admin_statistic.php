@@ -38,12 +38,50 @@ class Control_admin_statistic extends CI_Controller {
 		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
 		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
 
-		//echo '<pre>';print_r($data['recruit']);
+		$data['ChartNormal'] = $this->ChartNormal($year);
+		//echo '<pre>';print_r($data['ChartNormal']);exit();
 		
 		$this->load->view('admin/layout/navber_admin.php',$data);
 		$this->load->view('admin/layout/menu_top_admin.php');
 		$this->load->view('admin/admin_admission_Statistic.php');
 		$this->load->view('admin/layout/footer_admin.php');
+	}
+
+	public function ChartNormal($year){
+		$ChartNormal = $this->db->select("
+			recruit_date,
+			SUM(CASE WHEN recruit_major = 'วิทย์ - คณิต' AND recruit_regLevel = 1 THEN 1 ELSE 0 END) AS M1_Sci,
+			SUM(CASE WHEN recruit_major = 'วิทย์ - เทคโน' AND recruit_regLevel = 1 THEN 1 ELSE 0 END) AS M1_Teac,
+			SUM(CASE WHEN recruit_major = 'ภาษา' AND recruit_regLevel = 1 THEN 1 ELSE 0 END) AS M1_Lang,
+			SUM(CASE WHEN recruit_major = 'ดนตรี' AND recruit_regLevel = 1 THEN 1 ELSE 0 END) AS M1_Music,
+			SUM(CASE WHEN recruit_major = 'ศิลปะ' AND recruit_regLevel = 1 THEN 1 ELSE 0 END) AS M1_Art,
+			SUM(CASE WHEN recruit_major = 'นาฏศิลป์' AND recruit_regLevel = 1 THEN 1 ELSE 0 END) AS M1_Dance,
+			SUM(CASE WHEN recruit_major = 'การงาน' AND recruit_regLevel = 1 THEN 1 ELSE 0 END) AS M1_Career,
+			 SUM(CASE 
+				WHEN recruit_major IN ('วิทย์ - คณิต', 'วิทย์ - เทคโน', 'ภาษา', 'ดนตรี', 'ศิลปะ', 'นาฏศิลป์', 'การงาน') 
+				AND recruit_regLevel IN (1) 
+				THEN 1 ELSE 0 
+			END) AS Total_M1,
+			SUM(CASE WHEN recruit_major = 'วิทย์ - คณิต' AND recruit_regLevel = 4 THEN 1 ELSE 0 END) AS M4_Sci,
+			SUM(CASE WHEN recruit_major = 'วิทย์ - เทคโน' AND recruit_regLevel = 4 THEN 1 ELSE 0 END) AS M4_Teac,
+			SUM(CASE WHEN recruit_major = 'ภาษา' AND recruit_regLevel = 4 THEN 1 ELSE 0 END) AS M4_Lang,
+			SUM(CASE WHEN recruit_major = 'ดนตรี' AND recruit_regLevel = 4 THEN 1 ELSE 0 END) AS M4_Music,
+			SUM(CASE WHEN recruit_major = 'ศิลปะ' AND recruit_regLevel = 4 THEN 1 ELSE 0 END) AS M4_Art,
+			SUM(CASE WHEN recruit_major = 'นาฏศิลป์' AND recruit_regLevel = 4 THEN 1 ELSE 0 END) AS M4_Dance,
+			SUM(CASE WHEN recruit_major = 'การงาน' AND recruit_regLevel = 4 THEN 1 ELSE 0 END) AS M4_Career,
+			SUM(CASE 
+				WHEN recruit_major IN ('วิทย์ - คณิต', 'วิทย์ - เทคโน', 'ภาษา', 'ดนตรี', 'ศิลปะ', 'นาฏศิลป์', 'การงาน') 
+				AND recruit_regLevel IN (4) 
+				THEN 1 ELSE 0 
+			END) AS Total_M4
+		")
+		->where('recruit_year',$year)
+		->where('recruit_category','normal')
+		->where("recruit_date BETWEEN '2025-03-25' AND '2025-03-31'")
+		->group_by('recruit_date')
+		->get('tb_recruitstudent')->result();
+
+		return $ChartNormal;
 	}
 
 

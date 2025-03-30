@@ -13,7 +13,8 @@
          <script src="<?=base_url();?>asset/vendor/popper.js/umd/popper.min.js"> </script>
          <script src="<?=base_url();?>asset/vendor/bootstrap/js/bootstrap.min.js"></script>
          <script src="<?=base_url();?>asset/vendor/jquery.cookie/jquery.cookie.js"> </script>
-         <script src="<?=base_url();?>asset/vendor/chart.js/Chart.min.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
          <script src="<?=base_url();?>asset/vendor/jquery-validation/jquery.validate.min.js"></script>
          <!-- jQuery UI -->
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -59,7 +60,7 @@
             <script src="<?=base_url()?>asset/js/Admin/AdminStudentRecruitment.js?v=18"></script>
             <?php endif; ?>
             <?php if($this->uri->segment(2) == "Statistic") :?>
-            <script src="<?=base_url()?>asset/js/Admin/AdminStatistic.js"></script>
+            <script src="<?=base_url()?>asset/js/Admin/AdminStatistic.js?v=1.2"></script>
             <?php endif; ?>
 
             <?php if($this->uri->segment(2) == "Quiz") :?>
