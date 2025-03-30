@@ -13,7 +13,7 @@
                                 <th scope="col">สถานะการสมัคร</th>
                                 <th scope="col">รอบสมัคร</th>
                                 <th scope="col">สายการเรียน</th>
-                                <th scope="col">ระดับที่สมัคร</th>                                
+                                <th scope="col">ระดับที่สมัคร</th>
                                 <th scope="col">สถานะรายงานตัว</th>
                                 <th scope="col">สถานะมอบตัว</th>
                             </tr>
@@ -32,7 +32,8 @@
                                                 aria-hidden="true"></i> <?=$v_DataStudents->recruit_status?></h6>
                                     </span>
                                     <a style="margin-bottom: 0rem;font-size: 14px;" href="<?=base_url('login'); ?>"
-                                        class="btn btn-primary btn-sm mt-2"><i class="fas fa-print"></i> พิมพ์บัตรประจำตัวสอบ</a>
+                                        class="btn btn-primary btn-sm mt-2"><i class="fas fa-print"></i>
+                                        พิมพ์บัตรประจำตัวสอบ</a>
 
 
                                     <?php elseif($v_DataStudents->recruit_status === "รอการตรวจสอบ"): ?>
@@ -42,19 +43,46 @@
                                     </span>
                                     <?php else: ?>
                                     <span class="badge badge-pill badge-danger">
-                                        <h6 style="margin-bottom: 0rem;font-size: 14px;"><i class="fa fa-times"
-                                                aria-hidden="true"></i> <?=$v_DataStudents->recruit_status?></h6>
+                                        <h6 style="margin-bottom: 0rem;font-size: 14px;cursor: pointer;" data-toggle="modal"
+                                            data-target="#exampleModal<?=$key?>">
+                                            <i class="fa fa-times" aria-hidden="true"></i> ไม่ผ่านการตรวจสอบ คลิกดูสิ๊
+                                        </h6>
                                     </span>
 
-                                    <?php if($v_DataStudents->recruit_status != "ผ่านการตรวจสอบ"): ?>
-                                    
-                                    <a style="margin-bottom: 0rem;font-size: 14px;" href="<?=base_url('login'); ?>"
-                                        class="btn btn-warning btn-sm mt-2"><i class="fas fa-edit"></i> แก้ไขการสมัคร
-                                        ที่นี่...</a>
-                                    <?php endif; ?>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal<?=$key?>" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-danger text-white">
+                                                    <h5 class="modal-title" id="exampleModalLabel">แจ้ง!
+                                                        ไม่ผ่านการตรวจสอบ</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <?=$v_DataStudents->recruit_status?>
+้<hr>
+                                                    <p>**กรุณาเตรียมเอกสารให้พร้อม และกดปุ่ม "แก้ไขการสมัคร"**</p>
+                                                    <?php if($v_DataStudents->recruit_status != "ผ่านการตรวจสอบ"): ?>
+
+                                                    <a style="margin-bottom: 0rem;font-size: 14px;"
+                                                        href="<?=base_url('login'); ?>"
+                                                        class="btn btn-warning btn-sm mt-2"><i class="fas fa-edit"></i>
+                                                        แก้ไขการสมัคร
+                                                        ที่นี่...</a>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                     <?php endif; ?>
                                 </td>
-                               
+
                                 <td class="text-center"><?=$v_DataStudents->recruit_category?></td>
                                 <td><?=$v_DataStudents->recruit_tpyeRoom?></td>
                                 <td class="text-center">ม.<?=$v_DataStudents->recruit_regLevel?></td>
@@ -211,7 +239,7 @@
             </div>
         </div>
 
-    
+
         <!-- <?php if($switch[0]->onoff_regis == "off") :?>
         <div class="text-success">
             <?php echo $switch[0]->onoff_comment; ?>
