@@ -122,11 +122,11 @@ class Control_admission extends CI_Controller {
 	{		
 		$data = $this->dataAll();
 
-		//print_r($_FILES['recruit_certificateAbility']['error']); exit();
+		
 		//รับรอบปกติ
 		if($this->input->post('recruit_category') == "normal"){
 			$SelImpo = implode('|',$this->input->post('recruit_majorOrder'));		
-			$CheckCourse = $this->db->select('course_fullname,course_branch')->where('course_id',$SelImpo[0])->get('tb_course')->Row();
+			$CheckCourse = $this->db->select('course_fullname,course_branch')->where('course_id',$this->input->post('recruit_majorOrder')[0])->get('tb_course')->Row();
 			$Course_fullname = $CheckCourse->course_fullname;
 			$Course_branch = $CheckCourse->course_branch;
 		}else{

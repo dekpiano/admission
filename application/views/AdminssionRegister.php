@@ -599,7 +599,7 @@ label {
                                                     name="recruit_oldSchool" placeholder=" " required
                                                     data-toggle="tooltip" data-placement="top"
                                                     title="จบการศึกษาจากโรงเรียน">
-                                                <label for="recruit_oldSchool">จบการศึกษาจากโรงเรียน <span
+                                                <label for="recruit_oldSchool">จบจากโรงเรียน <span
                                                         class="text-red">*</span> <small>ไม่ต้องพิมพ์คำว่า
                                                         "โรงเรียน"</small></label>
                                                 <div class="invalid-feedback">
