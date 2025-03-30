@@ -240,5 +240,61 @@ function calculateSum() {
     $(".col-total:last").text(grandTotal); // อัปเดตผลรวมทั้งหมด
     
 }
-
 calculateSum();
+
+
+
+
+// สถิติโควตาเขตพื้นที่
+var table = $('#TbStatisticQcota'); 
+
+// ฟังก์ชันคำนวณผลรวมแนวตั้ง
+function calculateColumnTotals() {
+  var totals = [];
+  table.find('thead tr th.TitleQ').each(function(index) {
+  
+      var sum = 0;
+      table.find('tbody tr').each(function() {
+        var value = parseInt($(this).find('td.NumQ').eq(index).text());
+        if (!isNaN(value)) {
+          sum += value;
+        }
+      });
+      totals.push(sum);
+    
+  });
+  return totals;
+}
+
+// ฟังก์ชันคำนวณผลรวมแนวนอน
+function calculateRowTotals() {
+    table.find('tbody tr').each(function() {
+      var row = $(this);
+      var sum = 0;
+      row.find('td').each(function(index) {
+        if (index > 0) { // ข้ามคอลัมน์แรก (วันที่)
+          var value = parseInt($(this).text());
+          if (!isNaN(value)) {
+            sum += value;
+          }
+        }
+      });
+      row.append('<td class="NumQ text-danger text-center bg-light font-weight-bold">' + sum + '</td>'); // เพิ่มผลรวมแนวนอนในคอลัมน์สุดท้าย
+    });
+  }
+
+
+// สร้าง tfoot และแสดงผลรวมแนวตั้ง
+function createTableFooter(columnTotals) {
+  var footer = $('<tfoot><tr class="text-center bg-light font-weight-bold text-danger"><td>รวม</td></tr></tfoot>');
+  for (var i = 0; i < columnTotals.length; i++) {
+    footer.find('tr').append('<td>' + columnTotals[i] + '</td>');
+  }
+  table.append(footer);
+}
+
+// เรียกใช้ฟังก์ชัน
+calculateRowTotals()
+var columnTotals = calculateColumnTotals();
+//console.log(columnTotals);
+createTableFooter(columnTotals);

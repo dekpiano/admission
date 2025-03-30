@@ -65,6 +65,17 @@ class Control_Statistic extends CI_Controller {
 			->group_by('recruit_date')
 			->get('tb_recruitstudent')->result();
 
+			$data['StatisticTableQuotaM14'] = $this->db->select('
+			tb_recruitstudent.recruit_date,
+			SUM(CASE WHEN recruit_prefix = "เด็กหญิง"  and recruit_regLevel = 1 THEN 1 ELSE 0 END) AS F1,
+			SUM(CASE WHEN recruit_prefix = "เด็กชาย"  and recruit_regLevel = 1 THEN 1 ELSE 0 END) AS M1,
+			SUM(CASE WHEN (recruit_prefix = "เด็กหญิง" and recruit_regLevel = 4) or (recruit_prefix = "นางสาว"  and recruit_regLevel = 4) THEN 1 ELSE 0 END) AS F4,			
+			SUM(CASE WHEN (recruit_prefix = "เด็กชาย" and recruit_regLevel = 4) or (recruit_prefix = "นาย" and recruit_regLevel = 4) THEN 1 ELSE 0 END) AS M4
+			')
+			->where('recruit_year',$year)
+			->where("recruit_date BETWEEN '2025-01-01' AND '2025-01-31'")
+			->group_by('recruit_date')
+			->get('tb_recruitstudent')->result_array();
 			
 			return $data;
 	}

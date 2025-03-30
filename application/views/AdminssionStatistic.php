@@ -94,14 +94,16 @@ body {
     padding: 100px 0;
     position: relative;
 }
+
 .accordion .card-header:after {
-    font-family: 'FontAwesome';  
+    font-family: 'FontAwesome';
     content: "\f068";
-    float: right; 
+    float: right;
 }
+
 .accordion .card-header.collapsed:after {
     /* symbol for "collapsed" panels */
-    content: "\f067"; 
+    content: "\f067";
 }
 </style>
 <style>
@@ -121,7 +123,7 @@ body {
         padding-left: 15px;
     }
 
-    .section-title h3 {       
+    .section-title h3 {
         font-size: 24px;
     }
 }
@@ -221,7 +223,7 @@ body {
             </div>
         </section>
 
-        <div class="container mt-4">       
+        <div class="container mt-4">
 
             <div id="accordion">
                 <!-- รอบทั่วไป -->
@@ -243,7 +245,7 @@ body {
                         </div>
 
                         <div class="p-3 table-responsive">
-                            <table class="table table-bordered"  id="CalculateTableNormal">
+                            <table class="table table-bordered" id="CalculateTableNormal">
                                 <thead class="table-primary">
                                     <tr class="text-center">
                                         <th>วันที่สมัคร</th>
@@ -259,7 +261,8 @@ body {
                                 <tbody>
                                     <?php foreach ($StatisticTableNormal as $key => $v_Statis) :?>
                                     <tr class="text-center">
-                                        <td><?=$this->datethai->thai_date_short(strtotime($v_Statis->recruit_date))?></td>
+                                        <td><?=$this->datethai->thai_date_short(strtotime($v_Statis->recruit_date))?>
+                                        </td>
                                         <td class="num"><?=$v_Statis->M1?></td>
                                         <td class="num"><?=$v_Statis->F1?></td>
                                         <td class="num font-weight-bold"><?=(int)$v_Statis->M1+$v_Statis->F1?></td>
@@ -267,20 +270,20 @@ body {
                                         <td class="num"><?=$v_Statis->F4?></td>
                                         <td class="num font-weight-bold"><?=(int)$v_Statis->M4+$v_Statis->F4?></td>
                                         <td class="text-danger font-weight-bold">
-                                        <?=(int)$v_Statis->M1+$v_Statis->F1+(int)$v_Statis->M4+$v_Statis->F4?>
+                                            <?=(int)$v_Statis->M1+$v_Statis->F1+(int)$v_Statis->M4+$v_Statis->F4?>
                                         </td>
-                                    </tr>                                    
+                                    </tr>
                                     <?php endforeach; ?>
 
                                     <tr class="text-center text-danger font-weight-bold">
-                                     <td>รวม</td>
-                                     <td class="col-total total"></td>
-                                     <td class="col-total total"></td>
-                                     <td class="col-total totalAll"></td>
-                                     <td class="col-total total"></td>
-                                     <td class="col-total total"></td>
-                                     <td class="col-total totalAll"></td>
-                                     <td class="col-total total"></td>
+                                        <td>รวม</td>
+                                        <td class="col-total total"></td>
+                                        <td class="col-total total"></td>
+                                        <td class="col-total totalAll"></td>
+                                        <td class="col-total total"></td>
+                                        <td class="col-total total"></td>
+                                        <td class="col-total totalAll"></td>
+                                        <td class="col-total total"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -301,6 +304,44 @@ body {
                         <div class="card-body">
 
                             <canvas id="registrationChart" width="800" height="400"></canvas>
+
+                            <div class="table-responsive table-bordered">
+                                <table class="table" id="TbStatisticQcota">
+                                    <thead class="table-primary">
+                                        <tr class="p-0">
+                                            <th class="p-0 text-center"></th>
+                                            <?php foreach ($StatisticTableQuotaM14 as $row) { ?>
+                                            <th class="p-0 text-center align-middle TitleQ" style="writing-mode: sideways-lr;"><?php echo $this->datethai->thai_date_short(strtotime( $row['recruit_date'])); ?></th>                                            
+                                            <?php } ?>
+                                            <th class="TitleQ">รวม</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        // สร้าง array สำหรับเก็บชื่อคอลัมน์ (วันที่)
+                                        $dates = array_keys(array_slice($StatisticTableQuotaM14[0], 1, count($StatisticTableQuotaM14[0]) - 1, true));
+                                       
+                                        foreach ($dates as $date) {
+                                        ?>
+                                        <tr>
+                                            <th class="p-0 text-center  text-nowrap align-middle">                                               
+                                                <?php 
+                                                    if($date == "F1"){ echo "หญิง ต้น";}
+                                                    elseif($date == "M1"){ echo "ชาย ต้น";}
+                                                    elseif($date == "F4"){ echo "หญิง ปลาย";}
+                                                    elseif($date == "M4"){ echo "ชาย ปลาย";}
+                                                ?>
+                                            </th>
+                                            <?php foreach ($StatisticTableQuotaM14 as $row) { ?>
+                                            <td class="p-0 text-center NumQ align-middle"><?php echo $row[$date]; ?></td>
+                                            <?php } ?>
+                                        </tr>
+                                        <?php } ?>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
 
                         </div>
                     </div>
