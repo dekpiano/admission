@@ -1,3 +1,10 @@
+$('#TBStuQuiz').DataTable({
+    dom: 'Bfrtip',
+        buttons: [
+            'copy','excel', 'pdf'
+        ],
+        "order": [[ 3, "desc" ]]
+});
 $(document).on('click', ".CheckRecruitID", function() {
     //alert($(this).attr('key_recruitID'));
     $('#recruit_id').val($(this).attr('key_recruitID'));

@@ -39,7 +39,7 @@
                     <div class="card-body">
                         <div class="table-responsive">
 
-                            <table class="table table-bordered dt-responsive nowrap" id="TB_stu" width="100%"
+                            <table class="table table-bordered dt-responsive nowrap" id="TBStuQuiz" width="100%"
                                 cellspacing="0">
                                 <thead>
                                     <tr>

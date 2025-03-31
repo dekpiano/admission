@@ -1,3 +1,11 @@
+$('#TB_stu').DataTable({
+    dom: 'Bfrtip',
+        buttons: [
+            'copy', 'excel', 'pdf'
+        ],
+        "order": [[ 3, "desc" ]]
+});
+
 $(document).on('change','#SelLevel',function(){
     var mainOption = $(this).val();
     $.ajax({

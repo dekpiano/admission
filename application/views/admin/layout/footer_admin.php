@@ -53,7 +53,7 @@
 
 
             <?php if($this->uri->segment(2) == "Surrender") :?>
-            <script src="<?=base_url()?>asset/js/Admin/AdminSurrender.js?v=1"></script>
+            <script src="<?=base_url()?>asset/js/Admin/AdminSurrender.js?v=2.1"></script>
             <?php endif; ?>
 
             <?php if($this->uri->segment(2) == "Recruitment") :?>
@@ -64,11 +64,10 @@
             <?php endif; ?>
 
             <?php if($this->uri->segment(2) == "Quiz") :?>
-            <script src="<?=base_url()?>asset/js/Admin/AdminQuiz.js?v=4"></script>
+            <script src="<?=base_url()?>asset/js/Admin/AdminQuiz.js?v=5.1"></script>
             <?php endif; ?>
-
-            <?php if($this->uri->segment(2) == "Print") :?>
-            <script src="<?=base_url()?>asset/js/Admin/AdminPrint.js?v=3"></script>
+            <?php if($this->uri->segment(2) == "Print" || $this->uri->segment(2) == "PrintConfirm") :?>
+            <script src="<?=base_url()?>asset/js/Admin/AdminPrint.js?v=4.1"></script>
             <?php endif; ?>
 
             <?php if($this->uri->segment(2) == "system") :?>
@@ -88,13 +87,7 @@ Swal.fire("แจ้งเตือน", "<?=$this->session->flashdata('messge')
          <?php endif; $this->session->mark_as_temp('msg',20); ?>
          <script>
 
-$('#TB_stu').DataTable({
-    dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ],
-        "order": [[ 0, "desc" ]]
-});
+
 
 function StatusWait(){
     Swal.fire("แจ้งเตือน", "รอการตรวจสอบเอกสาร", "warning")
@@ -102,9 +95,9 @@ function StatusWait(){
 // รูปแบบการกรอก
 $(":input").inputmask();
 
-flatpickr("#onoff_datetime_regis", {
+flatpickr("#onoff_datetime_regis_close", {
       dateFormat: "d-m-Y H:i:S",
-      defaultDate: "<?php echo date('d-m-Y H:i:s', strtotime($switch[0]->onoff_datetime_regis)); ?>",
+      defaultDate: "<?php echo date('d-m-Y H:i:s', strtotime($switch[0]->onoff_datetime_regis_close)); ?>",
       enableTime: true,
       time_24hr: true,
       locale: "th",
