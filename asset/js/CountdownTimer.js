@@ -30,14 +30,19 @@ function makeTimer() {
 setInterval(function() { makeTimer(); }, 1000);
 
 
-function CheckOnoff(){
+function CheckOnOffRegis(){
     $.ajax({
-        url: 'CheckOnoff',
+        url: 'CheckOnOffRegis',
         method: 'GET',
         dataType: 'json',
         success: function (response) {
-            //console.log(response.onoff_datetime_regis);
-            Time = response.onoff_datetime_regis;
+            //console.log(response);
+            if(response.onoff_regis == "on"){
+                Time = response.onoff_datetime_regis_open;
+            }else{
+                Time = response.onoff_datetime_regis_close;
+            }
+            
             
         },
         error: function (xhr, status, error) {
@@ -45,5 +50,5 @@ function CheckOnoff(){
         },
     });
 }
-CheckOnoff();
+CheckOnOffRegis();
 

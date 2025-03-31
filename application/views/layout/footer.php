@@ -214,7 +214,7 @@
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=3"></script>
          <?php if($this->uri->segment(1) == "welcome" || $this->uri->segment(1) == ""):?>
-         <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=18"></script>
+         <script src="<?=base_url()?>asset/js/CountdownTimer.js?v=19"></script>
          <?php endif; ?>
 
          

@@ -65,7 +65,7 @@ $route['RegStudent/(:num)/(:any)'] = 'control_admission/reg_student/$1/$2';
 $route['CheckRegister'] = 'Welcome/CheckRegister';
 $route['CheckStudentRegister'] = 'control_admission/CheckStudentRegister';
 
-$route['CheckOnoff'] = 'Control_admission/CheckOnoff';
+$route['CheckOnOffRegis'] = 'Control_admission/CheckOnOffRegis';
 
 
 //นักเรียน

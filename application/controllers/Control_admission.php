@@ -490,13 +490,10 @@ class Control_admission extends CI_Controller {
 		echo json_encode($data);
 	  }
 
-	  public function CheckOnoff(){
+	  public function CheckOnOffRegis(){
 
-		$data = $this->db->select('onoff_datetime_regis')->where('onoff_id',1)->get('tb_onoffsys')->row();
+		$data = $this->db->select('onoff_regis,onoff_datetime_regis_close,onoff_datetime_regis_open')->where('onoff_id',1)->get('tb_onoffsys')->row();
 		header('Content-Type: application/json');
 		echo json_encode($data);
 		}
-  
-
-
 }

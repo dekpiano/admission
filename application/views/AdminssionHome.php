@@ -185,7 +185,7 @@
     .home {
         padding-top: 0px !important;
         background-position: center !important;
-        height: 620px;
+        height: 730px;
     }
 
     .banner-title .logo {
@@ -256,7 +256,9 @@ thead tr th {
                             </div>
 
                             <?php if($switch[0]->onoff_regis != "on"): ?>
-                            <div id="timer" class="flex-wrap d-flex justify-content-center mt-3">
+                                <hr>
+                                <h5 class="text-center">แล้วพบกันใหม่ ในอีก...</h5>
+                            <div id="timer" class="flex-wrap d-flex justify-content-center">
                                 <div id="days" class="align-items-center flex-column d-flex justify-content-center">
                                 </div>
                                 <div id="hours" class="align-items-center flex-column d-flex justify-content-center">
@@ -266,6 +268,20 @@ thead tr th {
                                 <div id="seconds" class="align-items-center flex-column d-flex justify-content-center">
                                 </div>
                             </div>
+                            <?php else :?>
+                                <hr>
+                                <h5 class="text-center">เหลือเวลาสมัครเรียนอีก...</h5>
+                                <div id="timer" class="flex-wrap d-flex justify-content-center">
+                                <div id="days" class="align-items-center flex-column d-flex justify-content-center">
+                                </div>
+                                <div id="hours" class="align-items-center flex-column d-flex justify-content-center">
+                                </div>
+                                <div id="minutes" class="align-items-center flex-column d-flex justify-content-center">
+                                </div>
+                                <div id="seconds" class="align-items-center flex-column d-flex justify-content-center">
+                                </div>
+                            </div>
+
                             <?php endif;?>
 
                         </div>
