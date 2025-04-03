@@ -76,6 +76,21 @@ class Control_Statistic extends CI_Controller {
 			->where("recruit_date BETWEEN '2025-01-01' AND '2025-01-31'")
 			->group_by('recruit_date')
 			->get('tb_recruitstudent')->result_array();
+
+			$data['StatisticTableQuotaSport'] = $this->db->select('
+			tb_recruitstudent.recruit_major,
+			SUM(CASE WHEN recruit_regLevel = 1 THEN 1 ELSE 0 END) AS M1,
+			SUM(CASE WHEN recruit_regLevel = 2 THEN 1 ELSE 0 END) AS M2,
+			SUM(CASE WHEN recruit_regLevel = 3 THEN 1 ELSE 0 END) AS M3,
+			SUM(CASE WHEN recruit_regLevel = 4 THEN 1 ELSE 0 END) AS M4,
+			SUM(CASE WHEN recruit_regLevel = 5 THEN 1 ELSE 0 END) AS M5,
+			SUM(CASE WHEN recruit_regLevel = 6 THEN 1 ELSE 0 END) AS M6,
+			COUNT(recruit_major) AS Tatal
+			')
+			->where('recruit_year',$year)
+			->where("recruit_category","quotasport")
+			->group_by('recruit_major')
+			->get('tb_recruitstudent')->result();
 			
 			return $data;
 	}
@@ -102,7 +117,41 @@ class Control_Statistic extends CI_Controller {
 		$this->load->view('layout/footer.php');
 	  }
 
-    public function StatisticViewQuota(){        
+	  public function StatisticViewQuotaSport($year){
+		$data =	$this->db->select('
+			tb_recruitstudent.recruit_major,
+			SUM(CASE WHEN recruit_regLevel = 1 THEN 1 ELSE 0 END) AS M1,
+			SUM(CASE WHEN recruit_regLevel = 2 THEN 1 ELSE 0 END) AS M2,
+			SUM(CASE WHEN recruit_regLevel = 3 THEN 1 ELSE 0 END) AS M3,
+			SUM(CASE WHEN recruit_regLevel = 4 THEN 1 ELSE 0 END) AS M4,
+			SUM(CASE WHEN recruit_regLevel = 5 THEN 1 ELSE 0 END) AS M5,
+			SUM(CASE WHEN recruit_regLevel = 6 THEN 1 ELSE 0 END) AS M6,
+			COUNT(recruit_major) AS Tatal
+			')
+			->where('recruit_year',$year)
+			->where("recruit_category","quotasport")
+			->group_by('recruit_major')
+			->get('tb_recruitstudent')->result_array();
+			echo json_encode($data);
+	  }
+
+	  public function StatisticViewQuotaSportFM($Year){
+
+		$data['StatisticViewQuotaSportFM'] = $this->db->select('
+					SUM(CASE WHEN recruit_prefix = "เด็กหญิง" or recruit_prefix = "นางสาว" THEN 1 ELSE 0 END) AS female,
+					SUM(CASE WHEN recruit_prefix = "เด็กชาย" or recruit_prefix = "นาย" THEN 1 ELSE 0 END) AS male,
+					tb_recruitstudent.recruit_regLevel
+					,tb_recruitstudent.recruit_year
+					,tb_recruitstudent.recruit_date')
+				->from('tb_recruitstudent')
+				->where('recruit_year',$Year)
+				->where('recruit_category','quotasport')
+				->get()->row();
+
+			echo json_encode($data['StatisticViewQuotaSportFM']);
+	}
+
+    public function StatisticViewQuota($Year){        
 
                 $data['StatisticCroTar'] = $this->db->select('
 					SUM(CASE WHEN recruit_prefix = "เด็กหญิง" or recruit_prefix = "นางสาว" THEN 1 END) AS female,
@@ -111,7 +160,7 @@ class Control_Statistic extends CI_Controller {
 					,tb_recruitstudent.recruit_year
 					,tb_recruitstudent.recruit_date')
 				->from('tb_recruitstudent')
-				->where('recruit_year','2568')
+				->where('recruit_year',$Year)
 				->where("recruit_date BETWEEN '2025-01-01' AND '2025-01-31'", NULL, FALSE)
 				->group_by('recruit_date')
 				->order_by('recruit_date','ASC')
@@ -120,7 +169,7 @@ class Control_Statistic extends CI_Controller {
         echo json_encode($data['StatisticCroTar']);
     }
 
-	public function StatisticViewGeneral(){
+	public function StatisticViewGeneral($Year){
 
                 $data['StatisticGeneral'] = $this->db->select('
 					SUM(CASE WHEN recruit_prefix = "เด็กหญิง" or recruit_prefix = "นางสาว" THEN 1 END) AS female,
@@ -129,7 +178,7 @@ class Control_Statistic extends CI_Controller {
 					,tb_recruitstudent.recruit_year
 					,tb_recruitstudent.recruit_date')
 				->from('tb_recruitstudent')
-				->where('recruit_year','2568')
+				->where('recruit_year',$Year)
 				->where("recruit_date BETWEEN '2025-03-25' AND '2025-03-31'", NULL, FALSE)
 				->group_by('recruit_date')
 				->order_by('recruit_date','ASC')
@@ -138,7 +187,7 @@ class Control_Statistic extends CI_Controller {
         echo json_encode($data['StatisticGeneral']);
     }
 
-	public function StatisticViewGeneralTotal(){
+	public function StatisticViewGeneralTotal($Year){
 
 		$data['StatisticGeneralTotal'] = $this->db->select('
 					SUM(CASE WHEN recruit_prefix = "เด็กหญิง" or recruit_prefix = "นางสาว" THEN 1 ELSE 0 END) AS female,
@@ -147,7 +196,7 @@ class Control_Statistic extends CI_Controller {
 					,tb_recruitstudent.recruit_year
 					,tb_recruitstudent.recruit_date')
 				->from('tb_recruitstudent')
-				->where('recruit_year','2568')
+				->where('recruit_year',$Year)
 				->where('recruit_category','normal')
 				->get()->row();
 

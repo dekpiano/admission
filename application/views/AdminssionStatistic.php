@@ -155,7 +155,7 @@ body {
 </style>
 <div class="page-content align-items-stretch">
     <!-- Side Navbar -->
-
+    <input type="text" id="year" value="<?=$checkYear[0]->openyear_year;?>" hidden>
 
     <div class="w-100">
 
@@ -226,6 +226,7 @@ body {
         <div class="container mt-4">
 
             <div id="accordion">
+
                 <!-- รอบทั่วไป -->
                 <div class="card">
                     <div class="card-header bg-primary ">
@@ -292,6 +293,65 @@ body {
                     </div>
                 </div>
 
+                <!-- รอบโควตานักกีฬา -->
+                <div class="card">
+                    <div class="card-header bg-primary ">
+                        <a class="btn btn-link text-white" data-toggle="collapse" href="#collapseSport">
+                            สถิติการรับสมัครนักเรียน <?=$checkYear[0]->openyear_year;?> รอบโควตานักกีฬา
+                        </a>
+                    </div>
+                    <div id="collapseSport" class="collapse" data-parent="#accordion">
+
+                        <div class="row">
+                            <div class="col-md-8 p-3">
+                                <canvas id="ChartSport" width="800" height="400"></canvas>
+                            </div>
+                            <div class="col-md-4 p-3">
+                                <canvas id="genderPieChartSport"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="p-3 table-responsive">
+                            <table class="table table-bordered" id="CalculateTableQuotaSport">
+                                <thead class="table-primary">
+                                    <tr class="text-center">
+                                        <th>ประเภทกีฬา</th>
+                                        <th>ม.1</th>
+                                        <th>ม.2</th>
+                                        <th>ม.3</th>
+                                        <th>ม.4</th>
+                                        <th>ม.5</th>
+                                        <th>ม.6</th>
+                                        <th>รวมทั้งหมด</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($StatisticTableQuotaSport as $key => $v_Statis) :?>
+                                    <tr class="text-center">
+                                        <td><?=$v_Statis->recruit_major?>
+                                        </td>
+                                        <td class="num"><?=$v_Statis->M1?></td>
+                                        <td class="num"><?=$v_Statis->M2?></td>
+                                        <td class="num"><?=$v_Statis->M3?></td>
+                                        <td class="num"><?=$v_Statis->M4?></td>
+                                        <td class="num"><?=$v_Statis->M5?></td>
+                                        <td class="num"><?=$v_Statis->M6?></td>
+                                        <td class="text-danger font-weight-bold">
+                                            <?=$v_Statis->Tatal?>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
                 <!-- รอบโควตา -->
                 <div class="card">
                     <div class="card-header  bg-primary">
@@ -311,7 +371,10 @@ body {
                                         <tr class="p-0">
                                             <th class="p-0 text-center"></th>
                                             <?php foreach ($StatisticTableQuotaM14 as $row) { ?>
-                                            <th class="p-0 text-center align-middle TitleQ" style="writing-mode: sideways-lr;"><?php echo $this->datethai->thai_date_short(strtotime( $row['recruit_date'])); ?></th>                                            
+                                            <th class="p-0 text-center align-middle TitleQ"
+                                                style="writing-mode: sideways-lr;">
+                                                <?php echo $this->datethai->thai_date_short(strtotime( $row['recruit_date'])); ?>
+                                            </th>
                                             <?php } ?>
                                             <th class="TitleQ">รวม</th>
                                         </tr>
@@ -324,7 +387,7 @@ body {
                                         foreach ($dates as $date) {
                                         ?>
                                         <tr>
-                                            <th class="p-0 text-center  text-nowrap align-middle">                                               
+                                            <th class="p-0 text-center  text-nowrap align-middle">
                                                 <?php 
                                                     if($date == "F1"){ echo "หญิง ต้น";}
                                                     elseif($date == "M1"){ echo "ชาย ต้น";}
@@ -333,7 +396,8 @@ body {
                                                 ?>
                                             </th>
                                             <?php foreach ($StatisticTableQuotaM14 as $row) { ?>
-                                            <td class="p-0 text-center NumQ align-middle"><?php echo $row[$date]; ?></td>
+                                            <td class="p-0 text-center NumQ align-middle"><?php echo $row[$date]; ?>
+                                            </td>
                                             <?php } ?>
                                         </tr>
                                         <?php } ?>

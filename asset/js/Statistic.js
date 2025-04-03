@@ -1,7 +1,10 @@
+let Year = $("#year").val();
+
+
 function ViewStatisticsQuota() {
     // ดึงข้อมูลผ่าน AJAX
     $.ajax({
-        url: "../Control_Statistic/StatisticViewQuota",
+        url: "../Control_Statistic/StatisticViewQuota/"+Year,
         method: "GET",
         dataType: "json",
         success: function (response) {
@@ -77,7 +80,7 @@ ViewStatisticsQuota();
 function ViewStatisticsGeneral() {
     // ดึงข้อมูลผ่าน AJAX
     $.ajax({
-        url: "../Control_Statistic/StatisticViewGeneral",
+        url: "../Control_Statistic/StatisticViewGeneral/"+Year,
         method: "GET",
         dataType: "json",
         success: function (response) {
@@ -166,7 +169,7 @@ ViewStatisticsGeneral();
 function genderChart() {
 
     $.ajax({
-        url: "../Control_Statistic/StatisticViewGeneralTotal",
+        url: "../Control_Statistic/StatisticViewGeneralTotal/"+Year,
         method: "GET",
         dataType: "json",
         success: function (response) {
@@ -214,6 +217,147 @@ var ctx = document.getElementById('genderPieChart').getContext('2d');
 }
 genderChart();
 
+// อาร์เรย์ของสี
+const colors = [
+    'rgba(255, 99, 132, 0.7)',
+    'rgba(54, 162, 235, 0.7)',
+    'rgba(255, 206, 86, 0.7)',
+    'rgba(75, 192, 192, 0.7)',
+    'rgba(153, 102, 255, 0.7)'
+  ];
+
+function ViewStatisticSport() {
+    // ดึงข้อมูลผ่าน AJAX
+    $.ajax({
+        url: "../Control_Statistic/StatisticViewQuotaSport/"+Year,
+        method: "GET",
+        dataType: "json",
+        success: function (response) {
+            const labels = response.map(item => item.recruit_major);
+            const Tatal = response.map(item => item.Tatal);
+            // const femaleData = response.map(item => item.female);
+
+            console.log(response);
+            
+
+            if (labels.length === 1) {
+                labels.push(""); // เพิ่มจุดข้อมูลเปล่า
+                Tatal.push(0); // เพิ่มค่า 0
+                //femaleData.push(0); // เพิ่มค่า 0
+            }
+
+            // สร้างกราฟด้วย Chart.js
+            const ctx = document.getElementById('ChartSport').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'ทั้งหมด',
+                            data: Tatal,
+                            backgroundColor: colors[0],
+                            borderColor: colors[0],
+                            borderWidth: 1,
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            ticks: {
+                                beginAtZero: true, // เริ่มที่ 0
+                                min: 0,            // บังคับค่าต่ำสุด
+                                stepSize: 1        // เพิ่มทีละ 1
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top'
+                        },
+                        tooltip: {
+                            enabled: true // เปิดการแสดง Tooltips
+                        },
+                        plugins: {
+                            legend: { position: 'bottom' }
+                        },
+                        title: { 
+                            display: true, 
+                            text: 'สถิติการสมัครเรียนกีฬา', // ข้อความ Title
+                            font: { size: 14 }, // ขนาดตัวอักษร
+                            padding: 15 // ระยะห่างจากกราฟ
+                        },
+                        datalabels: { 
+                            color: '#fff', // สีตัวเลขเป็นสีขาว
+                            font: { weight: 'bold', size: 14 },
+                            formatter: (value) => value // แสดงค่าตัวเลข
+                        }
+                    }
+                },
+                plugins: [ChartDataLabels] // ใช้ plugin datalabels
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error("Error fetching data: ", xhr.responseText);
+        }
+    });
+}
+
+ViewStatisticSport();
+
+// กราฟวงกลมกีฬา
+function genderChartQuotaSport() {
+
+    $.ajax({
+        url: "../Control_Statistic/StatisticViewQuotaSportFM/"+Year,
+        method: "GET",
+        dataType: "json",
+        success: function (response) {
+            const maleData = response.male;
+            const femaleData = response.female;
+
+
+var ctx = document.getElementById('genderPieChartSport').getContext('2d');
+
+            var genderChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['ชาย', 'หญิง'],
+                    datasets: [{
+                        data: [maleData, femaleData], // ค่าจริงควรดึงจากฐานข้อมูล
+                        backgroundColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        title: { 
+                            display: true, 
+                            text: 'สถิติการสมัครเรียนแยกตามเพศ (กีฬา)', // ข้อความ Title
+                            font: { size: 14 }, // ขนาดตัวอักษร
+                            padding: 15 // ระยะห่างจากกราฟ
+                        },
+                        datalabels: { 
+                            color: '#fff', // สีตัวเลขเป็นสีขาว
+                            font: { weight: 'bold', size: 16 },
+                            formatter: (value) => value // แสดงค่าตัวเลข
+                        }
+                    }
+                },
+                plugins: [ChartDataLabels] // เปิดใช้งาน Plugin
+            });
+            
+
+        },
+        error: function (xhr, status, error) {
+            console.error("Error fetching data: ", xhr.responseText);
+        }
+    });
+}
+genderChartQuotaSport();
 
 function calculateSum() {
     $("#CalculateTableNormal tbody tr").each(function () {
