@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-md-6 align-self-center">
                     <p>ชั้นมัธยมศึกษาปีที่ <b><?=$stu[0]->recruit_regLevel;?></b></p>
-                    <p> ปีการศึกษา <b>2565</b></p>
+                    <p> ปีการศึกษา <b><?=$stu[0]->recruit_year;?></b></p>
                     <p> วันที่รายงานตัว <b><?=$this->datethai->thai_date_fullmonth(strtotime(date("d-m-Y")))?></b></p>
                 </div>
             </div>

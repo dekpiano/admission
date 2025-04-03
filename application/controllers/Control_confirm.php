@@ -30,8 +30,10 @@ class Control_confirm extends CI_Controller {
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();
 		$data['quota'] = $this->db->get("tb_quota")->result();
 		
-
-		$data['stu'] = $this->db->select('*')->where('recruit_idCard',$this->session->userdata('idenStu'))->from('tb_recruitstudent')->order_by('recruit_year','DESC')->get()->result();
+		$data['stu'] = $this->db->select('*')
+		->where('recruit_idCard',$this->session->userdata('idenStu'))
+		->where('recruit_year',$data['checkYear'][0]->openyear_year)
+		->from('tb_recruitstudent')->order_by('recruit_year','DESC')->get()->result();
 
 		$data['stuConf'] = $Conf->select('*')->where('stu_iden',$this->session->userdata('idenStu'))->from('tb_students')->get()->result();
 		
@@ -553,8 +555,11 @@ class Control_confirm extends CI_Controller {
 		$Conf = $this->load->database('skjpers', TRUE);
 		$thai = $this->load->database('thailandpa', TRUE);
 		
-		
-		$recruit = $this->db->where('recruit_idCard',$id)->get('tb_recruitstudent')->result();	
+		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
+
+		$recruit = $this->db->where('recruit_idCard',$id)
+		->where('recruit_year',$data['checkYear'][0]->openyear_year)
+		->get('tb_recruitstudent')->result();	
 		$confrim = $Conf->where('stu_iden',$id)->get('tb_students')->result();	
 		
 		$idstu = str_replace('-','', $confrim[0]->stu_iden); //แยกเลข 13 หลัก
