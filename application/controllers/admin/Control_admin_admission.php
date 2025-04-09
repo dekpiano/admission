@@ -121,11 +121,11 @@ class Control_admin_admission extends CI_Controller {
 	public function switch_regis()
 	{
 		if($this->input->post('mode') == 'true'){
-			$data = array('onoff_regis' => 'on', 'onoff_datetime_regis' => date('Y-m-d H:i:s'),'onoff_user_regis' => $this->session->userdata('login_id'),'onoff_comment'=> "");
+			$data = array('onoff_regis' => 'on', 'onoff_datetime_regis_close' => date('Y-m-d H:i:s'),'onoff_user_regis' => $this->session->userdata('login_id'),'onoff_comment'=> "");
 			$this->db->update('tb_onoffsys',$data,"onoff_id='1'");
 			echo "เปิด";
 		}else{
-			$data = array('onoff_regis' => 'off','onoff_datetime_regis' => date('Y-m-d H:i:s'),'onoff_user_regis' => $this->session->userdata('login_id'),'onoff_comment' => $this->input->post('onoff_comment'));
+			$data = array('onoff_regis' => 'off','onoff_datetime_regis_close' => date('Y-m-d H:i:s'),'onoff_user_regis' => $this->session->userdata('login_id'),'onoff_comment' => $this->input->post('onoff_comment'));
 			$this->db->update('tb_onoffsys',$data,"onoff_id='1'");
 			echo "ปิด";
 		}

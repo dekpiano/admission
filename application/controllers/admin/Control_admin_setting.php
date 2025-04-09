@@ -44,7 +44,7 @@ class Control_admin_setting extends CI_Controller {
         $date = $this->input->post('date'); // วันที่ที่ส่งมา
 		$SetDatetime = date('Y-m-d H:i:s',strtotime($date));
 
-		$data = ['onoff_datetime_regis' => $SetDatetime]; // ฟิลด์ที่ต้องการอัปเดต
+		$data = ['onoff_datetime_regis_close' => $SetDatetime]; // ฟิลด์ที่ต้องการอัปเดต
         $this->db->where('onoff_id', $id);
 		$result = $this->db->update('tb_onoffsys', $data); // ชื่อ table ของคุณ
 

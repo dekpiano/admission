@@ -119,8 +119,8 @@
                             </div>
                         </div>
                         <div>
-                            <label for="onoff_datetime_regis">วันที่เปิดรับสมัครวันแรก</label>
-                            <input type="text" class="form-control" name="onoff_datetime_regis" id="onoff_datetime_regis" data-id="<?=$switch[0]->onoff_id?>" value="<?=$switch[0]->onoff_datetime_regis?>">
+                            <label for="onoff_datetime_regis_close">วันที่เปิดรับสมัครวันแรก</label>
+                            <input type="text" class="form-control" name="onoff_datetime_regis_close" id="onoff_datetime_regis_close" data-id="<?=$switch[0]->onoff_id?>" value="<?=$switch[0]->onoff_datetime_regis_close?>">
                         </div>
                         <div class="project-date">
                             <input type="checkbox" id="switch" valun="<?=$switch[0]->onoff_regis?>"
