@@ -278,7 +278,7 @@ label {
                                             </button>
 
                                             <div class="custom-file mt-3">
-                                                <input type="hidden" class="form-control" id="recruit_img"
+                                                <input type="text" class="form-control" id="recruit_img"
                                                     name="recruit_img" required>
                                                 <div class="invalid-feedback">กรุณาอัพโหลดรูปภาพ</div>
                                             </div>

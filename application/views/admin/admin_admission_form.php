@@ -428,11 +428,15 @@ label {
 
                             </div>
                             <?php else : ?>
-                            <?php foreach ($course as $key_CourseS => $v_CourseS) :?>
-                            <?php if($key_CourseS < 3) :
-                                            if(@$recruit[0]->recruit_majorOrder != ""){
-                                               $SubMajorOrder = explode("|",@$recruit[0]->recruit_majorOrder);
-                                            } ?>
+                            <?php foreach ($course as $key_CourseS => $v_CourseS) :?>                               
+                            <?php 
+                                if(@$recruit[0]->recruit_majorOrder != ""){
+                                    $SubMajorOrder = explode("|",@$recruit[0]->recruit_majorOrder);
+                                } else {
+                                    $SubMajorOrder = 3;
+                                }   
+                                if($key_CourseS < count($SubMajorOrder)) :
+                            ?>
                             <div class="d-flex align-items-center">
                                 <div class="mr-2">
                                     ลำดับที่ <?=$key_CourseS+1;?>
