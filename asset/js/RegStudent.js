@@ -174,7 +174,8 @@ $(document).on('submit', '#FormCheckIdStudent', function (e) {
     $('#SectionFormRegisterStudents').hide();
   } else {
 
-    $.post('../../CheckStudentRegister', { Idcard: id }, function (data) {
+    let checkUrl = $('#FormCheckIdStudent').data('check-url');
+    $.post(checkUrl, { Idcard: id }, function (data) {
       //console.log(data);
       if (data > 0) {
         Swal.fire({

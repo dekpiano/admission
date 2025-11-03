@@ -10,12 +10,16 @@ class Model_admission extends CI_Model
 
 	public function student_insert($data)
 	{
-		return $this->db->insert('tb_recruitstudent',$data);
+		if ($this->db->insert('tb_recruitstudent', $data)) {
+			return $this->db->insert_id();
+		}
+		return false;
 	}
 
-	public function student_update($data,$id)
+	public function student_update($id, $data)
 	{
-		return $this->db->update('tb_recruitstudent',$data,"recruit_id='".$id."'");
+		$this->db->where('recruit_id', $id);
+		return $this->db->update('tb_recruitstudent', $data);
 	}
 
 	public function student_delete($id)

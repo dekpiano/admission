@@ -43,34 +43,6 @@ label {
     }
 }
 
-@keyframes animate {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-        border-radius: 0;
-    }
-
-    100% {
-        transform: translateY(-1000px) rotate(720deg);
-        opacity: 0;
-        border-radius: 50%;
-    }
-}
-
-@keyframes animate {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-        border-radius: 0;
-    }
-
-    100% {
-        transform: translateY(-1000px) rotate(720deg);
-        opacity: 0;
-        border-radius: 50%;
-    }
-}
-
 .background {
     position: fixed;
     width: 100vw;
@@ -94,13 +66,7 @@ label {
     animation: animate 19s linear infinite;
 }
 
-.background li:nth-child(0) {
-    left: 74%;
-    width: 111px;
-    height: 111px;
-    bottom: -111px;
-    animation-delay: 1s;
-}
+
 
 .background li:nth-child(1) {
     left: 87%;
@@ -209,7 +175,7 @@ label {
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <form action="" method="post" id="FormCheckIdStudent">
+                    <form action="" method="post" id="FormCheckIdStudent" data-check-url="<?=base_url('control_admission/CheckStudentRegister')?>">
                         <div class="dek-floating-label mb-0">
 
                             <input type="text" class="dek-floating-input" id="CheckIdStudent" name="CheckIdStudent"

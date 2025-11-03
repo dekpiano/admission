@@ -118,158 +118,171 @@ class Control_admission extends CI_Controller {
 	}
 
 
-	public function reg_insert()
-	{		
-		$data = $this->dataAll();
-
-		
-		//รับรอบปกติ
-		if($this->input->post('recruit_category') == "normal"){
-			$SelImpo = implode('|',$this->input->post('recruit_majorOrder'));		
-			$CheckCourse = $this->db->select('course_fullname,course_branch')->where('course_id',$this->input->post('recruit_majorOrder')[0])->get('tb_course')->Row();
-			$Course_fullname = $CheckCourse->course_fullname;
-			$Course_branch = $CheckCourse->course_branch;
-		}else{
-			$SelImpo = "";
-			$Course_fullname = $this->input->post('recruit_tpyeRoom');
-			$Course_branch = $this->input->post('recruit_major');
-		}
-
-		// รับค่าจาก hCaptcha
-		$hcaptchaResponse = $this->input->post('h-captcha-response');
+		public function reg_insert()
+		{
+			$data = $this->dataAll();
 	
-		// Secret Key ของคุณ
-		$secretKey = 'ES_47c9a8452c844bf6b5bf834237aacb8d';
+			//รับรอบปกติ
+			if ($this->input->post('recruit_category') == "normal") {
+				$SelImpo = implode('|', $this->input->post('recruit_majorOrder'));
+				$CheckCourse = $this->db->select('course_fullname,course_branch')->where('course_id', $this->input->post('recruit_majorOrder')[0])->get('tb_course')->Row();
+				$Course_fullname = $CheckCourse->course_fullname;
+				$Course_branch = $CheckCourse->course_branch;
+			} else {
+				$SelImpo = "";
+				$Course_fullname = $this->input->post('recruit_tpyeRoom');
+				$Course_branch = $this->input->post('recruit_major');
+			}
 	
-		$url = 'https://hcaptcha.com/siteverify?secret=' . $secretKey . '&response=' . $hcaptchaResponse;
-
-		// ส่งคำขอไปยัง hCaptcha
-		$response = file_get_contents($url);
-
-		// แปลง JSON เป็นอาร์เรย์หรือออบเจ็กต์
-		$responseData = json_decode($response);
-		
-        if ($responseData && $responseData->success) {
-			$openyear = $this->db->get('tb_openyear')->result();
-		//print_r($this->input->post('recruit_idCard'));
-		$data['chk_stu'] = $this->db->where('recruit_idCard',$this->input->post('recruit_idCard'))
-		->where('recruit_year',$data['checkYear'][0]->openyear_year)
-		->where('recruit_category',$this->input->post('recruit_category'))
-		->get('tb_recruitstudent')->result();
-		if (count($data['chk_stu']) > 0) {
-			$this->session->set_flashdata(array('msg'=> 'NO','messge' => 'คุณได้ลงทะเบียนแล้ว กรุณาตรวจสอบการสมัครปีการศึกษานี้แล้ว','status'=>'error'));
-			redirect('welcome');
-		}else{
-			$image = $this->input->post('recruit_img');
-			$imageData = base64_decode(preg_replace('/^data:image\/\w+;base64,/', '', $image));
-			$fileName = $openyear[0]->openyear_year.'-'.$this->input->post('recruit_idCard').rand() . '.png'; // สร้างชื่อไฟล์			
-			file_put_contents('uploads/recruitstudent/m'.$this->input->post('recruit_regLevel').'/img/' . $fileName, $imageData); // บันทึกไฟล์
-
-		$data_insert = array();
-		$recruit_birthday = ($this->input->post('recruit_birthdayY')-543).'-'.$this->input->post('recruit_birthdayM').'-'.$this->input->post('recruit_birthdayD');
-		
-
-		$data_insert += array(
-			'recruit_id'  => $this->NumberID(),
-			'recruit_regLevel' => $this->input->post('recruit_regLevel'),
-			'recruit_prefix' => $this->input->post('recruit_prefix'),
-			'recruit_firstName' => $this->input->post('recruit_firstName'),
-			'recruit_lastName' => $this->input->post('recruit_lastName'),
-			'recruit_oldSchool' => $this->input->post('recruit_oldSchool'),
-			'recruit_district' => $this->input->post('recruit_district'),
-			'recruit_province' => $this->input->post('recruit_province'),
-			'recruit_birthday' => $recruit_birthday,
-			'recruit_race' => $this->input->post('recruit_race'),
-			'recruit_nationality' => $this->input->post('recruit_nationality'), 
-			'recruit_religion' => $this->input->post('recruit_religion'),
-			'recruit_idCard' => $this->input->post('recruit_idCard'),
-			'recruit_phone' => $this->input->post('recruit_phone'),
-			'recruit_homeNumber' => $this->input->post('recruit_homeNumber'),
-			'recruit_homeGroup' => $this->input->post('recruit_homeGroup'),
-			'recruit_homeRoad' => $this->input->post('recruit_homeRoad'),
-			'recruit_homeSubdistrict' => $this->input->post('recruit_homeSubdistrict'),
-			'recruit_homedistrict' => $this->input->post('recruit_homedistrict'),
-			'recruit_homeProvince' => $this->input->post('recruit_homeProvince'),
-			'recruit_homePostcode' => $this->input->post('recruit_homePostcode'),
-			'recruit_tpyeRoom' => $Course_fullname,
-			'recruit_major' => $Course_branch,
-			'recruit_majorOrder' => $SelImpo,
-			'recruit_date'	=> date('Y-m-d'), 						
-			'recruit_year' => $data['checkYear'][0]->openyear_year,
-			'recruit_status' => "รอการตรวจสอบ",
-			'recruit_category' => $this->input->post('recruit_category'),
-			'recruit_grade' => $this->input->post('recruit_grade'),			
-			'recruit_agegroup' => $this->input->post('recruit_agegroup') ? $this->input->post('recruit_agegroup') : 0,
-			'recruit_img' => $fileName
-			);
-
-			if($_FILES['recruit_certificateAbility']['error'][0] == 0){
-				$data_insert += array('recruit_certificateAbility' => $this->UploadCertificateAbility());
-			}
-
-			if($_FILES['recruit_certificateEdu']['error']==0){
-				$imageFileType = strtolower(pathinfo($_FILES['recruit_certificateEdu']['name'],PATHINFO_EXTENSION));						
-				$file_check = $_FILES['recruit_certificateEdu']['error'];
-				$foder = 'certificate';
-				$do_upload = 'recruit_certificateEdu';
-				$rand_name = $openyear[0]->openyear_year.'-'.$this->input->post('recruit_idCard').rand();				
-					$data_insert += array('recruit_certificateEdu' => $rand_name.'.'.$imageFileType);
-					$this->reg_img($foder,$do_upload,$imageFileType,$rand_name,$data_insert);
-
-			}if($_FILES['recruit_certificateEduB']['error']==0){
-				$imageFileType = strtolower(pathinfo($_FILES['recruit_certificateEduB']['name'],PATHINFO_EXTENSION));						
-				$file_check = $_FILES['recruit_certificateEduB']['error'];
-				$foder = 'certificateB';
-				$do_upload = 'recruit_certificateEduB';
-				$rand_name = $openyear[0]->openyear_year.'-'.$this->input->post('recruit_idCard').rand();				
-					$data_insert += array('recruit_certificateEduB' => $rand_name.'.'.$imageFileType);
-					$this->reg_img($foder,$do_upload,$imageFileType,$rand_name,$data_insert);
-				
-			}if($_FILES['recruit_copyidCard']['error'] == 0){
-				$imageFileType = strtolower(pathinfo($_FILES['recruit_copyidCard']['name'],PATHINFO_EXTENSION));						
-				$file_check = $_FILES['recruit_copyidCard']['error'];
-				$foder = 'copyidCard';
-				$do_upload = 'recruit_copyidCard';
-				$rand_name = $openyear[0]->openyear_year.'-'.$this->input->post('recruit_idCard').rand();				
-					$data_insert += array('recruit_copyidCard' => $rand_name.'.'.$imageFileType);
-					$this->reg_img($foder,$do_upload,$imageFileType,$rand_name,$data_insert);
-				
-			}
-			// if($_FILES['recruit_copyAddress']['error'] == 0){
-			// 	$imageFileType = strtolower(pathinfo($_FILES['recruit_copyAddress']['name'],PATHINFO_EXTENSION));						
-			// 	$file_check = $_FILES['recruit_copyAddress']['error'];
-			// 	$foder = 'copyAddress';
-			// 	$do_upload = 'recruit_copyAddress';
-			// 	$rand_name = $this->input->post('recruit_idCard').rand();
-			// 	$data_insert += array('recruit_copyAddress' => $rand_name.'.'.$imageFileType);
-			// 		$this->reg_img($foder,$do_upload,$imageFileType,$rand_name,$data_insert);
-			// }
-
-			//print_r($data_insert);
-
-				if($this->model_admission->student_insert($data_insert) == 1){
-				
-					$this->session->set_flashdata(array('msg'=> 'Yes','messge' => 'สมัครเรียนสำเร็จ สามารถตรวจสอบสถานะการสมัครเพื่อพิมพ์ใบสมัครจาก <a href='.base_url('login').'> คลิกที่นี่</a>','status'=>'success'));					
-						// define('LINE_API',"https://notify-api.line.me/api/notify"); 
-						// $token = "UGkW3d8OvtutARdXMWyKhEo7SCA366RR9CRXfyhuKCu"; 
-						// $str = "มีนักเรียนสมัครเรียนใหม่\n";
-						// $str .="ชื่อ ".$this->input->post('recruit_prefix').$this->input->post('recruit_firstName').' '.$this->input->post('recruit_lastName')."\n";
-						// $str .= "สมัครเรียนชั้น ม.".$this->input->post('recruit_regLevel')."\n";
-						// $str .= "รอบ ".$this->input->post('recruit_category')."\n";
-						// $str .= "ตรวจสอบ https://admission.skj.ac.th/loginAdmin\n";
-						// $res = $this->notify_message($str,$token);
-						// $data = $this->dataAll();
-
+			// hCaptcha verification
+			$hcaptchaResponse = $this->input->post('h-captcha-response');
+			$secretKey = 'ES_47c9a8452c844bf6b5bf834237aacb8d'; // Replace with your actual secret key
+			$url = 'https://hcaptcha.com/siteverify';
+			$verify_data = ['secret' => $secretKey, 'response' => $hcaptchaResponse];
+	
+			$options = [
+			    'http' => [
+			        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+			        'method'  => 'POST',
+			        'content' => http_build_query($verify_data),
+			    ],
+			];
+			$context  = stream_context_create($options);
+			$response = file_get_contents($url, false, $context);
+			$responseData = json_decode($response);
+	
+			if ($responseData && $responseData->success) {
+				$openyear = $this->db->get('tb_openyear')->result();
+	
+				$chk_stu = $this->db->where('recruit_idCard', $this->input->post('recruit_idCard'))
+					->where('recruit_year', $data['checkYear'][0]->openyear_year)
+					->get('tb_recruitstudent')->result();
+	
+				if (count($chk_stu) > 0) {
+					$this->session->set_flashdata(array('msg' => 'NO', 'messge' => 'คุณได้ลงทะเบียนแล้ว กรุณาตรวจสอบการสมัครปีการศึกษานี้แล้ว', 'status' => 'error'));
+					redirect('welcome');
+				} else {
+					// ============== 1. Prepare Data and Filenames First ==============
+					$fileName = '';
+					if ($this->input->post('recruit_img')) {
+						$fileName = $openyear[0]->openyear_year . '-' . $this->input->post('recruit_idCard') . '-' . uniqid() . '.png';
+					}
+	
+					$recruit_birthday = ($this->input->post('recruit_birthdayY') - 543) . '-' . $this->input->post('recruit_birthdayM') . '-' . $this->input->post('recruit_birthdayD');
+	
+					$data_insert = array(
+						'recruit_id'  => $this->NumberID(),
+						'recruit_year' => $data['checkYear'][0]->openyear_year,
+						'recruit_regLevel' => $this->input->post('recruit_regLevel'),
+						'recruit_prefix' => $this->input->post('recruit_prefix'),
+						'recruit_firstName' => $this->input->post('recruit_firstName'),
+						'recruit_lastName' => $this->input->post('recruit_lastName'),
+						'recruit_idCard' => $this->input->post('recruit_idCard'),
+						'recruit_birthday' => $recruit_birthday,
+						'recruit_race' => $this->input->post('recruit_race'),
+						'recruit_nationality' => $this->input->post('recruit_nationality'),
+						'recruit_religion' => $this->input->post('recruit_religion'),
+						'recruit_phone' => $this->input->post('recruit_phone'),
+						'recruit_homeNumber' => $this->input->post('recruit_homeNumber'),
+						'recruit_homeGroup' => $this->input->post('recruit_homeGroup'),
+						'recruit_homeRoad' => $this->input->post('recruit_homeRoad'),
+						'recruit_homeSubdistrict' => $this->input->post('recruit_homeSubdistrict'),
+						'recruit_homedistrict' => $this->input->post('recruit_homedistrict'),
+						'recruit_homeProvince' => $this->input->post('recruit_homeProvince'),
+						'recruit_homePostcode' => $this->input->post('recruit_homePostcode'),
+						'recruit_oldSchool' => $this->input->post('recruit_oldSchool'),
+						'recruit_district' => $this->input->post('recruit_district'),
+						'recruit_province' => $this->input->post('recruit_province'),
+						'recruit_grade' => $this->input->post('recruit_grade'),
+						'recruit_category' => $this->input->post('recruit_category'),
+						'recruit_tpyeRoom' => $Course_fullname,
+						'recruit_major' => $Course_branch,
+						'recruit_majorOrder' => $SelImpo,
+						'recruit_agegroup' => $this->input->post('recruit_agegroup') ? $this->input->post('recruit_agegroup') : 0,
+						'recruit_img' => $fileName,
+						'recruit_status' => "รอการตรวจสอบ",
+						'recruit_date'	=> date('Y-m-d H:i:s'),
+						'recruit_dateUpdate' => date('Y-m-d H:i:s'),
+						// Add default values for NOT NULL fields to prevent SQL errors
+						'recruit_address' => '',
+						'recruit_copyAddress' => '',
+						'recruit_statusSurrender' => 'Normal',
+						'recruit_StatusQuiz' => 'รอเข้าสอบ'
+					);
+	
+					// ============== 2. Start Transaction and Attempt Insert ==============
+					$this->db->trans_begin();
+					$student_id = $this->model_admission->student_insert($data_insert);
+	
+					if ($this->db->trans_status() === FALSE || $student_id === false) {
+						// FAIL: Rollback and redirect with error
+						$this->db->trans_rollback();
+						$this->session->set_flashdata(array('msg' => 'NO', 'messge' => 'ไม่สามารถบันทึกข้อมูลได้! กรุณาตรวจสอบข้อมูลและลองใหม่อีกครั้ง', 'status' => 'error'));
 						redirect('welcome');
+					} else {
+						// SUCCESS: Commit transaction and save files
+						$this->db->trans_commit();
+	
+						// --- Save Profile Image ---
+						if ($fileName !== '') {
+							$image = $this->input->post('recruit_img');
+							$imageData = base64_decode(preg_replace('/^data:image\/\w+;base64,/', '', $image));
+							$path = 'uploads/recruitstudent/m' . $this->input->post('recruit_regLevel') . '/img/';
+							file_put_contents($path . $fileName, $imageData);
+						}
+	
+						// --- Save Other Uploaded Files ---
+						$this->load->library('upload');
+						$this->load->library('image_lib');
+						$update_data = [];
+	
+						// Certificate of Ability
+						if (isset($_FILES['recruit_certificateAbility']) && $_FILES['recruit_certificateAbility']['error'][0] == 0) {
+							$update_data['recruit_certificateAbility'] = $this->UploadCertificateAbility();
+						}
+	
+						// Other documents
+						$file_fields = ['recruit_certificateEdu', 'recruit_certificateEduB', 'recruit_copyidCard', 'recruit_copyAddress'];
+						$folder_map = [
+	                        'recruit_certificateEdu' => 'certificate',
+	                        'recruit_certificateEduB' => 'certificateB',
+	                        'recruit_copyidCard' => 'copyidCard',
+	                        'recruit_copyAddress' => 'copyAddress'
+	                    ];
+	
+						foreach ($file_fields as $field) {
+							if (isset($_FILES[$field]) && $_FILES[$field]['error'] == 0) {
+								$foder = $folder_map[$field];
+								$path = 'uploads/recruitstudent/m' . $this->input->post('recruit_regLevel') . '/' . $foder . '/';
+								$config['upload_path'] = $path;
+								$config['allowed_types'] = 'jpg|jpeg|png|pdf';
+	                            $config['encrypt_name'] = TRUE;
+								$this->upload->initialize($config);
+	
+								if ($this->upload->do_upload($field)) {
+									$upload_data = $this->upload->data();
+									$update_data[$field] = $upload_data['file_name'];
+								} else {
+	                                // You can log the error if you want: $this->upload->display_errors();
+	                            }
+							}
+						}
+	
+	                    // Update database with filenames
+						if (!empty($update_data)) {
+							$this->model_admission->student_update($student_id, $update_data);
+						}
+	
+						$this->session->set_flashdata(array('msg' => 'Yes', 'messge' => 'สมัครเรียนสำเร็จ สามารถตรวจสอบสถานะการสมัครเพื่อพิมพ์ใบสมัครได้', 'status' => 'success'));
+						redirect('welcome');
+					}
 				}
-
+			} else {
+				// hCaptcha failed
+				$this->session->set_flashdata(array('msg' => 'NO', 'messge' => 'Captcha ไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง', 'status' => 'error'));
+				redirect('welcome');
 			}
-		//exit();
-		}else{
-			echo "Error Recapcha ";
 		}
-	}
-
 	public function reg_img($foder,$do_upload,$imageFileType,$rand_name,$data_insert)
 	{
 		

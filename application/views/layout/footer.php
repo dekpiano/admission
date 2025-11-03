@@ -169,8 +169,6 @@
          <script src="<?=base_url();?>asset/vendor/jquery-validation/jquery.validate.min.js"></script>
          <!-- Main File-->
          <script src="<?=base_url();?>asset/js/front.js"></script>
-         <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
-         </script>
          <!-- DataTable-->
          <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
          <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
@@ -275,15 +273,6 @@ $(".checkPirnt").click(function() {
         "ให้นักเรียนตรวจสอบข้อมูล <br> -ข้อมูลนักเรียน (จำเป็นต้องกรอก)<br> -ข้อมูลบิดา มารดา ถ้ามีในกรอกทั้ง 2 คน หรือ ถ้าไม่มีกรอกข้อมูล บิดา หรือ มารดา ก็ได้ <br> -ข้อมูลผู้ปกครอง  (จำเป็นต้องกรอก)<br> .ให้ครบถ้วนก่อนถึงจะพิมพ์ใบยืนยันรายงานตัวได้",
         "warning");
 });
-//  Google Check
-function onHuman(response) {
-    document.getElementById('captcha').value = response;
-}
-var onloadCallback = function() {
-    grecaptcha.render('html_element', {
-        'sitekey': '6LdZePgUAAAAAA5sewT1jFoUrRv7E7TGBg6fN6Zs'
-    });
-};
 // รูปแบบการกรอก
 $('#CheckIdStudent').inputmask({
     mask: "9-9999-99999-99-9", // กำหนดรูปแบบ 9-9999-99999-99-9

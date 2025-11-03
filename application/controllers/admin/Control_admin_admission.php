@@ -239,20 +239,55 @@ class Control_admin_admission extends CI_Controller {
 
 
 	public function delete_recruitstudent($id)
-	{	
+	{
+		$recruit_data = $this->db->where('recruit_id', $id)->get('tb_recruitstudent')->row();
 
-		$data = $this->db->where('recruit_id',$id)->get('tb_recruitstudent')->result();
-		//print_r($data[0]->recruit_id);
-		@unlink("./uploads/recruitstudent/m".$data[0]->recruit_regLevel.'/img/'.$data[0]->recruit_img);
-		@unlink("./uploads/recruitstudent/m".$data[0]->recruit_regLevel.'/certificate/'.$data[0]->recruit_certificateEdu);
-		@unlink("./uploads/recruitstudent/m".$data[0]->recruit_regLevel.'/certificateB/'.$data[0]->recruit_certificateEduB);
-		@unlink("./uploads/recruitstudent/m".$data[0]->recruit_regLevel.'/copyAddress/'.$data[0]->recruit_copyAddress);
-		@unlink("./uploads/recruitstudent/m".$data[0]->recruit_regLevel.'/copyidCard/'.$data[0]->recruit_copyidCard);
+		if ($recruit_data) {
+			$recruit_regLevel_folder = "./uploads/recruitstudent/m" . $recruit_data->recruit_regLevel . '/';
 
-		if($this->admin_model_admission->recruitstudent_delete($id) == 1){
-			$this->session->set_flashdata(array('msg'=> 'ok','messge' => 'ลบข้อมูลสำเร็จ'));
-			redirect('admin/Recruitment/'.$this->session->userdata('year'), 'refresh');
+			// Delete profile image
+			$file_path_img = $recruit_regLevel_folder . 'img/' . $recruit_data->recruit_img;
+			error_log("Attempting to delete: " . $file_path_img);
+			@unlink($file_path_img);
+
+			// Delete certificate files
+			$file_path_cert_edu = $recruit_regLevel_folder . 'certificate/' . $recruit_data->recruit_certificateEdu;
+			error_log("Attempting to delete: " . $file_path_cert_edu);
+			@unlink($file_path_cert_edu);
+
+			$file_path_cert_edu_b = $recruit_regLevel_folder . 'certificateB/' . $recruit_data->recruit_certificateEduB;
+			error_log("Attempting to delete: " . $file_path_cert_edu_b);
+			@unlink($file_path_cert_edu_b);
+			
+			// Delete copy of ID card and address (if they exist and are not commented out)
+			$file_path_copy_id = $recruit_regLevel_folder . 'copyidCard/' . $recruit_data->recruit_copyidCard;
+			error_log("Attempting to delete: " . $file_path_copy_id);
+			@unlink($file_path_copy_id);
+
+			$file_path_copy_address = $recruit_regLevel_folder . 'copyAddress/' . $recruit_data->recruit_copyAddress;
+			error_log("Attempting to delete: " . $file_path_copy_address);
+			@unlink($file_path_copy_address); // This was commented out in reg_insert, so may not exist
+
+			// Delete multiple ability certificate files (if any)
+			if (!empty($recruit_data->recruit_certificateAbility)) {
+				$ability_files = explode('|', $recruit_data->recruit_certificateAbility);
+				foreach ($ability_files as $file_name) {
+					$file_path_ability = $recruit_regLevel_folder . 'certificateAbility/' . $file_name;
+					error_log("Attempting to delete: " . $file_path_ability);
+					@unlink($file_path_ability);
+				}
+			}
+
+			// Now delete the database record
+			if ($this->admin_model_admission->recruitstudent_delete($id) == 1) {
+				$this->session->set_flashdata(array('msg' => 'ok', 'messge' => 'ลบข้อมูลและไฟล์ที่เกี่ยวข้องทั้งหมดสำเร็จ'));
+			} else {
+				$this->session->set_flashdata(array('msg' => 'error', 'messge' => 'ไม่สามารถลบข้อมูลนักเรียนออกจากฐานข้อมูลได้'));
+			}
+		} else {
+			$this->session->set_flashdata(array('msg' => 'error', 'messge' => 'ไม่พบข้อมูลนักเรียนที่จะลบ'));
 		}
+		redirect('admin/Recruitment/' . $this->session->userdata('year'), 'refresh');
 	}
 
 
